@@ -43,13 +43,12 @@ class EscolaController extends Controller
         $escola = ESCOLA::get();
         $cidade = Cidade::get();
         $estado = Estado::get();
-        $ficha =  ALUNO::where('AlunoNome', '=', 'Auth()user()->id');
+//        $ficha =  ALUNO::where('AlunoNome', '=', 'Auth()user()->id');
         $user =   Auth::user()->id;
 
           return view(
             'escola.index',
             [
-                'ficha'        => $ficha,
                 'escola'       => $escola,
                 'user'         => $user,               
                 

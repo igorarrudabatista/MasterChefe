@@ -14,15 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('inscricao_pivot', function (Blueprint $table) {
+            
+            $table->integer('Quantidade');
+            
+            $table->unsignedInteger('inscricao_id');
+            $table->foreign('inscricao_id')->references('id')->on('inscricao')->onDelete('cascade');
+               
+            $table->unsignedInteger('ingredientes_id');
+            $table->foreign('ingredientes_id')->references('id')->on('ingredientes')->onDelete('cascade');
+
+
+
 
             // $table->foreign('pessoa_id')->references('id')->on('pessoa');
             // $table->foreign('ingredientes_id'  )->references('id')->on('ingredientes');
-            
-            $table->foreignId('inscricao_id')->constrained('inscricao')->onDelete('cascade');
-
-            $table->foreignId('ingredientes_id')->constrained('ingredientes')->onDelete('cascade');
-
-            $table->integer('Quantidade');
     
             // $table->unsignedInteger('pessoa_id');
             // $table->foreign('pessoa_id')->references('id')->on('pessoa')->onDelete('cascade');
@@ -32,11 +37,7 @@ return new class extends Migration
          });
      }
     
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('inscricao_pivot');

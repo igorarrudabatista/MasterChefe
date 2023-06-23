@@ -15,7 +15,7 @@ use App\Http\Controllers\
 // Formulario Master Chefe
     InscricaoController, IngredientesController, Categoria_ingredientesController, CidadeController,
     EstadoController, EscolaController, DreController, PessoaController, CatingredientesController
-    ,InsumoController
+    ,InsumoController, ProdutoController
   };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -38,6 +38,7 @@ Route::resource('cidade',                    CidadeController::class);
 Route::resource('cat_ingrediente',           Categoria_ingredientesController::class);
 Route::resource('catingrediente',            CatingredientesController::class);
 Route::resource('insumo',                    InsumoController::class);
+Route::resource('produto',                   ProdutoController::class);
 
 
 

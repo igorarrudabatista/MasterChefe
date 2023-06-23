@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ingredientes extends Model
+class Produto extends Model
 {
     use HasFactory;
- //   protected $table = 'ingredientes';
-    
+
+    protected $table = 'produtos';
+
     protected $fillable = ['Nome','Categoria','image','cat_ingredientes_id'
         ];
     
-
-    //  public function inscricao()
-    //  {
-    //      return $this->hasmany(Inscricao::class);
-    //  }
 }
-

@@ -68,6 +68,12 @@ class PermissionTableSeeder extends Seeder
             'insumo-edit',
             'insumo-delete',
             
+            //produto
+            'produto-list',
+            'produto-create',
+            'produto-edit',
+            'produto-delete',
+            
         ];
        
         foreach ($permissions as $permission) {

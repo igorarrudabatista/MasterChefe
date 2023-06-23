@@ -5,7 +5,7 @@ use App\Models\ESCOLA;
 use App\Models\Ingredientes;
 use App\Models\Inscricao;
 use App\Models\Dre;
-
+use Database\Factories\EscolaFactory;
 use Illuminate\Http\Request;
 
 class InscricaoController extends Controller
@@ -40,13 +40,17 @@ class InscricaoController extends Controller
     {
     
         $inscricao = Inscricao::get();
-
+        $ingredientes = Ingredientes::all();
+        $escola = escola::all();
+        $dre = Dre::all();
 
           return view(
             'inscricao.index',
             [
-                'inscricao'
-                
+                'inscricao' => $inscricao,
+                'ingredientes' => $ingredientes,
+                'dre' => $dre,
+                'escola' => $escola,
             ]
         );
 
@@ -56,50 +60,31 @@ class InscricaoController extends Controller
     
    public function create()
    {
-
-       return view('inscricao.create');
+    $dre = Dre::all();
+    $ingredientes = Ingredientes::get();
+    $escola = Escola::all();
+       return view('inscricao.create',compact('dre','ingredientes','escola'));
    }
     
 
     public function store(Request $request)
     {
-
-        $inscricao =  new Inscricao;
-        
-        $inscricao -> dre_id                 = $request->dre_id;
-        // $inscricao -> ingredientes_id        = $request->ingredientes_id;
-        $inscricao -> escola_id              = $request->escola_id;
-        $inscricao -> Nome                   = $request->Nome;
-        $inscricao -> Email                  = $request->Email;
-        $inscricao -> Telefone               = $request->Telefone;
-        $inscricao -> Outros_ingredientes    = $request->Outros_ingredientes;
-        $inscricao -> Preparo  = $request->Preparo;
-        $inscricao -> checkbox  = $request->checkbox;
-        
+        $inscricao = Inscricao::create($request->all());
+       
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
-        // dd($products);
-        // dd($quantities);   
-         for ($product=0; $product < count($products); $product++) {
+        for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
-                $inscricao->ingredientes()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+                $inscricao->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+
+                // dd($products);
+                // dd($inscricao);   
+                // dd($quantities);
             }
         }
            // Imagem do produto upload
-           if ($request->hasFile('image')&& $request->file('image')->isValid()){
-            
-            $requestImage = $request -> image;
-            
-            $extension = $requestImage-> extension();
-            
-            $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
-            
-            $request -> image->move(public_path('images/inscricao'), $imageName);
-            
-            $inscricao -> image = $imageName;
-            
-        }
-        $inscricao ->save();
+          
+      //  $inscricao ->save();
         
     
          return redirect()->route('inscricao.index')

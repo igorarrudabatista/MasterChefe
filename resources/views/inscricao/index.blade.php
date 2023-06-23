@@ -53,34 +53,33 @@
                 <table class='table table-striped' id="table1">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
+                            <th>Telefone</th>
                             <th>E-mail</th>
-                  
+                            <th>DRE</th>
+                            <th>Escola</th>
+                            <th>Imagem</th>                  
                             <th>Ações</th>
                           
                         </tr>
                     </thead>
 
+                    @foreach ($inscricao as $inscritos)
                     
-               
-                           <td>ID</td>
+                    
+                    <td>{{$inscritos->Nome}}</td>
+                    <td>{{$inscritos->Telefone}}</td>
+                    <td>{{$inscritos->Email}}</td>
+                    <td>{{$inscritos->dre_id}}</td>
+                    <td>{{$inscritos->escola_id}}</td>
+                    <td>{{$inscritos->image}}</td>
 
-                           <td>Nome</td>
-                           
-                           <td></td>
-
-                           <td>
-        
-        </td>
-        <td> </td>                   
-        <td> </td>   
-        <td> </td>               </td>
+                    <td> Editar</td>
 
             </tr>
                         
                                             
-
+@endforeach
     </tbody>
                 </table>
                 

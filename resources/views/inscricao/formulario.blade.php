@@ -84,10 +84,10 @@
                     <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="95px" >
 				      </span>
 				        <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
+                <input type="number" name="quantities[]" placeholder="Quantidade"  class="input-field" value="1" />
 			        </span>
 		    </label>
 	</div>
-  <input type="number" name="quantities[]"  class="form-control" value="1" />
 
     @endforeach
     
@@ -101,7 +101,7 @@
         <textarea name="message" class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
       </div>
 
-
+{{-- 
       <label> <h2> Enviar foto </h2> </label>
       <div class="upload">
         <input type="file" title="" id="image" name="image"  class="drop-here">
@@ -114,7 +114,7 @@
           <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <div class="shadow"></div>
-      </div> 
+      </div>  --}}
       
  <center>
     <div class="checkbox-group">
@@ -122,7 +122,8 @@
         <label for="Agree" class="terms-privacy-checkbox">Eu aceito os <a href="#" class="link">Termos</a> de <a href="#" class="link">Política de Privacidade.</a></label>
       </div>
     
-      <div class="form-group col-md-12">      <button type="submit" class="btn btn-primary btn-lg">Enviar formulário</button>
+      <div class="form-group col-md-12">  
+            <button type="submit" class="btn btn-primary btn-lg">Enviar formulário</button>
       </div>
     </form>
     
@@ -141,7 +142,28 @@
   
 </div>
 <!-- partial -->
-  
+<script>
+  //Duplicar linha de Produto e Quantidade em Criar Orçamento
+
+  $(document).ready(function() {
+      let row_number = 1;
+      $("#add_row").click(function(e) {
+          e.preventDefault();
+          let new_row_number = row_number - 1;
+          $('#product' + row_number).html($('#product' + new_row_number).html()).find(
+              'td:first-child');
+          $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+          row_number++;
+      });
+      $("#delete_row").click(function(e) {
+          e.preventDefault();
+          if (row_number > 1) {
+              $("#product" + (row_number - 1)).html('');
+              row_number--;
+          }
+      });
+  });
+</script>
 <script src="{{ asset('/js/upload_image/script.js') }}"></script>
 </body>
 </html>

@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredientes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Nome')->nullable();
-            $table->string('Categoria')->nullable();
-            $table->string('image')->nullable();
-            $table->foreignId('cat_ingredientes_id')->constrained('cat_ingredientes')->onDelete('cascade');
+        Schema::create('ois', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-        
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -30,7 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredientes');
-
+        Schema::dropIfExists('ois');
     }
 };

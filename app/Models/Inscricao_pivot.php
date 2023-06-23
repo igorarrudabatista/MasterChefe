@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pivot extends Model
+class Inscricao_pivot extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
     protected $table = 'inscricao_pivot';
+    
+    protected $fillable = [ 'Quantidade','inscricao_id','ingredientes_id'];
 
 
 
@@ -20,4 +22,8 @@ class Pivot extends Model
     }
     public function ingredientes(){
         return $this->belongsTo(Ingredientes::class);
-    }}
+    }
+
+
+
+}

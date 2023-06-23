@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cat_ingredientes;
 use Illuminate\Http\Request;
-use App\Models\Ingredientes;
+use App\Models\Cat_ingredientes;
+use App\Models\Produto;
 
-class InsumoController extends Controller
+class ProdutoController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:insumo-list|insumo-create|insumo-edit|insumo-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:insumo-create', ['only' => ['create','store']]);
-         $this->middleware('permission:insumo-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:insumo-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:produto-list|produto-create|produto-edit|produto-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:produto-create', ['only' => ['create','store']]);
+         $this->middleware('permission:produto-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:produto-delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
-    $insumo = Ingredientes::all();
+    $insumo = Produto::all();
         $search = request('search');
 
         if($search) {
-            $insumo = Ingredientes::where([['Nome', 'like', '%'.$search. '%' ]])->get();
+            $insumo = Produto::where([['Nome', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $insumo = Ingredientes::all();
+                $insumo = Produto::all();
             }
         return view('insumo.index',compact('insumo','search'));
        
@@ -43,7 +43,7 @@ class InsumoController extends Controller
     public function store(Request $request)
     {
        // Produto::create($request->all());
-       $insumo =  new Ingredientes;
+       $insumo =  new Produto;
         
        $insumo -> Nome                 = $request->Nome;
        $insumo -> cat_ingredientes_id  = $request->cat_ingredientes_id;
@@ -64,19 +64,19 @@ class InsumoController extends Controller
         }
         $insumo ->save();
         
-        $insumo = Ingredientes::all();
+        $insumo = Produto::all();
 
         return redirect('/insumo')->with('success','Ingrediente criado com sucesso!');
 
     }
 
-    public function show(Ingredientes $insumo)
+    public function show(Produto $insumo)
     {
         return view('insumo.show',compact('insumo'));
     }
     
   
-    public function edit(Ingredientes $insumo)
+    public function edit(Produto $insumo)
     {
         $cat_ingredientes = Cat_ingredientes::all();
 
@@ -84,7 +84,7 @@ class InsumoController extends Controller
     
     }
     
-    public function update(Request $request, Ingredientes $insumo) {
+    public function update(Request $request, Produto $insumo) {
 
         $insumo -> Nome                 = $request->Nome;
         $insumo -> cat_ingredientes_id  = $request->cat_ingredientes_id;
@@ -112,7 +112,7 @@ class InsumoController extends Controller
         return redirect('/insumo')->with('edit','Ingrediente editado com sucesso!');
     }
 
-    public function destroy(Ingredientes $insumo)
+    public function destroy(Produto $insumo)
     {
         $insumo->delete();
       //  dd($ingredientes);
