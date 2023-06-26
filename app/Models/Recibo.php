@@ -19,7 +19,7 @@ class Recibo extends Model
   ];
     protected $table = 'recibo';
     
-    public $timestamps = false;
+   // public $timestamps = false;
 
     public function produto() {
         return $this->belongsToMany(Produto::class)->withPivot(['Quantidade']);
@@ -34,7 +34,9 @@ class Recibo extends Model
         return $this->belongsToMany(Recibo_Produto::class);
 
       }
-
+      public function Dre() {
+        return $this->belongsTo(Dre::class, 'dre_id');
+                }    
     
 
 }

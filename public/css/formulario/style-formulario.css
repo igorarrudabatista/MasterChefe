@@ -25,8 +25,6 @@ body {
   padding: 5rem 5.5rem;
  }
 
-
-
 .input-field:focus {
   outline: none;
   border: 2px solid #fe5454;
@@ -88,6 +86,14 @@ body {
   text-align: center;
   font-weight: 700;
   font-size: 2.25rem;
+  color: #fe5454;
+  padding: 0.5rem;
+}
+
+.create2 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.00rem;
   color: #fe5454;
   padding: 0.5rem;
 }

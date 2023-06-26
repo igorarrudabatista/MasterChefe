@@ -12,7 +12,7 @@ class ProdutoController extends Controller
     {
          $this->middleware('permission:produto-list|produto-create|produto-edit|produto-delete', ['only' => ['index','show']]);
          $this->middleware('permission:produto-create', ['only' => ['create','store']]);
-         $this->middleware('permission:produto-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:produto-edit',   ['only' => ['edit','update']]);
          $this->middleware('permission:produto-delete', ['only' => ['destroy']]);
     }
 
@@ -27,8 +27,7 @@ class ProdutoController extends Controller
              } else {
                 $insumo = Produto::all();
             }
-        return view('insumo.index',compact('insumo','search'));
-       
+        return view('insumo.index',compact('insumo','search'));       
     }
     
 
@@ -66,13 +65,13 @@ class ProdutoController extends Controller
         
         $insumo = Produto::all();
 
-        return redirect('/insumo')->with('success','Ingrediente criado com sucesso!');
+        return redirect('/produto')->with('success','Ingrediente criado com sucesso!');
 
     }
 
     public function show(Produto $insumo)
     {
-        return view('insumo.show',compact('insumo'));
+        return view('produto.show',compact('insumo'));
     }
     
   
@@ -80,7 +79,7 @@ class ProdutoController extends Controller
     {
         $cat_ingredientes = Cat_ingredientes::all();
 
-        return view('insumo.edit',compact('insumo', 'cat_ingredientes'));
+        return view('produto.edit',compact('insumo', 'cat_ingredientes'));
     
     }
     

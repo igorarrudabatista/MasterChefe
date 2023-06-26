@@ -22,6 +22,7 @@ use App\Http\Controllers\
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
 Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
 Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);
+Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
 
 
 // Route::get('/painel', function () {
@@ -40,7 +41,8 @@ Route::resource('cidade',                    CidadeController::class);
 Route::resource('cat_ingrediente',           Categoria_ingredientesController::class);
 Route::resource('catingrediente',            CatingredientesController::class);
 Route::resource('insumo',                    InsumoController::class);
-Route::resource('produto',                   ProdutoController::class);
+
+//Route::resource('produto',                   ProdutoController::class);
 Route::resource('inscricao',                 ReciboController::class);
 
 

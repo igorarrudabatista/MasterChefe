@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cat_ingredientes;
 use Illuminate\Http\Request;
-use App\Models\Ingredientes;
+//use App\Models\Ingredientes;
 use App\Models\Produto;
 
 class InsumoController extends Controller
@@ -19,14 +19,13 @@ class InsumoController extends Controller
 
     public function index()
     {
-    $insumo = Ingredientes::all();
+    $insumo = Produto::all();
         $search = request('search');
-
         if($search) {
-            $insumo = Ingredientes::where([['Nome', 'like', '%'.$search. '%' ]])->get();
+            $insumo = Produto::where([['Nome', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $insumo = Ingredientes::all();
+                $insumo = Produto::all();
             }
         return view('insumo.index',compact('insumo','search'));
        
@@ -65,19 +64,19 @@ class InsumoController extends Controller
         }
         $insumo ->save();
         
-        $insumo = Ingredientes::all();
+        $insumo = Produto::all();
 
         return redirect('/insumo')->with('success','Ingrediente criado com sucesso!');
 
     }
 
-    public function show(Ingredientes $insumo)
+    public function show(Produto $insumo)
     {
         return view('insumo.show',compact('insumo'));
     }
     
   
-    public function edit(Ingredientes $insumo)
+    public function edit(Produto $insumo)
     {
         $cat_ingredientes = Cat_ingredientes::all();
 
@@ -85,7 +84,7 @@ class InsumoController extends Controller
     
     }
     
-    public function update(Request $request, Ingredientes $insumo) {
+    public function update(Request $request, Produto $insumo) {
 
         $insumo -> Nome                 = $request->Nome;
         $insumo -> cat_ingredientes_id  = $request->cat_ingredientes_id;
@@ -107,13 +106,11 @@ class InsumoController extends Controller
     }
         
         $insumo->update();
-
-
      
         return redirect('/insumo')->with('edit','Ingrediente editado com sucesso!');
     }
 
-    public function destroy(Ingredientes $insumo)
+    public function destroy(Produto $insumo)
     {
         $insumo->delete();
       //  dd($ingredientes);

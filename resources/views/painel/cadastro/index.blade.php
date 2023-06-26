@@ -146,7 +146,7 @@
                             </p>
                         </div>
                         <div class="overlay-status text-right">
-                            <a href="{{asset('/produto')}}" class="btn btn-primary btn-sm">Clique aqui </a>
+                            <a href="{{asset('/insumo')}}" class="btn btn-primary btn-sm">Clique aqui </a>
                         </div>
                     </div>
                 </div>

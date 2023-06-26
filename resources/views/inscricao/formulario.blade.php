@@ -23,7 +23,7 @@
   
   
   <div class="login-container">
-    <h1 class="create">Formulário Master Chefe</h1>
+    <h1 class="create">Formulário MasterChef</h1>
     
         <div class="social-media">
       <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -34,16 +34,16 @@
     
     <p class="description">Or use your email for registration:</p>
    
-{!! Form::open(array('route' => 'inscricao.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'inscricao.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
 
-   
     
       <div class="form-row">
           <div class="form-group col-md-6">
             <input type="text" class="input-field" id="Nome" name="Nome" placeholder="Digite o seu Nome Completo">
           </div>
           <div class="form-group col-md-6">
-            <input type="text" class="input-field" id="Telefone" name="Telefone" placeholder="Telefone">
+            <input type="tel" class="input-field" id="Telefone" name="Telefone"  placeholder="Insira o seu telefone com o DDD"  required>
+
           </div>
         <div class="form-group col-md-6">
           <input type="email" class="input-field" id="Email" name="Email" placeholder="Email">
@@ -80,11 +80,11 @@
             <input type="checkbox"  name="products[]" value="{{ $ingredientes2->id}}" class="checkbox-input" />
 			        <span class="checkbox-tile">
                 <span class="checkbox-icon">
-                    <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="90px" >
+                    <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="60px" >
 				      </span>
               <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
-              <label> Qnt. </label>
-              <input type="number" name="quantities[]" placeholder="Quantidade"  class="input-field" value="1" />
+              <small> Quantidade: </small>
+              <input type="number" name="quantities[]" placeholder="Quantidade"  class="checkbox-label input-field" value="1" />
 			        </span>
 		    </label>
 	</div>
@@ -101,9 +101,9 @@
         <textarea name="message" class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
       </div>
 
-{{-- 
-      <label> <h2> Enviar foto </h2> </label>
-      <div class="upload">
+<br>
+      <legend class="checkbox-group-legend"> <h1 class="create2">Envie a Foto do seu prato:</h1>
+        <div class="upload">
         <input type="file" title="" id="image" name="image"  class="drop-here">
         <div class="text text-drop">Imagem</div>
         <div class="text text-upload">Enviando</div>
@@ -114,7 +114,8 @@
           <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <div class="shadow"></div>
-      </div>  --}}
+      </div> 
+      </legend>
       
  <center>
     <div class="checkbox-group">
@@ -141,6 +142,7 @@
   
   
 </div>
+
 <!-- partial -->
 <script>
   //Duplicar linha de Produto e Quantidade em Criar Orçamento

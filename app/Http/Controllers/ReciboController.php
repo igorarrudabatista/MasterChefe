@@ -41,6 +41,8 @@ class ReciboController extends Controller
         $dre = Dre::all();
 
         $recibo = Recibo::get();  
+    //    $recibo = Recibo::with('empresa_cliente')->get();  
+
       //  $empresa_cliente = Empresa_Cliente::get();
         $search = request('search');
 
@@ -53,8 +55,8 @@ class ReciboController extends Controller
        
        
         return view('inscricao.index', ['recibo'=> $recibo, 
-                                     'search' => $search,
-                                     'dre' => $dre,
+                                           'search' => $search,
+                                            'dre' => $dre,
                                     ]);
 
     }
@@ -76,14 +78,34 @@ class ReciboController extends Controller
       
             $recibo = Recibo::create($request->all()); 
 
-            $products = $request->input('products', []);
-            $quantities = $request->input('quantities', []);
-            for ($product=0; $product < count($products); $product++) {
-                if ($products[$product] != '') {
-                    $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-             //   dd($quantities);
+            //  // Imagem do produto upload
+                  if ($request->hasFile('image')&& $request->file('image')->isValid()){
+                            
+                     $requestImage = $request -> image;
+                    
+                     $extension = $requestImage-> extension();
+                    
+                     $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
+                    
+                     $request -> image->move(public_path('images/inscricao'), $imageName);
+                    
+                     $recibo -> image = $imageName;
+                    
+                 }
+                $products = $request->input('products', []);
+                $quantities = $request->input('quantities', []);
+                //dd($recibo);
+                for ($product=0; $product < count($products); $product++) {
+                    if ($products[$product] != '') {
+                        $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+                   // dd($quantities);
                 }
             }
+            $recibo ->save();
+           //  dd($recibo);
+
+
+// $recibo ->save();
 
     //dd($recibo);
         return redirect()->route('inscricao.index')
@@ -100,29 +122,32 @@ class ReciboController extends Controller
     public function invoice($id)
     {
 
-        $recibo        = Recibo::findOrFail($id);
+        //$recibo = Recibo::with('dre', 'produto');
+       $recibo        = Recibo::find($id);
+
   //      $minha_empresa = MinhaEmpresa::all();
-        $recibox       = Recibo::all();
+        //$recibox       = Recibo::all();
+        $dre           = Dre::all();
 
         return view('inscricao.invoice', ['recibo'        => $recibo, 
-                                  //     'minha_empresa' => $minha_empresa,
-                                       'recibox'       => $recibox
+                                          'dre' => $dre,
+                                        //  'recibox'       => $recibox
 
        ]);
 
     }
-    public function contrato($id)
+    public function avaliar($id)
     {
 
-        $recibo = Recibo::with('empresa_cliente')->findOrFail($id);
+       $recibo = Recibo::findOrFail($id);
         
-      //  $recibo          = Recibo::with('empresa_cliente')->get();  
-        $minha_empresa   = MinhaEmpresa::all();
-        $recibox         = Recibo::all();
+      $recibos          = Recibo::with('produto')->get();  
+     //   $minha_empresa   = MinhaEmpresa::all();
+       // $recibox         = Recibo::all();
 
-        return view('inscricao.contrato', ['recibo'        => $recibo, 
-                                       'minha_empresa' => $minha_empresa,
-                                       'recibox'       => $recibox
+        return view('inscricao.avaliar', ['recibo'        => $recibo, 
+                                       //'minha_empresa' => $minha_empresa,
+                                       'recibos'       => $recibos
 
        ]);
 
@@ -136,14 +161,12 @@ class ReciboController extends Controller
      */
     public function edit(Recibo $recibo)
     {
-        $titulo = 'Recibos';
         $produto = Produto::get();
-        $recibo->load('produto');
+    //    $recibo->load('produto');
+        $recibo = Recibo::get();
+     //   $empresa_cliente = Empresa_Cliente::get();
 
-        $recibos = Recibo::with('empresa_cliente')->get();
-        $empresa_cliente = Empresa_Cliente::get();
-
-        return view('inscricao.edit',compact('recibo','empresa_cliente', 'recibos', 'produto','titulo'));
+        return view('inscricao.edit',compact('recibo', 'produto'));
     }
     
     public function update(Request $request, Recibo $recibo)
