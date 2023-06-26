@@ -14,10 +14,8 @@ class Inscricao extends Model
     protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox'
 ];
 
-
-
-    
     public function produto() {
+        
         return $this->belongsToMany(Produto::class)->withPivot(['Quantidade']);
     }   
     

@@ -5,6 +5,7 @@ use App\Models\ESCOLA;
 use App\Models\Ingredientes;
 use App\Models\Inscricao;
 use App\Models\Dre;
+use App\Models\Produto;
 use Database\Factories\EscolaFactory;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class InscricaoController extends Controller
     
     public function formulario(){
 
-        $ingredientes = Ingredientes::all();
+        $ingredientes = Produto::all();
         $escola = escola::all();
         $dre = Dre::all();
 
@@ -56,40 +57,35 @@ class InscricaoController extends Controller
 
            
     }
-
     
    public function create()
    {
     $dre = Dre::all();
     $ingredientes = Ingredientes::get();
     $escola = Escola::all();
+    $produto = Produto::orderBy('id','asc')->get();
+
        return view('inscricao.create',compact('dre','ingredientes','escola'));
-   }
-    
+   }    
 
     public function store(Request $request)
     {
-        $inscricao = Inscricao::create($request->all());
-       
-        $products = $request->input('products', []);
-        $quantities = $request->input('quantities', []);
-        for ($product=0; $product < count($products); $product++) {
-            if ($products[$product] != '') {
-                $inscricao->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+      
+            $inscricao = Inscricao::create($request->all()); 
 
-                // dd($products);
-                // dd($inscricao);   
-                // dd($quantities);
+            $products = $request->input('products', []);
+            $quantities = $request->input('quantities', []);
+            for ($product=0; $product < count($products); $product++) {
+                if ($products[$product] != '') {
+                    $inscricao->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+             //   dd($quantities);
+                }
             }
-        }
-           // Imagem do produto upload
-          
-      //  $inscricao ->save();
-        
-    
-         return redirect()->route('inscricao.index')
-                         ->with('success','Inscricao cadastrada com sucesso!');
-     }
+
+    //dd($recibo);
+        return redirect()->route('inscricao.index')
+                        ->with('success','Recibo criado com sucesso!');
+    }
     
 
     public function show(Inscricao $inscricao)

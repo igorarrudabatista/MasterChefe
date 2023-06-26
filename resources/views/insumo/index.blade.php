@@ -70,7 +70,7 @@
                     </thead>
                     @foreach ($insumo as $key => $ingredientes2)
                
-                            <td><img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}" width="100px" alt="...">                            </td>
+                            <td><img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}" width="60px" alt="...">                            </td>
                             <td>{{$ingredientes2->Nome ?? 'Não encontrado' }}  </td>
                             <td>{{$ingredientes2->cat_ingredientes_id	?? 'Sem registros'  }}</td>
                  

@@ -66,13 +66,18 @@ class PermissionTableSeeder extends Seeder
             'insumo-list',
             'insumo-create',
             'insumo-edit',
-            'insumo-delete',
-            
+            'insumo-delete',            
             //produto
             'produto-list',
             'produto-create',
             'produto-edit',
             'produto-delete',
+             ///recibos
+             'recibo-list',
+             'recibo-create',
+             'recibo-edit',
+             'recibo-delete',
+             'recibo-invoice',
             
         ];
        

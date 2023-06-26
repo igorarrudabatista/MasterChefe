@@ -34,9 +34,8 @@
     
     <p class="description">Or use your email for registration:</p>
    
-    {!! Form::open(['route' => 'inscricao.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+{!! Form::open(array('route' => 'inscricao.store','method'=>'POST')) !!}
 
-    
    
     
       <div class="form-row">
@@ -81,10 +80,11 @@
             <input type="checkbox"  name="products[]" value="{{ $ingredientes2->id}}" class="checkbox-input" />
 			        <span class="checkbox-tile">
                 <span class="checkbox-icon">
-                    <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="95px" >
+                    <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="90px" >
 				      </span>
-				        <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
-                <input type="number" name="quantities[]" placeholder="Quantidade"  class="input-field" value="1" />
+              <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
+              <label> Qnt. </label>
+              <input type="number" name="quantities[]" placeholder="Quantidade"  class="input-field" value="1" />
 			        </span>
 		    </label>
 	</div>

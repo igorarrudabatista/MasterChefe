@@ -28,7 +28,6 @@ class PainelGerencialController extends Controller
                                                           
                                                           
                                                           'escolas',
-                                                          'alunos',
                                                           
                                                           ));
 

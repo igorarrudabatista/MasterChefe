@@ -69,7 +69,7 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>ALUNOS CADASTRADOS</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>{{$alunos}} </p>
+                                    <p> ? </p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">

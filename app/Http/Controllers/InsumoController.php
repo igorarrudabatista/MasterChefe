@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cat_ingredientes;
 use Illuminate\Http\Request;
 use App\Models\Ingredientes;
+use App\Models\Produto;
 
 class InsumoController extends Controller
 {
@@ -43,7 +44,7 @@ class InsumoController extends Controller
     public function store(Request $request)
     {
        // Produto::create($request->all());
-       $insumo =  new Ingredientes;
+       $insumo =  new Produto();
         
        $insumo -> Nome                 = $request->Nome;
        $insumo -> cat_ingredientes_id  = $request->cat_ingredientes_id;

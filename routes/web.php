@@ -15,11 +15,13 @@ use App\Http\Controllers\
 // Formulario Master Chefe
     InscricaoController, IngredientesController, Categoria_ingredientesController, CidadeController,
     EstadoController, EscolaController, DreController, PessoaController, CatingredientesController
-    ,InsumoController, ProdutoController
+    ,InsumoController, ProdutoController, ReciboController
   };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
+Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
+Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);
 
 
 // Route::get('/painel', function () {
@@ -29,7 +31,7 @@ use App\Http\Controllers\
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
-Route::resource('inscricao',                 InscricaoController::class);
+//Route::resource('inscricao',                 InscricaoController::class);
 Route::resource('pessoa',                    PessoaController::class);
 Route::resource('dre',                       DreController::class);
 Route::resource('escola',                    EscolaController::class);
@@ -39,6 +41,7 @@ Route::resource('cat_ingrediente',           Categoria_ingredientesController::c
 Route::resource('catingrediente',            CatingredientesController::class);
 Route::resource('insumo',                    InsumoController::class);
 Route::resource('produto',                   ProdutoController::class);
+Route::resource('inscricao',                 ReciboController::class);
 
 
 
@@ -130,6 +133,6 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 
 Route::get('/Site',                 [SiteController::class, 'index']);
-Route::get('/formulario',       [InscricaoController::class, 'formulario'])->name('incricao.formulario');
+Route::get('/formulario',           [ReciboController::class, 'formulario'])->name('incricao.formulario');
 
 require __DIR__.'/auth.php';
