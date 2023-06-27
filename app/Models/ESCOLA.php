@@ -33,5 +33,11 @@ protected $table = 'escola';
      {
          return $this->hasMany(FICHA::class);
      }
+     
+
+     public function recibo()
+     {
+         return $this->belongsTo(Recibo::class);
+     }
 
 }

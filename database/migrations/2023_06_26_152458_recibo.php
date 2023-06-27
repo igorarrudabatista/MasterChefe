@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('Outros_ingredientes')->nullable();
             $table->string('Preparo')->nullable();
             $table->string('image')->nullable();
+            $table->string('avaliacao')->nullable();
             $table->boolean('checkbox')->nullable();
         $table->timestamps();
 

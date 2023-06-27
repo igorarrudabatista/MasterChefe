@@ -17,8 +17,8 @@
         <b> Nome: </b> {{$recibo->Nome ?? 'Sem registros'  }}<br>
         <b>Telefone:</b> <em>{{$recibo->Telefone ?? 'Sem registros'  }}</em><br>
           <b>E-mail:</b> {{$recibo->Email ?? 'Sem registros'  }}<br>
-          <b>DRE:</b> {{$recibo->dre_id }}<br>
-          <b>Escola:</b> {{$recibo->escola_id->EscolaNome ?? 'Sem registros'  }}
+          <b>DRE:</b> {{$recibo->dre->Nome }}<br>
+          <b>Escola:</b> {{$recibo->escola->EscolaNome ?? 'Sem registros'  }}
               </div>
 
 
@@ -75,10 +75,8 @@
         <table class="table table-sm text-right">
           <tr>
             <td><strong>Modo de Preparo:</strong></td>
-            <td class="text-left">{{$recibo->Preparo}}</td>
-
+            <td> {{$recibo->Preparo}}</td>
           </tr>
-   
 
           <tr>
             <td> <strong> Outros ingredientes: </strong> {{$recibo->Outros_ingredientes}} </td>

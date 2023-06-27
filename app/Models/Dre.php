@@ -11,16 +11,12 @@ class Dre extends Model
     use HasFactory;
     protected $table = 'dre';
     protected $fillable = [
-        'Nome',
-        'Telefone',
-        'Email',
-        'Endereco',
-        'Numero',
-        'Bairro',
-        'Cep',
-        'cidade_id',
+        'Nome', 'Telefone','Email','Endereco','Numero','Bairro','Cep','cidade_id',
         'estado_id',
-
-        
      ];
+
+          public function recibo()
+      {
+          return $this->belongsTo(Recibo::class);
+      }
     }
