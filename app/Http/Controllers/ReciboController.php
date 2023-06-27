@@ -174,19 +174,19 @@ class ReciboController extends Controller
 
         $recibo->update($request->all());
 
-        $recibo->produto()->detach();
+        // $recibo->produto()->detach();
 
-        $products = $request->input('products', []);
-        $quantities = $request->input('quantities', []);
-        for ($product=0; $product < count($products); $product++) {
-            if ($products[$product] != '') {
-                $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-            }
+        // $products = $request->input('products', []);
+        // $quantities = $request->input('quantities', []);
+        // for ($product=0; $product < count($products); $product++) {
+        //     if ($products[$product] != '') {
+        //         $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+        //     }
 
-            return redirect()->route('inscricao.index')
-            ->with('edit','Recibo atualizado com sucesso!');
+        //     return redirect()->route('inscricao.index')
+        //     ->with('edit','Recibo atualizado com sucesso!');
    
-    }
+   // }
 }   
 
     // public function update(Request $request, Recibo $recibo)

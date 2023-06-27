@@ -17,9 +17,7 @@ return new class extends Migration
 
         $table->increments('id');
 
-//$table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
- $table->foreignId('dre_id')->constrained('dre')->onDelete('cascade');
-            // $table->foreignId('ingredientes_id')->constrained('ingredientes')->onDelete('cascade');
+            $table->foreignId('dre_id')->constrained('dre')->onDelete('cascade');
             $table->foreignId('escola_id')->constrained('escola')->onDelete('cascade');
             $table->string('Nome')->nullable();
             $table->string('Telefone')->nullable();
@@ -27,8 +25,14 @@ return new class extends Migration
             $table->string('Outros_ingredientes')->nullable();
             $table->string('Preparo')->nullable();
             $table->string('image')->nullable();
-            $table->string('avaliacao')->nullable();
+            $table->decimal('Nota1',10,4)->nullable();
+            $table->decimal('Nota2',10,4)->nullable();
+            $table->decimal('Nota3',10,4)->nullable();
+            $table->decimal('Nota4',10,4)->nullable();
+            $table->decimal('Nota5',10,4)->nullable();
+            $table->decimal('Nota6',10,4)->nullable();
             $table->boolean('checkbox')->nullable();
+            $table->boolean('disp_site')->nullable();
         $table->timestamps();
 
     });
