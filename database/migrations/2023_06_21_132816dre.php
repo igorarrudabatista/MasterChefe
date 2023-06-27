@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('Numero')->nullable();
             $table->string('Bairro')->nullable();
             $table->string('Cep')->nullable();
-            $table->foreignId('cidade_id')->constrained('cidade')->onDelete('cascade');
-            $table->foreignId('estado_id')->constrained('estado')->onDelete('cascade');
+            // $table->foreignId('cidade_id')->constrained('cidade')->onDelete('cascade');
+            // $table->foreignId('estado_id')->constrained('estado')->onDelete('cascade');
 
             // $table->foreign('cidade_id')->references('id')->on('cidade')->onDelete('cascade');
             // $table->foreign('estado_id')->references('id')->on('estado')->onDelete('cascade');

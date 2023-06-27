@@ -32,7 +32,7 @@
       <a href="#" class=github><i class="fab fa-github"></i></a>       
      </div>
     
-    <p class="description">Or use your email for registration:</p>
+    <p class="description">Ficha de Inscrição</p>
    
     {!! Form::open(array('route' => 'inscricao.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
 
@@ -67,7 +67,9 @@
             
             </div>
       </div>
-
+      <div class="form-group">
+        <input type="text" class="input-field" id="Nome_Prato" name="Nome_Prato" placeholder="Qual o nome do seu Prato?">
+      </div>
 
 <!-- partial:index.partial.html -->
 <fieldset class="checkbox-group">

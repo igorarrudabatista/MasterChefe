@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                         <label for="first-name-column">Cidade</label>
-                                        <select name="cidade_id" id="cidade_id" class="form-control">
+                                        <select name="EscolaCidade" id="EscolaCidade" class="form-control">
                                             <option value="" disabled> Selecione o Município</option>
                                             @foreach ($cidade as $cidades)
                                             <option value="{{ $cidades->id}}">{{$cidades->Nome}} </option>

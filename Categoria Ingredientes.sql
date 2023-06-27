@@ -1,0 +1,5 @@
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS IN NATURA E MINIMAMENTE PROCESSADOS', NULL, NULL, NULL);    INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS ULTRAPROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'INGREDIENTES CULINÁRIOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROIBIDOS', NULL, NULL, NULL);

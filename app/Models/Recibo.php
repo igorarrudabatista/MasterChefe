@@ -15,7 +15,7 @@ class Recibo extends Model
     //     'Observacoes', 'Taxa', 'Desconto'
     // ];
 
-    protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox'
+    protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox', 'Nome_Prato'
   ];
     protected $table = 'recibo';
     

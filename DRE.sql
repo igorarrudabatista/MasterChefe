@@ -1,0 +1,14 @@
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Alta Floresta', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Barra do Garças', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Cáceres', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Confresa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Cuiabá', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Várzea Grande', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Diamantino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Juína', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Matupá', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Pontes e Lacerda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Primavera do Leste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Rondonópolis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Sinop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `dre` (`id`, `Nome`, `Tel`, `Email`, `Endereco`, `Numero`, `Bairro`, `Cep`, `created_at`, `updated_at`) VALUES (NULL, 'DRE - Tangará da Serra', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

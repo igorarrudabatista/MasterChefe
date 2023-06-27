@@ -117,6 +117,8 @@
                                                                                   </tbody>
                                                                                 </table>
 
+                                                                                {{$recibo->Outros_ingredientes }}
+
                                                                               </div></div></div>
                                                                               
                                                                             

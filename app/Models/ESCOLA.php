@@ -22,7 +22,7 @@ protected $table = 'escola';
         'EscolaNumero', 'EscolaBairro', 'EscolaCep', 
         'EscolaCidade', 'EscolaEstado', 
         'EscolaDDD', 'EscolaTel', 'EscolaEmail',
-        'EscolaStatus', 'dre_id'
+        'EscolaStatus', 'dre_id',
 
     ];
      public function users()
