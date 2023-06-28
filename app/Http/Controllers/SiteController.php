@@ -11,28 +11,28 @@ use App\Models\Produto;
 class SiteController extends Controller
 {
 
-    public function voto(Request $request, Recibo $recibo) {
-
-        $recibo -> voto       = $request->voto;
-          dd($recibo);
-     //   $recibo  = Recibo::where('voto', $request->voto)->increment('voto', $request->valor_saldo);
-
-        //    $request->session();
-           $recibo -> voto = $request->voto;
-        $recibo  = Recibo::where('voto')->increment('voto');
-       // $recibo = Recibo::all();
+    public function voto(Request $request, $id) {
         
-      //  $recibo -> save();
+      //  $recibo = Recibo::all();
+           $request->session();
+        //   $recibo -> voto = $request->voto;
+       // $recibo  = Recibo::where('voto')->increment('voto');
+               $recibo = Recibo::find($id);
+
+        $recibo->increment('voto');
+
+    //    $recibo -> update();
+      // dd($recibo);
        return back()->withInput();
     }
 
 
 
-    public function index(Request $request) {
+    public function index(Request $request, Recibo $recibo) {
     
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
 
-        $recibo = Recibo::limit(2)->get();
+     $recibo = Recibo::limit(2)->get();
        // $recibo = Recibo::all();
 
         $search = request('search');

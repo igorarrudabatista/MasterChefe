@@ -12,17 +12,17 @@
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
-        <img src="https://source.unsplash.com/featured/1200x900/?sculpture,hotel" alt="Hotel">
+          <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" width= "800px" class="logo">
+
       </div>
         <div class="card-info">
           <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Não encontrado' }}</div>
-          <div class="card-text small">{{$recibos->Nome ?? 'Não encontrado' }}</div>
+          <div class="card-text small">           {{$recibos->Nome ?? 'Não encontrado' }}</div>
           <div class="card-text small">
             Starts from: 
             <span class="card-price"> {{$recibos->preco ?? 'Não encontrado' }}</span>
             
-           {!! Form::model($recibos, ['method' => 'PATCH','route' => ['site.voto', $recibos->id]]) !!}  
-          <input type="hidden" class="form-control" id="voto" name="voto" value="{{$recibos->id}}"> 
+            <a class="dropdown-item bg-success text-light" href="{{asset('/site/voto')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> VOTAR </a>
            <button type="submit" class="btn btn-primary">
 
           </div>

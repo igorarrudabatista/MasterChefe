@@ -103,6 +103,7 @@
       </div>
       <div class="form-group">        
         <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
+        <input type="hidden" name="voto" id="voto" value="0" />
       </div>
 
 <br>

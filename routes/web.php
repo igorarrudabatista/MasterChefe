@@ -140,7 +140,7 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 
 Route::get('/Site',                 [SiteController::class, 'index']);
-Route::get('/site/voto/{id}' ,         [SiteController::class, 'voto'])->name('site.voto');
+Route::get('/site/voto/{id}',      [SiteController::class, 'voto']);
 
 Route::get('/formulario',           [ReciboController::class, 'formulario'])->name('incricao.formulario');
 
