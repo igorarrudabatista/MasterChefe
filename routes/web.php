@@ -21,6 +21,11 @@ use App\Http\Controllers\
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
 Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
+Route::patch('/inscricao/invoice/{id}',    [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
+Route::get('/inscricao/invoice/disp_site_sim/{id}',      [ReciboController::class, 'disp_site_sim']);
+Route::get('/inscricao/invoice/disp_site_nao/{id}',      [ReciboController::class, 'disp_site_nao']);
+
+
 Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);
 Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
 
@@ -135,6 +140,8 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 
 Route::get('/Site',                 [SiteController::class, 'index']);
+Route::get('/site/voto/{id}' ,         [SiteController::class, 'voto'])->name('site.voto');
+
 Route::get('/formulario',           [ReciboController::class, 'formulario'])->name('incricao.formulario');
 
 require __DIR__.'/auth.php';

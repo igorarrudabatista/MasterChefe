@@ -5,30 +5,51 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ALUNO;
+use App\Models\Recibo;
+use App\Models\Produto;
 
 class SiteController extends Controller
 {
-    public function index() {
 
-        $ultimos_produtos = ALUNO::orderBy('id', 'DESC')->limit(8)->get();
+    public function voto(Request $request, Recibo $recibo) {
 
-     $produtos = ALUNO::limit(2)->get();
-     //   $produtos = ALUNO::paginate(10);
+        $recibo -> voto       = $request->voto;
+          dd($recibo);
+     //   $recibo  = Recibo::where('voto', $request->voto)->increment('voto', $request->valor_saldo);
+
+        //    $request->session();
+           $recibo -> voto = $request->voto;
+        $recibo  = Recibo::where('voto')->increment('voto');
+       // $recibo = Recibo::all();
+        
+      //  $recibo -> save();
+       return back()->withInput();
+    }
+
+
+
+    public function index(Request $request) {
+    
+        $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
+
+        $recibo = Recibo::limit(2)->get();
+       // $recibo = Recibo::all();
 
         $search = request('search');
 
         if($search) {
-            $produtos = ALUNO::where ([['name', 'like', '%'.$search. '%' ]])->get();
+            $recibo = Recibo::where ([['name', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $produtos = ALUNO::all();
+                $recibo = Recibo::all();
             }
        
 
        return view('Site.index', [
-        'produtos'=> $produtos,
+        'recibo'=> $recibo,
         'search' => $search,
-        'ultimos_produtos' => $ultimos_produtos
+        'ultimos_recibos' => $ultimos_recibos,
+      //'recibo' => $recibo
     ]);
    }
 

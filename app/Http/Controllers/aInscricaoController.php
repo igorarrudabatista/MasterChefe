@@ -72,7 +72,7 @@ class InscricaoController extends Controller
     {
       
             $inscricao = Inscricao::create($request->all()); 
-            //$inscricao->Preparo    = $inscricao->input('Preparo');
+            $inscricao->Preparo    = $inscricao->input('Preparo');
 
             $products = $request->input('products', []);
             $quantities = $request->input('quantities', []);

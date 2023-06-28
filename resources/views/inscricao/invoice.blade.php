@@ -32,7 +32,7 @@
                                                           <div class="col-sm">
                                                           </div>
                                                           <div class="col-md-auto ">
-                                                      <code> N° da Inscrição:  {{$recibo->id}}</code> 
+                                                     <big> <code> Inscrição N°:  {{$recibo->id}}</code> </big>
                                                           </div> 
                                                           <div class="col-sm">
                                                           </div>
@@ -60,21 +60,8 @@
                                                   <div class="card-content">
                                                       <div class="card-body">
                                                           <div class="row">
-                                                              <div class="col-12 col-sm-12 col-md-4 ">
-                                                                  <div class="list-group" role="tablist">
-                                                                      <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                                                      data-bs-toggle="list" href="#list-home" role="tab">1. Ingredientes</a>
-                                                                  <a class="list-group-item list-group-item-action" id="list-profile-list"
-                                                                      data-bs-toggle="list" href="#list-profile" role="tab">2. Modo de Preparo</a>
-                                                                  <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
-                                                                      data-bs-toggle="list" href="#list-tramitar" role="tab">3. Imagem do prato </a>
-                                                                  <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
-                                                                      data-bs-toggle="list" href="#list-finalizar" role="tab">4. AVALIAR</a>
                                                              
-                                                                  </div>
-                                                              </div>
-
-                                                              <div class="col-12 col-sm-12 col-md-8 mt-1">
+                                                              <div class="col-12 col-sm-12 col-md-12 mt-1">
                                                                   <div class="tab-content text-justify" id="nav-tabContent">
                                                                       <div class="tab-pane show active" id="list-home" role="tabpanel"
                                                                           aria-labelledby="list-home-list">
@@ -117,28 +104,26 @@
                                                                                   </tbody>
                                                                                 </table>
 
-                                                                                {{$recibo->Outros_ingredientes }}
+                                                                               <h4> <b> Outros ingredientes utilizados: <h5 class="text-primary">
+                                                                                {{$recibo->Outros_ingredientes }} </h5> </b></h4>
 
                                                                               </div></div></div>
                                                                               
-                                                                            
+                                                                            </div>
                                                                     
-                                                                        
+                                                                        <br>
 
-                                                                  <div class="tab-pane" id="list-profile" role="tabpanel"
-                                                                      aria-labelledby="list-profile-list">
-                                                                      <div class="row">
 
                                                                         <div class="form-group">
 
                                                                           <h6><strong>Modo de Preparo:</strong></h6>
-
-                                                                          {{$recibo->Preparo}}
+                                                                          <h5 class="text-primary">
+                                                                          {!! nl2br(e($recibo->Preparo)) !!} 
+                                                                          </h5>
                                                                         </div> </div> </div> 
                                                                                 
-                                                                                                                                            
-                                                                    <div class="tab-pane" id="list-tramitar" role="tabpanel"
-                                                                    aria-labelledby="list-settings-list">
+                                                                                             <br>                                               
+                                                          
                                                                     <div class="row">
 
                                                                       <div class="form-group">
@@ -149,9 +134,7 @@
                                                                       </div> </div> </div> 
 
 
-  
-  <div class="tab-pane" id="list-finalizar" role="tabpanel"
-  aria-labelledby="list-settings-list">
+
   <div class="row">
   <div class="col-xl-12 col-sm-12 col-12">
       <div class="card text-center bg-lighten-2">
@@ -159,99 +142,35 @@
               <div class="card-body">
                   <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                       class="mb-1">
-                  <h4 class="card-title white">Avaliar Candidato</h4>
-                  {!! Form::model($recibo, ['method' => 'PATCH','route' => ['inscricao.update', $recibo->id]]) !!}
-        
+                  <h4 class="card-title white">Nota Candidato</h4>
+              
                   {{--INICIO --}}
                   <div class="row">
-                  <div class="col-md-6 col-8">
+                  <div class="col-md-12 col-8">
                     <div class="form-group has-icon-left">
                         <label for="email-id-column"><strong> Nota 1 - Ingredientes </strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota1', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
+                       {{$recibo->Nota1}}    <br>      
+                        <label for="email-id-column"><strong> Nota 2 - Ingredientes </strong></label>
+                        {{$recibo->Nota2}}          <br>
+                        <label for="email-id-column"><strong> Nota 3 - Ingredientes </strong></label>
+                        {{$recibo->Nota3}}          <br>
+                        <label for="email-id-column"><strong> Nota 4 - Ingredientes </strong></label>
+                          {{$recibo->Nota4}}       <br>   
+                        <label for="email-id-column"><strong> Nota 5 - Ingredientes </strong></label>
+                          {{$recibo->Nota5}}          <br>
+                        <label for="email-id-column"><strong> Nota 6 - Ingredientes </strong></label>
+                        {{$recibo->Nota6}}    
+                              <br>
+                       <?php $totalnotas = $recibo->Nota1 + $recibo->Nota2 + $recibo->Nota3 + $recibo->Nota4 + $recibo->Nota5 + $recibo->Nota6; ?>
+<br>
+                        <label for="email-id-column"><strong> <h5 class="text-danger"> TOTAL:  {{$totalnotas}}.  </strong></label>
+                        </div>
                 </div>
                 </div>
-                {{-- FIM --}}
-                  {{--INICIO --}}
-                  <div class="col-md-6 col-6">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 2 - Criatividade</strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota2', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
-                </div>
-                </div>
-                {{-- FIM --}}
-                  {{--INICIO --}}
-                  <div class="col-md-6 col-6">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 3 - Modo de Preparo </strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota3', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
-                </div>
-                </div>
-                {{-- FIM --}}
-                  {{--INICIO --}}
-                  <div class="col-md-6 col-6">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 4 - Outros</strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota4', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
-                </div>
-                </div>
-                        {{--INICIO --}}
-                  <div class="col-md-6 col-6">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 5  - Outros</strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota5', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
-                </div>
-                </div>
-                {{-- FIM --}}
-                  
-                        {{--INICIO --}}
-                  <div class="col-md-6 col-6">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 6 - Outros </strong></label>
-                        <div class="position-relative">
-                          {!! Form::text('Nota6', null, array('placeholder' => 'Insira a nota','class' => 'form-control')) !!}            
-                    </div>
-                </div>
-                </div>
-                {{-- FIM --}}
-                  <button class="btn btn-primary white"> Salvar</button>
-
-              </div>
-          </div> 
-      </div>
-  </div> 
-
-
-  {!! Form::close() !!}
+               
 
 
 
- 
-</div>
-  </div>
-
-
-
-
-
- 
-</div>
-  </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
                                   </section>
                                   <!-- List group navigation ends -->
 

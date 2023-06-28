@@ -7,7 +7,7 @@
 <section class="app-main">
   <div class="app-main-left cards-area">
 
-    @foreach($produtos as $Produto )
+    @foreach($recibo as $recibos )
 
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
@@ -15,11 +15,16 @@
         <img src="https://source.unsplash.com/featured/1200x900/?sculpture,hotel" alt="Hotel">
       </div>
         <div class="card-info">
-          <div class="card-text big cardText-js">{{$Produto->name ?? 'Não encontrado' }}</div>
-          <div class="card-text small">{{$Produto->name ?? 'Não encontrado' }}</div>
+          <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Não encontrado' }}</div>
+          <div class="card-text small">{{$recibos->Nome ?? 'Não encontrado' }}</div>
           <div class="card-text small">
             Starts from: 
-            <span class="card-price"> {{$Produto->preco ?? 'Não encontrado' }}</span>
+            <span class="card-price"> {{$recibos->preco ?? 'Não encontrado' }}</span>
+            
+           {!! Form::model($recibos, ['method' => 'PATCH','route' => ['site.voto', $recibos->id]]) !!}  
+          <input type="hidden" class="form-control" id="voto" name="voto" value="{{$recibos->id}}"> 
+           <button type="submit" class="btn btn-primary">
+
           </div>
         </div>
         </a>
@@ -35,7 +40,7 @@
       <span>Produtos</span>
       <a href="#">Veja mais</a>
     </div>
-    @foreach($ultimos_produtos as $ultimos )
+    @foreach($ultimos_recibos as $ultimos )
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
@@ -56,7 +61,7 @@
   </div>
 </section>
 </div>
-@foreach($produtos as $Produto )
+@foreach($recibo as $recibos )
 
 <div id="modal-window" class="shadow">
 <div class="main-modal">
@@ -67,11 +72,11 @@
     <div class="modal-info-header">
       <div class="left-side">
         <h1 class="modalHeader-js"></h1>
-        <p>{{$Produto->name ?? 'Não encontrado' }}</p>
+        <p>{{$recibos->name ?? 'Não encontrado' }}</p>
       </div>
       <div class="right-side">
       <b> Preço: </b>
-        <span class="amount"> {{$Produto->name ?? 'Preço ' }} </span>
+        <span class="amount"> {{$recibos->name ?? 'Preço ' }} </span>
       </div>
     </div>
     <div class="info-bar">
@@ -104,7 +109,7 @@
       <div class="modal-info-header">
         <h1>Description</h1>
         <p>
-          {{$Produto->Descricao ?? 'Não encontrado' }}
+          {{$recibos->Descricao ?? 'Não encontrado' }}
         </p>
       </div>
       
@@ -130,16 +135,16 @@
       <a href="#">Ver todos</a>
     </div>
     
-    @foreach($produtos as $Produto )
+    @foreach($recibo as $recibos )
     <div class="card-wrapper">
       <div class="card">
         <div class="profile-info-wrapper">
           <div class="profile-img-wrapper">
             <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
           </div>
-          <p>{{$Produto->name ?? 'Não encontrado' }} </p>
+          <p>{{$recibos->name ?? 'Não encontrado' }} </p>
         </div>
-        <p> {{$Produto->name ?? 'Não encontrado' }}</p>
+        <p> {{$recibos->name ?? 'Não encontrado' }}</p>
       </div>
     </div>
     

@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Registration Form</title>
+  <title>SEDUC MT - Formulário - MasterChef </title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.6.0/modern-normalize.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css'>
 <link rel="stylesheet" href="{{asset('/css/upload_image/style.css')}}">
@@ -26,13 +26,15 @@
     <h1 class="create">Formulário MasterChef</h1>
     
         <div class="social-media">
-      <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+
+          <img src="https://thumbs.dreamstime.com/b/chef-illustration-cute-master-43753837.jpg" width="120px">
+      {{-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
       <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="twitter"><i class="fab fa-twitter-square"></i></a>
-      <a href="#" class=github><i class="fab fa-github"></i></a>       
+      <a href="#" class=github><i class="fab fa-github"></i></a>        --}}
      </div>
     
-    <p class="description">Ficha de Inscrição</p>
+    {{-- <p class="description">Ficha de Inscrição</p> --}}
    
     {!! Form::open(array('route' => 'inscricao.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
 
@@ -99,8 +101,8 @@
       <div class="form-group">
         <input type="text" class="input-field" id="Outros_ingredientes" name="Outros_ingredientes" placeholder="Outros Ingredientes">
       </div>
-      <div class="form-group">
-        <textarea name="message" class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
+      <div class="form-group">        
+        <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
       </div>
 
 <br>

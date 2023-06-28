@@ -41,6 +41,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
 
         $recibo = Recibo::get();  
+        $nota =$recibo;
     //    $recibo = Recibo::with('empresa_cliente')->get();  
 
       //  $empresa_cliente = Empresa_Cliente::get();
@@ -57,6 +58,7 @@ class ReciboController extends Controller
         return view('inscricao.index', ['recibo'=> $recibo, 
                                            'search' => $search,
                                             'dre' => $dre,
+                                            'nota' =>$nota
                                     ]);
 
     }
@@ -121,82 +123,41 @@ class ReciboController extends Controller
      
     public function invoice($id)
     {
-
-        //$recibo = Recibo::with('dre', 'produto');
        $recibo        = Recibo::find($id);
-
-  //      $minha_empresa = MinhaEmpresa::all();
-        //$recibox       = Recibo::all();
-        $dre           = Dre::all();
+       $dre           = Dre::all();
 
         return view('inscricao.invoice', ['recibo'        => $recibo, 
-                                          'dre' => $dre,
-                                        //  'recibox'       => $recibox
-
+                                          'dre'           => $dre,
+                                            
        ]);
 
     }
-    public function avaliar($id)
-    {
 
-       $recibo = Recibo::findOrFail($id);
-        
-      $recibos          = Recibo::with('produto')->get();  
-     //   $minha_empresa   = MinhaEmpresa::all();
-       // $recibox         = Recibo::all();
-
-        return view('inscricao.avaliar', ['recibo'        => $recibo, 
-                                       //'minha_empresa' => $minha_empresa,
-                                       'recibos'       => $recibos
-
-       ]);
-
-    }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Recibo $recibo)
+    public function edit(Recibo $recibo, $id)
     {
         $produto = Produto::get();
     //    $recibo->load('produto');
         $recibo = Recibo::get();
      //   $empresa_cliente = Empresa_Cliente::get();
+     $recibo        = Recibo::find($id);
+     $dre           = Dre::all();
 
-        return view('inscricao.edit',compact('recibo', 'produto'));
+        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre'));
     }
     
     public function update(Request $request, Recibo $recibo)
     {
+        $recibo -> Nota1       = $request->Nota1;
 
-        $recibo->update($request->all());
+        $recibo->update();
 
-        // $recibo->produto()->detach();
+        //dd($recibo);
+       // $recibo->update($request->all());
+        return redirect('/inscricao')->with('edit','sucesso!');
 
-        // $products = $request->input('products', []);
-        // $quantities = $request->input('quantities', []);
-        // for ($product=0; $product < count($products); $product++) {
-        //     if ($products[$product] != '') {
-        //         $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-        //     }
-
-        //     return redirect()->route('inscricao.index')
-        //     ->with('edit','Recibo atualizado com sucesso!');
-   
-   // }
 }   
 
-    // public function update(Request $request, Recibo $recibo)
-    // {
- 
-    //     $recibo->update($request->all());
-    
-    //     return redirect()->route('recibos.index')
-    //                     ->with('success','Product updated successfully');
-    // }
+
     
 
     public function destroy(Recibo $recibo)
@@ -222,8 +183,52 @@ class ReciboController extends Controller
         $escola = escola::all();
         $dre = Dre::all();
 
-
         return view('inscricao.formulario', compact('ingredientes', 'escola', 'dre'));
 
     }
+
+    public function inscricao_update(Request $request, $id)
+    {
+        $recibo = Recibo::find($id);
+
+        // $Recibo = Orcamento::create($request->all());
+             
+        Recibo::findOrFail($request->id)->update($request->all());
+            
+            // Orcamento::findOrFail($request->id) -> update();
+            
+            $recibo->save();
+
+        //$recibo->update();
+
+        //dd($recibo);
+       // $recibo->update($request->all());
+        return redirect('/inscricao')->with('edit','sucesso!');
+
+}   
+
+public function disp_site_sim(Request $request, $id)    {
+
+    $recibo = Recibo::find($id);
+    $venda = 0;
+    $recibo -> disp_site = $venda;
+    $recibo -> save();
+      //   dd($recibo);
+      toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+
+      return redirect('/inscricao');
+  }
+
+public function disp_site_nao(Request $request, $id)    {
+
+    $recibo = Recibo::find($id);
+    $venda = 1;
+    $recibo -> disp_site = $venda;
+    $recibo -> save();
+         
+      toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+
+      return redirect('/inscricao');
+  }
+    
 }
