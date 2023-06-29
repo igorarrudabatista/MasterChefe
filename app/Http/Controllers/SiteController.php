@@ -12,23 +12,33 @@ class SiteController extends Controller
 {
 
     public function voto(Request $request, $id) {
+
+
+
+        $sessao =  $request->session();
+      //  dd($sessao);
+        // if ($request->session()->exists('') ){
+        //     // do some thing if the key is exist
+        // }else{
+        //     //the key does not exist in the session
+        // }
         
-      //  $recibo = Recibo::all();
-           $request->session();
-        //   $recibo -> voto = $request->voto;
-       // $recibo  = Recibo::where('voto')->increment('voto');
+        // dd($sessao);
+        $sessao -> sessao       = $request->sessao;
+        dd($sessao);
+        $sessao->sessao = $request->sessao;
                $recibo = Recibo::find($id);
 
         $recibo->increment('voto');
 
-    //    $recibo -> update();
-      // dd($recibo);
+
        return back()->withInput();
     }
 
 
 
     public function index(Request $request, Recibo $recibo) {
+            
     
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
 
@@ -38,7 +48,7 @@ class SiteController extends Controller
         $search = request('search');
 
         if($search) {
-            $recibo = Recibo::where ([['name', 'like', '%'.$search. '%' ]])->get();
+            $recibo = Recibo::where ([['Nome', 'like', '%'.$search. '%' ]])->get();
 
              } else {
                 $recibo = Recibo::all();
@@ -49,7 +59,6 @@ class SiteController extends Controller
         'recibo'=> $recibo,
         'search' => $search,
         'ultimos_recibos' => $ultimos_recibos,
-      //'recibo' => $recibo
     ]);
    }
 

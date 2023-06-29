@@ -3,7 +3,6 @@
 
 @section('content')
 
-
 <section class="app-main">
   <div class="app-main-left cards-area">
 
@@ -20,11 +19,9 @@
           <div class="card-text small">           {{$recibos->Nome ?? 'Não encontrado' }}</div>
           <div class="card-text small">
             Starts from: 
-            <span class="card-price"> {{$recibos->preco ?? 'Não encontrado' }}</span>
+            <span class="card-price"></span>
+            <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a>
             
-            <a class="dropdown-item bg-success text-light" href="{{asset('/site/voto')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> VOTAR </a>
-           <button type="submit" class="btn btn-primary">
-
           </div>
         </div>
         </a>
@@ -162,8 +159,9 @@
 @endforeach
 
 
-  <script> 
+<script> 
     let ini= document.querySelector('#modal-window');
     ini.classList.add("hideModal");
-  </script>
+    </script>
+    <script src="{{asset('/js/like/script.js')}}"></script>
 @endsection

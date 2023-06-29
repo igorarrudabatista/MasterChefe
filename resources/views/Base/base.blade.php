@@ -7,13 +7,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FICAI </title>
+    <title>MasterChef </title>
     <link rel="stylesheet" href="{{asset('/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/chartjs/Chart.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/simple-datatables/style.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
-    <link rel="shortcut icon" href="{{asset('/images/favicon.svg')}}" type="image/x-icon">
+    {{-- <link rel="shortcut icon" href="{{asset('/images/favicon.svg')}}" type="image/x-icon"> --}}
+    <link rel="shortcut icon" href="{{asset('/images/chef.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('/vendors/quill/quill.bubble.css')}}">
     <link rel="stylesheet" href="{{asset('/vendors/quill/quill.snow.css')}}">
     <link rel="stylesheet" href="{{asset('/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
@@ -29,7 +30,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
-                    <img src="http://www3.seduc.mt.gov.br/image/layout_set_logo?img_id=8125250&t=1671702144343" alt="" srcset="">
+                   <center> <img src="images/logo_seduc_chef.jpg" width="140px" height="160" alt="" srcset=""> </center>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
@@ -60,6 +61,13 @@
                             <a href="{{asset('/formulario')}}" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>Formulario de inscricao</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Site')}}" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>Acesso ao Site</span>
                             </a>
                         </li>
                        

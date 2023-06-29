@@ -67,7 +67,6 @@
                             <th>Cidade</th>
                             <th>Telefone</th>
                             <th>E-mail</th>
-                            <th>Status</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -75,10 +74,10 @@
 
                             <td>{{$escolas->EscolaCod ?? 'Não encontrado' }}  </td>
                             <td>{{$escolas->EscolaNome ?? 'Não encontrado' }}  </td>
-                            <td>{{$escolas->EscolaCidade	?? 'Sem registros'  }} - {{$escolas->EscolaEstado	?? 'Sem registros'  }}</td>
-                            <td>({{$escolas->EscolaDDD }}) {{$alunos->EscolaTel	?? 'Sem registros'  }}</td>
+                            <td>{{$escolas->EscolaCidade ?? 'Sem registros'  }} - {{$escolas->EscolaEstado	?? 'Sem registros'  }}</td>
+                            <td>{{$escolas->EscolaTel ?? 'Sem registros'  }}</td>
                             <td>{{$escolas->EscolaEmail ?? 'Não encontrado' }}  </td>
-                            <td>
+                            {{-- <td>
                             @if ($escolas->EscolaStatus == 'Ativa')
                             <span class="badge bg-success">Ativa</span>
 
@@ -89,16 +88,16 @@
 
                             @endif
 
-                        </td>
+                        </td> --}}
 
 </td>
                             
                            <!-- <td> <a class="btn btn-primary" href="{{ route('escola.show',$escolas->id) }}">Ver</a> -->
                            <td> <a class="btn btn-warning" href="{{ route('escola.edit',$escolas->id) }}">Editar</a>
-                           {!! Form::open(['method' => 'DELETE','route' => ['escola.destroy', $escolas->id],'style'=>'display:inline']) !!}
+                           {{-- {!! Form::open(['method' => 'DELETE','route' => ['escola.destroy', $escolas->id],'style'=>'display:inline']) !!}
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} 
 
-                           {!! Form::close() !!}
+                           {!! Form::close() !!} --}}
                             </td>
                         </tr>
                     </td>
