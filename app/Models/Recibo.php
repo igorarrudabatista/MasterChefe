@@ -40,6 +40,9 @@ class Recibo extends Model
       public function escola() {
         return $this->belongsTo(Escola::class, 'escola_id');
       }    
-    
+
+      public function likes() {
+        return $this->hasMany(Like::class);
+      }    
 
 }

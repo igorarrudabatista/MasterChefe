@@ -18,10 +18,22 @@
           <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Não encontrado' }}</div>
           <div class="card-text small">           {{$recibos->Nome ?? 'Não encontrado' }}</div>
           <div class="card-text small">
-            Starts from: 
-            <span class="card-price"></span>
-            <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a>
-            
+            <span class="card-price">CLIQUE PARA VER MAIS            
+            </span>
+            {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a> --}}
+
+            {{-- <?php dd($sessao2); ?> --}}
+
+
+                @if ($sessao1 = $sessao2)
+                <h1  class="card-text big cardText-js"> Obrigado por votar!
+                               <?php dd($sessao2); ?>
+
+                @else
+                <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
+                @endif
+
+
           </div>
         </div>
         </a>

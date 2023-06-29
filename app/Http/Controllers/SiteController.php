@@ -7,16 +7,13 @@ use App\Models\Product;
 use App\Models\ALUNO;
 use App\Models\Recibo;
 use App\Models\Produto;
+use App\Models\Like;
 
 class SiteController extends Controller
 {
 
-    public function voto(Request $request, $id) {
-
-
-
-        $sessao =  $request->session();
-      //  dd($sessao);
+  
+     // dd($sessao);
         // if ($request->session()->exists('') ){
         //     // do some thing if the key is exist
         // }else{
@@ -24,25 +21,35 @@ class SiteController extends Controller
         // }
         
         // dd($sessao);
-        $sessao -> sessao       = $request->sessao;
-        dd($sessao);
-        $sessao->sessao = $request->sessao;
-               $recibo = Recibo::find($id);
+  //      $sessao -> sessao       = $request->sessao;
+    //    dd($sessao);
+//        $sessao->sessao = $request->sessao;
 
-        $recibo->increment('voto');
+               // $recibo->increment('voto');
+          //  $recibo->insert('sessao');
 
+          public function voto($id) {
 
-       return back()->withInput();
-    }
-
-
+            $recibo = Recibo::find($id);
+         
+            $session = session()->getId();
+            //dd($session);
+            $recibo->likes()->create([
+                'sessao' => $session, ]);
+            
+             return back();
+                }
 
     public function index(Request $request, Recibo $recibo) {
-            
-    
+        
+        
+        $sessao1 = session()->getId();
+        $sessao2 = Like::where('sessao', '=', $sessao1)->get();
+     //    dd($sessao2);
+        $sessao3 = Recibo::all();
+        
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
-
-     $recibo = Recibo::limit(2)->get();
+        $recibo = Recibo::all();
        // $recibo = Recibo::all();
 
         $search = request('search');
@@ -59,8 +66,17 @@ class SiteController extends Controller
         'recibo'=> $recibo,
         'search' => $search,
         'ultimos_recibos' => $ultimos_recibos,
+        'sessao1' => $sessao1,
+        'sessao2' => $sessao2,
+        'sessao3' => $sessao3
     ]);
    }
+
+
+
+
+
+
 
 
    public Function search(Request $request) {
