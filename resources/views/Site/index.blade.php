@@ -21,17 +21,20 @@
             <span class="card-price">CLIQUE PARA VER MAIS            
             </span>
             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a> --}}
+             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="100px"></a> --}} --}}
+<hr>
+{{-- @foreach($recibos->likes as $receba ) --}}
+{{-- {{$receba}} --}}
+{{-- <?php $re = $recibos->id ?>   --}}
 
-            {{-- <?php dd($sessao2); ?> --}}
-
-
-                @if ($sessao1 = $sessao2)
-                <h1  class="card-text big cardText-js"> Obrigado por votar!
-                               <?php dd($sessao2); ?>
-
-                @else
-                <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
-                @endif
+@if ($recibos->recibo_id = $sessao1)
+{{-- <?php dd($recibos->likes->id); ?>    --}}
+<h1  class="card-text big cardText-js"> Obrigado por votar!
+  
+  @else
+  <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
+  @endif
+  {{-- @endforeach --}}
 
 
           </div>
@@ -47,13 +50,13 @@
     
     <div class="app-main-right-header">
       <span>Produtos</span>
-      <a href="#">Veja mais</a>
+      <a href="#">Veja maisss</a>
     </div>
     @foreach($ultimos_recibos as $ultimos )
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
-        <img src="https://source.unsplash.com/featured/1200x900/?hotel-room,interior">
+        <img src="#">
       </div>
         <div class="card-info">
           <div class="card-text big cardText-js">{{$ultimos->name ?? 'Não encontrado' }}</div>
@@ -76,7 +79,7 @@
 <div class="main-modal">
   <div class="modal-left">
     <div class="modal-image-wrapper">
-      <img src="https://source.unsplash.com/featured/1200x900/?design,hotel">
+      <img src="#">
     </div>
     <div class="modal-info-header">
       <div class="left-side">
@@ -149,7 +152,7 @@
       <div class="card">
         <div class="profile-info-wrapper">
           <div class="profile-img-wrapper">
-            <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
+            <img src="#" alt="Review">
           </div>
           <p>{{$recibos->name ?? 'Não encontrado' }} </p>
         </div>

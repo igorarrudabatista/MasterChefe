@@ -43,15 +43,8 @@ class SiteController extends Controller
     public function index(Request $request, Recibo $recibo) {
         
         
-        $sessao1 = session()->getId();
-        $sessao2 = Like::where('sessao', '=', $sessao1)->get();
-     //    dd($sessao2);
-        $sessao3 = Recibo::all();
-        
+      
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
-        $recibo = Recibo::all();
-       // $recibo = Recibo::all();
-
         $search = request('search');
 
         if($search) {
@@ -60,7 +53,15 @@ class SiteController extends Controller
              } else {
                 $recibo = Recibo::all();
             }
-       
+            
+            $sessao1 = session()->getId();
+            
+            $sessao2 = Recibo::with('likes')->where('id', '=', $recibo)->where('sessao', '=', $sessao1);
+//dd($sessao2);
+            $sessao3 = Recibo::with('likes');
+            
+            $consultao = Like::where('sessao', '=', $sessao1);
+
 
        return view('Site.index', [
         'recibo'=> $recibo,
@@ -68,16 +69,10 @@ class SiteController extends Controller
         'ultimos_recibos' => $ultimos_recibos,
         'sessao1' => $sessao1,
         'sessao2' => $sessao2,
-        'sessao3' => $sessao3
+        'sessao3' => $sessao3,
+        'consultao' => $consultao
     ]);
    }
-
-
-
-
-
-
-
 
    public Function search(Request $request) {
 
