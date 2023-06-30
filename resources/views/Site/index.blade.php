@@ -6,7 +6,7 @@
 <section class="app-main">
   <div class="app-main-left cards-area">
 
-    @foreach($recibo as $recibos )
+    @foreach($recibo as $key => $recibos )
 
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
@@ -21,27 +21,67 @@
             <span class="card-price"> CLIQUE PARA VER MAIS            
             </span>
             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a> --}}
-             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="100px"></a> --}} --}}
+             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="100px"></a> --}} 
 <hr>
-{{-- @foreach($recibos->likes as $receba ) --}}
-{{-- {{$receba}} --}}
-{{-- <?php $re = $recibos->id ?>   --}}
+{{$recibos->likes}}
 
-@if ($sessao3  = $sessao2)
-{{-- <?php dd($recibos->likes->id); ?>    --}}
-<h1  class="card-text big cardText-js"> Obrigado por votar!
+@foreach ($idlike as $likes)
+
+{{$likes->sessao}}
+
+
+
+<?php $a = $sessao1 ?>   
+<?php $b = $recibos->likes ?>   
+<?php $c =  $recibos->id  ?>   
+
+<h1> {{$c}} </h1>
+
+{{-- <?php dd($recibos->like); ?>    --}} 
+{{-- 
+  <small> Sessao:  {{$a ?? 'Não encontrado'}}</small> <br> 
+  <small> Id da inscricao/recibo: - {{$c}} </small> <br> --}}
+  {{-- ID do like:  <br>
+    {{$idlike}}
+    {{$recibos->sessao }}
+    
+    <hr> --}}
+    
+    @if ( '$idlike' != '$a' )
+    {{-- <?php dd($sessao1); ?>  --}}
+    123 indiozinhos
+    @endif
+    
+    @if ( '$idlike' != 'BoXxJeA9xlJFBdIZCI8OQAg4hfKKrZoAVL8yydowa' )
+    <h1> 321 boom</h1>
+    @endif
+    
+    <br>
+    
+    @if ($c == 7 && $idlike == $sessao1)
+    ok 1
+    @endif 
+    
+    @if ($c == 8 && $idlike == $sessao1)
+    ok nao
+    @endif 
+    @endforeach
+    
+@if ($recibos->likes->count())
+<h1 class="card-text big cardText-js"> Obrigado por votar! <br> <small> remover voto </small>
+   <a href="{{asset('/site/retiravoto')}}/{{$recibos->id}}"><img src="https://icons-for-free.com/iconfiles/png/512/unlike-1319971786748833986.png" alt="HTML tutorial" width="40px"></a>
+</h1>
   
   @else
   <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
   @endif
-  {{-- @endforeach --}}
+  
+  
+</div>
+</div>
+</a>
+</div>
 
-
-          </div>
-        </div>
-        </a>
-    </div>
-    
     @endforeach 
 
   </div>

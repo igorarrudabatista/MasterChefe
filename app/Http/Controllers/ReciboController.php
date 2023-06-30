@@ -41,7 +41,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
 
         $recibo = Recibo::get();  
-        $nota =$recibo;
+        $nota = $recibo;
     //    $recibo = Recibo::with('empresa_cliente')->get();  
 
       //  $empresa_cliente = Empresa_Cliente::get();

@@ -141,6 +141,7 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 Route::get('/Site',                 [SiteController::class, 'index']);
 Route::get('/site/voto/{id}',      [SiteController::class, 'voto']);
+Route::get('/site/retiravoto/{id}',      [SiteController::class, 'retiravoto']);
 
 Route::get('/formulario',           [ReciboController::class, 'formulario'])->name('incricao.formulario');
 

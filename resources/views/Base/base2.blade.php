@@ -46,7 +46,7 @@
         <button class="search-btn">Procurar</button>
       </div>
 
-            @if ($search)
+            {{-- @if ($search)
                             
 
 
@@ -54,7 +54,7 @@
 
 
 
-          @endif
+          @endif --}}
       <div class="contact-actions-wrapper">
          <div class="contact-actions">
         <span>Contato: </span>

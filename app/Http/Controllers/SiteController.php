@@ -11,23 +11,6 @@ use App\Models\Like;
 
 class SiteController extends Controller
 {
-
-  
-     // dd($sessao);
-        // if ($request->session()->exists('') ){
-        //     // do some thing if the key is exist
-        // }else{
-        //     //the key does not exist in the session
-        // }
-        
-        // dd($sessao);
-  //      $sessao -> sessao       = $request->sessao;
-    //    dd($sessao);
-//        $sessao->sessao = $request->sessao;
-
-               // $recibo->increment('voto');
-          //  $recibo->insert('sessao');
-
           public function voto(Request $request, $id) {
 
             $recibo = Recibo::find($id);
@@ -42,39 +25,60 @@ class SiteController extends Controller
 
              return back();
                 }
+          public function retiravoto($id) {
 
-    public function index(Request $request, Recibo $recibo) {
+            $recibo = Recibo::find($id);
+         
+            $session = session()->getId();
+            //dd($session);
+            $recibo->likes()->delete(['sessao' => $session,'recibo_id' => $recibo->id]);
+
+             return back();
+                }
+
+    public function index(Request $request) {
         
+        $sessao1 = session()->getId(); // Pega o ID da Sessão atual
         
-      
+
+        $recibo = Recibo::all();
+        $idrecibo = Recibo::get('id');
+        //$idlike = Recibo::with('likes')->where('id', '=', $idrecibo);
+        //$idlike = Like::all();
+        // $idlike = Recibo::with('likes');
+        // dd($idlike);
+        //dd($sessao1);
+        
+
+        //$idlike = Recibo::with('likes')->where('recibo_id', '=', $idrecibo);
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
-        $search = request('search');
 
-        if($search) {
-            $recibo = Recibo::where ([['Nome', 'like', '%'.$search. '%' ]])->get();
+         $check = Recibo::with('likes')->get('sessao');
+        dd($check);
 
-             } else {
-                $recibo = Recibo::all();
-            }
-            
-            $sessao1 = session()->getId();
-            $sessao3 = Recibo::with('likes')->where('sessao','=', $sessao1);
-         //   dd($sessao3);
-            
-            $sessao2 = Recibo::where('id', '=', $sessao3);
-        //    dd($sessao3);
-            
-            $consultao = Like::where('sessao', '=', $sessao1);
-
+        // if($request->session()->exists('your_key'){
+        //     // 
+        //     }
 
        return view('Site.index', [
         'recibo'=> $recibo,
-        'search' => $search,
-        'ultimos_recibos' => $ultimos_recibos,
         'sessao1' => $sessao1,
-        'sessao2' => $sessao2,
-        'sessao3' => $sessao3,
-        'consultao' => $consultao
+        'ultimos_recibos' => $ultimos_recibos,
+        'idrecibo' => $idrecibo,
+        'idlike' => $idlike,''
+
+
+
+
+
+
+
+
+
+
+
+
+
     ]);
    }
 
