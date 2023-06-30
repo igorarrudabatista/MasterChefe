@@ -11,6 +11,7 @@ class Like extends Model
     
     protected $fillable = ['recibo_id', 'sessao'];
 
+    protected $table = 'likes';
         public function recibo() {
         return $this->belongsTo(Recibo::class);
         }

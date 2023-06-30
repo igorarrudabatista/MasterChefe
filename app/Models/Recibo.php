@@ -37,12 +37,12 @@ class Recibo extends Model
       public function Dre() {
         return $this->belongsTo(Dre::class, 'dre_id');
       }    
-      public function escola() {
+      public function escola() {                                      
         return $this->belongsTo(Escola::class, 'escola_id');
       }    
 
       public function likes() {
-        return $this->hasMany(Like::class, 'recibo_id', 'sessao');
+        return $this->hasMany(Like::class);
       }    
 
 }

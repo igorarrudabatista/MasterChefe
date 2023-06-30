@@ -28,15 +28,18 @@ class SiteController extends Controller
                // $recibo->increment('voto');
           //  $recibo->insert('sessao');
 
-          public function voto($id) {
+          public function voto(Request $request, $id) {
 
             $recibo = Recibo::find($id);
          
             $session = session()->getId();
             //dd($session);
             $recibo->likes()->create([
-                'sessao' => $session, ]);
-            
+                'sessao' => $session,
+                'recibo_id' => $recibo->id
+            ]);
+            // $criar_produto -> Nome_Produto       = $id;
+
              return back();
                 }
 
@@ -55,10 +58,11 @@ class SiteController extends Controller
             }
             
             $sessao1 = session()->getId();
+            $sessao3 = Recibo::with('likes')->where('sessao','=', $sessao1);
+         //   dd($sessao3);
             
-            $sessao2 = Recibo::with('likes')->where('id', '=', $recibo)->where('sessao', '=', $sessao1);
-//dd($sessao2);
-            $sessao3 = Recibo::with('likes');
+            $sessao2 = Recibo::where('id', '=', $sessao3);
+        //    dd($sessao3);
             
             $consultao = Like::where('sessao', '=', $sessao1);
 

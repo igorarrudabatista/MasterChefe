@@ -16,9 +16,9 @@
       </div>
         <div class="card-info">
           <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Não encontrado' }}</div>
-          <div class="card-text small">           {{$recibos->Nome ?? 'Não encontrado' }}</div>
+          <div class="card-text small"> {{$recibos->Nome ?? 'Não encontrado' }}</div>
           <div class="card-text small">
-            <span class="card-price">CLIQUE PARA VER MAIS            
+            <span class="card-price"> CLIQUE PARA VER MAIS            
             </span>
             {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="60px"></a> --}}
              {{-- <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="100px"></a> --}} --}}
@@ -27,7 +27,7 @@
 {{-- {{$receba}} --}}
 {{-- <?php $re = $recibos->id ?>   --}}
 
-@if ($recibos->recibo_id = $sessao1)
+@if ($sessao3  = $sessao2)
 {{-- <?php dd($recibos->likes->id); ?>    --}}
 <h1  class="card-text big cardText-js"> Obrigado por votar!
   
