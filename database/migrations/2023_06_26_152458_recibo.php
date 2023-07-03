@@ -34,8 +34,6 @@ return new class extends Migration
             $table->decimal('Nota6',10,4)->nullable();
             $table->boolean('checkbox')->nullable();
             $table->boolean('disp_site')->nullable();
-            $table->string('sessao')->nullable();
-            $table->decimal('voto')->nullable();
         $table->timestamps();
 
     });

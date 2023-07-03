@@ -16,7 +16,7 @@ class Recibo extends Model
     // ];
 
     protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox', 
-    'Nome_Prato', 'Nota1', 'Nota2', 'Nota3', 'Nota4', 'Nota5', 'Nota6', 'disp_site', 'voto'
+    'Nome_Prato', 'Nota1', 'Nota2', 'Nota3', 'Nota4', 'Nota5', 'Nota6', 'disp_site',
   ];
     protected $table = 'recibo';
     
@@ -45,4 +45,6 @@ class Recibo extends Model
         return $this->hasMany(Like::class);
       }    
 
+
+          
 }

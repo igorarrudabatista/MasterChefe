@@ -11,75 +11,84 @@ use App\Models\Like;
 
 class SiteController extends Controller
 {
-          public function voto(Request $request, $id) {
+     public function voto(Request $request, $reciboId) {
+ 
+      //  $ipAddress = $request->ip();
+        $ipAddress = $request->session()->getId();
 
-            $recibo = Recibo::find($id);
-         
-            $session = session()->getId();
-            //dd($session);
-            $recibo->likes()->create([
-                'sessao' => $session,
-                'recibo_id' => $recibo->id
+
+        // Verificar se o visitante já curtiu o recibo
+        $curtida = Like::where('recibo_id', $reciboId)
+            ->where('sessao', $ipAddress)
+            ->first();
+
+        if ($curtida) {
+            // O visitante já curtiu o recibo, então vamos remover a curtida
+            $curtida->delete();
+            return redirect()->back()->with('success', 'Curtida removida com sucesso!');
+        } else {
+            // O visitante ainda não curtiu o recibo, vamos criar uma nova curtida
+            $recibo = Recibo::find($reciboId);
+
+            if (!$recibo) {
+                return redirect()->back()->with('error', 'Recibo não encontrado!');
+            }
+
+            Like::create([
+                'recibo_id' => $reciboId,
+                'sessao' => $ipAddress,
             ]);
-            // $criar_produto -> Nome_Produto       = $id;
 
-             return back();
-                }
-          public function retiravoto($id) {
+            return redirect()->back()->with('success', 'Recibo curtido com sucesso!');
+        }
+    }
 
-            $recibo = Recibo::find($id);
-         
-            $session = session()->getId();
-            //dd($session);
-            $recibo->likes()->delete(['sessao' => $session,'recibo_id' => $recibo->id]);
+    // public function retiravoto($id) {
+    //         $recibo = Recibo::find($id);         
+    //         $session = session()->getId();
+    //         $recibo->likes()->delete(['sessao' => $session,'recibo_id' => $recibo->id]);
+    //     return back();
+    // }
 
-             return back();
-                }
-
-    public function index(Request $request) {
+    public function index() {
         
-        $sessao1 = session()->getId(); // Pega o ID da Sessão atual
-        
-
-        $recibo = Recibo::all();
-        $idrecibo = Recibo::get('id');
-        //$idlike = Recibo::with('likes')->where('id', '=', $idrecibo);
-        //$idlike = Like::all();
-        // $idlike = Recibo::with('likes');
-        // dd($idlike);
-        //dd($sessao1);
-        
-
-        //$idlike = Recibo::with('likes')->where('recibo_id', '=', $idrecibo);
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
 
-         $check = Recibo::with('likes')->get('sessao');
-        dd($check);
+        $sessao1 = session()->getId(); // Pega o ID da Sessão atual        
 
-        // if($request->session()->exists('your_key'){
-        //     // 
-        //     }
+        $recibo = Recibo::get();     
+        
+        $recibo2 = Like::all();
 
        return view('Site.index', [
         'recibo'=> $recibo,
         'sessao1' => $sessao1,
         'ultimos_recibos' => $ultimos_recibos,
-        'idrecibo' => $idrecibo,
-        'idlike' => $idlike,''
-
-
-
-
-
-
-
-
-
-
-
-
-
+        'recibo2' => $recibo2,
     ]);
+   }
+
+   public function store(Request $request, $reciboId) {
+
+       $session_id = $request->session()->getId();
+
+       $curtida = Like::where('recibo_id', $reciboId)
+           ->where('sessao', $session_id)
+           ->first();
+
+       if ($curtida) {
+           // O usuário já curtiu este recibo, então vamos descurtir
+           $curtida->delete();
+           return redirect()->back()->with('success', 'Curtida removida com sucesso!');
+       } else {
+           // O usuário ainda não curtiu este recibo, vamos curtir
+           Like::create([
+               'recibo_id' => $reciboId,
+               'sessao' => $session_id,
+           ]);
+
+           return redirect()->back()->with('success', 'Recibo curtido com sucesso!');
+       }
    }
 
    public Function search(Request $request) {
@@ -96,45 +105,45 @@ class SiteController extends Controller
   }
 
    
-   public function store (Request $request) {
+//    public function store (Request $request) {
        
        
-       $criar_produto =  new Product;
+//        $criar_produto =  new Product;
        
-       $criar_produto -> Nome_Produto       = $request->Nome_Produto;
-       $criar_produto -> Categoria_Produto  = $request->Categoria_Produto;
-       $criar_produto -> Status_Produto     = $request->Status_Produto;
-       $criar_produto -> Preco_Produto      = $request->Preco_Produto;
-       $criar_produto -> Estoque_Produto    = $request->Estoque_Produto;
-       $criar_produto -> Quantidade_Produto = $request->Quantidade_Produto;
+//        $criar_produto -> Nome_Produto       = $request->Nome_Produto;
+//        $criar_produto -> Categoria_Produto  = $request->Categoria_Produto;
+//        $criar_produto -> Status_Produto     = $request->Status_Produto;
+//        $criar_produto -> Preco_Produto      = $request->Preco_Produto;
+//        $criar_produto -> Estoque_Produto    = $request->Estoque_Produto;
+//        $criar_produto -> Quantidade_Produto = $request->Quantidade_Produto;
        
        
-       // Imagem do produto upload
-       if ($request->hasFile('image')&& $request->file('image')->isValid()){
+//        // Imagem do produto upload
+//        if ($request->hasFile('image')&& $request->file('image')->isValid()){
            
-           $requestImage = $request -> image;
+//            $requestImage = $request -> image;
            
-           $extension = $requestImage-> extension();
+//            $extension = $requestImage-> extension();
            
-           $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
+//            $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
            
-           $request -> image->move(public_path('img/produtos'), $imageName);
+//            $request -> image->move(public_path('img/produtos'), $imageName);
            
-           $criar_produto -> image = $imageName;
+//            $criar_produto -> image = $imageName;
            
-       }
+//        }
        
-       $criar_produto ->save();
+//        $criar_produto ->save();
        
-       $criar_produto = Product::all();
+//        $criar_produto = Product::all();
        
-       toast('Produto criado com sucesso!','success');
+//        toast('Produto criado com sucesso!','success');
 
-      return redirect('/produtos/produtos');
+//       return redirect('/produtos/produtos');
 
         
 
-   }
+//    }
 
 
    public function create (){

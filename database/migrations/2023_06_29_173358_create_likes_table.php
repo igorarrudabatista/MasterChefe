@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             //  $table->foreign('recibo_id')->references('id')->on('recibo');
             //    $table->foreignId('recibo_id')->constrained('recibo')->onDelete('cascade');
             //  $table->foreign('recibo_id')->references('id')->on('recibo')->onDelete('cascade');

@@ -138,11 +138,15 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 });
 
+Route::post('/Site', 'SiteController@store')->name('Site.store');
 
-Route::get('/Site',                 [SiteController::class, 'index']);
-Route::get('/site/voto/{id}',      [SiteController::class, 'voto']);
-Route::get('/site/retiravoto/{id}',      [SiteController::class, 'retiravoto']);
+Route::get('/Site',                       [SiteController::class, 'index']);
+//Route::post('Site{id}',                   [SiteController::class, 'Site.store']);
 
-Route::get('/formulario',           [ReciboController::class, 'formulario'])->name('incricao.formulario');
+
+Route::get('/site/voto/{id}',             [SiteController::class, 'voto']);
+Route::get('/site/retiravoto/{id}',       [SiteController::class, 'retiravoto']);
+
+Route::get('/formulario',                 [ReciboController::class, 'formulario'])->name('incricao.formulario');
 
 require __DIR__.'/auth.php';
