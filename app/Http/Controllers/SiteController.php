@@ -56,7 +56,7 @@ class SiteController extends Controller
 
         $sessao1 = session()->getId(); // Pega o ID da Sessão atual        
 
-        $recibo = Recibo::get();     
+        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->get();     
         
         $recibo2 = Like::all();
 

@@ -23,7 +23,7 @@
   
   
   <div class="login-container">
-    <h1 class="create">Formulário MasterChef</h1>
+    <h1 class="create">Competição SuperChef da Educação de MT – Melhores Receitas </h1>
     
         <div class="social-media">
 
@@ -41,18 +41,18 @@
     
       <div class="form-row">
           <div class="form-group col-md-6">
-            <input type="text" class="input-field" id="Nome" name="Nome" placeholder="Digite o seu Nome Completo">
+            <input type="text" class="input-field" id="Nome" name="Nome" placeholder="Digite o seu Nome Completo" required>
           </div>
           <div class="form-group col-md-6">
             <input type="tel" class="input-field" id="Telefone" name="Telefone"  placeholder="Insira o seu telefone com o DDD"  required>
 
           </div>
         <div class="form-group col-md-6">
-          <input type="email" class="input-field" id="Email" name="Email" placeholder="Email">
+          <input type="email" class="input-field" id="Email" name="Email" placeholder="Email" required>
         </div>
         <div class="form-group col-md-6">
-            <select name="dre_id" id="dre_id" class="input-field">
-                <option value="" disabled> Selecione a sua DRE</option>
+            <select name="dre_id" id="dre_id" class="input-field" required>
+                <option value="" enable> Selecione a sua DRE</option>
                 @foreach ($dre as $dres)
                 <option value="{{ $dres->id}}">{{$dres->Nome}} </option>
                 @endforeach
@@ -60,8 +60,8 @@
             
             </div>
         <div class="form-group col-md-6">
-            <select name="escola_id" id="escola_id" class="input-field">
-                <option value="" disabled> Selecione a Escola</option>
+            <select name="escola_id" id="escola_id" class="input-field" required>
+                <option value="" enable> Selecione a sua Escola</option>
                 @foreach ($escola as $escolas)
                 <option value="{{ $escolas->id}}">{{$escolas->EscolaNome}} </option>
                 @endforeach
@@ -70,11 +70,11 @@
             </div>
       </div>
       <div class="form-group">
-        <input type="text" class="input-field" id="Nome_Prato" name="Nome_Prato" placeholder="Qual o nome do seu Prato?">
+        <input type="text" class="input-field" id="Nome_Prato" name="Nome_Prato" placeholder="Nome da Receita:" required>
       </div>
 
 <!-- partial:index.partial.html -->
-<fieldset class="checkbox-group">
+<fieldset class="checkbox-group" >
 	<legend class="checkbox-group-legend"> <h1 class="create">Escolha os ingredientes da sua receita</h1>
     </legend>
     @foreach ($ingredientes as $ingredientes2)
@@ -102,14 +102,14 @@
         <input type="text" class="input-field" id="Outros_ingredientes" name="Outros_ingredientes" placeholder="Outros Ingredientes">
       </div>
       <div class="form-group">        
-        <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30">Descreva a forma de preparo:</textarea>
-        <input type="hidden" name="voto" id="voto" value="0" />
+        <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30"  placeholder="Descreva a forma de preparo" required> </textarea>
+        <input type="hidden" name="voto" id="voto" value="0" required/>
       </div>
 
 <br>
       <legend class="checkbox-group-legend"> <h1 class="create2">Envie a Foto do seu prato:</h1>
         <div class="upload">
-        <input type="file" title="" id="image" name="image"  class="drop-here">
+        <input type="file" title="" id="image" name="image"  class="drop-here" required>
         <div class="text text-drop">Imagem</div>
         <div class="text text-upload">Enviando</div>
         <svg class="progress-wrapper" width="300" height="300">

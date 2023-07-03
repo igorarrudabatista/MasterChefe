@@ -136,13 +136,14 @@ class ReciboController extends Controller
     public function edit(Recibo $recibo, $id)
     {
         $produto = Produto::get();
+        $categoria = Produto::with('categoria')->get();
     //    $recibo->load('produto');
         $recibo = Recibo::get();
      //   $empresa_cliente = Empresa_Cliente::get();
      $recibo        = Recibo::find($id);
      $dre           = Dre::all();
 
-        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre'));
+        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria'));
     }
     
     public function update(Request $request, Recibo $recibo)

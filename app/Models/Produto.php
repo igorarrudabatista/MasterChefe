@@ -14,5 +14,10 @@ class Produto extends Model
 
     protected $fillable = ['Nome','Categoria','image','cat_ingredientes_id'
         ];
+
+
+  public function categoria() {                                      
+    return $this->belongsTo(Cat_ingredientes::class);
+  }    
     
 }

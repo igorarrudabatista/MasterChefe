@@ -79,6 +79,39 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-md-2">
+                <div class="card card-statistic">
+                    <div class="card-body p-0">
+                        <div class="d-flex flex-column">
+                            <div class='px-3 py-3 d-flex justify-content-between'>
+                                <h3 class='card-title'>Quantidade de Curtidas</h3>
+                                <div class="card-right d-flex align-items-center">
+                                    <p> {{$qtdcurtidas}} </p>
+                          
+                                </div>
+                            </div>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            @foreach($curtidas as $likes)
+            <p> {{$likes->dre->Nome}} - {{$likes->dre->id}} </p>
+            @endforeach
+
+
+
+
+
+
+
+
+
+
         </div>
         {{-- <div class="row mb-4">
             <div class="col-md-12">

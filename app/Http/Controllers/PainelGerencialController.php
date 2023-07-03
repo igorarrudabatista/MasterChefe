@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Models\Recibo;
 use App\Models\Dre;
 use App\Models\User;
+use App\Models\Like;
 
 
 
@@ -27,6 +28,9 @@ class PainelGerencialController extends Controller
             $produtos = Produto::count();
             $escolas = ESCOLA::count();
             $dre = DRE::count();
+            $curtidas = Recibo::with('dre','likes')->get();     
+
+            $qtdcurtidas = Like::count();
 
             $produto = Produto::all();
             $search = request('search');
@@ -42,12 +46,7 @@ class PainelGerencialController extends Controller
         
             return view('painel.painel-dashboard',compact(
                                                           
-                'recibo',
-                'escolas',
-                'produtos',
-                'dre',
-                'produto',
-                'search',
+                'recibo', 'escolas', 'produtos', 'dre', 'produto', 'search', 'qtdcurtidas', 'curtidas'
             ));
 
         }

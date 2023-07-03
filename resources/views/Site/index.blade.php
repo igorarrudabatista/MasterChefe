@@ -15,11 +15,11 @@
           <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" width= "800px" class="logo">          
       </div>
         <div class="card-info">
-          <div class="card-text big cardText-js">{{$recibos->Nome ?? 'Não encontrado' }}</div>
-          <div class="card-text small">{{$recibos->Nome_Prato ?? 'Nome do Prato' }}</div>
+          <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Nome da receita' }}</div>
+          <div class="card-text small">{{$recibos->dre->Nome}}</div>
 <br>
             
-            <a class="btn btn-success text-light btn-book text-right"> Leia mais... </a><br><br><br>
+            <button class="btn btn-success text-light text-right"> Leia mais... </button>
              
                <a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
               </div>
