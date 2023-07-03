@@ -23,11 +23,12 @@
   
   
   <div class="login-container">
+   <center> <img src="{{asset('images/logo_seduc_chef.jpg')}}" alt="" srcset="">
+
     <h1 class="create">Competição SuperChef da Educação de MT – Melhores Receitas </h1>
     
         <div class="social-media">
 
-          <img src="https://thumbs.dreamstime.com/b/chef-illustration-cute-master-43753837.jpg" width="120px">
       {{-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
       <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="twitter"><i class="fab fa-twitter-square"></i></a>

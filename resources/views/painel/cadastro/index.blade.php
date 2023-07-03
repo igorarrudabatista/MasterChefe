@@ -20,29 +20,11 @@
 <section id="card-caps">
     <div class="row">
 
-{{-- 
+
         <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/programmers-coding-computer-app-7CFXNL5.jpg')}}" alt="Card image">
-                    <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
-                        <div class="overlay-content">
-                            <h4 class="card-title mb-50">Cadastro de Pessoa</h4>
-                            Cadastro e Consulta de Pessoas.
-                            <p class="card-text text-ellipsis">
-                            </p>
-                        </div>
-                        <div class="overlay-status">
-                            <a href="{{asset('/pessoa')}}" class="btn btn-primary btn-sm">Clique aqui </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <div class="col-xl-3 col-md-6 col-sm-12">
-            <div class="card">
-                <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/happy-children-building-robots-at-robotics-school-PW3NYKH.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/dre.png')}}" alt="Card image">
                     <div class="card-img-overlay overlay-dark bg-overlay d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Cadastro de DRE</h4>
@@ -60,7 +42,7 @@
         <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/modern-teaching-concept-P7BTJU7.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/escolas.jpg')}}" alt="Card image">
                     <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Escolas</h4>
@@ -78,7 +60,7 @@
         <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/learning-new-codes-8VKXG4E.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/mapabrasil.jpg')}}" width="200px" alt="Card image">
                     <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Estados</h4>
@@ -99,7 +81,7 @@
 <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/programmers-coding-computer-app-7CFXNL5.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/cidades.jpg')}}" alt="Card image">
                     <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Cidade</h4>
@@ -118,7 +100,7 @@
         <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/happy-children-building-robots-at-robotics-school-PW3NYKH.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/cating.jpg')}}" alt="Card image">
                     <div class="card-img-overlay overlay-dark bg-overlay d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Categoria dos Ingredientes</h4>
@@ -136,7 +118,7 @@
         <div class="col-xl-3 col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-content">
-                    <img class="card-img img-fluid" src="{{asset('/images/samples/modern-teaching-concept-P7BTJU7.jpg')}}" alt="Card image">
+                    <img class="card-img img-fluid" src="{{asset('/images/painel/ingredientes.webp')}}" alt="Card image">
                     <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
                         <div class="overlay-content">
                             <h4 class="card-title mb-50">Cadastro de Ingredientes</h4>

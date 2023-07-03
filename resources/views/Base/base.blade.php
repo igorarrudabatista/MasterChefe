@@ -30,7 +30,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
-                   <center> <img src="images/logo_seduc_chef.jpg" width="140px" height="160" alt="" srcset=""> </center>
+                   <center> <img src="images/logo_seduc_chef2.jpg" width="140px" height="160" alt="" srcset=""> </center>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">

@@ -109,7 +109,7 @@
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
                                                                                         
-                                                                                          <td>{{$item->cat_ingredientes}}</td>
+                                                                                          <td>{{$item->Quantidade}}</td>
                                                                                           
                                                                                           {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
                                                                                         
