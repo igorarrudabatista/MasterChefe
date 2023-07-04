@@ -2,7 +2,7 @@
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>SITE </title>
+  <title>Super Chef da Educação </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="{{asset('/css/site/site-style.css')}}">
 
@@ -13,19 +13,19 @@
 <!-- partial:index.partial.html -->
 <div class="app-container">
   <section class="navigation">
-    <a href="#" class="app-link"><img src="{{asset('/images/logo_seduc_chef.jpg')}}" width="200px"></a>
+    <a href="#" class="app-link">LOGO da LOJA</a>
     <div class="navigation-links">
       <a href="#" class="nav-link ">Home</a>
-      <a href="#" class="nav-link active">Edital</a>
-      {{-- <a href="#" class="nav-link ">Inscrições por escola</a> --}}
-      <a href="#" class="nav-link">Dúvidas</a>
+      <a href="#" class="nav-link active">Produtos</a>
+      <a href="#" class="nav-link">Menu 3</a>
+      <a href="#" class="nav-link">Menu 4</a>
 
     </div>
     <div class="nav-right-side">
-      {{-- <button class="mode-switch">
+      <button class="mode-switch">
        <svg class="sun" fill="none" stroke="#fbb046" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-sun" viewBox="0 0 24 24"><defs/><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
   <svg class="moon" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-moon" viewBox="0 0 24 24"><defs/><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-     </button> --}}
+     </button>
 
     </div>  
   </section>
@@ -46,15 +46,8 @@
         <button class="search-btn">Procurar</button>
       </div>
 
-            {{-- @if ($search)
-                            
 
 
-
-
-
-
-          @endif --}}
       <div class="contact-actions-wrapper">
          <div class="contact-actions">
         <span>Contato: </span>
@@ -81,14 +74,16 @@
       </div>
     </div>
 
-    {{-- <div class="app-actions-line filter-line">
+    <div class="app-actions-line filter-line ">
       <div class="filter-action-buttons">
-        <button class="filter-btn">
         <div class="filter-icon">
           <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <span class="filter-text">Filtro1</span>
-      </button>
+
+        
+
+      
+      
       <button class="filter-btn">
         <div class="filter-icon">
           <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -124,10 +119,10 @@
         <span class="filter-text">Mais</span>
       </button>
       </div>
-    </div> --}}
+    </div>
   </section>
 
-
+  </form>
   
 
   @yield('content')
@@ -143,6 +138,6 @@
   <!-- partial -->
     <script  src="./script.js"></script>
     <script src="{{asset('/js/site/script.js')}}"></script>
-
+  
   </body>
   </html>

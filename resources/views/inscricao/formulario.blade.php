@@ -90,7 +90,11 @@
               <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
               <small> Quantidade: </small>
               <input type="number" name="quantities[]" placeholder="Quantidade"  class="checkbox-label input-field" value="1" />
+              {!! Form::select('unidade', ['Xícara de Chá' => 'Xícara de Chá', 'Copo Americano' => 'Copo Americano', 'Colher de Café' => 'Colher de Café',
+               'Colher de Chá' => 'Colher de Chá' , 'Colher de Sopa' => 'Colher de Sopa'], null, ['class' => 'input-field text-primary']) !!} 
 			        </span>
+
+              
 		    </label>
 	</div>
 

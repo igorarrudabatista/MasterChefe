@@ -149,4 +149,8 @@ Route::get('/site/retiravoto/{id}',       [SiteController::class, 'retiravoto'])
 
 Route::get('/formulario',                 [ReciboController::class, 'formulario'])->name('incricao.formulario');
 
+
+Route::get('site', [SiteController::class, 'index'])->name('recibos.index');
+Route::post('site/{recibo}/vote', [SiteController::class, 'vote'])->name('site.vote');
+
 require __DIR__.'/auth.php';

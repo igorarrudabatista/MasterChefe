@@ -16,8 +16,6 @@
     <script src="{{asset('/js/calendar/fullcalendar.min.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
-  
 </head>
 <body>
 

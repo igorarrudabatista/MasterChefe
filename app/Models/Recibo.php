@@ -45,6 +45,9 @@ class Recibo extends Model
         return $this->hasMany(Like::class);
       }    
 
-
+      public function hasLiked($sessionId)
+      {
+          return $this->likes()->where('sessao', $sessionId)->exists();
+      }
           
 }

@@ -109,7 +109,7 @@
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
                                                                                         
-                                                                                          <td>{{$item->Quantidade}}</td>
+                                                                                          <td>{{$item->pivot['Quantidade'] }}</td>
                                                                                           
                                                                                           {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
                                                                                         
@@ -124,7 +124,7 @@
                                                                                     <div class="form-group has-icon-left">
                                                                                         <label for="email-id-column"><strong>Existe Alimentos Proibidos ?</strong>                                                                                        </strong>
                                                                                         <div class="position-relative">
-                                                                                          {!! Form::checkbox('Nota1', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="1"' )) !!}            
+                                                                                          SIM {!! Form::checkbox('Nota1', null, array('placeholder' => 'Insira a nota','class' => 'form-control', )) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -252,7 +252,7 @@
                   <div class="col-md-6 col-6">
                     <div class="form-group has-icon-left">
                         <label for="email-id-column"><strong>Valorização dos hábitos alimentares locais </strong>
-                            <br><small class="text-danger"> Pontuação 4 Pontos </small></label>
+                            <br><small class="text-danger"> Pontuação máxima: 4 Pontos </small></label>
                         <div class="position-relative">
                           {!! Form::number('Nota2', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="4"')) !!}            
                     </div>
@@ -263,7 +263,7 @@
                   <div class="col-md-6 col-6">
                     <div class="form-group has-icon-left">
                         <label for="email-id-column"><strong> Alimentos da Agricultura Familiar </strong>
-                          <br><small class="text-danger">(Até 3 itens) - Pontuação 3 Pontos </small></label>
+                          <br><small class="text-danger">(Até 3 itens) - Pontuação máxima: 3 Pontos </small></label>
                         </label>
                         <div class="position-relative">
                           {!! Form::number('Nota3', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="3"')) !!}            
@@ -275,7 +275,7 @@
                   <div class="col-md-6 col-6">
                     <div class="form-group has-icon-left">
                         <label for="email-id-column"><strong> Alimentos da Agricultura Familiar </strong>
-                        <br><small class="text-danger">(Acima de 3 itens) - Pontuação 5 Pontos </small></label>
+                        <br><small class="text-danger">(Acima de 3 itens) - Pontuação máxima: 5 Pontos </small></label>
                       </label>
                         <div class="position-relative">
                           {!! Form::number('Nota4', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="5"')) !!}            
@@ -286,9 +286,9 @@
                   <div class="col-md-6 col-6">
                     <div class="form-group has-icon-left">
                         <label for="email-id-column"><strong> Criatividade (inovação e originalidade) </strong>
-                          <br> <small class="text-danger">Pontuação 5 Pontos </small></label>
+                          <br> <small class="text-danger">Pontuação máxima: 5 Pontos </small></label>
                         <div class="position-relative">
-                          {!! Form::number('Nota5', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="10"')) !!}            
+                          {!! Form::number('Nota5', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="5"')) !!}            
                     </div>
                 </div>
                 </div>

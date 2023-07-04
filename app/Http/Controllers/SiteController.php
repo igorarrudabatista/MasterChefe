@@ -9,13 +9,15 @@ use App\Models\Recibo;
 use App\Models\Produto;
 use App\Models\Like;
 
+use Illuminate\Support\Facades\Session;
+
+
 class SiteController extends Controller
 {
      public function voto(Request $request, $reciboId) {
  
       //  $ipAddress = $request->ip();
         $ipAddress = $request->session()->getId();
-
 
         // Verificar se o visitante já curtiu o recibo
         $curtida = Like::where('recibo_id', $reciboId)
@@ -25,13 +27,17 @@ class SiteController extends Controller
         if ($curtida) {
             // O visitante já curtiu o recibo, então vamos remover a curtida
             $curtida->delete();
-            return redirect()->back()->with('success', 'Curtida removida com sucesso!');
+            return redirect()->back()->with('success', 'Voto removido com sucesso!');
+
+     
         } else {
             // O visitante ainda não curtiu o recibo, vamos criar uma nova curtida
             $recibo = Recibo::find($reciboId);
 
+            
+
             if (!$recibo) {
-                return redirect()->back()->with('error', 'Recibo não encontrado!');
+                return redirect()->back()->with('error', 'Voto não realizado!');
             }
 
             Like::create([
@@ -39,32 +45,41 @@ class SiteController extends Controller
                 'sessao' => $ipAddress,
             ]);
 
-            return redirect()->back()->with('success', 'Recibo curtido com sucesso!');
+            return redirect()->back()->with('success', 'Voto realizado com sucesso!');
         }
     }
 
-    // public function retiravoto($id) {
-    //         $recibo = Recibo::find($id);         
-    //         $session = session()->getId();
-    //         $recibo->likes()->delete(['sessao' => $session,'recibo_id' => $recibo->id]);
-    //     return back();
-    // }
+    public function vote(Request $request, Recibo $recibo)
+    {
+        $sessionId = Session::getId();
 
-    public function index() {
-        
+        if ($recibo->hasLiked($sessionId)) {
+            return redirect()->back()->with('error', 'Você já votou nesta receita!');
+        }
+
+        $recibo->likes()->create([
+            'sessao' => $sessionId,
+        ]);
+
+        return redirect()->back()->with('success', 'Voto registrado com sucesso.');
+    }
+
+
+
+    public function index(Request $request) {
+
         $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
 
-        $sessao1 = session()->getId(); // Pega o ID da Sessão atual        
+        $id_recibo = Recibo::get('id');
 
-        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->get();     
-        
-        $recibo2 = Like::all();
+        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->get()->paginate('10');  
 
-       return view('Site.index', [
+
+        return view('Site.index', [
         'recibo'=> $recibo,
-        'sessao1' => $sessao1,
+        'id_recibo' => $id_recibo,
         'ultimos_recibos' => $ultimos_recibos,
-        'recibo2' => $recibo2,
+
     ]);
    }
 
