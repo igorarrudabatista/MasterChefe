@@ -72,7 +72,7 @@ class SiteController extends Controller
 
         $id_recibo = Recibo::get('id');
 
-        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->get()->paginate('10');  
+        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->paginate('12');  
 
 
         return view('Site.index', [

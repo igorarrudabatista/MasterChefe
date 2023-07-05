@@ -1,235 +1,218 @@
-
 @extends('base.base2')
 
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/bootstrap.css')}}">
 
-        @if(session('success'))
-
-
-@endif  
- 
 
 <section class="app-main">
+
+
   <div class="app-main-left cards-area">
 
     @foreach($recibo as $key => $recibos )
 
-    <div class="card-wrapper main-card">
-      <a class="card cardItemjs"  onclick="openModal()">
-        <div class="card-image-wrapper">
-          <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" width= "800px" class="logo">          
-      </div>
-        <div class="card-info">
-          <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Nome da receita' }}</div>
-          <div class="card-text">{{$recibos->dre->Nome}}</div>
-        <br>                         
-        @if ($recibos->hasLiked(Session::getId()))
-        {{ $recibos->likes->count() }}
-        <p>Você já votou neste recibo.</p>
-    @else
-        <form action="{{ route('site.vote', $recibos->id) }}" method="POST">
-            @csrf
-            <button type="submit">Votar</button>
-        </form>
-    @endif
-        {{-- @if ($recibos->hasLiked(Session::getId()))
+              <div class="card-wrapper main-card">
+                
+                <a class="card cardItemjs"  data-toggle="modal" data-target="#exampleModal{{ $recibos->id }}">
+                  <div class="card-image-wrapper cardImage-js">
+                    <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}"  class="logo cardImage-js">          
+                </div>
+                  <div class="card-info">
+                    <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Nome da receita' }}</div>
+                    <div class="card-text cardDre-js">{{$recibos->dre->Nome}}</div>
+                    <div class="card-text small cardEscola-js ">{{$recibos->escola->EscolaNome}}</div>
+                  <br>  
+                 </a>     
 
-        <p>Você já votou neste recibo.</p>
+                 @if ($recibos->hasLiked(Session::getId()))
+                 <span class="badge bg-secondary"> {{$recibos->likes->count()}}</span>
+
+                
+                 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                  </symbol>
+                </svg>
+
+                     
+                  
+                 <div class="card-text big cardText-js"> Obrigado pelo seu voto!</div>
+                 @else
+                 <form action="{{ route('site.vote', $recibos->id) }}" method="POST">
+                     @csrf
+                     <button class="btn-book" type="submit">Votar nesta Receita</button>
+                 </form>
+                 @endif  
+                </div>
+              </div>
+             
 
 
-    @else
-        <form action="{{ route('site.vote', $recibos->id) }}" method="POST">
-            @csrf
-            <button type="submit">Votar</button>
-        </form>
-    @endif --}}
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal{{ $recibos->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-xl">
+     
+      <div class="modal-body">
+        <div  class="shadow">
 
 
-{{-- @if ($recibos->likes->count())
-
-Descurtir
-
-@else
-<a href="{{asset('/site/voto')}}/{{$recibos->id}}"><img src="{{asset('/images/vote.png')}}" alt="HTML tutorial" width="40px"></a>
-
-@endif --}}
-
-         
-
+        <div class="main-modal">
     
-            </a>
-          
+          <div class="modal-left">
+            
+            <div class="modal-image-wrapper modalImage-js">
+              <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}"  class="logo cardImage-js">          
           </div>
-        </a>
-        
-      </div>
+
+          <div class="modal-info-header">
+            <div class="left-side">
+              <h1 class="modalHeader-js"> {{$recibos->Nome_Prato ?? 'Nome da receita' }}</h1>
+              <div class="modalDre-js"></div>
+              <div class="card-text modalEscola-js"><b>Escola: {{$recibos->escola->EscolaNome}}</b> </div>
+              <div class="card-text modalEscola-js"><b> {{$recibos->dre->Nome}} </b> </div>
       
-    @endforeach 
-   
-
-
-  </div>
-
-  <div class="app-main-right cards-area">
-    
-    <div class="app-main-right-header">
-      <span>Master Chef</span>
-      <a href="#">Icone</a>
-    </div>
-    <div class="card-wrapper main-card">
-      <a class="card cardItemjs"  onclick="openModal()">
-        <div class="card-image-wrapper">
-      </div>
-        <div class="card-info">
-          <div class="card-text big cardText-js">Edital</div>
-          <div class="card-text small">mais informações</div>
-          <div class="card-text small">
-            <span  class="card-price"> Telefone: 65 00000</span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-
-  </div>
-</section>
-</div>
-
-<div id="modal-window" class="shadow">
-  <div class="main-modal">
-    <div class="modal-left">
-      <div class="modal-image-wrapper">
-        <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" class="logo">          
-
-    </div>
-    <div class="modal-info-header">
-      <div class="left-side">
-        <h1 class="modalHeader-js"></h1>
-        <div class="card-text"></div>
-        <div class="card-text"><b>Escola: </b> {{$recibos->escola->EscolaNome}}</div>
-
-      </div>
-      <div class="right-side">
-      <b> Localidade: </b>
-        <span class="amount"> <p>{{$recibos->dre->Nome }}</p>
-        </span>
-      </div>
-    </div>
-    <div class="info-bar">
-      <div class="info-wrapper">
-        <div class="info-icon">
-        
-        </div>
-        <span></span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-        </div>
-        <span>1111</span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-        </div>
-        <span>aaa</span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-        </div>
-        <span>1111</span>
-      </div>
-    </div> 
-    <div class="desc-wrapper">
-      <div class="modal-info-header">
-        <h1>Descrição</h1>
-    
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Ingredientes</th>
-              <th> <center>Quantidade</th>
-      
-              
-              {{-- <th>Preço</th> --}}
-              
-            </tr>
-          </thead>
+            </div>
+            <div class="right-side">
+              @if ($recibos->hasLiked(Session::getId()))
+              <div class="alert alert-primary d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                
+  
+                  <div class="big"> Obrigado pelo seu voto!</div>
        
-          <tbody>
-            <tr>
-                @foreach($recibos->produto as $item)
-                
-              </td>
-                      
-            <td> 
-              <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
-              {{-- <img src="{{asset('/images/inscricao/' . $item->produto->image)}}" width= "60px" class="logo"> --}}
-             </td>
-                  <td>{{$item->Nome}}</td>
-                  <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
-                  {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
-                
-            </tr>
-            @endforeach
-    
-          </tbody>
-        </table>
-
-       <h4> <b> Outros ingredientes utilizados: <h5 class="text-primary">
-        {{$recibos->Outros_ingredientes }} </h5> </b></h4>
-
-        <h1>Forma de Preparo:</h1>
-
-        {!! nl2br(e($recibos->Preparo)) !!} 
-
-      </div>
-      
-      
-    </div>
-  </div>
-  
-  
-  <div class="modal-right">
-    <div class="app-main-right-header">
-      <span>Últimas receitas enviadas</span>
-    </div>
-    @foreach($ultimos_recibos as $key => $recibos )
-    
-    <div class="card-wrapper">
-      <div class="card">
-        <div class="profile-info-wrapper">
-          <div class="profile-img-wrapper">
-            <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" width= "800px" class="logo">          
+                </div>
+                  @endif      
+            </div>
           </div>
-          {{$recibos->Nome_Prato ?? 'Nome do prato'}}
-          <p> </p>
+          <div class="info-bar">
+            <div class="info-wrapper">
+              <div class="info-icon">
+              
+              </div>
+              <span></span>
+            </div>
+            <div class="info-wrapper">
+              <div class="info-icon">
+              </div>
+              <span>1111</span>
+            </div>
+            <div class="info-wrapper">
+              <div class="info-icon">
+              </div>
+              <span>aaa</span>
+            </div>
+            <div class="info-wrapper">
+              <div class="info-icon">
+              </div>
+              <span>1111</span>
+            </div>
+          </div> 
+          <div class="desc-wrapper">
+            <div class="modal-info-header">
+           
+              <h1>Descrição</h1>
+              <table class="table table-striped">
+                <thead>
+                  <tr>      
+                    <th></th>
+                    <th>Ingredientes</th>
+                    <th> <center>Quantidade</th>                                
+                    <th> <center>Unidade de medida</th>                                
+                    </tr>
+                  </thead>             
+                  <tbody>
+                  @foreach($recibos->produto as $item)
+                  <tr>
+                      
+                            
+                  <td> 
+                    <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
+                    {{-- <img src="{{asset('/images/inscricao/' . $item->produto->image)}}" width= "60px" class="logo"> --}}
+                   </td>
+                        <td>{{$item->Nome}}</td>
+                        <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
+                        <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
+                        {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
+                      
+                  </tr>
+          
+                  @endforeach
+                </tbody>
+              </table>
+
+              <div class="modal-right">
+                <div class="app-main-right-header">
+                  <span>+ Produtos</span>
+                  <a href="#">Ver todos</a>
+                </div>
+                
+                <div class="card-wrapper">
+                  <div class="card">
+                    <div class="profile-info-wrapper">
+                      <div class="profile-img-wrapper">
+                        <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
+                      </div>
+                      <p> </p>
+                    </div>
+                    <p> </p>
+                  </div>
+                </div>    
+              </div>
+
+              <div class="alert alert-primary" role="alert">
+                <h4 class="alert-heading"> Outros ingredientes utilizados:</h4>
+                <h6 class="alert-heading"> {{$recibos->Outros_ingredientes }}</h6>
+                </div>
+
+                <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">Forma de preparo:</h4>
+                <h6 class="alert-heading"> {!! nl2br(e($recibos->Preparo)) !!}</h6>
+                <p> </p>
+
+
+                
+
+              </div> 
+
+
+    
+
+            </div> 
+ 
+          </div>
         </div>
-        <p> </p>
-      </div>
-    </div>
-    
-    
-    
-  </div>
-    
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-</div>    
-</div>
+          </div> 
+        </div>
+
+          </div> 
+      
+        </div> 
+</div> 
 
 @endforeach
-  <script> 
-    let ini= document.querySelector('#modal-window');
-    ini.classList.add("hideModal");
-  </script>
-  <script> 
-    let ini= document.querySelector('#modal-window2');
-    ini.classList.add("hideModal2");
-  </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   
+
+  
+</section>
+
+
+{{ $recibo->links('pagination::bootstrap-4') }}
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
 
 @endsection
