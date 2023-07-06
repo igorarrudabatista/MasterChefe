@@ -79,26 +79,33 @@
 	<legend class="checkbox-group-legend"> <h1 class="create">Escolha os ingredientes da sua receita</h1>
     </legend>
     @foreach ($ingredientes as $ingredientes2)
-        
-	<div class="checkbox">
+    <div class="checkbox">
         <label class="checkbox-wrapper">
-            <input type="checkbox"  name="products[]" value="{{ $ingredientes2->id}}" class="checkbox-input" />
-			        <span class="checkbox-tile">
+            <input type="checkbox" name="products[]" value="{{ $ingredientes2->id }}" class="checkbox-input" />
+            <span class="checkbox-tile">
                 <span class="checkbox-icon">
-                    <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}"  width="60px" >
-				      </span>
-              <span class="checkbox-label">{{$ingredientes2->Nome}}</span>
-              <small> Quantidade: </small>
-              <input type="number" name="quantities[]" placeholder="Quantidade"  class="checkbox-label input-field" value="1" />
-              {!! Form::select('unidade', ['Xícara de Chá' => 'Xícara de Chá', 'Copo Americano' => 'Copo Americano', 'Colher de Café' => 'Colher de Café',
-               'Colher de Chá' => 'Colher de Chá' , 'Colher de Sopa' => 'Colher de Sopa'], null, ['class' => 'input-field text-primary']) !!} 
-			        </span>
+                    <img src="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}" width="60px">
+                </span>
+                <span class="checkbox-label">{{ $ingredientes2->Nome }}</span>
+                <small>Quantidade:</small>
+                <input type="number" name="quantities[]" placeholder="Quantidade" class="checkbox-label input-field" value="1" />
+                <select name="units[]" id="unit" class="input-field text-primary">
+                    <option value="Xícara de Chá">Unidade</option>
+                    <option value="Xícara de Chá">Litro</option>
+                    <option value="Xícara de Chá">Miligrama</option>
+                    <option value="Xícara de Chá">Quilo Grama - Kg</option>
+                    <option value="Xícara de Chá">Grama</option>
+                    <option value="Xícara de Chá">Xícara de Chá</option>
+                    <option value="Copo Americano">Copo Americano</option>
+                    <option value="Colher de café">Colher de café</option>
+                    <option value="Colher de chá">Colher de chá</option>
+                    <option value="Colher de sopa">Colher de sopa</option>
+                </select>
+            </span>
+        </label>
+    </div>
+@endforeach
 
-              
-		    </label>
-	</div>
-
-    @endforeach
     
 
 </fieldset>

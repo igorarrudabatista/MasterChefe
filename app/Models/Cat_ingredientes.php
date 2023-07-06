@@ -9,6 +9,12 @@ class Cat_ingredientes extends Model
 {
     use HasFactory;
     protected $table = 'cat_ingredientes';
-    protected $fillable = ['Nome', 'Obs'        
-     ];
+    protected $fillable = ['Nome', 'Obs'];
+
+    public function produto() {                                      
+        return $this->hasMany(Produto::class);
+      }    
+
+
+
     }

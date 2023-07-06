@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             // $table->foreign('produto_id'  )->references('id')->on('produtos');
             $table->integer('Quantidade');
+            $table->string('unidade');
     
             $table->unsignedInteger('recibo_id');
             $table->foreign('recibo_id')->references('id')->on('recibo')->onDelete('cascade');

@@ -74,7 +74,14 @@
                                 <img src="{{asset('/images/ingredientes/')}}/{{$ingredientes2->image}}" width="60px" alt="...">
                             </td>
                             <td>{{$ingredientes2->Nome ?? 'Não encontrado' }}  </td>
-                            <td>{{$ingredientes2->cat_ingredientes_id	?? 'Sem registros'  }}</td>
+                            
+                            @if ($ingredientes2->categoria->Nome == 'ALIMENTOS PROCESSADOS' or $ingredientes2->categoria->Nome == 'ALIMENTOS ULTRAPROCESSADOS' 
+                            or $ingredientes2->categoria->Nome == 'INGREDIENTES CULINÁRIOS' or $ingredientes2->categoria->Nome == 'ALIMENTOS PROIBIDOS')
+                            <td><small class="text-danger"> <b> {{$ingredientes2->categoria->Nome }} </b> </small></td>
+                            @else
+                            <td> <small class="text-success"> <b> {{$ingredientes2->categoria->Nome }} </b> </small></td>
+                            @endif
+
                  
                           
 

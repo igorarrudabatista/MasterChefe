@@ -24,7 +24,7 @@ class Recibo extends Model
    // public $timestamps = false;
 
     public function produto() {
-        return $this->belongsToMany(Produto::class)->withPivot(['Quantidade']);
+        return $this->belongsToMany(Produto::class)->withPivot(['Quantidade','unidade']);
     }   
     
     // public function empresa_cliente() {

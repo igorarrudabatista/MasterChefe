@@ -1,10 +1,10 @@
 INSERT INTO `estado` (`id`, `Nome`, `Sigla`, `created_at`, `updated_at`) VALUES (NULL, 'Mato Grosso', 'MT', NULL, NULL);
 
-INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS IN NATURA E MINIMAMENTE PROCESSADOS', NULL, NULL, NULL);    INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROCESSADOS', NULL, NULL, NULL);
-INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROCESSADOS', NULL, NULL, NULL);
-INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS ULTRAPROCESSADOS', NULL, NULL, NULL);
-INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'INGREDIENTES CULINÁRIOS', NULL, NULL, NULL);
-INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (NULL, 'ALIMENTOS PROIBIDOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (1, 'ALIMENTOS IN NATURA E MINIMAMENTE PROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (2, 'ALIMENTOS PROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (3, 'ALIMENTOS ULTRAPROCESSADOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (4, 'INGREDIENTES CULINÁRIOS', NULL, NULL, NULL);
+INSERT INTO `cat_ingredientes` (`id`, `Nome`, `Obs`, `created_at`, `updated_at`) VALUES (5, 'ALIMENTOS PROIBIDOS', NULL, NULL, NULL);
 
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'ACORIZAL', '1', NULL, NULL);
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'ÁGUA BOA', '1', NULL, NULL);
@@ -243,6 +243,53 @@ INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `cr
 INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Tomate salada', NULL, NULL, '1', NULL, NULL);
 INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Trigo para quibe', NULL, NULL, '1', NULL, NULL);
 INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Vagem', NULL, NULL, '1', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Extrato de tomate', NULL, NULL, '2', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Charque bovino (iscas ou manta)', NULL, NULL, '2', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Leite UHT Integral', NULL, NULL, '2', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Milho verde em conserva', NULL, NULL, '2', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Queijo mussarela', NULL, NULL, '2', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Geléia de frutas', NULL, NULL, '3', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Molho de tomate', NULL, NULL, '3', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Requeijão cremoso', NULL, NULL, '3', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Açúcar cristal', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Azeite de oliva', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Manteiga', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Margarina', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Óleo de soja', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Sal', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Vinagre', NULL, NULL, '4', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Achocolatado em pó', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Alimentos compostos', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Alimentos em pó ou para reconstituição', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Apresuntado', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Azeitona', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Bebidas a base de xarope de groselha', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Bebidas a base de xarope de guaraná', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Biscoito ou bolacha recheada', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Bolo com cobertura ou recheio', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Cereais com aditivo ou adoçado', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Chás prontos', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Gelados comestíveis', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Gelatina', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Linguiça', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Maionese', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Mortadela', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Preparações semiprontas ou prontas para o consumo', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Presunto', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Refrescos artificiais', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Refrigerantes', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Salsicha', NULL, NULL, '5', NULL, NULL);
+INSERT INTO `produtos` (`id`, `Nome`, `Obs`, `image`, `cat_ingredientes_id`, `created_at`, `updated_at`) VALUES (NULL, 'Temperos artificiais com glutamato monossódico', NULL, NULL, '5', NULL, NULL);
+
+
+
+
+
+
+
+
+
+
 
 INSERT INTO `escola` (`id`, `dre_id`, `EscolaCod`, `EscolaNome`, `EscolaEndereco`, `EscolaNumero`, `EscolaBairro`, `EscolaCep`, `EscolaCidade`, `EscolaEstado`, `EscolaDDD`, `EscolaTel`, `EscolaEmail`, `EscolaStatus`, `created_at`, `updated_at`) VALUES (NULL, '1', NULL, 'EE JOSE ANGELO DOS SANTOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `escola` (`id`, `dre_id`, `EscolaCod`, `EscolaNome`, `EscolaEndereco`, `EscolaNumero`, `EscolaBairro`, `EscolaCep`, `EscolaCidade`, `EscolaEstado`, `EscolaDDD`, `EscolaTel`, `EscolaEmail`, `EscolaStatus`, `created_at`, `updated_at`) VALUES (NULL, '1', NULL, 'ESCOLA ESTADUAL DEPUTADO MILTON FIGUEIREDO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

@@ -7,6 +7,7 @@ use App\Models\Recibo;
 use App\Models\Ingredientes;
 use App\Models\Escola;
 use App\Models\Produto;
+use App\Models\Cat_ingredientes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\Facades\Excel;
@@ -56,7 +57,7 @@ class ReciboController extends Controller
             }
        
        
-        return view('inscricao.index', ['recibo'=> $recibo, 
+        return view('inscricao.index', [   'recibo'=> $recibo, 
                                            'search' => $search,
                                             'dre' => $dre,
                                             'nota' =>$nota
@@ -108,19 +109,24 @@ public function store(Request $request)
         
         $recibo->image = $imageName;
     }
-
     $products = $request->input('products', []);
     $quantities = $request->input('quantities', []);
+    $units = $request->input('units', []);
     
     for ($product = 0; $product < count($products); $product++) {
         if ($products[$product] != '') {
-            $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+            $recibo->produto()->attach($products[$product], [
+                'Quantidade' => $quantities[$product],
+                'unidade' => $units[$product]
+            ]);
         }
-    }
+    }    
     
     $recibo->save();
 
-    return redirect()->route('inscricao.index')->with('success', 'Recibo criado com sucesso!');
+  //  dd($recibo);
+
+  return redirect()->back()->with('success', 'Inscrição realizada com sucesso!');
 }
 
     
@@ -146,12 +152,13 @@ public function store(Request $request)
     public function edit(Recibo $recibo, $id)
     {
         $produto = Produto::get();
-        $categoria = Produto::with('categoria')->get();
+        $categoria = Cat_ingredientes::all();
+
     //    $recibo->load('produto');
         $recibo = Recibo::get();
      //   $empresa_cliente = Empresa_Cliente::get();
-     $recibo        = Recibo::find($id);
-     $dre           = Dre::all();
+        $recibo = Recibo::find($id);
+        $dre = Dre::all();
 
         return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria'));
     }

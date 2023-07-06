@@ -132,7 +132,8 @@
                    </td>
                         <td>{{$item->Nome}}</td>
                         <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
-                        <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
+                        <td><center> {{$quantidade = $item->pivot['unidade'] }}</td>
+            
                         {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
                       
                   </tr>
@@ -211,7 +212,7 @@
 
    
 
-  
+</section>  
 
 
 {{ $recibo->links('pagination::bootstrap-4') }}

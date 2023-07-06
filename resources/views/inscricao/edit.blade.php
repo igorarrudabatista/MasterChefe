@@ -87,8 +87,10 @@
                                                                                 <table class="table table-striped">
                                                                                   <thead>
                                                                                     <tr>
-                                                                                      <th></th>
+                                                                                      <th>Imagem</th>
                                                                                       <th>Ingredientes</th>
+                                                                                      <th>Quantidade</th>
+                                                                                      <th> <center>Unidade de medida</th>
                                                                                       <th> <center>Categoria do Ingrediente</th>
                                                                               
                                                                                       
@@ -99,20 +101,22 @@
                                                                                
                                                                                   <tbody>
                                                                                     <tr>
-                                                                                        @foreach($recibo->produto as $item)
-                                                                                        
+                                                                                        @foreach($recibo->produto as $item)                                                                                        
                                                                                       </td>
-                                                                                              
-                                                                                    <td> 
+                                                                                        <td> 
                                                                                       <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
-                                                                                      {{-- <img src="{{asset('/images/inscricao/' . $item->produto->image)}}" width= "60px" class="logo"> --}}
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
                                                                                         
                                                                                           <td>{{$item->pivot['Quantidade'] }}</td>
-                                                                                          
-                                                                                          {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
-                                                                                        
+                                                                                          <td>{{$item->pivot['unidade'] }}</td>
+                                                                                          @if ($item->categoria->Nome == 'ALIMENTOS PROCESSADOS' or $item->categoria->Nome == 'ALIMENTOS ULTRAPROCESSADOS' 
+                                                                                          or $item->categoria->Nome == 'INGREDIENTES CULINÁRIOS' or $item->categoria->Nome == 'ALIMENTOS PROIBIDOS')                                                                                          <td><small class="text-danger"> <b> {{$item->categoria->Nome }} </b> </small></td>
+                                                                                          @else
+                                                                                          <td> <small class="text-success"> <b> {{$item->categoria->Nome }} </b> </small></td>
+                                                                                          @endif
+
+                                                                              
                                                                                     </tr>
                                                                                     @endforeach
                                                                             

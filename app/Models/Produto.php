@@ -17,7 +17,15 @@ class Produto extends Model
 
 
   public function categoria() {                                      
-    return $this->belongsTo(Cat_ingredientes::class);
+    return $this->belongsTo(Cat_ingredientes::class,'cat_ingredientes_id');
   }    
+
+  public function recibo()
+  {
+      return $this->belongsToMany(Recibo::class, 'cat_ingredientes_id')
+                  ->withPivot('Quantidade', 'unidade')
+                  ->withTimestamps();
+  }
+  
     
 }
