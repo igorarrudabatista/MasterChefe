@@ -81,26 +81,30 @@
     @foreach ($ingredientes as $ingredientes2)
     <div class="checkbox">
         <label class="checkbox-wrapper">
-            <input type="checkbox" name="products[]" value="{{ $ingredientes2->id }}" class="checkbox-input" />
+            <input type="checkbox" name="products[]" value="{{ $ingredientes2->id }}" multiple class="checkbox-input" />
             <span class="checkbox-tile">
                 <span class="checkbox-icon">
                     <img src="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}" width="60px">
                 </span>
                 <span class="checkbox-label">{{ $ingredientes2->Nome }}</span>
                 <small>Quantidade:</small>
-                <input type="number" name="quantities[]" placeholder="Quantidade" class="checkbox-label input-field" value="1" />
-                <select name="units[]" id="unit" class="input-field text-primary">
-                    <option value="Xícara de Chá">Unidade</option>
-                    <option value="Xícara de Chá">Litro</option>
-                    <option value="Xícara de Chá">Miligrama</option>
-                    <option value="Xícara de Chá">Quilo Grama - Kg</option>
-                    <option value="Xícara de Chá">Grama</option>
+                {{-- <input type="number" name="quantities[]" placeholder="Quantidade" multiple class="checkbox-label input-field" value="1" /> --}}
+                <input type="number" name="quantities[{{ $ingredientes2->id }}]" placeholder="Quantidade" class="checkbox-label input-field" value="1" />
+
+                 {{-- <select name="units[]" id="units" class="input-field text-primary"> --}}
+                  <select name="units[{{ $ingredientes2->id }}]" id="units" class="input-field text-primary">
+
+                    <option value="Unidade">Unidade</option>
+                    <option value="Litro">Litro</option>
+                    <option value="Miligrama">Miligrama</option>
+                    <option value="Quilo Grama - Kg">Quilo Grama - Kg</option>
+                    <option value="Grama">Grama</option>
                     <option value="Xícara de Chá">Xícara de Chá</option>
                     <option value="Copo Americano">Copo Americano</option>
                     <option value="Colher de café">Colher de café</option>
                     <option value="Colher de chá">Colher de chá</option>
                     <option value="Colher de sopa">Colher de sopa</option>
-                </select>
+                </select> 
             </span>
         </label>
     </div>

@@ -81,6 +81,7 @@ class ReciboController extends Controller
 
 public function store(Request $request)
 {
+    //dd($request->all());
     $recibo = Recibo::create($request->all()); 
 
     // Imagem do produto upload
@@ -97,7 +98,7 @@ public function store(Request $request)
         $image = $imageManager->make($requestImage->path());
         
         // Redimensione a imagem para as dimensões desejadas
-        $largura = 500;
+        $largura = 900;
         $altura = 500;
         $image->resize($largura, $altura, function ($constraint) {
             $constraint->aspectRatio(); // Mantém a proporção da imagem
@@ -109,22 +110,23 @@ public function store(Request $request)
         
         $recibo->image = $imageName;
     }
+
     $products = $request->input('products', []);
     $quantities = $request->input('quantities', []);
     $units = $request->input('units', []);
     
-    for ($product = 0; $product < count($products); $product++) {
-        if ($products[$product] != '') {
-            $recibo->produto()->attach($products[$product], [
+    foreach ($products as $product) {
+        if ($product != '') {
+            $recibo->produto()->attach($product, [
                 'Quantidade' => $quantities[$product],
                 'unidade' => $units[$product]
             ]);
         }
-    }    
+    }
+    
     
     $recibo->save();
 
-  //  dd($recibo);
 
   return redirect()->back()->with('success', 'Inscrição realizada com sucesso!');
 }

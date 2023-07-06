@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('Outros_ingredientes')->nullable();
             $table->string('Preparo')->nullable();
             $table->string('image')->nullable();
-            $table->decimal('alimentos_proibidos',10,4)->nullable();
+            $table->boolean('alimentos_proibidos')->nullable();
             $table->decimal('nota_seduc1',10,2)->nullable();
             $table->decimal('nota_seduc2',10,2)->nullable();
             $table->decimal('nota_seduc3',10,2)->nullable();

@@ -16,7 +16,8 @@ class Recibo extends Model
     // ];
 
     protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox', 
-    'Nome_Prato', 'Nota1', 'Nota2', 'Nota3', 'Nota4', 'Nota5', 'Nota6', 'disp_site',
+    'Nome_Prato', 'nota_seduc1', 'nota_seduc2', 'nota_seduc3', 'nota_seduc4', 'nota_seduc5', 'alimentos_proibidos', 'nota_dre1', 'nota_dre2', 'nota_dre3',
+    'nota_dre4', 'nota_dre5'
       ];
       
     protected $table = 'recibo';
@@ -24,7 +25,8 @@ class Recibo extends Model
    // public $timestamps = false;
 
     public function produto() {
-        return $this->belongsToMany(Produto::class)->withPivot(['Quantidade','unidade']);
+        return $this->belongsToMany(Produto::class, 'produto_recibo')->withPivot('Quantidade','unidade');
+        
     }   
     
     // public function empresa_cliente() {

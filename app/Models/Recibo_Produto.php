@@ -10,6 +10,7 @@ class Recibo_Produto extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $fillable = ['Quantidade','unidade'];
 
     protected $table = 'produto_recibo';
 

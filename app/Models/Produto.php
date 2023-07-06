@@ -20,12 +20,19 @@ class Produto extends Model
     return $this->belongsTo(Cat_ingredientes::class,'cat_ingredientes_id');
   }    
 
-  public function recibo()
-  {
-      return $this->belongsToMany(Recibo::class, 'cat_ingredientes_id')
-                  ->withPivot('Quantidade', 'unidade')
-                  ->withTimestamps();
-  }
+  // public function recibo()
+  // {
+  //     return $this->belongsToMany(Recibo::class, 'cat_ingredientes_id')
+  //                 ->withPivot('Quantidade', 'unidade')
+  //                 ->withTimestamps();
+  // }
   
+  public function recibos()
+{
+    return $this->belongsToMany(Recibo::class, 'cat_ingredientes_id')
+                ->withPivot('Quantidade', 'unidade')
+                ->withTimestamps();
+}
+
     
 }
