@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Super Chef da Educação </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
 <link rel="stylesheet" href="{{asset('/css/site/site-style.css')}}">
 
 </head>
@@ -11,12 +13,12 @@
 <!-- partial:index.partial.html -->
 <div class="app-container">
   <section class="navigation">
-    <a href="#" class="app-link">LOGO da LOJA</a>
+    <a href="/Site" class="app-link">LOGO da LOJA</a>
     <div class="navigation-links">
-      <a href="#" class="nav-link ">Home</a>
-      <a href="#" class="nav-link active">Produtos</a>
-      <a href="#" class="nav-link">Menu 3</a>
-      <a href="#" class="nav-link">Menu 4</a>
+      <a href="/Site" class="nav-link ">Início</a>
+      <a href="#" class="nav-link active">Escolas</a>
+      <a href="#" class="nav-link">DREs</a>
+      <a href="yhttps://www3.seduc.mt.gov.br" class="nav-link">Seduc - MT</a> 
 
     </div>
   
@@ -38,6 +40,8 @@
         <input type="text" name="search" placeholder="Procurar receita" class="search-input">
         <button class="search-btn">Procurar</button>
       </div>
+      @if($search)
+      @endif
 
       <div class="contact-actions-wrapper">
          <div class="contact-actions">

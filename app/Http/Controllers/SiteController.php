@@ -68,15 +68,32 @@ class SiteController extends Controller
 
     public function index(Request $request) {
 
-        $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(8)->get();
+        $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(6)->get();
 
         $id_recibo = Recibo::get('id');
 
-        $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->paginate('12');  
+        
+        
+        $search = $request->input('search');
+        
+        if($search) {
+            $recibo = Recibo::where([['Nome_Prato', 'like', '%'.$search. '%' ]])->paginate('12');
+            
+        } else {
+            $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->paginate('12');  
+        }
+        
+   //     $recibo = Recibo::with('dre','likes')->where('disp_site','=',0)->paginate('12');  
+
+//    $search = $request->input('search');
+//      $response = Recibo::query()
+//          ->where('Nome_Prato', 'LIKE', "%{$search}%")
+//          ->get();
 
 
         return view('Site.index', [
         'recibo'=> $recibo,
+        'search' => $search,
         'id_recibo' => $id_recibo,
         'ultimos_recibos' => $ultimos_recibos,
 
@@ -108,12 +125,12 @@ class SiteController extends Controller
 
    public Function search(Request $request) {
 
-    $search = $request->input('search');
-    $response = ALUNO::query()
-        ->where('name', 'LIKE', "%{$search}%")
-        ->get();
+    // $search = $request->input('search');
+    // $response = Recibo::query()
+    //     ->where('Nome_Prato', 'LIKE', "%{$search}%")
+    //     ->get();
 
-  return view('Site.index',         ['search'    => $search,
+  return view('Site.index',         ['search'      => $search,
                                         'response' => $response
                                     ]);
 

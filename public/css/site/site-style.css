@@ -123,9 +123,9 @@ button, a {
 
 .nav-link {
   color: var(--light-font-color);
-  font-weight: 500;
-  font-size: 14px;
-  margin: 0 8px;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 4px;
   transition: 0.2s;
 }
 .nav-link.active {
@@ -178,7 +178,7 @@ section.app-actions {
   display: flex;
   justify-content: space-between;
   border-radius: 6px;
-  max-width: 420px;
+  max-width: 620px;
   width: 100%;
   overflow: hidden;
   height: 40px;
@@ -592,13 +592,16 @@ section.app-actions {
 .modal-image-wrapper {
   border-radius: 20px;
   overflow: hidden;
-  max-height: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .modal-image-wrapper img {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;
+     margin-left: auto;
+     margin-right: auto;
 }
 
 .modal-left {

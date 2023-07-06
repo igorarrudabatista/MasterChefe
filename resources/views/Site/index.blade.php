@@ -62,7 +62,7 @@
           <div class="modal-left">
             
             <div class="modal-image-wrapper modalImage-js">
-              <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}"  class="logo cardImage-js">          
+              <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" class="logo cardImage-js">          
           </div>
 
           <div class="modal-info-header">
@@ -141,39 +141,22 @@
                 </tbody>
               </table>
 
-              <div class="modal-right">
-                <div class="app-main-right-header">
-                  <span>+ Produtos</span>
-                  <a href="#">Ver todos</a>
-                </div>
-                
-                <div class="card-wrapper">
-                  <div class="card">
-                    <div class="profile-info-wrapper">
-                      <div class="profile-img-wrapper">
-                        <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
-                      </div>
-                      <p> </p>
-                    </div>
-                    <p> </p>
-                  </div>
-                </div>    
-              </div>
+          
 
               <div class="alert alert-primary" role="alert">
                 <h4 class="alert-heading"> Outros ingredientes utilizados:</h4>
                 <h6 class="alert-heading"> {{$recibos->Outros_ingredientes }}</h6>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
+                {{-- <div class="alert alert-warning" role="alert">
                 <h4 class="alert-heading">Forma de preparo:</h4>
                 <h6 class="alert-heading"> {!! nl2br(e($recibos->Preparo)) !!}</h6>
                 <p> </p>
+              </div>  --}}
 
 
                 
 
-              </div> 
 
 
     
@@ -182,6 +165,40 @@
  
           </div>
         </div>
+        
+    <div class="modal-right">
+      <div class="app-main-right-header">
+        <span>Forma de Preparo</span>
+      </div>
+      
+      <div class="card-wrapper">
+        <div class="card">
+          <div class="profile-info-wrapper">
+            <div class="profile-img-wrapper">
+              <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
+            </div>
+            <h6 class="alert-heading"> {!! nl2br(e($recibos->Preparo)) !!}</h6>
+          </div>
+        </div>
+      </div>    
+    <hr>
+      <div class="app-main-right-header">
+        <span>Mais receitas</span>
+      </div>
+      @foreach ($ultimos_recibos as $recibos)
+      <div class="card-wrapper">
+        <div   href="1" class="card">
+          <div class="profile-info-wrapper">
+            <div class="profile-img-wrapper">
+              <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}" class="logo cardImage-js">          
+            </div>
+            <p>{{$recibos->Nome_Prato ?? 'Não encontrado' }} </p>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    
+    </div>
           </div> 
         </div>
 
@@ -192,11 +209,9 @@
 
 @endforeach
 
-
    
 
   
-</section>
 
 
 {{ $recibo->links('pagination::bootstrap-4') }}

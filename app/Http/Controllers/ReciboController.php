@@ -10,7 +10,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
 
 
 use App\Exports\ReciboExport;
@@ -75,44 +76,53 @@ class ReciboController extends Controller
     }
     
 
-    public function store(Request $request)
-    {
-      
-            $recibo = Recibo::create($request->all()); 
-
-            //  // Imagem do produto upload
-                  if ($request->hasFile('image')&& $request->file('image')->isValid()){
-                            
-                     $requestImage = $request -> image;
-                    
-                     $extension = $requestImage-> extension();
-                    
-                     $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
-                    
-                     $request -> image->move(public_path('images/inscricao'), $imageName);
-                    
-                     $recibo -> image = $imageName;
-                    
-                 }
-                $products = $request->input('products', []);
-                $quantities = $request->input('quantities', []);
-                //dd($recibo);
-                for ($product=0; $product < count($products); $product++) {
-                    if ($products[$product] != '') {
-                        $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-                   // dd($quantities);
-                }
-            }
-            $recibo ->save();
-           //  dd($recibo);
 
 
-// $recibo ->save();
+public function store(Request $request)
+{
+    $recibo = Recibo::create($request->all()); 
 
-    //dd($recibo);
-        return redirect()->route('inscricao.index')
-                        ->with('success','Recibo criado com sucesso!');
+    // Imagem do produto upload
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        $requestImage = $request->image;
+        $extension = $requestImage->extension();
+        $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        $imagePath = public_path('images/inscricao') . '/' . $imageName;
+        
+        // Crie uma instância da classe Intervention ImageManager
+        $imageManager = new ImageManager();
+        
+        // Abra a imagem usando o ImageManager
+        $image = $imageManager->make($requestImage->path());
+        
+        // Redimensione a imagem para as dimensões desejadas
+        $largura = 500;
+        $altura = 500;
+        $image->resize($largura, $altura, function ($constraint) {
+            $constraint->aspectRatio(); // Mantém a proporção da imagem
+            $constraint->upsize(); // Evita que a imagem seja dimensionada para cima
+        });
+        
+        // Salve a imagem redimensionada
+        $image->save($imagePath);
+        
+        $recibo->image = $imageName;
     }
+
+    $products = $request->input('products', []);
+    $quantities = $request->input('quantities', []);
+    
+    for ($product = 0; $product < count($products); $product++) {
+        if ($products[$product] != '') {
+            $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+        }
+    }
+    
+    $recibo->save();
+
+    return redirect()->route('inscricao.index')->with('success', 'Recibo criado com sucesso!');
+}
+
     
 
      public function show(Recibo $recibo)
