@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('Quantidade');
             $table->string('unidade');
     
-            $table->unsignedInteger('unidade_medidas_id');
-            $table->foreign('unidade_medidas_id')->references('id')->on('unidade_medidas')->onDelete('cascade');
+            // $table->unsignedInteger('unidade_medidas_id');
+            // $table->foreign('unidade_medidas_id')->references('id')->on('unidade_medidas')->onDelete('cascade');
 
             $table->unsignedInteger('recibo_id');
             $table->foreign('recibo_id')->references('id')->on('recibo')->onDelete('cascade');

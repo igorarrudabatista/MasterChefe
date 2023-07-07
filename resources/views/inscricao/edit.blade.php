@@ -63,13 +63,13 @@
                                                               <div class="col-12 col-sm-12 col-md-4 ">
                                                                   <div class="list-group" role="tablist">
                                                                       <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                                                      data-bs-toggle="list" href="#list-home" role="tab">1. Ingredientes</a>
+                                                                      data-bs-toggle="list" href="#list-home" role="tab">1. Ingredientes e Avaliação SEDUC</a>
                                                                   <a class="list-group-item list-group-item-action" id="list-profile-list"
                                                                       data-bs-toggle="list" href="#list-profile" role="tab">2. Modo de Preparo</a>
                                                                   <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
                                                                       data-bs-toggle="list" href="#list-tramitar" role="tab">3. Imagem do prato </a>
                                                                   <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
-                                                                      data-bs-toggle="list" href="#list-finalizar" role="tab">4. AVALIAR</a>
+                                                                      data-bs-toggle="list" href="#list-finalizar" role="tab">4. Avaliação DRE</a>
                                                              
                                                                   </div>
                                                               </div>
@@ -122,6 +122,12 @@
                                                                             
                                                                                   </tbody>
                                                                                 </table>
+                                                                                       
+                                                                              <h6><strong>Outros ingedientes da receita:</strong></h6>
+                                                                              {{$recibo->Outros_ingredientes }}
+                                                                    
+                                                                        <hr> 
+                                                                        <br>
 
                                                                                 <div class="alert alert-primary" role="alert">
                                                                                   <h4 class="alert-heading">Avaliação SEDUC - MT</h4>
@@ -194,29 +200,26 @@
 
 
 
-                                                                                <button type="submit" class="btn btn-primary white"> SALVAR</button>
-
-
-
-
-                                                                                </div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                              </div>
                                                                               
                                                                               
-                                                                                {{$recibo->Outros_ingredientes }}
-
-                                                                              </div></div></div>
                                                                               
-                                                                            
-                                                                    
-                                                                        
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary white"> SALVAR</button>
+                                                                              
 
                                                                   <div class="tab-pane" id="list-profile" role="tabpanel"
                                                                       aria-labelledby="list-profile-list">
                                                                       <div class="row">
 
                                                                         <div class="form-group">
-
-                                                                          <h6><strong>Modo de Preparo:</strong></h6>
+                                                                             <h6><strong>Modo de Preparo:</strong></h6>
 
                                                                           {!! nl2br(e($recibo->Preparo)) !!}
 

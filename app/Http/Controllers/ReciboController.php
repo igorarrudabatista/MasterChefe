@@ -64,6 +64,40 @@ class ReciboController extends Controller
                                     ]);
 
     }
+    public function semnotas()
+    {
+        $dre = Dre::all();
+
+        $recibo = Recibo::where('nota_seduc1', '=', NULL)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
+        $nota = $recibo;
+    //    $recibo = Recibo::with('empresa_cliente')->get();  
+
+      //  $empresa_cliente = Empresa_Cliente::get();
+        $search = request('search');
+
+        if($search) {
+            $produtos = Recibo::where ([['name', 'like', '%'.$search. '%' ]])->get();
+
+             } else {
+                $produtos = Recibo::all();
+            }
+       
+       
+        return view('inscricao.index', [   'recibo'=> $recibo, 
+                                           'search' => $search,
+                                            'dre' => $dre,
+                                            'nota' =>$nota
+                                    ]);
+
+    }
 
     public function create()
     {

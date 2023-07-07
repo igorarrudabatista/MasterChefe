@@ -49,18 +49,104 @@
                                 <span>Agenda</span>
                             </a>
                         </li>
-                        <li class="sidebar-item  ">
-                            {{-- active --}}
-                            <a href="{{asset('/inscricao')}}" class='sidebar-link'>
+
+                                  
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>Inscrições</span>
                             </a>
+                            <ul class="submenu ">
+
+                                <a href="{{asset('/inscricao')}}" class='sidebar-link'>
+                                    <i data-feather="file-text" width="20"></i>
+                                        <span>Ver todas as inscrições </span>
+                                </a>
+                              
+
+                                <a href="/inscricao/semnotas" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>Inscrições não avaliadas</span>
+                            </a>
+                            
+
+                            <a href="/drealtafloresta" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Alta Floresta</span>
+                            </a>
+                            <a href="/drebarradogarcas" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Barra do Garças</span>
+                            </a>
+                            <a href="/drecaceres" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Cáceres</span>
+                            </a>
+                            <a href="/dreconfresa" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Confresa</span>
+                            </a>
+                            <a href="/drecuiaba" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Cuiabá</span>
+                            </a>
+                            <a href="/drevarzeagrande" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Várzea Grande</span>
+                            </a>
+                            <a href="/drediamantino" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Diamantino</span>
+                            </a>
+                            <a href="/drejuina" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Juína</span>
+                            </a>
+                            <a href="/drematupa" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Matupá</span>
+                            </a>
+                            <a href="/dreponteselacerda" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Pontes e Lacerda</span>
+                            </a>
+                            <a href="/dreprimaveradoleste" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Primavera do Leste</span>
+                            </a>
+                            <a href="/drerondonopolis" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Rondonópolis</span>
+                            </a>
+                            <a href="/dresinop" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Sinop</span>
+                            </a>
+                            <a href="/dretangaradaserra" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>DRE - Tangará da Serra</span>
+                            </a>
+
+
+
+
+
+
+
+
+
+                            </ul>
+                                
+
                         </li>
+                       
+                        
+                        <hr>                                 
                         <li class="sidebar-item  ">
                             {{-- active --}}
                             <a href="{{asset('/formulario')}}" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
-                                <span>Formulario de inscricao</span>
+                                <span>Formulário de inscrição</span>
                             </a>
                         </li>
                         <li class="sidebar-item  ">
@@ -104,7 +190,7 @@
                             </ul>
                                 
 
-
+                        </li>
                        
                         
                         <hr>
@@ -172,12 +258,12 @@
                                                         <div class="col-md-12 px-0">
                                                             <div class="card card-highlighted">
                                                                 <div class="card-header text-center">
-                                                                    <h4 class='card-title'>Você tem:</h4>
+                                                                    <h4 class='card-title'>Há:</h4>
                                                                 </div>
                                                                 <h1 class="price text-white"></h1>
                                                               
                                                                 <ul>
-                                                                    <li>Fichas tramitadas para você!</li>
+                                                                    <li>Inscrições</li>
                                                                 </ul>
                                                                 <div class="card-footer">
                                                                     <button onclick="location.href='/ficha/atender'" class="btn btn-outline-white btn-block">Ver Fichas</button>
@@ -246,7 +332,7 @@
                         {{-- <p>2023 &copy; SEDUC</p> --}}
                     </div>
                     <div class="float-end">
-                        <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a href="https://seduc.mt.gov.br">SEDUC - TI </a></p>
+                        <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a href="https://www3.seduc.mt.gov.br">SEDUC - TI </a></p>
                     </div>
                 </div>
             </footer>

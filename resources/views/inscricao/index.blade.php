@@ -5,128 +5,61 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
 />
 
-
-<div class="panel-header panel-header-sm">
-</div>
-<div class="content">
-  <div class="row">
-    <div class="col-md-12">
-        <div class="col-md-12 ml-auto mr-auto">
-            <div class="card card-upgrade">
-              <div class="card-header">
-
-       
-      
-      <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
-          <br>
-              <h1 class="app-page-title mb-0">LISTA DE INSCRITOS</h1><br>
-        
-
-        </div>
-        <div class="col-auto">
-           <div class="page-utilities">
-            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-              <div class="col-auto">
-                <form class="table-search-form row gx-1 align-items-center" action="{{asset('/recibos')}}" method="GET">
-        
-         
-
-                          <div class="col-auto">                 
-       
-
-
-                              <input type="text" id="search" name="search" class="form-control search-orders" placeholder="Procurar">
-                          </div>
-                          <div class="col-auto">
-                              <button type="submit" class="btn app-btn-secondary">Procurar</button>
-
-  
-                          </div>
-                      </form>
-                      
-              </div><!--//col-->
-
-              <div class="col-auto">						    
-                <a class="btn app-btn-secondary" href="{{asset('inscricao/export')}}">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-</svg>
-                  Download Excel
-              </a>
-              </div>
-              <div class="col-auto">						    
-                @if ($search)
-                <p>Resultado da busca: {{$search}} </p>
-                <a href="{{asset('/recibos')}}">
-                  <button class="btn">Limpar pesquisa</button> </a>
-                  @else
-            
-                  @endif
-                  
-              </div>
-          </div><!--//table-utilities-->
-        </div><!--//col-auto-->
-      </div><!--//row-->
-     
-    <div class="card-body">
-      @if ($message = Session::get('success'))
-
-      <div class="toast-container" style="position: absolute; top: 60px; right: 60px;">
-        <div class="toast bg-success text-white fade show">
-            <div class="toast-header bg-success text-white">
-                <strong class="me-auto"><i class="bi-globe"></i>Sucesso!</strong>
-                <small>{{date("h:i a")}}</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-              {{$message}}
-            </div>
-        </div>
-    </div>
-    
-      @elseif ($message = Session::get('edit'))
-   
-      <div class="toast-container" style="position: absolute; top: 60px; right: 60px;">
-        <div class="toast bg-warning text-white fade show">
-            <div class="toast-header bg-warning text-white">
-                <strong class="me-auto"><i class="bi-globe"></i>Sucesso!</strong>
-                <small>{{date("h:i a")}}</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-              {{$message}}
-            </div>
-        </div>
-    </div>
-
-    
-      @elseif ($message = Session::get('delete'))
-      <div class="toast-container" style="position: absolute; top: 60px; right: 60px;"  data-delay="500">
-        <div class="toast bg-danger text-white fade show"  data-delay="500">
-            <div class="toast-header bg-danger text-white" data-delay="500">
-                <strong class="me-auto"><i class="bi-globe"></i>Sucesso!</strong>
-                <small>{{date("h:i a")}}</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-              {{$message}}
-            </div>
-        </div>
-    </div>
-      </div>
-    
-      @endif
-    </div>
-    
-    <div class="container">
+<div class="main-content container-fluid">
+  <div class="page-title">
       <div class="row">
-      <div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-striped"  id="table1">
-              <thead>
+          <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>LISTA DE INSCRITOS</h3>
+              <p class="text-subtitle text-muted">
+          </p>
+          </div>
+          <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Lista de inscritos</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+  <section class="section">
+  <div class="card">
+      
+          <div class="card-body">
+              @if ($message = Session::get('success'))
+              <div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Mensagem:</strong> {{ $message }}
+</div>
+</div>
+          
+              @elseif ($message = Session::get('edit'))
+              <div class="alert alert-warning alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Mensagem:</strong> {{ $message }}
+</div>
+</div>
 
+              @elseif ($message = Session::get('delete'))
+              <div class="alert alert-danger alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Mensagem:</strong> {{ $message }}
+</div>
+</div>
+              @endif
+
+
+              <div>
+      @if (session()->has('message'))
+          <div class="alert alert-success">
+              {{ session('message') }}
+          </div>
+      @endif
+  </div>
+  <table class='table table-striped' id="table1">
+    <thead>
+      <tr>
                 <th></th>
                 <th>ID</th>
                 <th>Nome</th>
@@ -138,10 +71,10 @@
                 <th>Avaliação DRE</th>
                 <th>Total</th>
                 <th>Disponível no site</th>
+      </tr>
+    </thead>
                     @foreach ($recibo as $key => $recibos)
-
-                    <tbody>
-                        <tr>
+                
 
                            <td>
                             <a href="{{ route('inscricao.edit',$recibos->id) }}"> 
@@ -228,26 +161,17 @@
 
 @endswitch            
   
-     
-      {{-- <a class="dropdown-item bg-success"> <i class="fas fa-check"></i> Sim</a>
-    
-
-      <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
-      <a class="dropdown-item bg-danger " href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fas fa-exclamation-triangle"></i> Não</a>  --}}
-
-    
-
 
 </td>
 
                             
                                             </tr>
                         
-                        @endforeach
-
-                        
-                    </tbody>
-                </table>
+                                            
+                                            
+                                            @endforeach
+                                          </tbody>
+                                        </table>
                 
             </div>
         </div>

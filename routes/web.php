@@ -21,6 +21,23 @@ use App\Http\Controllers\
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
 Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
+Route::get('/inscricao/semnotas',    [ReciboController::class, 'semnotas']);
+Route::get('/inscricao/drealtafloresta',    [ReciboController::class, 'drealtafloresta']);
+Route::get('/inscricao/drebarradogarcas',    [ReciboController::class, 'drebarradogarcas']);
+Route::get('/inscricao/drecaceres',    [ReciboController::class, 'drecaceres']);
+Route::get('/inscricao/dreconfresa',    [ReciboController::class, 'dreconfresa']);
+Route::get('/inscricao/drecuiaba',    [ReciboController::class, 'drecuiaba']);
+Route::get('/inscricao/drevarzeagrande',    [ReciboController::class, 'drevarzeagrande']);
+Route::get('/inscricao/drediamantino',    [ReciboController::class, 'drediamantino']);
+Route::get('/inscricao/drejuina',    [ReciboController::class, 'drejuina']);
+Route::get('/inscricao/drematupa',    [ReciboController::class, 'drematupa']);
+Route::get('/inscricao/dreponteselacerda',    [ReciboController::class, 'dreponteselacerda']);
+Route::get('/inscricao/dreprimaveradoleste',    [ReciboController::class, 'dreprimaveradoleste']);
+Route::get('/inscricao/drerondonopolis',    [ReciboController::class, 'drerondonopolis']);
+Route::get('/inscricao/dresinop',    [ReciboController::class, 'dresinop']);
+Route::get('/inscricao/dretangaradaserra',    [ReciboController::class, 'dretangaradaserra']);
+
+
 Route::patch('/inscricao/invoice/{id}',    [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
 Route::get('/inscricao/invoice/disp_site_sim/{id}',      [ReciboController::class, 'disp_site_sim']);
 Route::get('/inscricao/invoice/disp_site_nao/{id}',      [ReciboController::class, 'disp_site_nao']);
@@ -37,7 +54,6 @@ Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
-//Route::resource('inscricao',                 InscricaoController::class);
 Route::resource('pessoa',                    PessoaController::class);
 Route::resource('dre',                       DreController::class);
 Route::resource('escola',                    EscolaController::class);

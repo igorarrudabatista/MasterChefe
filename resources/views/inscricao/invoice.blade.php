@@ -74,9 +74,11 @@
                                                                                 <table class="table table-striped">
                                                                                   <thead>
                                                                                     <tr>
-                                                                                      <th></th>
+                                                                                      <th>Imagem</th>
                                                                                       <th>Ingredientes</th>
-                                                                                      <th> <center>Quantidade</th>
+                                                                                      <th>Quantidade</th>
+                                                                                      <th> <center>Unidade de medida</th>
+                                                                                      <th> <center>Categoria do Ingrediente</th>
                                                                               
                                                                                       
                                                                                       {{-- <th>Preço</th> --}}
@@ -86,26 +88,32 @@
                                                                                
                                                                                   <tbody>
                                                                                     <tr>
-                                                                                        @foreach($recibo->produto as $item)
-                                                                                        
+                                                                                        @foreach($recibo->produto as $item)                                                                                        
                                                                                       </td>
-                                                                                              
-                                                                                    <td> 
+                                                                                        <td> 
                                                                                       <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
-                                                                                      {{-- <img src="{{asset('/images/inscricao/' . $item->produto->image)}}" width= "60px" class="logo"> --}}
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
-                                                                                          <td><center> {{$quantidade = $item->pivot['Quantidade'] }}</td>
-                                                                                          {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
                                                                                         
+                                                                                          <td>{{$item->pivot['Quantidade'] }}</td>
+                                                                                          <td>{{$item->pivot['unidade'] }}</td>
+                                                                                          @if ($item->categoria->Nome == 'ALIMENTOS PROCESSADOS' or $item->categoria->Nome == 'ALIMENTOS ULTRAPROCESSADOS' 
+                                                                                          or $item->categoria->Nome == 'INGREDIENTES CULINÁRIOS' or $item->categoria->Nome == 'ALIMENTOS PROIBIDOS')                                                                                          <td><small class="text-danger"> <b> {{$item->categoria->Nome }} </b> </small></td>
+                                                                                          @else
+                                                                                          <td> <small class="text-success"> <b> {{$item->categoria->Nome }} </b> </small></td>
+                                                                                          @endif
+
+                                                                              
                                                                                     </tr>
                                                                                     @endforeach
                                                                             
                                                                                   </tbody>
                                                                                 </table>
+                                                                                       
+                                                                              <h5><strong>Outros ingredientes da receita:</strong></h5>
+                                                                              {{$recibo->Outros_ingredientes }}
 
-                                                                               <h4> <b> Outros ingredientes utilizados: <h5 class="text-primary">
-                                                                                {{$recibo->Outros_ingredientes }} </h5> </b></h4>
+                                                                               
 
                                                                               </div></div></div>
                                                                               
@@ -129,51 +137,66 @@
                                                                       <div class="form-group">
 
                                                                         <h6> <strong>  </strong></h6>
+                                                                        <h5><strong>Imagem do Prato:</strong></h5>
 
+                                                                        <center>
                                                                         <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" width= "800px" class="logo">
-                                                                      </div> </div> </div> 
+                                                                      </div> </div>
 
 
-
-  <div class="row">
-  <div class="col-xl-12 col-sm-12 col-12">
-      <div class="card text-center bg-lighten-2">
-          <div class="card-content d-flex">
-              <div class="card-body">
-                  <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
-                      class="mb-1">
-                  <h4 class="card-title white">Nota Candidato</h4>
-              
-                  {{--INICIO --}}
-                  <div class="row">
-                  <div class="col-md-12 col-8">
-                    <div class="form-group has-icon-left">
-                        <label for="email-id-column"><strong> Nota 1 - Ingredientes </strong></label>
-                       {{$recibo->Nota1}}    <br>      
-                        <label for="email-id-column"><strong> Nota 2 - Ingredientes </strong></label>
-                        {{$recibo->Nota2}}          <br>
-                        <label for="email-id-column"><strong> Nota 3 - Ingredientes </strong></label>
-                        {{$recibo->Nota3}}          <br>
-                        <label for="email-id-column"><strong> Nota 4 - Ingredientes </strong></label>
-                          {{$recibo->Nota4}}       <br>   
-                        <label for="email-id-column"><strong> Nota 5 - Ingredientes </strong></label>
-                          {{$recibo->Nota5}}          <br>
-                        <label for="email-id-column"><strong> Nota 6 - Ingredientes </strong></label>
-                        {{$recibo->Nota6}}    
-                              <br>
-                       <?php $totalnotas = $recibo->Nota1 + $recibo->Nota2 + $recibo->Nota3 + $recibo->Nota4 + $recibo->Nota5 + $recibo->Nota6; ?>
-<br>
-                        <label for="email-id-column"><strong> <h5 class="text-danger"> TOTAL:  {{$totalnotas}}.  </strong></label>
-                        </div>
-                </div>
-                </div>
-               
-
-
+                                                                      <div class="row">
+                                                                        <div class="col-xl-6 col-sm-6 col-6">
+                                                                            <div class="card text-center bg-lighten-2">
+                                                                                <div class="card-content d-flex">
+                                                                                
+                                                                                    <?php $totalnotasseduc = $recibo->nota_seduc1 + $recibo->nota_seduc2 + $recibo->nota_seduc3 + $recibo->nota_seduc4 + $recibo->nota_seduc5; ?>
+                                                                                    <?php $totalnotasdre = $recibo->nota_dre1 + $recibo->nota_dre2 + $recibo->nota_dre3 + $recibo->nota_dre4 + $recibo->nota_dre5; ?>
+                                                                    
+                                                                                    <div class="card" style="width: 30rem;">
+                                                                                        <img src="..." class="card-img-top">
+                                                                                        <div class="card-body">
+                                                                                            <h5 class="card-title">Candidato avaliado pela SEDUC - MT</h5>
+                                                                                        </div>
+                                                                                        <ul class="list-group list-group-flush">
+                                                                                            <li class="list-group-item">Alimentos in natura e minimamente processado -  <b> Nota:  {{$recibo->nota_seduc1}} </b>  </li>
+                                                                                            <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_seduc2}}  </b> </li>
+                                                                                            <li class="list-group-item">Processados -<b>   Nota:  {{$recibo->nota_seduc3}} </b>  </li>
+                                                                                            <li class="list-group-item">Ultraprocessados - <b>  Nota:  {{$recibo->nota_seduc4}} </b>  </li>
+                                                                                            <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_seduc5}} </b>  </li>
+                                                                                        </ul>
+                                                                                        <div class="card-body">
+                                                                                            <a class="card-link text-primary"><big> <b> TOTAL: {{$totalnotasseduc}},00 </b> </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-sm-6 col-6">
+                                                                            <div class="card text-center bg-lighten-2">
+                                                                                <div class="card-content d-flex">
+                                                                                    <div class="card" style="width: 30rem;">
+                                                                                        <img src="..." class="card-img-top">
+                                                                                        <div class="card-body">
+                                                                                            <h5 class="card-title">Candidato avaliado pelas DREs - MT</h5>
+                                                                                        </div>
+                                                                                        <ul class="list-group list-group-flush">
+                                                                                            <li class="list-group-item">Viabilidade no PNAE -  <b> Nota:  {{$recibo->nota_dre1}} </b>  </li>
+                                                                                            <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_dre2}}  </b> </li>
+                                                                                            <li class="list-group-item"> Alimentos da Agricultura Familiar  -<b>   Nota:  {{$recibo->nota_dre3}} </b>  </li>
+                                                                                            <li class="list-group-item">Alimentos da Agricultura Familiar - <b>  Nota:  {{$recibo->nota_dre4}} </b>  </li>
+                                                                                            <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_dre5}} </b>  </li>
+                                                                                        </ul>
+                                                                                        <div class="card-body">
+                                                                                            <a class="card-link text-primary"><big> <b> TOTAL: {{$totalnotasdre}},00 </b> </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
 
                                   </section>
-                                  <!-- List group navigation ends -->
-
 
 <script src="{{asset('/js/pages/form-editor.js')}}"></script>
 @endsection
