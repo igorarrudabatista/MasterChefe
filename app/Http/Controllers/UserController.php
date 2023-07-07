@@ -34,10 +34,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles','userCount'));
+        return view('users.create',compact('roles'));
     }
     
     /**

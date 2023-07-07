@@ -1,6 +1,7 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
-    
+<main id="main" class="main">
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 

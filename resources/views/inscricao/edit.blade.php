@@ -1,5 +1,6 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
+<main id="main" class="main">
 
 
 <section id="multiple-column-form">
@@ -122,7 +123,7 @@
                                                                             
                                                                                   </tbody>
                                                                                 </table>
-                                                                                       
+
                                                                               <h6><strong>Outros ingedientes da receita:</strong></h6>
                                                                               {{$recibo->Outros_ingredientes }}
                                                                     
@@ -147,10 +148,19 @@
                                                                                 </div>
                                                                                   <div class="col-md-6 col-6">
                                                                                     <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Alimentos in natura e minimamente processado </strong>                                                                                        </strong>
+                                                                                        <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Até 5 itens</strong>                                                                                        </strong>
                                                                                            <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 1 Ponto </small> </label>
                                                                                         <div class="position-relative">
                                                                                           {!! Form::number('nota_seduc1', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="1"' )) !!}            
+                                                                                    </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                  <div class="col-md-6 col-6">
+                                                                                    <div class="form-group has-icon-left">
+                                                                                        <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Acima de 6 itens </strong>                                                                                        </strong>
+                                                                                           <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 2 Ponto </small> </label>
+                                                                                        <div class="position-relative">
+                                                                                          {!! Form::number('nota_seduc2', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="2"' )) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -162,7 +172,7 @@
                                                                                         <label for="email-id-column"><strong>Valorização dos hábitos alimentares locais </strong>
                                                                                             <br><small class="text-danger">(Acima de 6 intens) Pontuação máxima: 2 Pontos </small></label>
                                                                                         <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc2', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                                                                                          {!! Form::number('nota_seduc3', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -172,7 +182,7 @@
                                                                                         <label for="email-id-column"><strong>Processados</strong>
                                                                                             <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
                                                                                         <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc3', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                                                                                          {!! Form::number('nota_seduc4', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -183,7 +193,7 @@
                                                                                         <label for="email-id-column"><strong>Ultraprocessados</strong>
                                                                                             <br><small class="text-danger">Pontuação máxima: 3 Pontos </small></label>
                                                                                         <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc4', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="3"')) !!}            
+                                                                                          {!! Form::number('nota_seduc5', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="3"')) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -193,7 +203,7 @@
                                                                                         <label for="email-id-column"><strong>Criatividade (inovação e originalidade) </strong>
                                                                                             <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
                                                                                         <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc5', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                                                                                          {!! Form::number('nota_seduc6', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
                                                                                     </div>
                                                                                 </div>
                                                                                 </div>
@@ -210,8 +220,8 @@
                                                                               
                                                                             </div>
                                                                           </div>
+                                                                          <button type="submit" class="btn btn-primary white"> SALVAR</button>
                                                                         </div>
-                                                                        <button type="submit" class="btn btn-primary white"> SALVAR</button>
                                                                               
 
                                                                   <div class="tab-pane" id="list-profile" role="tabpanel"
@@ -248,7 +258,11 @@
               <div class="card-body">
                   <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                       class="mb-1">
-                  <h4 class="card-title white">Avaliação do Candidato - DRE </h4> <br> 
+                      <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Avaliação do Candidato - DRE </h4>
+                        <p> Os campos de notas abaixo são para o uso exclusivo da  DRE </p>                                                                                  <hr>
+                        <p class="mb-0"></p>
+                      </div>
              
                   {{--INICIO --}}
                   <div class="row">

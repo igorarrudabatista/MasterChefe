@@ -7,7 +7,6 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css'>
 <link rel="stylesheet" href="{{asset('/css/upload_image/style.css')}}">
 
-<link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="{{asset('/css/formulario/style-formulario.css')}}">
 <link rel="stylesheet" href="{{asset('/css/formulario/style-checkbox.css')}}">
 
@@ -27,56 +26,68 @@
 
     <h1 class="create">Competição SuperChef da Educação de MT – Melhores Receitas </h1>
     
-        <div class="social-media">
-
-      {{-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="twitter"><i class="fab fa-twitter-square"></i></a>
-      <a href="#" class=github><i class="fab fa-github"></i></a>        --}}
-     </div>
-    
-    {{-- <p class="description">Ficha de Inscrição</p> --}}
-   
+      
     {!! Form::open(array('route' => 'inscricao.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
 
-    
-      <div class="form-row">
-          <div class="form-group col-md-6">
-            <input type="text" class="input-field" id="Nome" name="Nome" placeholder="Digite o seu Nome Completo" required>
-          </div>
-          <div class="form-group col-md-6">
-            <input type="tel" class="input-field" id="Telefone" name="Telefone"  placeholder="Insira o seu telefone com o DDD"  required>
-
-          </div>
+    <div class="alert alert-primary" role="alert">
+      <h3 class="alert-heading"> DADOS PESSOAIS
+       </h4> <BR>
+       <div class="form-row">
         <div class="form-group col-md-6">
-          <input type="email" class="input-field" id="Email" name="Email" placeholder="Email" required>
+          <input type="text" class="input-field b-cat b-cat-img" id="Nome" name="Nome" placeholder="Digite o seu Nome Completo" required>
         </div>
         <div class="form-group col-md-6">
-            <select name="dre_id" id="dre_id" class="input-field" required>
-                <option value="" enable> Selecione a sua DRE</option>
-                @foreach ($dre as $dres)
-                <option value="{{ $dres->id}}">{{$dres->Nome}} </option>
-                @endforeach
-            </select>
-            
-            </div>
-        <div class="form-group col-md-6">
-            <select name="escola_id" id="escola_id" class="input-field" required>
-                <option value="" enable> Selecione a sua Escola</option>
-                @foreach ($escola as $escolas)
-                <option value="{{ $escolas->id}}">{{$escolas->EscolaNome}} </option>
-                @endforeach
-            </select>
-            
-            </div>
-      </div>
-      <div class="form-group">
-        <input type="text" class="input-field" id="Nome_Prato" name="Nome_Prato" placeholder="Nome da Receita:" required>
+          <input type="tel" class="input-field b-cat b-cat-img" id="Telefone" name="Telefone"  placeholder="Insira o seu telefone com o DDD"  required>
+
+        </div>
+      <div class="form-group col-md-6">
+        <input type="email" class="input-field b-cat b-cat-img" id="Email" name="Email" placeholder="Email" required>
       </div>
 
-<!-- partial:index.partial.html -->
+ 
+    </div>
+       <hr>
+       <h3 class="alert-heading">SELECIONE A SUA <B>DRE </B> E  <B> ESCOLA </B></h2>
+
+       <div class="form-group col-md-6">
+           <select name="dre_id" id="dre_id" class="input-field b-cat b-cat-img" required>
+               <option value="" enable> Selecione a sua DRE</option>
+               @foreach ($dre as $dres)
+               <option value="{{ $dres->id}}">{{$dres->Nome}} </option>
+               @endforeach
+           </select>
+           
+           </div>
+       <div class="form-group col-md-6">
+           <select name="escola_id" id="escola_id" class="input-field b-cat b-cat-img" required>
+               <option value="" enable> Selecione a sua Escola</option>
+               @foreach ($escola as $escolas)
+               <option value="{{ $escolas->id}}">{{$escolas->EscolaNome}} </option>
+               @endforeach
+           </select>
+           
+           </div>    </div> 
+    
+     
+           <div class="alert alert-warning" role="alert">
+            <h3 class="alert-heading">Qual o nome da sua receita?</h3>
+            <div class="form-group">
+              <input type="text" class="input-field b-cat b-cat-js"  id="Nome_Prato" name="Nome_Prato" placeholder="Nome da Receita" required>
+            </div>           
+                        {{-- 
+                           <hr>
+<p class="mb-0">Conte para nós o nome da sua receita.</p> --}}
+          </div>
+
+          <div class="alert alert-warning" role="alert">
+            <h3 class="alert-heading">Selecione todos os ingredientes da sua receita</h4>
+              <hr>
+              <hp> Certifique que você selecionou o ingredientes desejados </h6>
+            <div class="form-group">
+
+<!-- Checkbox dos ingredientes -->
 <fieldset class="checkbox-group" >
-	<legend class="checkbox-group-legend"> <h1 class="create">Escolha os ingredientes da sua receita</h1>
+	<legend class="checkbox-group-legend">
     </legend>
     @foreach ($ingredientes as $ingredientes2)
     <div class="checkbox">
@@ -114,55 +125,63 @@
 
 </fieldset>
 
-      <div class="form-group">
-        <input type="text" class="input-field" id="Outros_ingredientes" name="Outros_ingredientes" placeholder="Outros Ingredientes">
-      </div>
-      <div class="form-group">        
-        <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30"  placeholder="Descreva a forma de preparo" required> </textarea>
-        <input type="hidden" name="voto" id="voto" value="0" required/>
-      </div>
+            </div>           
+                        {{-- 
+                           <hr>
+<p class="mb-0">Conte para nós o nome da sua receita.</p> --}}
+          </div>
 
-<br>
-      <legend class="checkbox-group-legend"> <h1 class="create2">Envie a Foto do seu prato:</h1>
-        <div class="upload">
-        <input type="file" title="" id="image" name="image"  class="drop-here" required>
-        <div class="text text-drop">Imagem</div>
-        <div class="text text-upload">Enviando</div>
-        <svg class="progress-wrapper" width="300" height="300">
-          <circle class="progress" r="115" cx="150" cy="150"></circle>
-        </svg>
-        <svg class="check-wrapper" width="130" height="130">
-          <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
-        </svg>
-        <div class="shadow"></div>
-      </div> 
-      </legend>
+          <div class="alert alert-success" role="alert">
+            <h3 class="alert-heading">Outros Ingredientes</h4>
+              <p class="mb-0">Caso não exista o ingrediente na lista acima escreva os aqui. </p>
+            <div class="form-group">
+              <input type="text" class="input-field" id="Outros_ingredientes" name="Outros_ingredientes" placeholder="Outros Ingredientes">
+            </div> 
+              <hr>
+            <p class="mb-0">
+              <div class="form-group">     
+                <h4 class="alert-heading">Esceva a forma de preparo da sua receita</h4>   
+                <textarea  class="input-field"  id="Preparo" name="Preparo" rows="10" cols="30" placeholder="Descreva a forma de preparo" required> </textarea>
+                <input type="hidden" name="voto" id="voto" value="0" required/>
+              </div>
+             Seja detalhista, não esqueça de informar todos os procedimentos e passos.</p>
+          </div>
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Envie a Foto do seu prato</h4>
+    <div class="upload">
+    <input type="file" title="" id="image" name="image"  class="drop-here" required>
+    <div class="text text-drop">Imagem</div>
+    <div class="text text-upload">Enviando</div>
+    <svg class="progress-wrapper" width="300" height="300">
+      <circle class="progress" r="115" cx="150" cy="150"></circle>
+    </svg>
+    <svg class="check-wrapper" width="130" height="130">
+      <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+    </svg>
+    <div class="shadow"></div>
+  </div> 
+   <hr>
+  <p class="mb-0">---</p>
+</div>
+
+
+
       
  <center>
     <div class="checkbox-group">
         <input type="checkbox" id="terms-and-privacy" name="terms-and-privacy" value="Terms-and-Privacy" required>
         <label for="Agree" class="terms-privacy-checkbox">Eu aceito os <a href="#" class="link">Termos</a> de <a href="#" class="link">Política de Privacidade.</a></label>
+        <div class="form-group col-md-12">  
+              <button type="submit" class="btn btn-primary btn-lg">Enviar formulário</button>
+        </div>
       </div>
     
-      <div class="form-group col-md-12">  
-            <button type="submit" class="btn btn-primary btn-lg">Enviar formulário</button>
-      </div>
-    </form>
     
+      <center>
+        <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a href="https://seduc.mt.gov.br" target="_blank">SEDUC - TI </a></p>
     
           
-     </form>
-   </div>
-  
-    
-   <center>
-    <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a href="https://seduc.mt.gov.br" target="_blank">SEDUC - TI </a></p>
-</div>
-  
-
-  
-  
-</div>
 
 <!-- partial -->
 <script>

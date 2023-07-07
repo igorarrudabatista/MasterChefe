@@ -6,7 +6,60 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 <link rel="stylesheet" href="{{asset('/css/site/site-style.css')}}">
+<style>
+  
 
+.like-content .btn-like {
+	  display: block;
+	  margin: 0px auto 0px;
+    text-align: center;
+    background: #5570c9;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px -8px rgb(92, 105, 221);
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-like2 {
+	  display: block;
+	  margin: 0px auto 0px;
+    text-align: center;
+    background: #1abe4c;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px -8px rgb(92, 105, 221);
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-like:hover {
+	  transform: translateY(-10px);
+}
+.like-content .btn-like .fa {
+	  margin-right: 10px;
+}
+.animate-like {
+	animation-name: likeAnimation;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+  0%   { transform: scale(30); }
+  100% { transform: scale(1); }
+}
+</style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -78,10 +131,13 @@
 @yield('content')
 
 
+<script src="{{asset('/js/feather-icons/feather.min.js')}}"></script>
+<script src="{{asset('/js/main.js')}}"></script>
 
   
   <!-- partial -->
   <script src="{{asset('/js/site/script.js')}}"></script>
+
   <script src="{{asset('vendors/simple-datatables/simple-datatables.js')}}"></script>
   
 </body>

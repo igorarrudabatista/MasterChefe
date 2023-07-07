@@ -1,6 +1,7 @@
 @extends('base.base2')
 
 @section('content')
+
 <link rel="stylesheet" href="{{asset('/css/bootstrap.css')}}">
 
 
@@ -17,32 +18,42 @@
                   <div class="card-image-wrapper cardImage-js">
                     <img src="{{asset('/images/inscricao/' . $recibos->image) ?? 'Sem registros'}}"  class="logo cardImage-js">          
                 </div>
+
                   <div class="card-info">
                     <div class="card-text big cardText-js">{{$recibos->Nome_Prato ?? 'Nome da receita' }}</div>
                     <div class="card-text cardDre-js">{{$recibos->dre->Nome}}</div>
                     <div class="card-text small cardEscola-js ">{{$recibos->escola->EscolaNome}}</div>
                   <br>  
-                 </a>     
+                 </a>    
+          
 
                  @if ($recibos->hasLiked(Session::getId()))
-                 <span class="badge bg-secondary"> {{$recibos->likes->count()}}</span>
-
+                 {{-- <span class="badge bg-secondary"> {{$recibos->likes->count()}}</span> --}}
                 
-                 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                  </symbol>
-                </svg>
-
-                     
-                  
-                 <div class="card-text big cardText-js"> Obrigado pelo seu voto!</div>
-                 @else
-                 <form action="{{ route('site.vote', $recibos->id) }}" method="POST">
+                
+                 <div class="like-content">
+                  <button class="btn-like2 like-rseview">
+                  Obrigado pelo seu voto!   <i data-feather="smile" width="20"> </i>
+                 </button>
+                  </div>
+   
+              @else
+                 <form action="{{route('site.vote', $recibos->id)}}" method="POST">
                      @csrf
-                     <button class="btn-book" type="submit">Votar nesta Receita</button>
+                     {{-- <button class="alert alert-success d-flex align-items-center" role="alert" type="submit"> <i data-feather="smile" width="20"> </i>
+                      Votar nesta Receita</button> --}}
+
+        
+                              
+                  <div class="like-content">
+                    <button class="btn-like like-review">
+                      <i data-feather="heart" width="20"> </i> Votar nesta receita
+                   </button>
+                    </div>
                  </form>
                  @endif  
+
+
                 </div>
               </div>
              
@@ -75,13 +86,13 @@
             </div>
             <div class="right-side">
               @if ($recibos->hasLiked(Session::getId()))
-              <div class="alert alert-primary d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                 
-  
-                  <div class="big"> Obrigado pelo seu voto!</div>
+                <div class="like-content">
+                  <button class="btn-like2 like-rseview">
+                  Obrigado pelo seu voto!   <i data-feather="smile" width="20"> </i>
+                 </button>
+                  </div>
        
-                </div>
                   @endif      
             </div>
           </div>
@@ -145,8 +156,8 @@
           
 
               <div class="alert alert-primary" role="alert">
-                <h4 class="alert-heading"> Outros ingredientes utilizados:</h4>
-                <h6 class="alert-heading"> {{$recibos->Outros_ingredientes }}</h6>
+                <h6 class="alert-heading"> Outros ingredientes utilizados:</h6>
+                <h6 class="alert-heading">aaa {{$recibos->Outros_ingredientes }}</h6>
                 </div>
 
                 {{-- <div class="alert alert-warning" role="alert">
@@ -216,7 +227,6 @@
 
 
 {{ $recibo->links('pagination::bootstrap-4') }}
-
 
 
 

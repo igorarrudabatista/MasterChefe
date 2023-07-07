@@ -1,6 +1,7 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
+<main id="main" class="main">
 
 <section id="multiple-column-form">
   <div class="row match-height">
@@ -143,59 +144,51 @@
                                                                         <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" width= "800px" class="logo">
                                                                       </div> </div>
 
-
-                                                                      <div class="row">
-                                                                        <div class="col-xl-6 col-sm-6 col-6">
-                                                                            <div class="card text-center bg-lighten-2">
-                                                                                <div class="card-content d-flex">
-                                                                                
-                                                                                    <?php $totalnotasseduc = $recibo->nota_seduc1 + $recibo->nota_seduc2 + $recibo->nota_seduc3 + $recibo->nota_seduc4 + $recibo->nota_seduc5; ?>
-                                                                                    <?php $totalnotasdre = $recibo->nota_dre1 + $recibo->nota_dre2 + $recibo->nota_dre3 + $recibo->nota_dre4 + $recibo->nota_dre5; ?>
-                                                                    
-                                                                                    <div class="card" style="width: 30rem;">
-                                                                                        <img src="..." class="card-img-top">
-                                                                                        <div class="card-body">
-                                                                                            <h5 class="card-title">Candidato avaliado pela SEDUC - MT</h5>
-                                                                                        </div>
-                                                                                        <ul class="list-group list-group-flush">
-                                                                                            <li class="list-group-item">Alimentos in natura e minimamente processado -  <b> Nota:  {{$recibo->nota_seduc1}} </b>  </li>
-                                                                                            <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_seduc2}}  </b> </li>
-                                                                                            <li class="list-group-item">Processados -<b>   Nota:  {{$recibo->nota_seduc3}} </b>  </li>
-                                                                                            <li class="list-group-item">Ultraprocessados - <b>  Nota:  {{$recibo->nota_seduc4}} </b>  </li>
-                                                                                            <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_seduc5}} </b>  </li>
-                                                                                        </ul>
-                                                                                        <div class="card-body">
-                                                                                            <a class="card-link text-primary"><big> <b> TOTAL: {{$totalnotasseduc}},00 </b> </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                      <?php $totalnotasseduc = $recibo->nota_seduc1 + $recibo->nota_seduc2 + $recibo->nota_seduc3 + $recibo->nota_seduc4 + $recibo->nota_seduc5 + $recibo->nota_seduc6; ?>
+                                                                      <?php $totalnotasdre = $recibo->nota_dre1 + $recibo->nota_dre2 + $recibo->nota_dre3 + $recibo->nota_dre4 + $recibo->nota_dre5; ?>
+                                                                   
+                                                                      <section class="section">
+                                                                        <div class="row">
+                                                                          <div class="col-lg-6">
+                                                                  
+                                                                            <div class="card">
+                                                                              <div class="card-body">
+                                                                                <h5 class="card-title">Candidato avaliado pela SEDUC - MT</h5>
+                                                                                <ul class="list-group list-group-flush">
+                                                                                  <li class="list-group-item">Alimentos in natura e minimamente processado - Até 5 itens  <b> Nota:  {{$recibo->nota_seduc1}} </b>  </li>
+                                                                                  <li class="list-group-item">Alimentos in natura e minimamente processado - Acima de 6 itens  <b> Nota:  {{$recibo->nota_seduc2}} </b>  </li>
+                                                                                  <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_seduc3}}  </b> </li>
+                                                                                  <li class="list-group-item">Processados -<b>   Nota:  {{$recibo->nota_seduc4}} </b>  </li>
+                                                                                  <li class="list-group-item">Ultraprocessados - <b>  Nota:  {{$recibo->nota_seduc5}} </b>  </li>
+                                                                                  <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_seduc6}} </b>  </li>
+                                                                              </ul>   
+                                                                              
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6 col-sm-6 col-6">
-                                                                            <div class="card text-center bg-lighten-2">
-                                                                                <div class="card-content d-flex">
-                                                                                    <div class="card" style="width: 30rem;">
-                                                                                        <img src="..." class="card-img-top">
-                                                                                        <div class="card-body">
-                                                                                            <h5 class="card-title">Candidato avaliado pelas DREs - MT</h5>
-                                                                                        </div>
-                                                                                        <ul class="list-group list-group-flush">
-                                                                                            <li class="list-group-item">Viabilidade no PNAE -  <b> Nota:  {{$recibo->nota_dre1}} </b>  </li>
-                                                                                            <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_dre2}}  </b> </li>
-                                                                                            <li class="list-group-item"> Alimentos da Agricultura Familiar  -<b>   Nota:  {{$recibo->nota_dre3}} </b>  </li>
-                                                                                            <li class="list-group-item">Alimentos da Agricultura Familiar - <b>  Nota:  {{$recibo->nota_dre4}} </b>  </li>
-                                                                                            <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_dre5}} </b>  </li>
-                                                                                        </ul>
-                                                                                        <div class="card-body">
-                                                                                            <a class="card-link text-primary"><big> <b> TOTAL: {{$totalnotasdre}},00 </b> </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                        <center>    <h5 class="card-title"> <b> TOTAL: {{$totalnotasseduc}},00 </h5> </b> </a> </center>
+                                                                          </div>
+                                                                  
+                                                                          </div>
+                                                                  
+                                                                          <div class="col-lg-6">
+                                                                  
+                                                                            <div class="card">
+                                                                              <div class="card-body">
+                                                                                <h5 class="card-title">Candidato avaliado pelas DREs - MT</h5>
+                                                                                <ul class="list-group list-group-flush">
+                                                                                  <li class="list-group-item">Viabilidade no PNAE -  <b> Nota:  {{$recibo->nota_dre1}} </b>  </li>
+                                                                                  <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_dre2}}  </b> </li>
+                                                                                  <li class="list-group-item"> Alimentos da Agricultura Familiar  -<b>   Nota:  {{$recibo->nota_dre3}} </b>  </li>
+                                                                                  <li class="list-group-item">Alimentos da Agricultura Familiar - <b>  Nota:  {{$recibo->nota_dre4}} </b>  </li>
+                                                                                  <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_dre5}} </b>  </li>
+                                                                              </ul>                                                                              </div>
+                                                                              <center>    <h5 class="card-title"> <b> TOTAL: {{$totalnotasdre}},00 </h5> </b> </a> </center>
                                                                             </div>
+                                                                          </div>
                                                                         </div>
-                                                                    </div>
-                                                                    
+                                                                      </section>
 
+
+                                                                 
                                   </section>
 
 <script src="{{asset('/js/pages/form-editor.js')}}"></script>

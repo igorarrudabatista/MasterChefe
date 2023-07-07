@@ -5,7 +5,9 @@
   margin: 0;
   padding: 0;
 }
-
+.b-cat-campos {
+  background: #f5f4f3;
+}
 body {
   background-color: rgb(247, 247, 247);
   font-family: 'Roboto', sans-serif;
@@ -37,12 +39,10 @@ body {
   border: 2px solid #c6d9df;
   padding: 0.85rem;
   border-radius: 7px;
-  font-size: 0.9rem;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 1rem;
   width: 100%;
-  background-color: #f7f8f9;
-  color: #808e92;
+
   }
 
 .primary-btn:hover {
@@ -107,7 +107,7 @@ body {
 }
 
 .checkbox-group {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   display: flex;
   justify-content: center;
@@ -198,4 +198,6 @@ body {
   .login-container {
     padding: 5rem 3rem;
   }
+  
 }
+

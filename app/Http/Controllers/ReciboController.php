@@ -67,37 +67,129 @@ class ReciboController extends Controller
     public function semnotas()
     {
         $dre = Dre::all();
-
         $recibo = Recibo::where('nota_seduc1', '=', NULL)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
-        $dre1Cuiaba = Recibo::where('dre_id', '=', 1)->get();
         $nota = $recibo;
-    //    $recibo = Recibo::with('empresa_cliente')->get();  
 
-      //  $empresa_cliente = Empresa_Cliente::get();
-        $search = request('search');
-
-        if($search) {
-            $produtos = Recibo::where ([['name', 'like', '%'.$search. '%' ]])->get();
-
-             } else {
-                $produtos = Recibo::all();
-            }
-       
-       
-        return view('inscricao.index', [   'recibo'=> $recibo, 
-                                           'search' => $search,
-                                            'dre' => $dre,
-                                            'nota' =>$nota
-                                    ]);
-
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
     }
+
+    //1 - Alta floresta
+    public function drealtafloresta()
+    {
+        $dre = Dre::all();
+        $recibo = Recibo::where('dre_id', '=', 1)->get();
+        $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+    }
+    //2 - Barra do Garças
+    public function drebarradogarcas()
+    {
+        $dre = Dre::all();
+        $recibo = Recibo::where('dre_id', '=', 2)->get();
+        $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+    }
+    //3 - Cáceres
+    public function drecaceres()
+    {
+        $dre = Dre::all();
+        $recibo = Recibo::where('dre_id', '=', 3)->get();
+        $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+    }
+    //4 - Confresa
+    public function dreconfresa()
+    {
+        $dre = Dre::all();
+        $recibo = Recibo::where('dre_id', '=', 4)->get();
+        $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+    }
+ 
+    //5 - Cuiabá
+    public function drecuiaba()
+    {
+        $dre = Dre::all();
+        $recibo = Recibo::where('dre_id', '=', 5)->get();
+        $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+    }
+
+       //6 - Varzea Grande
+       public function drevarzeagrande()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 6)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+
+       //7 - Diamantino
+       public function drediamantino()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 7)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //8 - Juina
+       public function drejuina()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 8)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //9 - Matupá
+       public function drematupa()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 9)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //10 - Matupá
+       public function dreponteselacerda()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 10)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //11 - Prm.do leste
+       public function dreprimaveradoleste()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 11)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //12 - Rondonópolis
+       public function drerondonopolis()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 12)->get();
+           $nota = $recibo;
+              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //13 - Sinop
+       public function dresinop()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 13)->get();
+           $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+       //14 - Sinop
+       public function dretangaradaserra()
+       {
+           $dre = Dre::all();
+           $recibo = Recibo::where('dre_id', '=', 14)->get();
+           $nota = $recibo;
+           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+       }
+
+
 
     public function create()
     {

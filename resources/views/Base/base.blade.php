@@ -30,7 +30,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
-                   <center> <img src="images/logo_seduc_chef2.jpg" width="140px" height="160" alt="" srcset=""> </center>
+                   <center> <img src="/images/logo_seduc_chef2.jpg" width="140px" height="160" alt="" srcset=""> </center>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
@@ -70,77 +70,64 @@
                             </a>
                             
 
-                            <a href="/drealtafloresta" class='sidebar-link'>
+                            <a href="/inscricao/drealtafloresta" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Alta Floresta</span>
                             </a>
-                            <a href="/drebarradogarcas" class='sidebar-link'>
+                            <a href="/inscricao/drebarradogarcas" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Barra do Garças</span>
                             </a>
-                            <a href="/drecaceres" class='sidebar-link'>
+                            <a href="/inscricao/drecaceres" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Cáceres</span>
                             </a>
-                            <a href="/dreconfresa" class='sidebar-link'>
+                            <a href="/inscricao/dreconfresa" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Confresa</span>
                             </a>
-                            <a href="/drecuiaba" class='sidebar-link'>
+                            <a href="/inscricao/drecuiaba" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Cuiabá</span>
                             </a>
-                            <a href="/drevarzeagrande" class='sidebar-link'>
+                            <a href="/inscricao/drevarzeagrande" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Várzea Grande</span>
                             </a>
-                            <a href="/drediamantino" class='sidebar-link'>
+                            <a href="/inscricao/drediamantino" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Diamantino</span>
                             </a>
-                            <a href="/drejuina" class='sidebar-link'>
+                            <a href="/inscricao/drejuina" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Juína</span>
                             </a>
-                            <a href="/drematupa" class='sidebar-link'>
+                            <a href="/inscricao/drematupa" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Matupá</span>
                             </a>
-                            <a href="/dreponteselacerda" class='sidebar-link'>
+                            <a href="/inscricao/dreponteselacerda" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Pontes e Lacerda</span>
                             </a>
-                            <a href="/dreprimaveradoleste" class='sidebar-link'>
+                            <a href="/inscricao/dreprimaveradoleste" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Primavera do Leste</span>
                             </a>
-                            <a href="/drerondonopolis" class='sidebar-link'>
+                            <a href="/inscricao/drerondonopolis" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Rondonópolis</span>
                             </a>
-                            <a href="/dresinop" class='sidebar-link'>
+                            <a href="/inscricao/dresinop" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Sinop</span>
                             </a>
-                            <a href="/dretangaradaserra" class='sidebar-link'>
+                            <a href="/inscricao/dretangaradaserra" class='sidebar-link'>
                                 <i data-feather="file-text" width="20"></i>
                                 <span>DRE - Tangará da Serra</span>
                             </a>
-
-
-
-
-
-
-
-
-
-                            </ul>
-                                
-
-                        </li>
-                       
-                        
+                        </ul>
+                    </li>
                         <hr>                                 
                         <li class="sidebar-item  ">
                             {{-- active --}}
@@ -204,7 +191,7 @@
                         <li class="sidebar-item  ">
                             {{-- active --}}
                             <a href="{{asset('/Objetos/piano')}}" class='sidebar-link'>
-                                <i data-feather="cloud" width="20"></i>
+                                <i data-feather="smile" width="20"></i>
                                 <span>Toque piano</span>
                             </a>
                         </li>
@@ -216,13 +203,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            {{-- active --}}
-                            <a href="{{asset('/Escolas/index')}}" class='sidebar-link'>
-                                <i data-feather="smile" width="20"></i>
-                                <span>Escolas</span>
-                            </a>
-                        </li>
+                       
 
 
 
