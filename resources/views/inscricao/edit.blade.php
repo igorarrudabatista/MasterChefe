@@ -64,13 +64,22 @@
                                                               <div class="col-12 col-sm-12 col-md-4 ">
                                                                   <div class="list-group" role="tablist">
                                                                       <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                                                      data-bs-toggle="list" href="#list-home" role="tab">1. Ingredientes e Avaliação SEDUC</a>
+                                                                      data-bs-toggle="list" href="#list-home" role="tab">1. Ingredientes</a>
+
                                                                   <a class="list-group-item list-group-item-action" id="list-profile-list"
                                                                       data-bs-toggle="list" href="#list-profile" role="tab">2. Modo de Preparo</a>
+
                                                                   <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
                                                                       data-bs-toggle="list" href="#list-tramitar" role="tab">3. Imagem do prato </a>
-                                                                  <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
-                                                                      data-bs-toggle="list" href="#list-finalizar" role="tab">4. Avaliação DRE</a>
+                                                                  
+                                                                  <a class="list-group-item list-group-item-action" id="list-settings-seduc"
+                                                                      data-bs-toggle="list" href="#list-seduc" role="tab">4. Avaliação SEDUC</a>                                                                
+                                                                  
+                                                                  <a class="list-group-item list-group-item-action" id="list-settings-dre1"
+                                                                      data-bs-toggle="list" href="#list-dre1" role="tab">5. Avaliação DRE - 1</a>
+                                                             
+                                                                  <a class="list-group-item list-group-item-action" id="list-settings-dre22"
+                                                                      data-bs-toggle="list" href="#list-dre2" role="tab">6. Avaliação DRE - Diretor</a>
                                                              
                                                                   </div>
                                                               </div>
@@ -82,8 +91,10 @@
                                                                           
                                                                           <div class="form-group">
 
-                                                                              <h6> <strong> Ingredientes escolhidos pelo candidato: </strong></h6>
-
+                                                                            <div class="alert alert-primary" role="alert">
+                                                                              <h4 class="alert-heading">Ingredientes escolhidos pelo candidato: </h4>
+                                                                              <p class="mb-0"></p>
+                                                                            </div>
                                                                               <div class="form-group">
                                                                                 <table class="table table-striped">
                                                                                   <thead>
@@ -130,91 +141,7 @@
                                                                         <hr> 
                                                                         <br>
 
-                                                                                <div class="alert alert-primary" role="alert">
-                                                                                  <h4 class="alert-heading">Avaliação SEDUC - MT</h4>
-                                                                                  <p> Os campos de notas abaixo são para o uso exclusivo da SEDUC - MT. </p>                                                                                  <hr>
-                                                                                  <p class="mb-0"></p>
-                                                                                </div>
-                                                                                {!! Form::model($recibo, ['method' => 'PATCH','route' => ['inscricao_update', $recibo->id]]) !!}
-
-                                                                                <div class="row">
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Existe Alimentos Proibidos ?</strong>                                                                                        </strong>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::checkbox('alimentos_proibidos', 1, false, array('class' => 'form-cosntrol')) !!}
-                                                                                        </div>
-                                                                                </div>
-                                                                                </div>
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Até 5 itens</strong>                                                                                        </strong>
-                                                                                           <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 1 Ponto </small> </label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc1', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="1"' )) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Acima de 6 itens </strong>                                                                                        </strong>
-                                                                                           <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 2 Ponto </small> </label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc2', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="2"' )) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-                                                                                {{-- FIM --}}
-
-                                                                                  {{--INICIO --}}
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Valorização dos hábitos alimentares locais </strong>
-                                                                                            <br><small class="text-danger">(Acima de 6 intens) Pontuação máxima: 2 Pontos </small></label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc3', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-                                                                                  {{--INICIO --}}
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Processados</strong>
-                                                                                            <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc4', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-
-                                                                                  {{--INICIO --}}
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Ultraprocessados</strong>
-                                                                                            <br><small class="text-danger">Pontuação máxima: 3 Pontos </small></label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc5', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="3"')) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-                                                                                  {{--INICIO --}}
-                                                                                  <div class="col-md-6 col-6">
-                                                                                    <div class="form-group has-icon-left">
-                                                                                        <label for="email-id-column"><strong>Criatividade (inovação e originalidade) </strong>
-                                                                                            <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
-                                                                                        <div class="position-relative">
-                                                                                          {!! Form::number('nota_seduc6', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
-                                                                                    </div>
-                                                                                </div>
-                                                                                </div>
-
-
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                              </div>
+                                                                       
                                                                               
                                                                               
                                                                               
@@ -249,7 +176,7 @@
 
 
   
-  <div class="tab-pane" id="list-finalizar" role="tabpanel"
+  <div class="tab-pane" id="list-dre1" role="tabpanel"
   aria-labelledby="list-settings-list">
   <div class="row">
   <div class="col-xl-12 col-sm-12 col-12">
@@ -321,6 +248,119 @@
                 </div>
                 </div>
                 {{-- FIM --}}
+                  
+                  <button type="submit" class="btn btn-primary white"> Salvar</button>
+
+              </div>
+          </div> 
+      </div>
+  </div> 
+
+
+  {!! Form::close() !!}
+
+
+
+ 
+</div>
+  </div>
+
+
+
+
+
+ 
+</div>
+  <div class="tab-pane" id="list-seduc" role="tabpanel"
+  aria-labelledby="list-settings-list">
+  <div class="row">
+  <div class="col-xl-12 col-sm-12 col-12">
+      <div class="card text-center bg-lighten-2">
+          <div class="card-content d-flex">
+              <div class="card-body">
+                  <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
+                      class="mb-1">
+                      <div class="alert alert-primary" role="alert">
+                        <h4 class="alert-heading">Avaliação SEDUC - MT </h4>
+                        <p> Os campos de notas abaixo são para o uso exclusivo da  DRE </p>                                                                                  <hr>
+                        <p class="mb-0"></p>
+                      </div>
+             
+                      {!! Form::model($recibo, ['method' => 'PATCH','route' => ['inscricao_update', $recibo->id]]) !!}
+
+                      <div class="row">
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Existe Alimentos Proibidos ?</strong>                                                                                        </strong>
+                              <div class="position-relative">
+                                {!! Form::checkbox('alimentos_proibidos', 1, false, array('class' => 'form-cosntrol')) !!}
+                              </div>
+                      </div>
+                      </div>
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Até 5 itens</strong>                                                                                        </strong>
+                                 <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 1 Ponto </small> </label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc1', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="1"' )) !!}            
+                          </div>
+                      </div>
+                      </div>
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Alimentos in natura e minimamente processado - Acima de 6 itens </strong>                                                                                        </strong>
+                                 <br><small class="text-danger">(Até 5 itens) Pontuação máxima: 2 Ponto </small> </label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc2', null, array('placeholder' => 'Insira a nota','class' => 'form-control', 'max="2"' )) !!}            
+                          </div>
+                      </div>
+                      </div>
+                      {{-- FIM --}}
+
+                        {{--INICIO --}}
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Valorização dos hábitos alimentares locais </strong>
+                                  <br><small class="text-danger">(Acima de 6 intens) Pontuação máxima: 2 Pontos </small></label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc3', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                          </div>
+                      </div>
+                      </div>
+                        {{--INICIO --}}
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Processados</strong>
+                                  <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc4', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                          </div>
+                      </div>
+                      </div>
+
+                        {{--INICIO --}}
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Ultraprocessados</strong>
+                                  <br><small class="text-danger">Pontuação máxima: 3 Pontos </small></label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc5', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="3"')) !!}            
+                          </div>
+                      </div>
+                      </div>
+                        {{--INICIO --}}
+                        <div class="col-md-6 col-6">
+                          <div class="form-group has-icon-left">
+                              <label for="email-id-column"><strong>Criatividade (inovação e originalidade) </strong>
+                                  <br><small class="text-danger">Pontuação máxima: 2 Pontos </small></label>
+                              <div class="position-relative">
+                                {!! Form::number('nota_seduc6', null, array('placeholder' => 'Insira a nota','class' => 'form-control','max="2"')) !!}            
+                          </div>
+                      </div>
+                      </div>
+
+
+
                   
                   <button type="submit" class="btn btn-primary white"> Salvar</button>
 
