@@ -230,6 +230,13 @@
           <span>Agenda</span>
         </a>
       </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="{{asset('/painel/index')}}">
+          <i class="bi bi-calendar-check-fill"></i>
+          <span>PainelGerencial</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">

@@ -1,22 +1,20 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h3>Cadastros Básicos e Parâmetros dos sistemas</h3>
-                <p class="text-subtitle text-muted">Cadastros Básicos do sistema em um só lugar.</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <nav aria-label="breadcrumb" class='breadcrumb-header text-right'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastros Básicos</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<main id="main" class="main">
+
+  
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+            <li class="breadcrumb-item active">Painel Gerencial</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
+  
+
 <section id="card-caps">
     <div class="row">
 

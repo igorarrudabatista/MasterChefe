@@ -1,24 +1,8 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cadastro de Cidades</h3>
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastro de Cidades</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<main id="main" class="main">
 
-    </div>
     @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>

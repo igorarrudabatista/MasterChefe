@@ -1,29 +1,22 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
+<main id="main" class="main">
 
-
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>DRE </h3>
-                <p class="text-subtitle text-muted">
-                   <p>Cadastro de DRE no sistema.</p>
-                 <a class="btn btn-primary" href="{{ route('dre.create') }}"> Cadastrar</a>
-
-        
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel Gerencial</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Inscritos</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
+    
+    
+    <div class="pagetitle">
+        <h1>DRE</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                <li class="breadcrumb-item active">Painel Gerencial</li>
+                <li class="breadcrumb-item active">DRE</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <a class="btn btn-primary" href="{{ route('dre.create') }}"> Cadastrar</a>
+  
 
     <section class="section">
         <div class="card">

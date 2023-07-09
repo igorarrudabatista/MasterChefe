@@ -1,4 +1,4 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
 <div class="main-content container-fluid">

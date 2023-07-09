@@ -111,30 +111,31 @@ class DreController extends Controller
     
    // $produto->body = $request->body;
 
-    $dre -> Nome_dre       = $request->Nome_dre;
-    $dre -> Categoria_dre  = $request->Categoria_dre;
-    $dre -> Status_dre     = $request->Status_dre;
-    $dre -> Preco_dre      = $request->Preco_dre;
-    $dre -> Estoque_dre    = $request->Estoque_dre;
-    $dre -> Quantidade_dre = $request->Quantidade_dre;
+    $dre -> Nome       = $request->Nome;
+    $dre -> Tel   = $request->Tel;
+    $dre -> Email     = $request->Email;
+    $dre -> Endereco      = $request->Endereco;
+    $dre -> Numero = $request->Numero;
+    $dre -> Bairro = $request->Bairro;
+    $dre -> Cep = $request->Cep;
 
     //  $produto = $request->all();
 
         
-        // Imagem do produto upload
-        if ($request->hasFile('image')&& $request->file('image')->isValid()){
+        // // Imagem do produto upload
+        // if ($request->hasFile('image')&& $request->file('image')->isValid()){
             
-            $requestImage = $request -> image;
+        //     $requestImage = $request -> image;
             
-            $extension = $requestImage-> extension();
+        //     $extension = $requestImage-> extension();
             
-            $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
+        //     $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
             
-            $request -> image->move(public_path('images/produtos'), $imageName);
+        //     $request -> image->move(public_path('images/produtos'), $imageName);
             
-            $dre -> image = $imageName;
+        //     $dre -> image = $imageName;
             
-        }
+        // }
         
         $dre->update();
 

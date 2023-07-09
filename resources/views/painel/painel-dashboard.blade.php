@@ -115,19 +115,19 @@
               </div>
 
             </div><!-- End Customers Card -->
-            <div class="col-xxl-3 col-xl-3">
+            <div class="col-xxl-12 col-xl-12">
 
               <div class="card info-card customers-card">
 
 
                 <div class="card-body">
-                  <h5 class="card-title">Total de Votos <span></span></h5>
+                  <h5 class="card-title">Total de Votoss <span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
+                    </div>zzzc 
+                    <div class="ps-8">
                       <h6>{{$qtdcurtidas}}</h6>
                    <ul>
                     <li><span class="text-muted small pt-2 ps-1">DRE - Alta Floresta </span>  <span class="text-success small pt-1 fw-bold">- Votos: {{$qtdcurtidas}}</span> </li>

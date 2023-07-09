@@ -1,24 +1,10 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cadastro de DRE</h3>
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastro de DRE</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<main id="main" class="main">
+  
 
-    </div>
+  
     @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -44,7 +30,7 @@
                     <p></p>
                 </div>
 
-                {!! Form::open(array('route' => 'dre.store','method'=>'POST')) !!}
+                {!! Form::model($dre, ['method' => 'PATCH','route' => ['dre.update', $dre->id]]) !!}
 
 
                 <div class="card-content">
@@ -87,7 +73,7 @@
                                 <div class="col-md-6 col-12">
                                         <label for="first-name-column">Cidade</label>
                                         <select name="cidade_id" id="cidade_id" class="form-control">
-                                            <option value="" disabled> Selecione a Cidade vinculada a esta DRE</option>
+                                            <option value=""> Selecione a Cidade vinculada a esta DRE</option>
                                             @foreach ($cidade as $cidades)
                                             <option value="{{ $cidades->id}}">{{$cidades->Nome}} </option>
                                             @endforeach
