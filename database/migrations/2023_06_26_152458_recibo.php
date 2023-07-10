@@ -33,6 +33,11 @@ return new class extends Migration
             $table->decimal('nota_seduc4',10,2)->nullable();
             $table->decimal('nota_seduc5',10,2)->nullable();
             $table->decimal('nota_seduc6',10,2)->nullable();
+            $table->decimal('nota_drenutricao1',10,2)->nullable();
+            $table->decimal('nota_drenutricao2',10,2)->nullable();
+            $table->decimal('nota_drenutricao3',10,2)->nullable();
+            $table->decimal('nota_drenutricao4',10,2)->nullable();
+            $table->decimal('nota_drenutricao5',10,2)->nullable();
             $table->decimal('nota_dre1',10,2)->nullable();
             $table->decimal('nota_dre2',10,2)->nullable();
             $table->decimal('nota_dre3',10,2)->nullable();

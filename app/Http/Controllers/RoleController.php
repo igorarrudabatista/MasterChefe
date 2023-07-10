@@ -31,10 +31,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        return view('roles.index',compact('roles', 'userCount'))
+        return view('roles.index',compact('roles', ))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
@@ -45,10 +44,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+  
         $permission = Permission::get();
-        return view('roles.create',compact('permission', 'userCount'));
+        return view('roles.create',compact('permission'));
     }
     
     /**
@@ -78,8 +76,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+        // $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        // ->count(); 
         $role = Role::find($id);
         $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
             ->where("role_has_permissions.role_id",$id)
@@ -96,15 +94,14 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+ 
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
     
-        return view('roles.edit',compact('role','permission','rolePermissions', 'userCount'));
+        return view('roles.edit',compact('role','permission','rolePermissions',));
     }
     
     /**

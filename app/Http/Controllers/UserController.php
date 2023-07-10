@@ -83,14 +83,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+     {
+    //     $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    //     ->count(); 
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('users.edit',compact('user','roles','userRole', 'userCount'));
+        return view('users.edit',compact('user','roles','userRole',));
     }
     
     /**

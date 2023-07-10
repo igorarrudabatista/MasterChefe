@@ -104,34 +104,34 @@
 <?php $total = $totalnotasseduc + $totalnotasdre ?>
 
 @if ($totalnotasseduc >= 6)
-<td> Nota Seduc: <h3><span class="badge bg-primary">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
+<td>  <center><h3><span class="badge bg-primary">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
 @elseif ($totalnotasseduc < 6)
-<td>Nota Seduc:  <h3><span class="badge bg-danger">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
+<td> <center>  <h3><span class="badge bg-danger">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
 @endif
 
 @if ($totalnotasdre >= 6)
-<td> Nota DRE: <h1><span class="badge bg-primary">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h1></td>
+<td>  <center> <h3><span class="badge bg-primary">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h1></td>
 @elseif ($totalnotasdre < 6)
-<td>Nota DRE:  <h3><span class="badge bg-danger">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h3></td>
+<td>  <center> <h3><span class="badge bg-danger">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h3></td>
 @endif
 
 @if ($totalnotasseduc + $totalnotasdre >= 20)
-<td> TOTAL <h2><span class="badge bg-success">  {{$total ?? 'Nota não informada'}}</span></h2></td>
+<td>  <center> <h2><span class="badge bg-success">  {{$total ?? 'Nota não informada'}}</span></h2></td>
 @elseif ($totalnotasseduc + $totalnotasdre < 20)
-<td> TOTAL <h2><span class="badge bg-danger">  {{$total ?? 'Nota não informada'}}</span></h2></td>
+<td>  <center> <h2><span class="badge bg-danger">  {{$total ?? 'Nota não informada'}}</span></h2></td>
 @endif
-
+/
 <td>
   @switch($recibos)
   @case($recibos->disp_site == '')
   <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+   <center>  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
       Disp. Site
     </a>
   
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
-      <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+    <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+    <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
     </ul>
   </div>
 

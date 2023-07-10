@@ -15,7 +15,6 @@
       </div><!-- End Page Title -->
   
 
-<section id="card-caps">
     <div class="row">
 
 
@@ -132,13 +131,10 @@
                 </div>
             </div>
         </div>
+    
 
+    </div></main>
 
-
-
-    </div>
-</section>
-    </div>
 
 
 @endsection
