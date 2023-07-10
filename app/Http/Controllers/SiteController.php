@@ -14,40 +14,40 @@ use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
-     public function voto(Request $request, $reciboId) {
+    //  public function voto(Request $request, $reciboId) {
  
-      //  $ipAddress = $request->ip();
-        $ipAddress = $request->session()->getId();
+    //   //  $ipAddress = $request->ip();
+    //     $ipAddress = $request->session()->getId();
 
-        // Verificar se o visitante já curtiu o recibo
-        $curtida = Like::where('recibo_id', $reciboId)
-            ->where('sessao', $ipAddress)
-            ->first();
+    //     // Verificar se o visitante já curtiu o recibo
+    //     $curtida = Like::where('recibo_id', $reciboId)
+    //         ->where('sessao', $ipAddress)
+    //         ->first();
 
-        if ($curtida) {
-            // O visitante já curtiu o recibo, então vamos remover a curtida
-            $curtida->delete();
-            return redirect()->back()->with('success', 'Voto removido com sucesso!');
+    //     if ($curtida) {
+    //         // O visitante já curtiu o recibo, então vamos remover a curtida
+    //         $curtida->delete();
+    //         return redirect()->back()->with('success', 'Voto removido com sucesso!');
 
      
-        } else {
-            // O visitante ainda não curtiu o recibo, vamos criar uma nova curtida
-            $recibo = Recibo::find($reciboId);
+    //     } else {
+    //         // O visitante ainda não curtiu o recibo, vamos criar uma nova curtida
+    //         $recibo = Recibo::find($reciboId);
 
             
 
-            if (!$recibo) {
-                return redirect()->back()->with('error', 'Voto não realizado!');
-            }
+    //         if (!$recibo) {
+    //             return redirect()->back()->with('error', 'Voto não realizado!');
+    //         }
 
-            Like::create([
-                'recibo_id' => $reciboId,
-                'sessao' => $ipAddress,
-            ]);
+    //         Like::create([
+    //             'recibo_id' => $reciboId,
+    //             'sessao' => $ipAddress,
+    //         ]);
 
-            return redirect()->back()->with('success', 'Voto realizado com sucesso!');
-        }
-    }
+    //         return redirect()->back()->with('success', 'Voto realizado com sucesso!');
+    //     }
+    // }
 
     public function vote(Request $request, Recibo $recibo)
     {

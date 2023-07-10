@@ -115,36 +115,52 @@
               </div>
 
             </div><!-- End Customers Card -->
-            <div class="col-xxl-12 col-xl-12">
+            <div class="col-xxl-2 col-xl-2">
 
               <div class="card info-card customers-card">
 
 
                 <div class="card-body">
-                  <h5 class="card-title">Total de Votoss <span></span></h5>
+                  <h5 class="card-title"> Total de Votos <span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>zzzc 
+                       {{$totalVotos}}
+                    </div>
                     <div class="ps-8">
-                      <h6>{{$qtdcurtidas}}</h6>
-                   <ul>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Alta Floresta </span>  <span class="text-success small pt-1 fw-bold">- Votos: {{$qtdcurtidas}}</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
-                    <li><span class="text-muted small pt-2 ps-1">DRE - Altaaaa </span>  <span class="text-success small pt-1 fw-bold">Atualizado</span> </li>
+                      {{-- <h6>{{$qtdcurtidas}} </h6> --}}
 
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div><!-- End Customers Card -->
+            <div class="col-xxl-6 col-xl-6">
+
+              <div class="card info-card customers-card">
+
+
+                <div class="card-body">
+                  <h5 class="card-title"> Vencedor:  <span></span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      {{$vencedor}}
+                    </div>
+                    <div class="ps-8">
+                      {{-- <h6>{{$qtdcurtidas}} </h6> --}}
+                      <h6> Nome:   </h6>
+                      @if ($votos->count() > 0)
+                      @php
+                          $vencedor = $votos->max('recibo_id');
+                          $nomeVencedor = $votos->where('recibo_id', $vencedor)->pluck('recibo_id')->first();
+                      @endphp
+                      <p>O vencedor é: {{ $nomeVencedor }}</p>
+                  @else
+                      <p>Não há votos registrados.</p>
+                  @endif
                     </div>
                   </div>
 
@@ -163,30 +179,34 @@
 
 
                 <div class="card-body ">
-                  <h5 class="card-title">Últimas Inscrições <span></span></h5>
+                  <h5 class="card-title">Lista de Votos<span></span></h5>
 
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Imagem</th>
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">DRE</th>
-                        <th scope="col">Situação</th>
+                        <th scope="col">Escola</th>
+                        <th scope="col">Votos</th>
                       </tr>
                     </thead>
+                    
+                    
                     <tbody>
+                      @foreach ($recibos as $recibo)
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" width="50px" alt=""></a></th>
-
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                        
+                        <th scope="row"><a href="#">{{ $recibo->id }}</a></th>
+                        <td>{{ $recibo->Nome }}</td>
+                        <td><a href="#" class="text-primary">{{ $recibo->dre->Nome }}</a></td>
+                        <td><a href="#" class="text-primary">{{ $recibo->escola->EscolaNome }}</a></td>
+                        <td><span class="badge bg-success">{{ $recibo->likes->count() }}</span></td>
                       </tr>
-                     
+                      
                   
-                     
+                      @endforeach
+                      
                     </tbody>
                   </table>
 

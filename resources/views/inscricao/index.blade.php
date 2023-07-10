@@ -2,8 +2,7 @@
 @section('content')
 
 <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
-/>
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 
 
 <main id="main" class="main">
@@ -120,7 +119,7 @@
 @elseif ($totalnotasseduc + $totalnotasdre < 20)
 <td>  <center> <h2><span class="badge bg-danger">  {{$total ?? 'Nota não informada'}}</span></h2></td>
 @endif
-/
+
 <td>
   @switch($recibos)
   @case($recibos->disp_site == '')
@@ -146,17 +145,15 @@
 
 @case ($recibos->disp_site == True)
 <center><h4><span class="badge bg-danger"> NÃO</span></h4>
-
 @endswitch            
 
 </td>
-</tr>
+  </tr>
 
 @endforeach
 </tbody>
 </table>
             <!-- End Table with stripped rows -->
-     
   </section>
 </main>
 

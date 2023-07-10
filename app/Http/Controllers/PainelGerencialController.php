@@ -19,7 +19,7 @@ class PainelGerencialController extends Controller
 
         public function dashboard() {
 
-            $usuarios = User::orderBy('id','DESC')->paginate(5);
+   //         $usuarios = User::orderBy('id','DESC')->paginate(5);
 
             // $userCount  =  FICHA::where('AlunoNome', '=', auth()->id())
             // ->count();
@@ -28,9 +28,40 @@ class PainelGerencialController extends Controller
             $produtos = Produto::count();
             $escolas = ESCOLA::count();
             $dre = DRE::count();
-            $curtidas = Recibo::with('dre','likes')->get();     
 
-            $qtdcurtidas = Like::count();
+         //   $recibo = Recibo::with('dre','likes')->get();
+//////////////////////////////////////////////////////////////////////////////////
+// Obtém os votos agrupados pelo candidato e conta a quantidade de votos para cada um
+$votos  = Like::all();
+$totalVotos = $votos->count(); // Conta o total de votos
+
+$votosPorCandidato = $votos->groupBy('recibo_id')->map(function ($grupo) {
+    return $grupo->count();
+    });
+$votosPorCandidato2 = $votos->groupBy('recibo_id')->map(function ($grupo) {
+    return $grupo->all();
+    });
+// Obtém o candidato com o maior número de votos
+//$vencedor = $votosPorCandidato->max();
+$vencedor = $votosPorCandidato->max();
+
+$recibos = Recibo::all();
+
+            $likedre1 = Recibo::with('dre','likes')->where('dre_id','=', '1')->count(); // Alta floresta
+            $likedre2 = Recibo::with('likes')->where('dre_id','=', '2')->count(); //,'=', '2')->count();
+            $likedre3 = Recibo::with('dre','likes')->where('dre_id','=', '3')->count(); // Caceres
+            $likedre4 = Recibo::with('dre','likes')->where('dre_id','=', '4')->count();
+            $likedre5 = Recibo::with('likes')->where('dre_id','=', '5')->count();
+            $likedre6 = Recibo::with('likes')->where('dre_id','=', '6')->count();
+            $likedre7 = Recibo::with('likes')->where('dre_id','=', '7')->count();
+            $likedre8 = Recibo::with('likes')->where('dre_id','=', '8')->count();
+            $likedre9 = Recibo::with('likes')->where('dre_id','=', '9')->count();
+            $likedre10 = Recibo::with('likes')->where('dre_id','=', '10')->count();
+            $likedre11 = Recibo::with('likes')->where('dre_id','=', '11')->count();
+            $likedre12 = Recibo::with('likes')->where('dre_id','=', '12')->count();
+            $likedre13 = Recibo::with('likes')->where('dre_id','=', '13')->count();
+            $likedre14 = Recibo::with('likes')->where('dre_id','=', '14')->count();
+            
 
             $produto = Produto::all();
             $search = request('search');
@@ -46,7 +77,9 @@ class PainelGerencialController extends Controller
         
             return view('painel.painel-dashboard',compact(
                                                           
-                'recibo', 'escolas', 'produtos', 'dre', 'produto', 'search', 'qtdcurtidas', 'curtidas'
+                'recibo', 'escolas', 'produtos', 'dre', 'produto', 'search','likedre1','likedre2','likedre3','likedre4',
+                'likedre5','likedre6','likedre7','likedre8','likedre9','likedre10','likedre11','likedre12','likedre13',
+                'likedre14','votos', 'vencedor','votosPorCandidato', 'totalVotos', 'votosPorCandidato2', 'recibos'
             ));
 
         }

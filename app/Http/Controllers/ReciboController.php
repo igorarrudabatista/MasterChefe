@@ -279,6 +279,10 @@ public function store(Request $request)
 
     public function edit(Recibo $recibo, $id)
     {
+
+        $produtocont1 = Recibo::with('categoria')->where('Nome', '=', 'ALIMENTOS PROIBIDOS')->count();
+        $produtocont2 = Recibo::with('produto')->where('Nome', '=', 'ALIMENTOS PROIBIDOS')->count();
+       // dd($produtocont1);
         $produto = Produto::get();
         $categoria = Cat_ingredientes::all();
 
@@ -288,7 +292,7 @@ public function store(Request $request)
         $recibo = Recibo::find($id);
         $dre = Dre::all();
 
-        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria'));
+        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'));
     }
     
     public function update(Request $request, Recibo $recibo)
