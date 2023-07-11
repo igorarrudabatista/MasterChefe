@@ -1,315 +1,361 @@
 @extends('base.novabase')
 @section('content')
+    <main id="main" class="main">
 
-<main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Início</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+        <section class="section dashboard">
+            <div class="row">
 
-    <section class="section dashboard">
-      <div class="row">
+                <!-- Left side columns -->
+                <div class="col-lg-12">
+                    <div class="row">
 
-        <!-- Left side columns -->
-        <div class="col-lg-12">
-          <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-3 col-md-3">
-              <div class="card info-card sales-card">
-
-                
-
-                <div class="card-body">
-                  <h5 class="card-title">Inscrições <span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{$recibo}} </h6>
-                      <span class="text-success small pt-1 fw-bold">Atualizado</span> <span class="text-muted small pt-2 ps-1">agora</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-3 col-md-3">
-              <div class="card info-card revenue-card">
-
-              
-
-                <div class="card-body">
-                  <h5 class="card-title">Ingredientes <span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{$produtos}}</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-3 col-xl-3">
-
-              <div class="card info-card customers-card">
+                        <!-- Sales Card -->
+                        <div class="col-xxl-3 col-md-3">
+                            <div class="card info-card sales-card">
 
 
-                <div class="card-body">
-                  <h5 class="card-title">Escolas <span></span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{$escolas}} </h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">Inscrições <span></span></h5>
 
-                    </div>
-                  </div>
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-file-text"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ $recibo }} </h6>
+                                            <span class="text-success small pt-1 fw-bold">Recebidas</span>
 
-                </div>
-              </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-            </div><!-- End Customers Card -->
-            <div class="col-xxl-3 col-xl-3">
+                            </div>
+                        </div><!-- End Sales Card -->
 
-              <div class="card info-card customers-card">
-
-
-                <div class="card-body">
-                  <h5 class="card-title">DRES <span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{$dre}}</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End Customers Card -->
-            <div class="col-xxl-2 col-xl-2">
-
-              <div class="card info-card customers-card">
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-3 col-md-3">
+                            <div class="card info-card revenue-card">
 
 
-                <div class="card-body">
-                  <h5 class="card-title"> Total de Votos <span></span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                       {{$totalVotos}}
-                    </div>
-                    <div class="ps-8">
-                      {{-- <h6>{{$qtdcurtidas}} </h6> --}}
+                                <div class="card-body">
+                                    <h5 class="card-title">Ingredientes <span></span></h5>
 
-                    </div>
-                  </div>
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-basket"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ $produtos }}</h6>
+                                            <span class="text-success small pt-1 fw-bold">Cadastradas</span>
 
-                </div>
-              </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-            </div><!-- End Customers Card -->
-            <div class="col-xxl-6 col-xl-6">
+                            </div>
+                        </div><!-- End Revenue Card -->
 
-              <div class="card info-card customers-card">
+                        <!-- Customers Card -->
+                        <div class="col-xxl-3 col-xl-3">
 
-
-                <div class="card-body">
-                  <h5 class="card-title"> Vencedor:  <span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      {{$vencedor}}
-                    </div>
-                    <div class="ps-8">
-                      {{-- <h6>{{$qtdcurtidas}} </h6> --}}
-                      <h6> Nome:   </h6>
-                      @if ($votos->count() > 0)
-                      @php
-                          $vencedor = $votos->max('recibo_id');
-                          $nomeVencedor = $votos->where('recibo_id', $vencedor)->pluck('recibo_id')->first();
-                      @endphp
-                      <p>O vencedor é: {{ $nomeVencedor }}</p>
-                  @else
-                      <p>Não há votos registrados.</p>
-                  @endif
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End Customers Card -->
+                            <div class="card info-card customers-card">
 
 
-            <!-- Reports -->
-            <!-- End Reports -->
+                                <div class="card-body">
+                                    <h5 class="card-title">Escolas <span></span></h5>
 
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bx bxs-school"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ $escolas }} </h6>
+                                            <span class="text-danger small pt-1 fw-bold">Cadastradas</span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+                        <div class="col-xxl-3 col-xl-3">
+
+                            <div class="card info-card customers-card">
 
 
-                <div class="card-body ">
-                  <h5 class="card-title">Lista de Votos<span></span></h5>
+                                <div class="card-body">
+                                    <h5 class="card-title">DRES <span></span></h5>
 
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">DRE</th>
-                        <th scope="col">Escola</th>
-                        <th scope="col">Votos</th>
-                      </tr>
-                    </thead>
-                    
-                    
-                    <tbody>
-                      @foreach ($recibos as $recibo)
-                      <tr>
-                        
-                        <th scope="row"><a href="#">{{ $recibo->id }}</a></th>
-                        <td>{{ $recibo->Nome }}</td>
-                        <td><a href="#" class="text-primary">{{ $recibo->dre->Nome }}</a></td>
-                        <td><a href="#" class="text-primary">{{ $recibo->escola->EscolaNome }}</a></td>
-                        <td><span class="badge bg-success">{{ $recibo->likes->count() }}</span></td>
-                      </tr>
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ $dre }}</h6>
+                                            <span class="text-danger small pt-1 fw-bold">Cadastradas</span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+
+                        <div class="col-xxl-3 col-xl-3">
+
+                            <div class="card info-card customers-card">
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title"> Inscrições por DRE <span></span></h5>
+
+                                    <div class="d-flex align-items-center">
+                          
+
+                                        <div class="ps-8">
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drealtafloresta')}}">  DRE - Alta Floresta </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre1 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Barra do Garça </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre2 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Cáceres </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre3 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Confresa </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre4 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Cuiabá </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre5 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE -Várzea Grande </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre6 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Diamantino </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre7 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Juína </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre8 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Matupá </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre9 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Pontes e Lacerda </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre10 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Primavera do Leste </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre11 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Rondonópolis </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre12 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Sinop </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre13 }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                      <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Tangará da Serra </a>
+                                                    <span class="badge bg-primary rounded-pill">{{ $likedre14 }}</span>
+                                                </li>
+                                            </ul>
+                                              
+                         
+                                             
+                                                
+                                     
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                       
-                  
-                      @endforeach
-                      
-                    </tbody>
-                  </table>
+                        </div><!-- End Customers Card -->
 
-                </div>
+                        <div class="col-xxl-2 col-xl-2">
 
-              </div>
-            </div><!-- End Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
+                          <div class="card info-card customers-card">
 
 
-                <div class="card-body ">
-                  <h5 class="card-title">Ingredientes<span></span></h5>
+                              <div class="card-body">
+                                  <h5 class="card-title"> Total de Votos <span></span></h5>
 
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">Imagem</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Categoria</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" width="50px" alt=""></a></th>
-                        <th scope="row"><a href="#">Nome</a></th>
-                        <td><span class="badge bg-success">categoriaaa</span></td>
-                      </tr>
-                     
-                  
-                     
-                    </tbody>
-                  </table>
+                                  <div class="d-flex align-items-center">
+                                      <div
+                                          class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                          <i class="bi bi-hand-thumbs-up"> </i>
 
-                </div>
+                                      </div>
 
-              </div>
-            </div>
+                         
+
+                                      <div class="ps-3">
+                                        <h6>{{ $totalVotos }}</h6>
+                                        <span class="text-success small pt-1 fw-bold">Contabilizados</span>
+
+                                    </div>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div><!-- End Customers Card -->
+                        <div class="col-xxl-4 col-xl-4">
+
+                          <div class="card info-card customers-card">
+
+
+                              <div class="card-body">
+                                  <h5 class="card-title"> N° da Inscrição Vencedora <span></span></h5>
+
+                                  <div class="d-flex align-items-center">
+                                      <div
+                                          class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                          <i class="bx bxs-trophy"> </i>
+
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6>{{ $vencedor }}</h6>
+                                        <span class="text-success small pt-1 fw-bold"> Nome, Escola, DRE - Telefone <span>
+                                      </div>
+                           
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div><!-- End Customers Card -->
+
+                        <!-- Reports -->
+                        <!-- End Reports -->
+
+                        <!-- Recent Sales -->
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+
+
+                                <div class="card-body ">
+                                    <h5 class="card-title">Lista de Votos<span></span></h5>
+
+                                    <table class="table table-borderless datatable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">DRE</th>
+                                                <th scope="col">Escola</th>
+                                                <th scope="col">Votos</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @foreach ($recibos as $recibo)
+                                                <tr>
+
+                                                    <th scope="row"><a href="#">{{ $recibo->id }}</a></th>
+                                                    <td>{{ $recibo->Nome }}</td>
+                                                    <td><a href="#" class="text-primary">{{ $recibo->dre->Nome }}</a>
+                                                    </td>
+                                                    <td><a href="#"
+                                                            class="text-primary">{{ $recibo->escola->EscolaNome }}</a></td>
+
+                                                    <td> <button type="button" class="btn btn-success mb-2">
+                                                            {{ $recibo->likes->count() }}
+                                                        </button> </td>
+
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Recent Sales -->
+
+
+                    </div>
+                </div><!-- End Left side columns -->
+
+                <!-- Right side columns -->
+
+
+                <!-- News & Updates Traffic -->
+                <div class="card">
           
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Seduc - TI <span>| Informações</span></h5>
 
-          </div>
-        </div><!-- End Left side columns -->
+                        <div class="news">
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-1.jpg" alt="">
+                                <h4><a href="#">Portal de Serviços</a></h4>
+                            </div>
 
-        <!-- Right side columns -->
-       
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-2.jpg" alt="">
+                                <h4><a href="#">Central Help</a></h4>
+                                <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                            </div>
 
-          <!-- News & Updates Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-3.jpg" alt="">
+                                <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                                <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                            </div>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-4.jpg" alt="">
+                                <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                                <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                            </div>
 
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-5.jpg" alt="">
+                                <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                                <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                            </div>
 
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
+                        </div><!-- End sidebar recent posts-->
 
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
+                    </div>
+                </div><!-- End News & Updates -->
 
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
+            </div><!-- End Right side columns -->
 
             </div>
-          </div><!-- End News & Updates -->
-
-        </div><!-- End Right side columns -->
-
-      </div>
-    </section>
-
+        </section>
+    </main>
 @endsection

@@ -25,11 +25,7 @@
 <link rel="stylesheet" href="{{asset('/assets/vendor/quill/quill.bubble.csS')}}">
 <link rel="stylesheet" href="{{asset('/assets/vendor/remixicon/remixicon.css')}}">
 <link rel="stylesheet" href="{{asset('/assets/vendor/simple-datatables/style.css')}}">
-<link rel="stylesheet" href="{{asset('/AQUII')}}">
-<link rel="stylesheet" href="{{asset('/AQUII')}}">
-<link rel="stylesheet" href="{{asset('/AQUII')}}">
-<link rel="stylesheet" href="{{asset('/AQUII')}}">
-<link rel="stylesheet" href="{{asset('/AQUII')}}">
+
 <link rel="stylesheet" href="{{asset('vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
 
 
@@ -77,7 +73,7 @@
 
         <li class="nav-item">
 
-          <a class="nav-link nav-icon" href="{{asset('/formulario')}}">
+          <a class="nav-link nav-icon" href="{{asset('/Site/formulario')}}">
             <i class="bi bi-layout-text-sidebar-reverse"></i>
           </a><!-- End Notification Icon -->
 
@@ -226,14 +222,14 @@
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
         <a class="nav-link " href="{{asset('/calendar/index#')}}">
-          <i class="bi bi-calendar-check-fill"></i>
+          <i class="bi bi-calendar-check"></i>
           <span>Agenda</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
         <a class="nav-link " href="{{asset('/painel/index')}}">
-          <i class="bi bi-calendar-check-fill"></i>
-          <span>PainelGerencial</span>
+          <i class="bi  bi-layout-text-window-reverse"></i>
+          <span>Painel Gerencial</span>
         </a>
       </li><!-- End Dashboard Nav -->
       
@@ -254,85 +250,85 @@
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drealtafloresta')}}">
+            <a href="{{asset('/inscricao/dre/drealtafloresta')}}">
               <i class="bi bi-circle"></i> 
               <span>DRE - Alta Floresta</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drebarradogarcas')}}">
+            <a href="{{asset('/inscricao/dre/drebarradogarcas')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Barra do Garças</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drecaceres')}}">
+            <a href="{{asset('/inscricao/dre/drecaceres')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Cáceres</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dreconfresa')}}">
+            <a href="{{asset('/inscricao/dre/dreconfresa')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Confresa</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drecuiaba')}}">
+            <a href="{{asset('/inscricao/dre/drecuiaba')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Cuiabá</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drevarzeagrande')}}">
+            <a href="{{asset('/inscricao/dre/drevarzeagrande')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Várzea Grande</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drediamantino')}}">
+            <a href="{{asset('/inscricao/dre/drediamantino')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Diamantino</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drejuina')}}">
+            <a href="{{asset('/inscricao/dre/drejuina')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Juína</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drematupa')}}">
+            <a href="{{asset('/inscricao/dre/drematupa')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Matupá</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dreponteselacerda')}}">
+            <a href="{{asset('/inscricao/dre/dreponteselacerda')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Pontes e Lacerda</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dreprimaveradoleste')}}">
+            <a href="{{asset('/inscricao/dre/dreprimaveradoleste')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Primavera do Leste</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/drerondonopolis')}}">
+            <a href="{{asset('/inscricao/dre/drerondonopolis')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Rondonópolis</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dresinop')}}">
+            <a href="{{asset('/inscricao/dre/dresinop')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Sinop</span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dretangaradaserra')}}">
+            <a href="{{asset('/inscricao/dre/dretangaradaserra')}}">
               <i class="bi bi-circle"></i>
               <span>DRE - Tangará da Serra</span>
             </a>
@@ -375,22 +371,17 @@
         </ul>
       </li><!-- End Forms Nav -->
 
+<hr>
+    
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="{{asset('/suporte')}}">
           <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
+          <span>Suporte</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
@@ -423,7 +414,7 @@
           <i class="bi bi-file-earmark"></i>
           <span>Blank</span>
         </a>
-      </li><!-- End Blank Page Nav -->
+      </li><!-- End Blank Page Nav --> --}}
 
     </ul>
 

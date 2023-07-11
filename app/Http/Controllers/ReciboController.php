@@ -1,7 +1,7 @@
 <?php
     
-namespace App\Http\Controllers;
-
+    namespace App\Http\Controllers;
+    
 use App\Models\Dre;
 use App\Models\Recibo;
 use App\Models\Ingredientes;
@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\Facades\Excel;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 
 use App\Exports\ReciboExport;
@@ -77,118 +79,201 @@ class ReciboController extends Controller
     public function drealtafloresta()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('dre_id', '=', 1)->get();
-        $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+
+        if (Auth::check() && Auth::user()->hasRole('drealtafloresta')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 1)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
     //2 - Barra do Garças
     public function drebarradogarcas()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('dre_id', '=', 2)->get();
-        $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+        if (Auth::check() && Auth::user()->hasRole('drebarradogarcas')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 2)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
     //3 - Cáceres
     public function drecaceres()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('dre_id', '=', 3)->get();
-        $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+        if (Auth::check() && Auth::user()->hasRole('drecaceres')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 3)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
     //4 - Confresa
     public function dreconfresa()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('dre_id', '=', 4)->get();
-        $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+        if (Auth::check() && Auth::user()->hasRole('dreconfresa')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 4)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
- 
     //5 - Cuiabá
     public function drecuiaba()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('dre_id', '=', 5)->get();
-        $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+        if (Auth::check() && Auth::user()->hasRole('drecuiaba')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 5)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
 
        //6 - Varzea Grande
        public function drevarzeagrande()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 6)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+           if (Auth::check() && Auth::user()->hasRole('drevarzeagrande')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 6)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
        }
 
        //7 - Diamantino
        public function drediamantino()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 7)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+           if (Auth::check() && Auth::user()->hasRole('drediamantino')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 7)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
        }
        //8 - Juina
        public function drejuina()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 8)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+           if (Auth::check() && Auth::user()->hasRole('drejuina')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 8)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
        }
        //9 - Matupá
        public function drematupa()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 9)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+           if (Auth::check() && Auth::user()->hasRole('drematupa')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 9)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
        }
        //10 - Matupá
        public function dreponteselacerda()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 10)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
-       }
+           if (Auth::check() && Auth::user()->hasRole('dreponteselacerda')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 10)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
+            }
        //11 - Prm.do leste
        public function dreprimaveradoleste()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 11)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
-       }
+           if (Auth::check() && Auth::user()->hasRole('dreprimaveradoleste')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 11)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
+    }
        //12 - Rondonópolis
        public function drerondonopolis()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 12)->get();
-           $nota = $recibo;
-              return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
-       }
+           if (Auth::check() && Auth::user()->hasRole('drerondonopolis')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 12)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
+    }
        //13 - Sinop
        public function dresinop()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 13)->get();
-           $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
-       }
+           if (Auth::check() && Auth::user()->hasRole('dresinop')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 13)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
+    }
        //14 - Sinop
        public function dretangaradaserra()
        {
            $dre = Dre::all();
-           $recibo = Recibo::where('dre_id', '=', 14)->get();
-           $nota = $recibo;
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
-       }
+           if (Auth::check() && Auth::user()->hasRole('dretangaradaserra')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 14)->get();
+            
+            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
 
+            return view('errors.403');
+        }
+    }
 
 
     public function create()
@@ -253,8 +338,8 @@ public function store(Request $request)
     
     $recibo->save();
 
+    return back()->with('success', ' A sua inscrição foi realizada com sucesso!!');
 
-  return redirect()->back()->with('success', 'Inscrição realizada com sucesso!');
 }
 
     
@@ -335,6 +420,10 @@ public function store(Request $request)
 
         return view('inscricao.formulario', compact('ingredientes', 'escola', 'dre'));
 
+    }
+    public function obrigado(){
+
+        return view('inscricao.obrigado');
     }
 
     public function inscricao_update(Request $request, $id)

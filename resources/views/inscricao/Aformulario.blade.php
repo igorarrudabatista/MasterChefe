@@ -15,12 +15,28 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Inclua os arquivos JavaScript e CSS do SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
+
+
+
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
   
-  
+  @if(session('success'))
+    <script>
+        swal({
+            title: "Obrigado!",
+            text: "{{ session('success') }}",
+            icon: "success",
+        });
+    </script>
+@endif
   <div class="login-container">
    <center> <img src="{{asset('images/logo_seduc_chef.jpg')}}" alt="" srcset="">
 
@@ -173,7 +189,7 @@
         <input type="checkbox" id="terms-and-privacy" name="terms-and-privacy" value="Terms-and-Privacy" required>
         <label for="Agree" class="terms-privacy-checkbox">Eu aceito os <a href="#" class="link">Termos</a> de <a href="#" class="link">Política de Privacidade.</a></label>
         <div class="form-group col-md-12">  
-              <button type="submit" class="btn btn-primary btn-lg">Enviar formulário</button>
+              <input type="submit" class="btn btn-primary btn-lg">
         </div>
       </div>
     
@@ -182,6 +198,32 @@
         <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a href="https://seduc.mt.gov.br" target="_blank">SEDUC - TI </a></p>
     
           
+<script>
+    // Aguarde o carregamento do documento
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtenha o formulário pelo ID ou por um seletor
+        const form = document.getElementById('myForm'); // Substitua "myForm" pelo ID do seu formulário
+
+        // Adicione um listener para o evento de envio do formulário
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio normal do formulário
+
+            // Exiba o SweetAlert
+            Swal.fire({
+                icon: 'success',
+                title: 'Obrigado!',
+                text: 'Mensagem de agradecimento',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                // Redirecione ou execute outras ações após o usuário clicar em OK
+                // Por exemplo, redirecionar para uma página de agradecimento
+                if (result.isConfirmed) {
+                    window.location.href = 'pagina-de-agradecimento.html';
+                }
+            });
+        });
+    });
+</script>
 
 <!-- partial -->
 <script>

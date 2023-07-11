@@ -1,26 +1,22 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cadastro de Usuários</h3>
-                <!-- <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a> -->
+<main id="main" class="main">
 
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastro de Usuário</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+  
+    <div class="pagetitle">
+        <h1>Usuários do sistema</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+            <li class="breadcrumb-item ">Usuários do sistema</li>
+            <li class="breadcrumb-item active">Criar Usuários do sistema</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 
-    </div>
+
+
     @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -38,13 +34,13 @@
             <div class="card">
                 <div class="card-header">
 
+                    <div class="text-center mb-5">
+                        <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
+                        <h3>Cadastro de Usuários do sistema</h3>
+                        <p></p>
+                    </div>
                 </div>
 
-                <div class="text-center mb-5">
-                    <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de Usuários do sistema</h3>
-                    <p></p>
-                </div>
 
                 {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 

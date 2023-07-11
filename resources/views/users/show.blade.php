@@ -1,5 +1,19 @@
 @extends('base.base')
 @section('content')
+
+
+<main id="main" class="main">
+
+  
+    <div class="pagetitle">
+        <h1>Usuários do sistema</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+            <li class="breadcrumb-item active">Usuários do sistema</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">

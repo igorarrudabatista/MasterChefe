@@ -18,10 +18,16 @@ class PermissionTableSeeder extends Seeder
     {
         //Permissions
         $permissions = [
+            //perfis
             'role-list',
             'role-create',
             'role-edit',
-            'role-delete',          
+            'role-delete',      
+            //Usuários
+            'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',             
             //escola
             'escola-list',
             'escola-create',
@@ -32,11 +38,11 @@ class PermissionTableSeeder extends Seeder
             'aluno-create',
             'aluno-edit',
             'aluno-delete',
-            //inscricao
-            'inscricao-list',
-            'inscricao-create',
-            'inscricao-edit',
-            'inscricao-delete',
+            // //inscricao
+            // 'inscricao-list',
+            // 'inscricao-create',
+            // 'inscricao-edit',
+            // 'inscricao-delete',
             //dre
             'dre-list',
             'dre-create',
@@ -57,11 +63,11 @@ class PermissionTableSeeder extends Seeder
             'catingrediente-create',
             'catingrediente-edit',
             'catingrediente-delete',
-            //ingrediente
-            'ingrediente-list',
-            'ingrediente-create',
-            'ingrediente-edit',
-            'ingrediente-delete',
+            // //ingrediente
+            // 'ingrediente-list',
+            // 'ingrediente-create',
+            // 'ingrediente-edit',
+            // 'ingrediente-delete',
             //insumo
             'insumo-list',
             'insumo-create',
@@ -72,7 +78,7 @@ class PermissionTableSeeder extends Seeder
             'produto-create',
             'produto-edit',
             'produto-delete',
-             ///recibos
+             ///recibos  são as incrições 
              'recibo-list',
              'recibo-create',
              'recibo-edit',

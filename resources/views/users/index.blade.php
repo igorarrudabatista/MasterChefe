@@ -1,27 +1,20 @@
-@extends('base.base')
+@extends('base.novabase')
 @section('content')
 
 
+<main id="main" class="main">
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Usuários</h3>
-                <p class="text-subtitle text-muted">
-            <a class="btn btn-primary" href="{{ route('users.create') }}"> Criar novo usuário do sistema</a>
-        
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel Gerencial</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Usuários</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
+  
+    <div class="pagetitle">
+        <h1>Usuários do sistema</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+            <li class="breadcrumb-item active">Usuários do sistema</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
+
 
     <section class="section">
         <div class="card">
@@ -48,7 +41,9 @@
         </div>
             @endif
                 
-                <table class='table table-striped' id="table1">
+           
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -57,14 +52,13 @@
                             <th>Perfil de Acesso</th>
                             <th>Data de Criação</th>
                             <th>Data de Atualização</th>
-                            <th>Ver</th>
                             <th>Ações</th>
                           
                         </tr>
                     </thead>
-                    @foreach ($data as $key => $user)
-
+                    
                     <tbody>
+                        @foreach ($data as $key => $user)
                         <tr>
                
                            <td>{{ ++$i }}</td>
@@ -82,7 +76,6 @@
         </td>
                            <td>{{$user->created_at ??  'Sem registros'}} </td>
                            <td>{{$user->updated_at ??  'Sem registros'}} </td>
-                           <td> <a class="btn btn-primary" href="{{ route('users.show',$user->id) }}">Ver</a>
                            <td> <a class="btn btn-warning" href="{{ route('users.edit',$user->id) }}">Editar</a>
                            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
@@ -105,6 +98,6 @@
         
     </section>
 </div>
-
+</main>
 
 @endsection

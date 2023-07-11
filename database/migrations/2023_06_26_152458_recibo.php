@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('Email')->nullable();
             $table->string('Nome_Prato')->nullable();
             $table->string('Outros_ingredientes')->nullable();
-            $table->string('Preparo')->nullable();
+            $table->longText('Preparo')->nullable();
             $table->string('image')->nullable();
             $table->boolean('alimentos_proibidos')->nullable();
             $table->decimal('nota_seduc1',10,2)->nullable();

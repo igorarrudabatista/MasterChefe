@@ -66,7 +66,8 @@
 <!-- partial:index.partial.html -->
 <div class="app-container">
   <section class="navigation">
-    <a href="/Site" class="app-link">LOGO da LOJA</a>
+    <a href="/Site" class="app-link"> <img src="{{asset('/images/logo_seduc_chef.jpg')}}"  class="logo cardImage-js">  </a>        
+
     <div class="navigation-links">
       <a href="/Site" class="nav-link ">Início</a>
       <a href="#" class="nav-link active">Escolas</a>
