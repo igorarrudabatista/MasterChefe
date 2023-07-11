@@ -32,20 +32,20 @@ class CreateAdminUserSeeder extends Seeder
      
         $role->syncPermissions($permissions);
         
-        $role = Role::create(['name' => 'drealtafloresta']);
-        $role = Role::create(['name' => 'drebarradogarcas']);
-        $role = Role::create(['name' => 'drecaceres']);
-        $role = Role::create(['name' => 'dreconfresa']);
-        $role = Role::create(['name' => 'drecuiaba']);
-        $role = Role::create(['name' => 'drevarzeagrande']);
-        $role = Role::create(['name' => 'drediamantino']);
-        $role = Role::create(['name' => 'drejuina']);
-        $role = Role::create(['name' => 'drematupa']);
-        $role = Role::create(['name' => 'dreponteselacerda']);
-        $role = Role::create(['name' => 'dreprimaveradoleste']);
-        $role = Role::create(['name' => 'drerondonopolis']);
-        $role = Role::create(['name' => 'dresinop']);
-        $role = Role::create(['name' => 'dretangaradaserra']);
+        // $role = Role::create(['name' => 'drealtafloresta']);
+        // $role = Role::create(['name' => 'drebarradogarcas']);
+        // $role = Role::create(['name' => 'drecaceres']);
+        // $role = Role::create(['name' => 'dreconfresa']);
+        // $role = Role::create(['name' => 'drecuiaba']);
+        // $role = Role::create(['name' => 'drevarzeagrande']);
+        // $role = Role::create(['name' => 'drediamantino']);
+        // $role = Role::create(['name' => 'drejuina']);
+        // $role = Role::create(['name' => 'drematupa']);
+        // $role = Role::create(['name' => 'dreponteselacerda']);
+        // $role = Role::create(['name' => 'dreprimaveradoleste']);
+        // $role = Role::create(['name' => 'drerondonopolis']);
+        // $role = Role::create(['name' => 'dresinop']);
+        // $role = Role::create(['name' => 'dretangaradaserra']);
         $user->assignRole([$role->id]);
     }
 }
