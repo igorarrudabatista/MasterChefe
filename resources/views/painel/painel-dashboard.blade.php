@@ -133,59 +133,59 @@
                                         <div class="ps-8">
                                             <ul class="list-group">
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drealtafloresta')}}">  DRE - Alta Floresta </a>
+                                                    <a href="{{asset('/inscricao/dre/drealtafloresta')}}">  DRE - Alta Floresta </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre1 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Barra do Garça </a>
+                                                    <a href="{{asset('/inscricao/dre/drebarradogarcas')}}"> DRE - Barra do Garça </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre2 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Cáceres </a>
+                                                    <a href="{{asset('/inscricao/dre/drecaceres')}}"> DRE - Cáceres </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre3 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Confresa </a>
+                                                    <a href="{{asset('/inscricao/dre/dreconfresa')}}"> DRE - Confresa </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre4 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Cuiabá </a>
+                                                    <a href="{{asset('/inscricao/dre/drecuiaba')}}"> DRE - Cuiabá </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre5 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE -Várzea Grande </a>
+                                                    <a href="{{asset('/inscricao/dre/drevarzeagrande')}}"> DRE -Várzea Grande </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre6 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Diamantino </a>
+                                                    <a href="{{asset('/inscricao/dre/drediamantino')}}"> DRE - Diamantino </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre7 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Juína </a>
+                                                    <a href="{{asset('/inscricao/dre/drejuina')}}"> DRE - Juína </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre8 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Matupá </a>
+                                                    <a href="{{asset('/inscricao/dre/drematupa')}}"> DRE - Matupá </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre9 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Pontes e Lacerda </a>
+                                                    <a href="{{asset('/inscricao/dre/dreponteselacerda')}}"> DRE - Pontes e Lacerda </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre10 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Primavera do Leste </a>
+                                                    <a href="{{asset('/inscricao/dre/dreprimaveradoleste')}}"> DRE - Primavera do Leste </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre11 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Rondonópolis </a>
+                                                    <a href="{{asset('/inscricao/dre/drerondonopolis')}}"> DRE - Rondonópolis </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre12 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Sinop </a>
+                                                    <a href="{{asset('/inscricao/dre/dresinop')}}"> DRE - Sinop </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre13 }}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                      <a href="{{asset('/inscricao/drebarradogarcas')}}"> DRE - Tangará da Serra </a>
+                                                      <a href="{{asset('/inscricao/dre/dretangaradaserra')}}"> DRE - Tangará da Serra </a>
                                                     <span class="badge bg-primary rounded-pill">{{ $likedre14 }}</span>
                                                 </li>
                                             </ul>

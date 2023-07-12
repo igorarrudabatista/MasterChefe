@@ -84,7 +84,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 1)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drealtafloresta', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -94,11 +94,12 @@ class ReciboController extends Controller
     public function drebarradogarcas()
     {
         $dre = Dre::all();
+        $recibo = Recibo::all();
         if (Auth::check() && Auth::user()->hasRole('drebarradogarcas')) {
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 2)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drebarradogarcas', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -112,7 +113,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 3)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drecaceres', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -126,7 +127,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 4)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.dreconfresa', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -136,15 +137,23 @@ class ReciboController extends Controller
     public function drecuiaba()
     {
         $dre = Dre::all();
+
+        $recibo = Recibo::get();  
+        $nota = $recibo;
+
         if (Auth::check() && Auth::user()->hasRole('drecuiaba')) {
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 5)->get();
-            
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            $dre = Dre::all();
+
+            $recibo = Recibo::get();  
+            $nota = $recibo;
+            return view('inscricao.dre.drecuiaba', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
         }
+
     }
 
        //6 - Varzea Grande
@@ -155,7 +164,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 6)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drevarzeagrande', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -170,7 +179,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 7)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drediamantino', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -184,7 +193,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 8)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drejuina', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -198,7 +207,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 9)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drematupa', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -212,7 +221,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 10)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.dreponteselacerda', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -226,7 +235,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 11)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.dreprimaveradoleste', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -240,7 +249,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 12)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.drerondonopolis', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -254,7 +263,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 13)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.dresinop', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -268,7 +277,7 @@ class ReciboController extends Controller
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 14)->get();
             
-            return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+            return view('inscricao.dre.dretangaradaserra', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
             return view('errors.403');
@@ -379,6 +388,25 @@ public function store(Request $request)
 
         return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'));
     }
+
+    public function dreedit(Recibo $recibo, $id)
+    {
+
+        $produtocont1 = Recibo::with('categoria')->where('Nome', '=', 'ALIMENTOS PROIBIDOS')->count();
+        $produtocont2 = Recibo::with('produto')->where('Nome', '=', 'ALIMENTOS PROIBIDOS')->count();
+       // dd($produtocont1);
+        $produto = Produto::get();
+        $categoria = Cat_ingredientes::all();
+
+    //    $recibo->load('produto');
+        $recibo = Recibo::get();
+     //   $empresa_cliente = Empresa_Cliente::get();
+        $recibo = Recibo::find($id);
+        $dre = Dre::all();
+
+        return view('inscricao.dre.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'));
+    }
+    
     
     public function update(Request $request, Recibo $recibo)
     {

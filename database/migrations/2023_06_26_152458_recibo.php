@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('Telefone')->nullable();
             $table->string('Email')->nullable();
             $table->string('Nome_Prato')->nullable();
+            $table->string('motivo')->nullable();
             $table->string('Outros_ingredientes')->nullable();
             $table->longText('Preparo')->nullable();
             $table->string('image')->nullable();

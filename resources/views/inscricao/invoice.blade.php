@@ -92,6 +92,7 @@
                                                                                         @foreach($recibo->produto as $item)                                                                                        
                                                                                       </td>
                                                                                         <td> 
+                                                                                          
                                                                                       <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
@@ -141,8 +142,10 @@
                                                                         <h5><strong>Imagem do Prato:</strong></h5>
 
                                                                         <center>
-                                                                        <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" width= "800px" class="logo">
-                                                                      </div> </div>
+                                                                        <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" class="img-fluid">
+                                                                      </div>
+                                                                    </div>
+                                                                    <br>
 
                                                                       <?php $totalnotasseduc = $recibo->nota_seduc1 + $recibo->nota_seduc2 + $recibo->nota_seduc3 + $recibo->nota_seduc4 + $recibo->nota_seduc5 + $recibo->nota_seduc6; ?>
                                                                       <?php $totalnotasdre = $recibo->nota_dre1 + $recibo->nota_dre2 + $recibo->nota_dre3 + $recibo->nota_dre4 + $recibo->nota_dre5; ?>

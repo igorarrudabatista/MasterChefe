@@ -1,3 +1,4 @@
 php artisan migrate
 php artisan db:seed PermissionTableSeeder
 php artisan db:seed CreateAdminUserSeeder
+php artisan optimize:clear

@@ -166,7 +166,10 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h6>
-              <span>Perfil - Seduc MT ou DRE</span>
+              <span> <b> Perfil: </b> </span>
+              @foreach(auth()->user()->roles as $role)
+              <span> {{ $role->name }}</span>
+          @endforeach
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -185,7 +188,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{asset('images/avatar/chef.jpg')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{asset('suporte')}}">
                 <i class="bi bi-question-circle"></i>
                 <span>Precisa de ajuda?</span>
               </a>

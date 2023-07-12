@@ -290,7 +290,7 @@
                                                                                                     <hr>
                                                                                                     <p class="mb-0"></p>
                                                                                                     <img
-                                                                                                        src="{{ asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros' }}">
+                                                                                                        src="{{ asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros' }}" width="600px">
 
                                                                                                 </div>
                                                                                             </div>

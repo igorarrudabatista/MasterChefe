@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
 * {
   box-sizing: border-box;
   outline: none;
 }
 
 :root {
-  font-family: "Quicksand", sans-serif;
   --app-bg: #fff;
   --modal-before: rgba(215,215,215,.5);
   --main-font-color: #000;
@@ -15,7 +13,7 @@
   --button-bg-light: #f3f3f3;
   --cards-area-bg: #f4f4f6;
   --cards-bg: #fff;
-  --buttons-color-primary: #d84851;
+  --buttons-color-primary: #ffb354;
   --buttons-color-secondary: #f8e4e5;
   --filter-bg: #fff;
   --search-bg: #fff;

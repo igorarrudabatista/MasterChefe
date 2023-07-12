@@ -29,7 +29,7 @@ body {
 
 .input-field:focus {
   outline: none;
-  border: 2px solid #fe5454;
+  border: 2px solid #2e14c0;
   background-color: #ffffff;
 }
 
@@ -39,7 +39,22 @@ body {
   border: 2px solid #c6d9df;
   padding: 0.85rem;
   border-radius: 7px;
-  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  }
+.input-field2:focus {
+  outline: none;
+  border: 2px solid #2e14c0;
+  background-color: #ffffff;
+}
+
+
+.input-field2 {
+  display: block;
+  border: 2px solid #c6d9df;
+  padding: 0.10rem;
+  border-radius: 7px;
   margin-bottom: 1rem;
   width: 100%;
 
