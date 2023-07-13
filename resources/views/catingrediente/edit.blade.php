@@ -79,7 +79,7 @@
 
         </div>
 
-</section>
+</section> </main>
 <script src="{{asset('/js/pages/form-editor.js')}}"></script>
 
 @endsection

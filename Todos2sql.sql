@@ -1,6 +1,6 @@
 
-begin TRANSACTION
-GO
+-- begin TRANSACTION
+-- GO
 -- ROLLBACK
 -- commit
 INSERT INTO estado (Nome, Sigla, created_at, updated_at) VALUES ('Mato Grosso', 'MT', NULL, NULL);

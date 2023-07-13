@@ -202,7 +202,7 @@
                       
                         </div><!-- End Customers Card -->
 
-                        <div class="col-xxl-2 col-xl-2">
+                        <div class="col-xxl-4 col-xl-4">
 
                           <div class="card info-card customers-card">
 
@@ -245,11 +245,12 @@
 
                                       </div>
                                       <div class="ps-3">
-                                        <h6>{{ $vencedor }}</h6>
+                                        @foreach ($result as $item)
+                                        <h6>Recibo ID: {{ $item->recibo_id }}</h6>
+                                    @endforeach
+                                        <hr>
                                         <span class="text-success small pt-1 fw-bold">
-                                            @foreach ($result as $item)
-                                            <p>Recibo ID: {{ $item->recibo_id }}</p>
-                                        @endforeach<span>
+                                           <h6>Votos: {{ $vencedor }}<span>
                                       </div>
                            
                                   </div>
@@ -316,7 +317,7 @@
 
 
                 <!-- News & Updates Traffic -->
-                <div class="card">
+                {{-- <div class="card">
           
                     <div class="card-body pb-0">
                         <h5 class="card-title">Seduc - TI <span>| Informações</span></h5>
@@ -354,7 +355,8 @@
                         </div><!-- End sidebar recent posts-->
 
                     </div>
-                </div><!-- End News & Updates -->
+                </div> --}}
+                <!-- End News & Updates -->
 
             </div><!-- End Right side columns -->
 

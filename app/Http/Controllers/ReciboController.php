@@ -44,37 +44,30 @@ class ReciboController extends Controller
     {
         $dre = Dre::all();
 
-        $recibo = Recibo::get();  
-        $nota = $recibo;
-    //    $recibo = Recibo::with('empresa_cliente')->get();  
+        if (Auth::check() && Auth::user()->hasRole('seduc','Admin')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 1)->get();
+            
+            return view('inscricao.dre.drealtafloresta', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
 
-      //  $empresa_cliente = Empresa_Cliente::get();
-        $search = request('search');
-
-        if($search) {
-            $produtos = Recibo::where ([['name', 'like', '%'.$search. '%' ]])->get();
-
-             } else {
-                $produtos = Recibo::all();
-            }
-       
-       
-        return view('inscricao.index', [   'recibo'=> $recibo, 
-                                           'search' => $search,
-                                            'dre' => $dre,
-                                            'nota' =>$nota
-                                    ]);
-
+            return view('errors.403');
+        }
     }
     public function semnotas()
     {
         $dre = Dre::all();
-        $recibo = Recibo::where('nota_seduc1', '=', NULL)->get();
-        $nota = $recibo;
 
-           return view('inscricao.index', ['recibo'=> $recibo, 'dre' => $dre, 'nota' =>$nota ]);
+        if (Auth::check() && Auth::user()->hasRole('seduc')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('dre_id', '=', 1)->get();
+            
+            return view('inscricao.dre.drealtafloresta', ['recibo'=> $recibo, 'dre' => $dre,  ]);
+        } else {
+
+            return view('errors.403');
+        }
     }
-
     //1 - Alta floresta
     public function drealtafloresta()
     {
