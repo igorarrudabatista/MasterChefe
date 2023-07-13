@@ -57,7 +57,7 @@ class EstadoController extends Controller
 
         toast('Produto criado com sucesso!','success');
 
-        return redirect('/estado')->with('success','Produto criado com sucesso!');
+        return redirect('/estado')->with('success','Estado criado com sucesso!');
         
     }
 
@@ -74,28 +74,17 @@ class EstadoController extends Controller
      */
     public function edit(Estado $estado)
     {
-        return view('estado.edit');
+        return view('estado.edit',compact('estado'));
     
     }
     
     public function update(Request $request, Estado $estado) {
-
-
-    $estado -> Nome_dre       = $request->Nome_dre;
-    $estado -> Categoria_dre  = $request->Categoria_dre;
-    $estado -> Status_dre     = $request->Status_dre;
-    $estado -> Preco_dre      = $request->Preco_dre;
-    $estado -> Estoque_dre    = $request->Estoque_dre;
-    $estado -> Quantidade_dre = $request->Quantidade_dre;
-
-
         
-
-        $estado->update();
-
+        
+        $estado->update($request->all());
 
      
-        return redirect('/estado')->with('edit','DRE editado com sucesso!');
+        return redirect('/estado')->with('edit','Estado editado com sucesso!');
     }
 
     public function destroy(Estado $estado)
@@ -103,7 +92,7 @@ class EstadoController extends Controller
         $estado->delete();
     
         return redirect()->route('estado.index')
-                        ->with('delete','Produto deletado com sucesso!');
+                        ->with('delete','Estado deletado com sucesso!');
     }
 
 }

@@ -94,7 +94,6 @@ class ReciboController extends Controller
     public function drebarradogarcas()
     {
         $dre = Dre::all();
-        $recibo = Recibo::all();
         if (Auth::check() && Auth::user()->hasRole('drebarradogarcas')) {
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 2)->get();
@@ -109,6 +108,7 @@ class ReciboController extends Controller
     public function drecaceres()
     {
         $dre = Dre::all();
+
         if (Auth::check() && Auth::user()->hasRole('drecaceres')) {
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 3)->get();
@@ -138,16 +138,11 @@ class ReciboController extends Controller
     {
         $dre = Dre::all();
 
-        $recibo = Recibo::get();  
-        $nota = $recibo;
-
-        if (Auth::check() && Auth::user()->hasRole('drecuiaba')) {
+    if (Auth::check() && Auth::user()->hasRole('drecuiaba')) {
             // Se o usuário possui o perfil, realizar a consulta
             $recibo = Recibo::where('dre_id', '=', 5)->get();
             $dre = Dre::all();
 
-            $recibo = Recibo::get();  
-            $nota = $recibo;
             return view('inscricao.dre.drecuiaba', ['recibo'=> $recibo, 'dre' => $dre,  ]);
         } else {
 
@@ -353,9 +348,16 @@ public function store(Request $request)
 
     
 
-     public function show(Recibo $recibo)
+     public function show(Recibo $recibo, $id)
      {
-         return view('inscricao.show',compact('recibo'));
+
+        $recibo        = Recibo::find($id);
+        $dre           = Dre::all();
+ 
+         return view('inscricao.show', ['recibo'        => $recibo, 
+                                           'dre'           => $dre,
+                                             
+        ]);
      }
 
      
@@ -386,7 +388,7 @@ public function store(Request $request)
         $recibo = Recibo::find($id);
         $dre = Dre::all();
 
-        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'));
+        return view('inscricao.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'))->with('delete','Recibo deletado com sucesso!');
     }
 
     public function dreedit(Recibo $recibo, $id)
@@ -404,19 +406,19 @@ public function store(Request $request)
         $recibo = Recibo::find($id);
         $dre = Dre::all();
 
-        return view('inscricao.dre.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'));
+        return view('inscricao.dre.edit',compact('recibo', 'produto', 'recibo', 'dre', 'categoria', 'produtocont1', 'produtocont2'))->with('delete','Recibo deletado com sucesso!');
     }
     
     
     public function update(Request $request, Recibo $recibo)
     {
-        $recibo -> Nota1       = $request->Nota1;
+      //  $recibo -> Nota1       = $request->Nota1;
 
         $recibo->update();
 
         //dd($recibo);
        // $recibo->update($request->all());
-        return redirect('/inscricao')->with('edit','sucesso!');
+        return redirect('/inscricao')->with('edit','Inscrição avaliada com sucesso!');
 
 }   
 
@@ -470,7 +472,7 @@ public function store(Request $request)
 
         //dd($recibo);
        // $recibo->update($request->all());
-        return redirect('/inscricao')->with('edit','sucesso!');
+        return redirect('/inscricao')->with('edit','Inscrição avaliada com sucesso!');
 
 }   
 
@@ -483,7 +485,7 @@ public function disp_site_sim(Request $request, $id)    {
       //   dd($recibo);
       toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
 
-      return redirect('/inscricao');
+      return back();
   }
 
 public function disp_site_nao(Request $request, $id)    {
@@ -495,7 +497,7 @@ public function disp_site_nao(Request $request, $id)    {
          
       toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
 
-      return redirect('/inscricao');
+      return back();
   }
     
 }

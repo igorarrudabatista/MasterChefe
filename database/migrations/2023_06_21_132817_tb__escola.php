@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('escola', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dre_id')->constrained('dre')->onDelete('cascade');
-            $table->string('EscolaCod')->nullable();
+          $table->foreignId('dre_id')->constrained('dre')->onDelete('cascade');
+          
+         $table->string('EscolaCod')->nullable();
             $table->string('EscolaNome')->nullable();
             $table->string('EscolaEndereco')->nullable();
             $table->string('EscolaNumero')->nullable();

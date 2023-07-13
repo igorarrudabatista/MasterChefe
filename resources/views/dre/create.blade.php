@@ -3,9 +3,15 @@
 
 <main id="main" class="main">
 
-
-    </div>
-    @if (count($errors) > 0)
+    <div class="pagetitle">
+      <h1>DRE</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item">DRE</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->    @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
@@ -22,12 +28,12 @@
             <div class="card">
                 <div class="card-header">
 
-                </div>
-
-                <div class="text-center mb-5">
-                    <img src="{{asset('/images/violence.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de DRE</h3>
-                    <p></p>
+                    
+                    <div class="text-center mb-5">
+                        <img src="{{asset('/images/violence.png')}}" height="48" class='mb-4'>
+                        <h3>Cadastro de DRE</h3>
+                        <p></p>
+                    </div>
                 </div>
 
                 {!! Form::open(array('route' => 'dre.store','method'=>'POST')) !!}

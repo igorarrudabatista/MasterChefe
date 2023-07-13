@@ -8,12 +8,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>LISTA DE INSCRITOS - DRE Cuiabá</h1>
+    <h1>LISTA DE INSCRITOS - DRE Rondonópolis</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Início</a></li>
         <li class="breadcrumb-item ">Lista de Inscritos</li>
-        <li class="breadcrumb-item active ">Dre Cuiabá</li>
+        <li class="breadcrumb-item active ">DRE Rondonópolis</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -56,7 +56,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Lista de Inscritos - Dre Cuiabá</h5>
+            <h5 class="card-title">Lista de Inscritos - DRE Rondonópolis</h5>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">

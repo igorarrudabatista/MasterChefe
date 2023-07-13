@@ -246,7 +246,10 @@
                                       </div>
                                       <div class="ps-3">
                                         <h6>{{ $vencedor }}</h6>
-                                        <span class="text-success small pt-1 fw-bold"> Nome, Escola, DRE - Telefone <span>
+                                        <span class="text-success small pt-1 fw-bold">
+                                            @foreach ($result as $item)
+                                            <p>Recibo ID: {{ $item->recibo_id }}</p>
+                                        @endforeach<span>
                                       </div>
                            
                                   </div>
@@ -283,11 +286,11 @@
                                             @foreach ($recibos as $recibo)
                                                 <tr>
 
-                                                    <th scope="row"><a href="#">{{ $recibo->id }}</a></th>
+                                                    <th scope="row"><a href="{{asset('/inscricao/'.$recibo->id)}}">{{ $recibo->id }}</a></th>
                                                     <td>{{ $recibo->Nome }}</td>
-                                                    <td><a href="#" class="text-primary">{{ $recibo->dre->Nome }}</a>
+                                                    <td><a href="{{asset('/inscricao/'.$recibo->id)}}" class="text-primary">{{ $recibo->dre->Nome }}</a>
                                                     </td>
-                                                    <td><a href="#"
+                                                    <td><a href="{{asset('/inscricao/'.$recibo->id)}}"
                                                             class="text-primary">{{ $recibo->escola->EscolaNome }}</a></td>
 
                                                     <td> <button type="button" class="btn btn-success mb-2">

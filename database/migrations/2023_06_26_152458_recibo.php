@@ -18,7 +18,12 @@ return new class extends Migration
         $table->increments('id');
 
             $table->foreignId('dre_id')->constrained('dre')->onDelete('cascade');
-            $table->foreignId('escola_id')->constrained('escola')->onDelete('cascade');
+
+            //$table->foreignId('escola_id')->constrained('escola')->onDelete('cascade');
+            
+    $table->unsignedBigInteger('escola_id');
+    $table->foreign('escola_id')->references('id')->on('escola')->onDelete('no action');
+            
             $table->string('Nome')->nullable();
             $table->string('Telefone')->nullable();
             $table->string('Email')->nullable();

@@ -15,6 +15,8 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+
+
     <a class="btn btn-primary" href="{{ route('dre.create') }}"> Cadastrar</a>
   
 
@@ -43,7 +45,7 @@
             </div>
                 @endif
                 
-                <table class='table table-striped' id="table1">
+                <table class='table datatable' id="table1">
                     <thead>
                         
                         <tr>
@@ -66,10 +68,6 @@
                            <td>{{$dres->Tel?? 'Não informado'}}</td>
                            <td>{{$dres->cidade_id?? 'Não informado'}}</td>
                            <td> <a class="btn btn-warning" href="{{ route('dre.edit',$dres->id) }}">Editar</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['dre.destroy', $dres->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
- 
-                            {!! Form::close() !!}
                     </td>
                     </tr>
                     @endforeach
@@ -83,5 +81,5 @@
     </section>
 </div>
 
-
+</main>
 @endsection

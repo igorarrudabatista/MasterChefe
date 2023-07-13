@@ -3,8 +3,6 @@
 
 <main id="main" class="main">
 
-
-    </div>
     @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -26,11 +24,11 @@
 
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/violence.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de DRE</h3>
+                    <h3>Editar Cidade</h3>
                     <p></p>
                 </div>
 
-                {!! Form::open(array('route' => 'dre.store','method'=>'POST')) !!}
+                {!! Form::model($cidade, ['method' => 'PATCH','route' => ['cidade.update', $cidade->id]]) !!}
 
 
                 <div class="card-content">
@@ -39,50 +37,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                    
-                                        <label for="first-name-column">Nome da DRE</label>
-                                        {!! Form::text('Nome', null, array('placeholder' => 'Código da Escola','class' => 'form-control')) !!}
+                                     <b>   <label for="first-name-column">Nome da Cidade</label> </b>
+                                        {!! Form::text('Nome', null, array('placeholder' => '','class' => 'form-control')) !!}
                                 </div>
 
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">Telefone</label>
-                                        {!! Form::text('Tel', null, array('placeholder' => 'Nome da Escola','class' => 'form-control')) !!}
-                                </div>
-                                
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">Email</label>
-                                        {!! Form::text('Email', null, array('placeholder' => 'Endereço da Escola','class' => 'form-control')) !!}
-                                </div>
-
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">Endereço</label>
-                                        {!! Form::text('Endereco', null, array('placeholder' => 'Número','class' => 'form-control')) !!}
-                                </div>
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">N°</label>
-                                        {!! Form::text('Numero', null, array('placeholder' => 'Número','class' => 'form-control')) !!}
-                                </div>
-                                
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">Bairro</label>
-                                        {!! Form::text('Bairro', null, array('placeholder' => 'Bairro','class' => 'form-control')) !!}
-                                </div>
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">CEP</label>
-                                        {!! Form::text('Cep', null, array('placeholder' => 'CEP','class' => 'form-control')) !!}
-                                </div>
-                                <div class="col-md-6 col-12">
-                                        <label for="first-name-column">Cidade</label>
-                                        <select name="cidade_id" id="cidade_id" class="form-control">
-                                            <option value="" disabled> Selecione a Cidade vinculada a esta DRE</option>
-                                            @foreach ($cidade as $cidades)
-                                            <option value="{{ $cidades->id}}">{{$cidades->Nome}} </option>
-                                            @endforeach
-                                        </select>
-                                </div>
+                          
                                 <div class="col-md-6 col-12">
                                         <label for="first-name-column">Estado</label>
                                         <select name="estado_id" id="estado_id" class="form-control">
-                                            <option value="" disabled> Selecione o Estado vinculada a esta DRE</option>
+                                            <option value="" disabled> Selecione o Estado vinculada a esta Cidade</option>
                                             @foreach ($estado as $estados)
                                             <option value="{{ $estados->id}}">{{$estados->Nome}} - {{$estados->Sigla}} </option>
                                             @endforeach

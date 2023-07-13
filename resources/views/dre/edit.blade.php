@@ -2,7 +2,16 @@
 @section('content')
 
 <main id="main" class="main">
-  
+
+    <div class="pagetitle">
+      <h1>DRE</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item">DRE</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->  
 
   
     @if (count($errors) > 0)
@@ -22,13 +31,13 @@
             <div class="card">
                 <div class="card-header">
 
+                    <div class="text-center mb-5">
+                        <img src="{{asset('/images/violence.png')}}" height="48" class='mb-4'>
+                        <h3>Cadastro de DRE</h3>
+                        <p></p>
+                    </div>
                 </div>
 
-                <div class="text-center mb-5">
-                    <img src="{{asset('/images/violence.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de DRE</h3>
-                    <p></p>
-                </div>
 
                 {!! Form::model($dre, ['method' => 'PATCH','route' => ['dre.update', $dre->id]]) !!}
 

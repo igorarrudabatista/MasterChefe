@@ -64,7 +64,7 @@ class CidadeController extends Controller
 
         toast('Produto criado com sucesso!','success');
 
-        return redirect('/cidade')->with('success','Produto criado com sucesso!');
+        return redirect('/cidade')->with('success','Cidade criada com sucesso!');
         
     }
 
@@ -82,7 +82,6 @@ class CidadeController extends Controller
     public function edit(Cidade $cidade)
     {
 
-        $cidade = Cidade::all();
         $estado = Estado::all();
 
         return view('cidade.edit',compact('cidade','estado'));
@@ -91,37 +90,11 @@ class CidadeController extends Controller
     
     public function update(Request $request, Cidade $cidade) {
 
-
-    $cidade -> Nome_dre       = $request->Nome_dre;
-    $cidade -> Categoria_dre  = $request->Categoria_dre;
-    $cidade -> Status_dre     = $request->Status_dre;
-    $cidade -> Preco_dre      = $request->Preco_dre;
-    $cidade -> Estoque_dre    = $request->Estoque_dre;
-    $cidade -> Quantidade_dre = $request->Quantidade_dre;
-
-    //  $produto = $request->all();
-
-        
-        // Imagem do produto upload
-        if ($request->hasFile('image')&& $request->file('image')->isValid()){
-            
-            $requestImage = $request -> image;
-            
-            $extension = $requestImage-> extension();
-            
-            $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
-            
-            $request -> image->move(public_path('images/produtos'), $imageName);
-            
-            $cidade -> image = $imageName;
-            
-        }
-        
-        $cidade->update();
+        $cidade->update($request->all());
 
 
      
-        return redirect('/cidade')->with('edit','DRE editado com sucesso!');
+        return redirect('/cidade')->with('edit','Cidade editada com sucesso!');
     }
     
     /**
@@ -135,7 +108,7 @@ class CidadeController extends Controller
         $dre->delete();
     
         return redirect()->route('produtos.index')
-                        ->with('delete','Produto deletado com sucesso!');
+                        ->with('delete','Cidade deletado com sucesso!');
     }
 
 }

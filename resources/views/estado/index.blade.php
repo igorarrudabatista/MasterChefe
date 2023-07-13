@@ -1,29 +1,24 @@
 @extends('base.novabase')
 @section('content')
 
+<main id="main" class="main">
+
+    
+    
+    <div class="pagetitle">
+        <h1>ESTADOS DO BRASIL</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                <li class="breadcrumb-item active">Painel Gerencial</li>
+                <li class="breadcrumb-item active">Estados do Brasil</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>ESTADO </h3>
-                <p class="text-subtitle text-muted">
-                   <p>Cadastro de Cidades no sistema.</p>
-                 <a class="btn btn-primary" href="{{ route('estado.create') }}"> Cadastrar</a>
-
-        
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel Gerencial</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Estado</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
+    <a class="btn btn-primary" href="{{ route('estado.create') }}"> Cadastrar</a>
+  
 
     <section class="section">
         <div class="card">
@@ -50,7 +45,7 @@
             </div>
                 @endif
                 
-                <table class='table table-striped' id="table1">
+                <table class='table datatable' id="table1">
                     <thead>
                         
                         
@@ -66,10 +61,10 @@
                
                            <td><b> {{$estados->Nome}} - {{$estados->Sigla}} </b></td>
                            <td> <a class="btn btn-warning" href="{{ route('estado.edit',$estados->id) }}">Editar</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['estado.destroy', $estados->id],'style'=>'display:inline']) !!}
+                            {{-- {!! Form::open(['method' => 'DELETE','route' => ['estado.destroy', $estados->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
  
-                            {!! Form::close() !!}
+                            {!! Form::close() !!} --}}
   </td>
  
                            
