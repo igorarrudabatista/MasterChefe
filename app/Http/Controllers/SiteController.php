@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ALUNO;
 use App\Models\Escola;
 use App\Models\Recibo;
+use App\Models\Cidade;
 use App\Models\Produto;
 use App\Models\Dre;
 use App\Models\Like;
@@ -38,7 +39,6 @@ class SiteController extends Controller
 
     public function index(Request $request) {
 
-        $ultimos_recibos = Recibo::orderBy('id', 'DESC')->limit(6)->get();
 
         $id_recibo = Recibo::get('id');
 
@@ -65,7 +65,6 @@ class SiteController extends Controller
         'recibo'=> $recibo,
         'search' => $search,
         'id_recibo' => $id_recibo,
-        'ultimos_recibos' => $ultimos_recibos,
 
     ]);
    }
@@ -75,10 +74,23 @@ class SiteController extends Controller
     $ingredientes = Produto::all();
     $escola = escola::all();
     $dre = Dre::all();
+    $dre_cidade = Dre::with('escola')->get();
 
-    return view('Site.formulario', compact('ingredientes', 'escola', 'dre'));
+
+    return view('Site.formulario', compact('ingredientes', 'escola', 'dre', 'dre_cidade'));
 
 }
+
+    public function getEscolasByDre($dreId)
+    {
+        // Obter as escolas relacionadas à DRE selecionada
+        $escolas = Escola::where('dre_id', $dreId)->get();
+
+        // Retornar as escolas em formato JSON
+        return response()->json($escolas);
+    }
+
+
    public function store_formulario(Request $request)
    {
        //dd($request->all());
@@ -168,46 +180,6 @@ class SiteController extends Controller
 
   }
 
-   
-//    public function store (Request $request) {
-       
-       
-//        $criar_produto =  new Product;
-       
-//        $criar_produto -> Nome_Produto       = $request->Nome_Produto;
-//        $criar_produto -> Categoria_Produto  = $request->Categoria_Produto;
-//        $criar_produto -> Status_Produto     = $request->Status_Produto;
-//        $criar_produto -> Preco_Produto      = $request->Preco_Produto;
-//        $criar_produto -> Estoque_Produto    = $request->Estoque_Produto;
-//        $criar_produto -> Quantidade_Produto = $request->Quantidade_Produto;
-       
-       
-//        // Imagem do produto upload
-//        if ($request->hasFile('image')&& $request->file('image')->isValid()){
-           
-//            $requestImage = $request -> image;
-           
-//            $extension = $requestImage-> extension();
-           
-//            $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
-           
-//            $request -> image->move(public_path('img/produtos'), $imageName);
-           
-//            $criar_produto -> image = $imageName;
-           
-//        }
-       
-//        $criar_produto ->save();
-       
-//        $criar_produto = Product::all();
-       
-//        toast('Produto criado com sucesso!','success');
-
-//       return redirect('/produtos/produtos');
-
-        
-
-//    }
 
 
    public function create (){

@@ -230,6 +230,9 @@
                           </div>
 
                       </div><!-- End Customers Card -->
+
+                      @if (Auth::check() && Auth::user()->hasRole('seduc'))
+
                         <div class="col-xxl-4 col-xl-4">
 
                           <div class="card info-card customers-card">
@@ -248,22 +251,25 @@
                                         @foreach ($result as $item)
                                         <h6>Recibo ID: {{ $item->recibo_id }}</h6>
                                     @endforeach
-                                        <hr>
-                                        <span class="text-success small pt-1 fw-bold">
-                                           <h6>Votos: {{ $vencedor }}<span>
-                                      </div>
-                           
-                                  </div>
-
-                              </div>
-                          </div>
-
-                      </div><!-- End Customers Card -->
+                                    <hr>
+                                    <span class="text-success small pt-1 fw-bold">
+                                        <h6>Votos: {{ $vencedor }}<span>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div><!-- End Customers Card -->
+                        @endif
 
                         <!-- Reports -->
                         <!-- End Reports -->
 
                         <!-- Recent Sales -->
+                        @if (Auth::check() && Auth::user()->hasRole('seduc'))
+
                         <div class="col-12">
                             <div class="card recent-sales overflow-auto">
 
@@ -308,6 +314,7 @@
 
                             </div>
                         </div><!-- End Recent Sales -->
+                        @endif
 
 
                     </div>

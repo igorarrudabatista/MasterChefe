@@ -168,8 +168,8 @@ INSERT INTO dre ( Nome, Tel, Email, Endereco, Numero, Bairro, Cep, created_at, u
 INSERT INTO dre ( Nome, Tel, Email, Endereco, Numero, Bairro, Cep, created_at, updated_at) VALUES ( 'DRE - Tangará da Serra', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abacaxi', NULL, 'abacaxi.jpg', '1', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abóbora cabotiã', NULL, NULL, '1', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abóbora paulista', NULL, NULL, '1', NULL, NULL);
+INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abóbora cabotiã', NULL, 'abobora cabotia.jpeg', '1', NULL, NULL);
+INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abóbora paulista', NULL, 'abobora-paulista.jpg', '1', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Abobrinha verde', NULL, 'Abobrinha verde.jpg', '1', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Açafrão', NULL, 'acafrao.jpg', '1', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ( 'Acelga', NULL, 'Acelga.jpg', '1', NULL, NULL);
@@ -264,25 +264,12 @@ INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES (  'Sal', NULL, NULL, '4', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES (  'Vinagre', NULL, NULL, '4', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES (  'Achocolatado em pó', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES (  'Alimentos compostos', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES (  'Alimentos em pó ou para reconstituição', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Apresuntado', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Azeitona', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Bebidas a base de xarope de groselha', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Bebidas a base de xarope de guaraná', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Biscoito ou bolacha recheada', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Bolo com cobertura ou recheio', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Cereais com aditivo ou adoçado', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Chás prontos', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Gelados comestíveis', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Gelatina', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Linguiça', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Maionese', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Mortadela', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Preparações semiprontas ou prontas para o consumo', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Presunto', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Refrescos artificiais', NULL, NULL, '5', NULL, NULL);
-INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Refrigerantes', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Salsicha', NULL, NULL, '5', NULL, NULL);
 INSERT INTO produtos (Nome, Obs, image, cat_ingredientes_id, created_at, updated_at) VALUES ('Temperos artificiais com glutamato monossódico', NULL, NULL, '5', NULL, NULL);
 

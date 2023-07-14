@@ -21,7 +21,7 @@
                                                             </div>
                                                             <div class="d-flex justify-content-center">
                                                                 <B>
-                                                                    <h4> Inscrição SuperChef da Educação de MT <br>
+                                                                    <h2> Inscrição SuperChef da Educação de MT </h2>
                                                                 </B>
 
                                                             </div>
@@ -48,6 +48,7 @@
                                                             PARTICIPANTE</h5>
                                                         <div class="card-body">
 
+                                                            <code> Inscrição N°: {{ $recibo->id }}</code> <br>
                                                             <code> Nome: </code> {{ $recibo->Nome ?? 'Sem registros' }}<br>
                                                             <code> Telefone: </code>
                                                             {{ $recibo->Telefone ?? 'Sem registros' }}<br>
@@ -84,12 +85,17 @@
                                                                         <a class="list-group-item list-group-item-action"
                                                                             id="list-settings-seduc" data-bs-toggle="list"
                                                                             href="#list-seduc" role="tab">4. Avaliação
-                                                                            SEDUC</a>
+                                                                            SEDUC - <b> Etapa 1 </b> </a>
+
+                                                                        <a class="list-group-item list-group-item-action"
+                                                                            id="list-settings-seduc2" data-bs-toggle="list"
+                                                                            href="#list-seduc2" role="tab"> 5. Avaliação
+                                                                            SEDUC - <b> Etapa 2 </b></a>
 
                                                                         <a class="list-group-item list-group-item-action"
                                                                             id="list-settings-dre1" data-bs-toggle="list"
-                                                                            href="#list-dre1" role="tab">5. Avaliação
-                                                                            DRE - Nutricionista</a>
+                                                                            href="#list-dre1" role="tab"> 6. Avaliação
+                                                                            DRE - <b> Etapa 2 </b></a>
 
                                                                         {{-- <a class="list-group-item list-group-item-action"
                                                                             id="list-settings-dre2" data-bs-toggle="list"
@@ -102,11 +108,13 @@
                                                                 <div class="col-12 col-sm-12 col-md-8 mt-1">
                                                                     <div class="tab-content text-justify"
                                                                         id="nav-tabContent">
+
+                                                                        
                                                                         <div class="tab-pane show active" id="list-home"
                                                                             role="tabpanel"
                                                                             aria-labelledby="list-home-list">
 
-                                                                            
+
                                                                             <div class="alert alert-primary" role="alert">
                                                                                 <h4 class="alert-heading">Ingredientes
                                                                                     escolhidos pelo candidato: </h4>
@@ -119,24 +127,24 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-success btn-sm mb-2">
                                                                                     ALIMENTOS IN NATURA E MINIMAMENTE
-                                                                                    PROCESSADOS 
+                                                                                    PROCESSADOS
                                                                                     <span
                                                                                         class="badge bg-white text-success">{{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS IN NATURA E MINIMAMENTE PROCESSADOS')->count() }}
 
-                                                                                      </span>
+                                                                                    </span>
                                                                                 </button>
                                                                                 <button type="button"
                                                                                     class="btn btn-primary btn-sm mb-2">
                                                                                     INGREDIENTES CULINÁRIOS <span
                                                                                         class="badge bg-white text-primary">{{ $recibo->produto->where('categoria.Nome', 'INGREDIENTES CULINÁRIOS')->count() }}
-                                                                                      </span>
+                                                                                    </span>
                                                                                 </button>
                                                                                 <button type="button"
                                                                                     class="btn btn-warning btn-sm mb-2">
                                                                                     ALIMENTOS PROCESSADOS <span
                                                                                         class="badge bg-white text-warning">
                                                                                         {{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS PROCESSADOS')->count() }}
-                                                                                      </span>
+                                                                                    </span>
                                                                                 </button>
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary btn-sm mb-2">
@@ -144,13 +152,13 @@
                                                                                         class="badge bg-white text-secondary">
                                                                                         {{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS ULTRAPROCESSADOS')->count() }}
 
-                                                                                      </span>
+                                                                                    </span>
                                                                                 </button>
                                                                                 <button type="button"
                                                                                     class="btn btn-danger btn-sm mb-2">
                                                                                     ALIMENTOS PROIBIDOS <span
                                                                                         class="badge bg-white text-danger">{{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS PROIBIDOS')->count() }}
-                                                                                      </span>
+                                                                                    </span>
                                                                                 </button>
 
                                                                             </div>
@@ -175,13 +183,14 @@
 
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                          @foreach ($recibo->produto as $item)
-                                                                                          </td>
+                                                                                            @foreach ($recibo->produto as $item)
+                                                                                                </td>
                                                                                                 <td>
                                                                                                     <img src="{{ asset('/images/ingredientes/') }}/{{ $item->image }}"
                                                                                                         width="60px">
                                                                                                 </td>
-                                                                                                <td>{{ $item->Nome }}</td>
+                                                                                                <td>{{ $item->Nome }}
+                                                                                                </td>
 
                                                                                                 <td>{{ $item->pivot['Quantidade'] }}
                                                                                                 </td>
@@ -208,9 +217,9 @@
                                                                                                     <td> <small
                                                                                                             class="text-primary">
                                                                                                             <span
-                                                                                                                class="badge bg-primary">{{ $item->categoria->Nome}}
-                                                                                                              
-                                                                                                              </span>
+                                                                                                                class="badge bg-primary">{{ $item->categoria->Nome }}
+
+                                                                                                            </span>
                                                                                                     </td>
                                                                                                 @endif
                                                                                                 @if ($item->categoria->Nome == 'ALIMENTOS PROIBIDOS')
@@ -236,11 +245,15 @@
 
                                                                                     </tbody>
                                                                                 </table>
-                                                                                <div class="alert alert-primary" role="alert">
-                                                                                  <h4 class="alert-heading">Outros ingedientes da receita: </h4>
-                                                                                  <p class="mb-0">  {{ $recibo->Outros_ingredientes }} </p>
-                                                                              </div>
-                                                                          
+                                                                                <div class="alert alert-primary"
+                                                                                    role="alert">
+                                                                                    <h4 class="alert-heading">Outros
+                                                                                        ingedientes da receita: </h4>
+                                                                                    <p class="mb-0">
+                                                                                        {{ $recibo->Outros_ingredientes }}
+                                                                                    </p>
+                                                                                </div>
+
                                                                             </div>
 
 
@@ -289,8 +302,8 @@
                                                                                                         Seduc - MT </p>
                                                                                                     <hr>
                                                                                                     <p class="mb-0"></p>
-                                                                                                    <img
-                                                                                                        src="{{ asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros' }}" width="600px">
+                                                                                                    <img src="{{ asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros' }}"
+                                                                                                        width="600px">
 
                                                                                                 </div>
                                                                                             </div>
@@ -321,34 +334,73 @@
                                                                                                     <h4
                                                                                                         class="alert-heading">
                                                                                                         Avaliação SEDUC - MT
+                                                                                                        - <b>ETAPA 1</b>
                                                                                                     </h4>
                                                                                                     <p> Os campos de notas
                                                                                                         abaixo são para o
                                                                                                         uso exclusivo da
                                                                                                         Seduc - MT </p>
                                                                                                     <hr>
-                                                                                                    <p class="mb-0"></p>
+                                                                                                    <p class="mb-0">
+
+
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-success btn-sm mb-2">
+                                                                                                            ALIMENTOS IN
+                                                                                                            NATURA E
+                                                                                                            MINIMAMENTE
+                                                                                                            PROCESSADOS
+                                                                                                            <span
+                                                                                                                class="badge bg-white text-success">{{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS IN NATURA E MINIMAMENTE PROCESSADOS')->count() }}
+
+                                                                                                            </span>
+                                                                                                        </button>
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-primary btn-sm mb-2">
+                                                                                                            INGREDIENTES
+                                                                                                            CULINÁRIOS <span
+                                                                                                                class="badge bg-white text-primary">{{ $recibo->produto->where('categoria.Nome', 'INGREDIENTES CULINÁRIOS')->count() }}
+                                                                                                            </span>
+                                                                                                        </button>
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-warning btn-sm mb-2">
+                                                                                                            ALIMENTOS
+                                                                                                            PROCESSADOS
+                                                                                                            <span
+                                                                                                                class="badge bg-white text-warning">
+                                                                                                                {{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS PROCESSADOS')->count() }}
+                                                                                                            </span>
+                                                                                                        </button>
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-secondary btn-sm mb-2">
+                                                                                                            ALIMENTOS
+                                                                                                            ULTRAPROCESSADOS
+                                                                                                            <span
+                                                                                                                class="badge bg-white text-secondary">
+                                                                                                                {{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS ULTRAPROCESSADOS')->count() }}
+
+                                                                                                            </span>
+                                                                                                        </button>
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-danger btn-sm mb-2">
+                                                                                                            ALIMENTOS
+                                                                                                            PROIBIDOS <span
+                                                                                                                class="badge bg-white text-danger">{{ $recibo->produto->where('categoria.Nome', 'ALIMENTOS PROIBIDOS')->count() }}
+                                                                                                            </span>
+                                                                                                        </button>
+
+                                                                                                    </p>
                                                                                                 </div>
 
                                                                                                 {!! Form::model($recibo, ['method' => 'PATCH', 'route' => ['inscricao_update', $recibo->id]]) !!}
 
                                                                                                 <div class="row">
-                                                                                                    <div
-                                                                                                        class="col-md-6 col-6">
-                                                                                                        <div
-                                                                                                            class="form-group has-icon-left">
-                                                                                                            <label
-                                                                                                                for="email-id-column"><strong>Existe
-                                                                                                                    Alimentos
-                                                                                                                    Proibidos
-                                                                                                                    ?</strong>
-                                                                                                                </strong>
-                                                                                                                <div
-                                                                                                                    class="position-relative">
-                                                                                                                    {!! Form::checkbox('alimentos_proibidos', 1, false, ['class' => 'form-cosntrol']) !!}
-                                                                                                                </div>
-                                                                                                        </div>
-                                                                                                    </div>
+
                                                                                                     <div
                                                                                                         class="col-md-6 col-6">
                                                                                                         <div
@@ -359,12 +411,13 @@
                                                                                                                     natura e
                                                                                                                     minimamente
                                                                                                                     processado
-                                                                                                                    - Até 5
-                                                                                                                    itens</strong>
+                                                                                                                    - <big>Até
+                                                                                                                        5
+                                                                                                                        itens
+                                                                                                                    </big></strong>
                                                                                                                 </strong>
                                                                                                                 <br><small
-                                                                                                                    class="text-danger">(Até
-                                                                                                                    5 itens)
+                                                                                                                    class="text-danger">
                                                                                                                     Pontuação
                                                                                                                     máxima:
                                                                                                                     1 Ponto
@@ -386,17 +439,17 @@
                                                                                                                     natura e
                                                                                                                     minimamente
                                                                                                                     processado
-                                                                                                                    - Acima
-                                                                                                                    de 6
-                                                                                                                    itens
+                                                                                                                    - <big>Acima
+                                                                                                                        de 6
+                                                                                                                        itens
+                                                                                                                    </big>
                                                                                                                 </strong>
                                                                                                                 </strong>
                                                                                                                 <br><small
-                                                                                                                    class="text-danger">(Até
-                                                                                                                    5 itens)
+                                                                                                                    class="text-danger">
                                                                                                                     Pontuação
                                                                                                                     máxima:
-                                                                                                                    2 Ponto
+                                                                                                                    2 Pontos
                                                                                                                 </small>
                                                                                                             </label>
                                                                                                             <div
@@ -413,32 +466,6 @@
                                                                                                         <div
                                                                                                             class="form-group has-icon-left">
                                                                                                             <label
-                                                                                                                for="email-id-column"><strong>Valorização
-                                                                                                                    dos
-                                                                                                                    hábitos
-                                                                                                                    alimentares
-                                                                                                                    locais
-                                                                                                                </strong>
-                                                                                                                <br><small
-                                                                                                                    class="text-danger">(Acima
-                                                                                                                    de 6
-                                                                                                                    intens)
-                                                                                                                    Pontuação
-                                                                                                                    máxima:
-                                                                                                                    2 Pontos
-                                                                                                                </small></label>
-                                                                                                            <div
-                                                                                                                class="position-relative">
-                                                                                                                {!! Form::number('nota_seduc3', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="2"']) !!}
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    {{-- INICIO --}}
-                                                                                                    <div
-                                                                                                        class="col-md-6 col-6">
-                                                                                                        <div
-                                                                                                            class="form-group has-icon-left">
-                                                                                                            <label
                                                                                                                 for="email-id-column"><strong>Processados</strong>
                                                                                                                 <br><small
                                                                                                                     class="text-danger">Pontuação
@@ -447,7 +474,7 @@
                                                                                                                 </small></label>
                                                                                                             <div
                                                                                                                 class="position-relative">
-                                                                                                                {!! Form::number('nota_seduc4', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="2"']) !!}
+                                                                                                                {!! Form::number('nota_seduc3', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="2"']) !!}
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -466,7 +493,7 @@
                                                                                                                 </small></label>
                                                                                                             <div
                                                                                                                 class="position-relative">
-                                                                                                                {!! Form::number('nota_seduc5', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="3"']) !!}
+                                                                                                                {!! Form::number('nota_seduc4', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="3"']) !!}
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -488,7 +515,7 @@
                                                                                                                 </small></label>
                                                                                                             <div
                                                                                                                 class="position-relative">
-                                                                                                                {!! Form::number('nota_seduc6', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="2"']) !!}
+                                                                                                                {!! Form::number('nota_seduc5', null, ['placeholder' => 'Insira a nota', 'class' => 'form-control', 'max="2"']) !!}
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -516,6 +543,198 @@
 
 
 
+                                                                        <div class="tab-pane" id="list-seduc2"
+                                                                            role="tabpanel"
+                                                                            aria-labelledby="list-settings-seduc2">
+                                                                            <div class="row">
+                                                                                <div class="col-xl-12 col-sm-12 col-12">
+                                                                                    <div
+                                                                                        class="card text-center bg-lighten-2">
+                                                                                        <div class="card-content d-flex">
+                                                                                            <div class="card-body">
+                                                                                                <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg"
+                                                                                                    alt=""
+                                                                                                    height="100"
+                                                                                                    class="mb-1">
+                                                                                                <div class="alert alert-primary"
+                                                                                                    role="alert">
+                                                                                                    <h4
+                                                                                                        class="alert-heading">
+                                                                                                        Avaliação
+                                                                                                        SEDUC - <b> ETAPA
+                                                                                                            2</b>
+                                                                                                    </h4>
+                                                                                                    <p> Os campos de notas
+                                                                                                        abaixo são para o
+                                                                                                        uso exclusivo da
+                                                                                                        SEDUC
+                                                                                                    </p>
+                                                                                                    <hr>
+                                                                                                    <p class="mb-0"></p>
+                                                                                                </div>
+
+                                                                                                <div class="row">
+                                                                                                    <div
+                                                                                                        class="col-md-6 col-8">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <label
+                                                                                                                for="email-id-column"><strong>
+                                                                                                                    Viabilidade
+                                                                                                                    no PNAE
+                                                                                                                </strong>
+                                                                                                                <br><small
+                                                                                                                    class="text-danger">
+                                                                                                                    Pontuação
+                                                                                                                    3 Pontos
+                                                                                                                </small>
+                                                                                                            </label>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                {!! Form::number('nota_drenutricao1', null, [
+                                                                                                                    'placeholder' => 'Insira a nota',
+                                                                                                                    'class' => 'form-control',
+                                                                                                                    'max="3"',
+                                                                                                                ]) !!}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-6 col-6">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <label
+                                                                                                                for="email-id-column"><strong>Valorização
+                                                                                                                    dos
+                                                                                                                    hábitos
+                                                                                                                    alimentares
+                                                                                                                    locais
+                                                                                                                </strong>
+                                                                                                                <br><small
+                                                                                                                    class="text-danger">
+                                                                                                                    Pontuação
+                                                                                                                    máxima:
+                                                                                                                    4 Pontos
+                                                                                                                </small></label>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                {!! Form::number('nota_drenutricao2', null, [
+                                                                                                                    'placeholder' => 'Insira a nota',
+                                                                                                                    'class' => 'form-control',
+                                                                                                                    'max="4"',
+                                                                                                                ]) !!}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-6 col-6">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <label
+                                                                                                                for="email-id-column"><strong>
+                                                                                                                    Alimentos
+                                                                                                                    da
+                                                                                                                    Agricultura
+                                                                                                                    Familiar
+                                                                                                                </strong>
+                                                                                                                <br><small
+                                                                                                                    class="text-danger">(Até
+                                                                                                                    3 itens)
+                                                                                                                    -
+                                                                                                                    Pontuação
+                                                                                                                    máxima:
+                                                                                                                    3 Pontos
+                                                                                                                </small></label>
+                                                                                                            </label>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                {!! Form::number('nota_drenutricao3', null, [
+                                                                                                                    'placeholder' => 'Insira a nota',
+                                                                                                                    'class' => 'form-control',
+                                                                                                                    'max="3"',
+                                                                                                                ]) !!}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-6 col-6">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <label
+                                                                                                                for="email-id-column"><strong>
+                                                                                                                    Alimentos
+                                                                                                                    da
+                                                                                                                    Agricultura
+                                                                                                                    Familiar
+                                                                                                                </strong>
+                                                                                                                <br><small
+                                                                                                                    class="text-danger">(Acima
+                                                                                                                    de 3
+                                                                                                                    itens) -
+                                                                                                                    Pontuação
+                                                                                                                    máxima:
+                                                                                                                    5 Pontos
+                                                                                                                </small></label>
+                                                                                                            </label>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                {!! Form::number('nota_drenutricao4', null, [
+                                                                                                                    'placeholder' => 'Insira a nota',
+                                                                                                                    'class' => 'form-control',
+                                                                                                                    'max="5"',
+                                                                                                                ]) !!}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-6 col-6">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <label
+                                                                                                                for="email-id-column"><strong>
+                                                                                                                    Criatividade
+                                                                                                                    (inovação
+                                                                                                                    e
+                                                                                                                    originalidade)
+                                                                                                                </strong>
+                                                                                                                <br> <small
+                                                                                                                    class="text-danger">Pontuação
+                                                                                                                    máxima:
+                                                                                                                    5 Pontos
+                                                                                                                </small></label>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                {!! Form::number('nota_drenutricao5', null, [
+                                                                                                                    'placeholder' => 'Insira a nota',
+                                                                                                                    'class' => 'form-control',
+                                                                                                                    'max="5"',
+                                                                                                                ]) !!}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-12 col-12">
+                                                                                                        <div
+                                                                                                            class="form-group has-icon-left">
+                                                                                                            <br>
+                                                                                                            <div
+                                                                                                                class="position-relative">
+                                                                                                                <button
+                                                                                                                    type="submit"
+                                                                                                                    class="btn btn-primary white">
+                                                                                                                    Salvar</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="tab-pane" id="list-dre1"
                                                                             role="tabpanel"
                                                                             aria-labelledby="list-settings-dre1">
@@ -534,12 +753,12 @@
                                                                                                     <h4
                                                                                                         class="alert-heading">
                                                                                                         Avaliação
-                                                                                                        Nutricionista - DRE
+                                                                                                        DRE
                                                                                                     </h4>
                                                                                                     <p> Os campos de notas
                                                                                                         abaixo são para o
                                                                                                         uso exclusivo da
-                                                                                                        Nutricionista DRE
+                                                                                                        DRE
                                                                                                     </p>
                                                                                                     <hr>
                                                                                                     <p class="mb-0"></p>

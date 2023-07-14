@@ -239,19 +239,32 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-earmark-text"></i><span>Inscrições</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-text"></i><span>Seduc</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{asset('/inscricao')}}">
-              <i class="bi bi-circle"></i><span>Ver todas as inscrições </span>
+              <i class="bi bi-circle"></i><span>Listar todas as Inscrições </span>
             </a>
           </li>
           <li>
             <a href="{{asset('/inscricao/semnotas')}}">
-              <i class="bi bi-circle"></i><span>Inscrições não avaliadas</span>
+              <i class="bi bi-circle"></i><span>Listar Inscrições não avaliadas</span>
             </a>
           </li>
+    
+
+
+
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav-dre" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-file-earmark-text"></i><span>DRE</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav-dre" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+        
           <li>
             <a href="{{asset('/inscricao/dre/drealtafloresta')}}">
               <i class="bi bi-circle"></i> 
@@ -340,7 +353,8 @@
 
 
         </ul>
-      </li><!-- End Components Nav -->
+      </li>
+      <!-- End Components Nav -->
 
 
 

@@ -19,4 +19,7 @@ class Dre extends Model
       {
           return $this->belongsTo(Recibo::class);
       }
+
+
+      
     }

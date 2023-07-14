@@ -17,7 +17,7 @@ class Recibo extends Model
 
     protected $fillable = [ 'dre_id','escola_id','Nome', 'Telefone', 'Email', 'Outros_ingredientes', 'Preparo', 'image', 'checkbox', 
     'Nome_Prato', 'nota_seduc1', 'nota_seduc2', 'nota_seduc3', 'nota_seduc4', 'nota_seduc5', 'nota_seduc6','alimentos_proibidos', 'nota_dre1', 'nota_dre2', 'nota_dre3',
-    'nota_dre4', 'nota_dre5'
+    'nota_dre4', 'nota_dre5', 'nota_drenutricao1', 'nota_drenutricao2', 'nota_drenutricao3', 'nota_drenutricao4', 'nota_drenutricao5'
       ];
       
     protected $table = 'recibo';

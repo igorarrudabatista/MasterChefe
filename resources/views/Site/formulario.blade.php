@@ -102,7 +102,7 @@
                         </div>
                         <hr>
                         <h3 class="alert-heading">SELECIONE A SUA <B>DRE </B> E <B> ESCOLA </B></h2>
-
+                            
                             <div class="form-group col-md-6">
                                 <select name="dre_id" id="dre_id" class="input-field b-cat b-cat-img" required>
                                     <option value="" enable> Selecione a sua DRE</option>
@@ -110,8 +110,12 @@
                                         <option value="{{ $dres->id }}">{{ $dres->Nome }} </option>
                                     @endforeach
                                 </select>
-
                             </div>
+                            {{-- <div class="form-group col-md-6">
+                                <select name="escola_id" id="escola_id" class="input-field b-cat b-cat-img" required>
+                                    <option value="" disabled selected>Selecione a sua Escola</option>
+                                </select> --}}
+
                             <div class="form-group col-md-6">
                                 <select name="escola_id" id="escola_id" class="input-field b-cat b-cat-img" required>
                                     <option value="" enable> Selecione a sua Escola</option>
@@ -120,9 +124,8 @@
                                     @endforeach
                                 </select>
 
-                            </div>
+                            </div> 
                 </div>
-
 
                 <div class="alert alert-warning" role="alert">
                     <h3 class="alert-heading">Qual o nome da sua receita?</h3>
@@ -156,8 +159,12 @@
                                                     value="{{ $ingredientes2->id }}" multiple class="checkbox-input" />
                                                 <span class="checkbox-tile">
                                                     <span class="checkbox-icon">
+                                                        @if ($ingredientes2->image == NULL)
+                                                        <img src="{{asset('/images/logo_seduc_chef.jpg')}}" width="60px">
+                                                        @else
                                                         <img src="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}"
                                                             width="60px">
+                                                            @endif
                                                     </span>
                                                     <span class="checkbox-label">{{ $ingredientes2->Nome }}</span>
                                                     <small>Quantidade:</small>
@@ -174,7 +181,7 @@
 
                                                         <option value="Unidade">Unidade</option>
                                                         <option value="Litro">Litro</option>
-                                                        <option value="Miligrama">Miligrama</option>
+                                                        <option value="Mililitro">Miligrama</option>
                                                         <option value="Quilo Grama - Kg">Quilo Grama - Kg</option>
                                                         <option value="Grama">Grama</option>
                                                         <option value="Xícara de Chá">Xícara de Chá</option>
@@ -240,13 +247,9 @@
 
                 <center>
                     <div class="checkbox-group">
-                        <input type="checkbox" id="terms-and-privacy" name="terms-and-privacy"
-                            value="Terms-and-Privacy">
-                        <label for="Agree" class="terms-privacy-checkbox">Eu aceito os <a href="#"
-                                class="link">Termos</a> de <a href="#" class="link">Política de
-                                Privacidade.</a></label>
+                        
                         <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-primary btn-lg"> Enviar </button>
+                            <button type="submit" class="btn btn-primary btn-lg"> Enviar  </button>
                         </div>
                     </div>
 
@@ -306,6 +309,8 @@
                                 });
                             });
                         </script>
+
+                        
                         <script src="{{ asset('/js/upload_image/script.js') }}"></script>
 </body>
 

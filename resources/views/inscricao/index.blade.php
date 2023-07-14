@@ -67,8 +67,9 @@
                   <th scope="col">Data da inscrição</th>
                   <th scope="col">Avaliar</th>
                   <th scope="col">Imprimir</th>
-                  <th scope="col">Avaliação SEDUC</th>
-                  <th scope="col">Avaliação DRE</th>
+                  <th scope="col">Etapa 1</th>
+                  <th scope="col">Etapa 2</th>
+                  <th scope="col">Ava. DRE</th>
                   <th scope="col">Total</th>
                   <th scope="col">Disponível no site</th>
                 </tr>
@@ -97,37 +98,43 @@
                  Imprimir
                  </button> </a> 
                 </td>
-
-<?php $totalnotasseduc = $recibos->nota_seduc1 + $recibos->nota_seduc2 + $recibos->nota_seduc3 + $recibos->nota_seduc4 + $recibos->nota_seduc5 + $recibos->nota_seduc6; ?>
+{{-- Etapa1 --}}
+<?php $totalnotasseduc = $recibos->nota_seduc1 + $recibos->nota_seduc2 + $recibos->nota_seduc3 + $recibos->nota_seduc4 + $recibos->nota_seduc5; ?>
+{{-- ETAPA 2 --}}
+<?php $totalnotasseduc2 = $recibos->nota_drenutricao1 + $recibos->nota_drenutricao2 + $recibos->nota_drenutricao3 + $recibos->nota_drenutricao4 + $recibos->nota_drenutricao5; ?>
+{{-- ETAPA 3 --}}
 <?php $totalnotasdre = $recibos->nota_dre1 + $recibos->nota_dre2 + $recibos->nota_dre3 + $recibos->nota_dre4 + $recibos->nota_dre5; ?>
-<?php $total = $totalnotasseduc + $totalnotasdre ?>
+{{-- TOTAL --}}
+<?php $total = $totalnotasseduc + $totalnotasseduc2 + $totalnotasdre ?>
 
 @if ($totalnotasseduc >= 6)
-<td>  <center><h3><span class="badge bg-primary">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
+<td>  <center><h3><span class="badge bg-success">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
 @elseif ($totalnotasseduc < 6)
 <td> <center>  <h3><span class="badge bg-danger">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
 @endif
 
-@if ($totalnotasdre >= 6)
-<td>  <center> <h3><span class="badge bg-primary">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h1></td>
-@elseif ($totalnotasdre < 6)
-<td>  <center> <h3><span class="badge bg-danger">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h3></td>
+<td>  <center> <h3><span class="badge bg-success">  {{$totalnotasseduc2 ?? 'Nota não informada'}}</span></h1></td>
+
+@if ($totalnotasdre <= 0)
+  <td> <center><h3><span class="badge bg-danger">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h1></td>
+@else 
+  <td>  <center><h3><span class="badge bg-warning">  {{$totalnotasdre ?? 'Nota não informada'}}</span></h3></td>
 @endif
 
-@if ($totalnotasseduc + $totalnotasdre >= 20)
+@if ($totalnotasseduc + $totalnotasseduc2 + $totalnotasdre >= 20)
 <td>  <center> <h2><span class="badge bg-success">  {{$total ?? 'Nota não informada'}}</span></h2></td>
-@elseif ($totalnotasseduc + $totalnotasdre < 20)
+@elseif ($totalnotasseduc + $totalnotasseduc2 + $totalnotasdre < 20)
 <td>  <center> <h2><span class="badge bg-danger">  {{$total ?? 'Nota não informada'}}</span></h2></td>
 @endif
 
 <td>
   @switch($recibos)
+
   @case($recibos->disp_site == '')
   <div class="dropdown">
    <center>  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
       Disp. Site
     </a>
-  
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
     <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
@@ -135,20 +142,40 @@
   </div>
 
 
-
-
 @break
 
 @case($recibos->disp_site == False)
-<center><h4><span class="badge bg-success"> SIM</span></h4>
+{{-- <center><h4><span class="badge bg-success"> SIM</span></h4> --}}
+  <div class="dropdown">
+    <center>  <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+     SIM
+     </a>
+     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+     <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+     </ul>
+   </div>
 @break
 
 @case ($recibos->disp_site == True)
-<center><h4><span class="badge bg-danger"> NÃO</span></h4>
+{{-- <center><h4><span class="badge bg-danger"> NÃO </span></h4>  --}}
+  <div class="dropdown">
+    <center>  <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      NÃO 
+     </a>
+     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/disp_site_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+     <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/disp_site_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+     </ul>
+   </div>
 @endswitch            
 
+
+
 </td>
-  </tr>
+
+
+</tr>
 
 @endforeach
 </tbody>
