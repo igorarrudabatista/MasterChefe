@@ -239,17 +239,22 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-earmark-text"></i><span>Seduc</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-text"></i><span>SEDUC</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{asset('/inscricao')}}">
-              <i class="bi bi-circle"></i><span>Listar todas as Inscrições </span>
+              <i class="bi bi-circle"></i><span> <b> Todas as Inscrições </b> </span>
             </a>
           </li>
           <li>
             <a href="{{asset('/inscricao/semnotas')}}">
-              <i class="bi bi-circle"></i><span>Listar Inscrições não avaliadas</span>
+              <i class="bi bi-circle"></i><span><b> ETAPA 1 </b>-  Inscrições não avaliadas</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{asset('/inscricao/semnotas_etapa2')}}">
+              <i class="bi bi-circle"></i><span><b> ETAPA 2 </b>-  Inscrições não avaliadas</span>
             </a>
           </li>
     

@@ -49,14 +49,16 @@
                                                         <div class="card-body">
 
                                                             <code> Inscrição N°: {{ $recibo->id }}</code> <br>
+                                                            <code> Data da Inscrição: </code>   {{$recibo->created_at->format("m/d/Y") ?? 'Não informado'}}<br>
                                                             <code> Nome: </code> {{ $recibo->Nome ?? 'Sem registros' }}<br>
-                                                            <code> Telefone: </code>
-                                                            {{ $recibo->Telefone ?? 'Sem registros' }}<br>
-                                                            <code> Email: </code>
-                                                            {{ $recibo->Email ?? 'Sem registros' }}<br>
+                                                            <code> CPF: </code> {{ $recibo->cpf ?? 'Sem registros' }}<br>
+                                                            <code> Telefone: </code> {{ $recibo->Telefone ?? 'Sem registros' }}<br>
+                                                            <code> Munícipio: </code> {{ $recibo->cidade->Nome ?? 'Sem registros' }}<br>
+                                                            <code> Email: </code> {{ $recibo->Email ?? 'Sem registros' }}<br>
                                                             <code> DRE: </code> {{ $recibo->dre->Nome }}<br>
                                                             <code> Escola: </code>
                                                             {{ $recibo->escola->EscolaNome ?? 'Sem registros' }}<br>
+                                                                <br>
 
                                                         </div>
                                                     </div>

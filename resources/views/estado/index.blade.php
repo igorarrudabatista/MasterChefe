@@ -45,7 +45,7 @@
             </div>
                 @endif
                 
-                <table class='table datatable' id="table1">
+                <table class='table datatable'>
                     <thead>
                         
                         

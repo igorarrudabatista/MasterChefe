@@ -8,12 +8,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>LISTA DE INSCRITOS - Etapa 2 - Não Avaliados</h1>
+    <h1>LISTA DE INSCRITOS - Etapa 2 - Candidatos Não Avaliados</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Início</a></li>
-        <li class="breadcrumb-item active ">SEDUC</li>
-        <li class="breadcrumb-item active ">Lista de Inscritos - Etapa 2 - Não avaliados</li>
+        <li class="breadcrumb-item ">SEDUC</li>
+        <li class="breadcrumb-item active ">Lista de Inscritos  - Etapa 2</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -56,7 +56,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Lista de Inscritos Candidatos não avaliados <b>-  ETAPA 1 </b></h5>
+            <h5 class="card-title">Lista de Inscritos Etapa 2 - Candidatos não avaliadas</h5>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -97,7 +97,7 @@
 {{-- ETAPA 3 --}}
 <?php $totalnotasdre = $recibos->nota_dre1 + $recibos->nota_dre2 + $recibos->nota_dre3 + $recibos->nota_dre4 + $recibos->nota_dre5; ?>
 {{-- TOTAL --}}
-<?php $total = $totalnotasseduc2 + $totalnotasdre ?>
+<?php $total =  + $totalnotasseduc2 + $totalnotasdre ?>
 
 @if ($totalnotasseduc >= 6)
 <td>  <center><h3><span class="badge bg-success">  {{$totalnotasseduc ?? 'Nota não informada'}}</span></h3></td>
@@ -115,7 +115,7 @@
 
 @if ($totalnotasseduc2 + $totalnotasdre >= 20)
 <td>  <center> <h2><span class="badge bg-success">  {{$total ?? 'Nota não informada'}}</span></h2></td>
-  @elseif ( $totalnotasseduc2 + $totalnotasdre < 20)
+  @elseif ($totalnotasseduc + $totalnotasseduc2 + $totalnotasdre < 20)
   <td>  <center> <h2><span class="badge bg-danger">  {{$total ?? 'Nota não informada'}}</span></h2></td>
   @endif
 <td>
@@ -161,7 +161,50 @@
    </div>
 @endswitch            
 </td>
+{{-- 
+Desclassificar o candidato --}}
+{{-- <td>
+  @switch($recibos)
 
+  @case($recibos->desclassificar == '')
+  <div class="dropdown">
+   <center>  <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Desclassificar
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/desclassificar_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+    <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/desclassificar_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+    </ul>
+  </div>
+
+
+@break
+
+@case($recibos->desclassificar == False)
+{{-- <center><h4><span class="badge bg-success"> SIM</span></h4> --}}
+  {{-- <div class="dropdown">
+    <center>  <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+     Desqualificado
+     </a>
+     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/desclassificar_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+     <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/desclassificar_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+     </ul>
+   </div>
+@break
+
+@case ($recibos->desclassificar == True) --}}
+{{-- <center><h4><span class="badge bg-danger"> NÃO </span></h4>  --}}
+  {{-- <div class="dropdown">
+    <center>  <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+  Qualificado
+    </a>
+     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <center>   <a class="dropdown-item bg-success " href="{{asset('/inscricao/invoice/desclassificar_sim/')}}/{{$recibos->id}}"> <i class="fas fa-check"></i> Sim</a>
+     <center>   <a class="dropdown-item bg-danger "  href="{{asset('inscricao/invoice/desclassificar_nao')}}/{{$recibos->id}}"> <i class="fa-solid fa-xmark"></i> Não</a> 
+     </ul>
+   </div>
+@endswitch         --}} 
   </td>
 <td>
   <a href="{{asset('/inscricao/invoice/')}}/{{$recibos->id}}" button type="button" class="btn btn-outline-secondary" >

@@ -46,11 +46,17 @@
                                               <h5 class="card-title justify-content-md-center">DADOS DO PARTICIPANTE</h5>
                                               <div class="card-body">
 
-                                                  <code> Nome: </code>     {{$recibo->Nome ?? 'Sem registros'  }}<br>
-                                                  <code> Telefone: </code> {{$recibo->Telefone ?? 'Sem registros'  }}<br>
-                                                  <code> Email: </code>    {{$recibo->Email ?? 'Sem registros'  }}<br>
-                                                  <code> DRE: </code>    {{$recibo->dre->Nome }}<br>
-                                                  <code> Escola: </code>    {{$recibo->escola->EscolaNome ?? 'Sem registros'  }}<br>
+                                                <code> Inscrição N°: {{ $recibo->id }}</code> <br>
+                                                <code> Data da Inscrição: </code>   {{$recibo->created_at->format("m/d/Y") ?? 'Não informado'}}<br>
+                                                <code> Nome: </code> {{ $recibo->Nome ?? 'Sem registros' }}<br>
+                                                <code> CPF: </code> {{ $recibo->cpf ?? 'Sem registros' }}<br>
+                                                <code> Telefone: </code> {{ $recibo->Telefone ?? 'Sem registros' }}<br>
+                                                <code> Munícipio: </code> {{ $recibo->cidade->Nome ?? 'Sem registros' }}<br>
+                                                <code> Email: </code> {{ $recibo->Email ?? 'Sem registros' }}<br>
+                                                <code> DRE: </code> {{ $recibo->dre->Nome }}<br>
+                                                <code> Escola: </code>
+                                                {{ $recibo->escola->EscolaNome ?? 'Sem registros' }}<br>
+                                                    <br>
                                                 
                                               </div>
                                               </div>
@@ -92,6 +98,7 @@
                                                                                         @foreach($recibo->produto as $item)                                                                                        
                                                                                       </td>
                                                                                         <td> 
+                                                                                          
                                                                                       <img src="{{asset('/images/ingredientes/')}}/{{$item->image}}"  width="60px" >
                                                                                      </td>
                                                                                           <td>{{$item->Nome}}</td>
@@ -141,15 +148,18 @@
                                                                         <h5><strong>Imagem do Prato:</strong></h5>
 
                                                                         <center>
-                                                                        <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" width= "800px" class="logo">
-                                                                      </div> </div>
+                                                                        <img src="{{asset('/images/inscricao/' . $recibo->image) ?? 'Sem registros'}}" class="img-fluid">
+                                                                      </div>
+                                                                    </div>
+                                                                    <br>
 
                                                                       <?php $totalnotasseduc = $recibo->nota_seduc1 + $recibo->nota_seduc2 + $recibo->nota_seduc3 + $recibo->nota_seduc4 + $recibo->nota_seduc5 + $recibo->nota_seduc6; ?>
+                                                                      <?php $totaletapa2 = $recibo->nota_drenutricao1 + $recibo->nota_drenutricao2 + $recibo->nota_drenutricao3 + $recibo->nota_drenutricao4 + $recibo->nota_drenutricao5; ?>
                                                                       <?php $totalnotasdre = $recibo->nota_dre1 + $recibo->nota_dre2 + $recibo->nota_dre3 + $recibo->nota_dre4 + $recibo->nota_dre5; ?>
                                                                    
                                                                       <section class="section">
                                                                         <div class="row">
-                                                                          <div class="col-lg-6">
+                                                                          <div class="col-lg-4">
                                                                   
                                                                             <div class="card">
                                                                               <div class="card-body">
@@ -169,11 +179,26 @@
                                                                   
                                                                           </div>
                                                                   
-                                                                          <div class="col-lg-6">
+                                                                          <div class="col-lg-4">
                                                                   
                                                                             <div class="card">
                                                                               <div class="card-body">
-                                                                                <h5 class="card-title">Candidato avaliado pelas DREs - MT</h5>
+                                                                                <h5 class="card-title">Candidato avaliado  - ETAPA 2 - SEDUC</h5>
+                                                                                <ul class="list-group list-group-flush">
+                                                                                  <li class="list-group-item">Viabilidade no PNAE -  <b> Nota:  {{$recibo->nota_drenutricao5}} </b>  </li>
+                                                                                  <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_drenutricao2}}  </b> </li>
+                                                                                  <li class="list-group-item"> Alimentos da Agricultura Familiar  -<b>   Nota:  {{$recibo->nota_drenutricao3}} </b>  </li>
+                                                                                  <li class="list-group-item">Alimentos da Agricultura Familiar - <b>  Nota:  {{$recibo->nota_drenutricao4}} </b>  </li>
+                                                                                  <li class="list-group-item">Criatividade (inovação e originalidade) - <b>  Nota:  {{$recibo->nota_drenutricao5}} </b>  </li>
+                                                                              </ul>                                                                              </div>
+                                                                              <center>    <h5 class="card-title"> <b> TOTAL: {{$totaletapa2}},00 </h5> </b> </a> </center>
+                                                                            </div>
+                                                                          </div>
+                                                                          <div class="col-lg-4">
+                                                                  
+                                                                            <div class="card">
+                                                                              <div class="card-body">
+                                                                                <h5 class="card-title">Candidato avaliado ETAPA 2 -DRE</h5>
                                                                                 <ul class="list-group list-group-flush">
                                                                                   <li class="list-group-item">Viabilidade no PNAE -  <b> Nota:  {{$recibo->nota_dre1}} </b>  </li>
                                                                                   <li class="list-group-item">Valorização dos hábitos alimentares locais - <b>  Nota:  {{$recibo->nota_dre2}}  </b> </li>
@@ -190,6 +215,7 @@
 
                                                                  
                                   </section>
+                      </div></div></div></div></div></section></main>
 
 <script src="{{asset('/js/pages/form-editor.js')}}"></script>
 @endsection

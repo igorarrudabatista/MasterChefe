@@ -21,12 +21,16 @@ return new class extends Migration
 
             //$table->foreignId('escola_id')->constrained('escola')->onDelete('cascade');
             
-    $table->unsignedBigInteger('escola_id');
-    $table->foreign('escola_id')->references('id')->on('escola')->onDelete('no action');
+            $table->unsignedBigInteger('escola_id');
+            $table->foreign('escola_id')->references('id')->on('escola')->onDelete('no action');
+                    
+            $table->unsignedBigInteger('cidade_id');
+            $table->foreign('cidade_id')->references('id')->on('cidade')->onDelete('no action');
             
             $table->string('Nome')->nullable();
             $table->string('Telefone')->nullable();
             $table->string('Email')->nullable();
+            $table->string('cpf')->nullable();
             $table->string('Nome_Prato')->nullable();
             $table->string('motivo')->nullable();
             $table->string('Outros_ingredientes')->nullable();
@@ -38,7 +42,6 @@ return new class extends Migration
             $table->decimal('nota_seduc3',10,2)->nullable();
             $table->decimal('nota_seduc4',10,2)->nullable();
             $table->decimal('nota_seduc5',10,2)->nullable();
-            $table->decimal('nota_seduc6',10,2)->nullable();
             $table->decimal('nota_drenutricao1',10,2)->nullable();
             $table->decimal('nota_drenutricao2',10,2)->nullable();
             $table->decimal('nota_drenutricao3',10,2)->nullable();
@@ -49,7 +52,7 @@ return new class extends Migration
             $table->decimal('nota_dre3',10,2)->nullable();
             $table->decimal('nota_dre4',10,2)->nullable();
             $table->decimal('nota_dre5',10,2)->nullable();
-            $table->boolean('checkbox')->nullable();
+            $table->boolean('desclassificar')->nullable();
             $table->boolean('disp_site')->nullable();
         $table->timestamps();
 

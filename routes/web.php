@@ -30,6 +30,7 @@ use App\Http\Controllers\{
 Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
 Route::get('/inscricao/dre/edit/{id}',    [ReciboController::class, 'dreedit']);
 Route::get('/inscricao/semnotas',        [ReciboController::class, 'semnotas']);
+Route::get('/inscricao/semnotas_etapa2',        [ReciboController::class, 'semnotas_etapa2']);
 
 Route::get('/inscricao/dre/drealtafloresta',    [ReciboController::class, 'drealtafloresta']);
 Route::get('/inscricao/dre/drebarradogarcas',    [ReciboController::class, 'drebarradogarcas']);
@@ -47,9 +48,11 @@ Route::get('/inscricao/dre/dresinop',    [ReciboController::class, 'dresinop']);
 Route::get('/inscricao/dre/dretangaradaserra',    [ReciboController::class, 'dretangaradaserra']);
 
 
-Route::patch('/inscricao/invoice/{id}',    [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
+Route::patch('/inscricao/invoice/{id}',                  [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
 Route::get('/inscricao/invoice/disp_site_sim/{id}',      [ReciboController::class, 'disp_site_sim']);
 Route::get('/inscricao/invoice/disp_site_nao/{id}',      [ReciboController::class, 'disp_site_nao']);
+Route::get('/inscricao/invoice/desclassificar_sim/{id}', [ReciboController::class, 'desclassificar_sim']);
+Route::get('/inscricao/invoice/desclassificar_nao/{id}', [ReciboController::class, 'desclassificar_nao']);
 
 
 Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);

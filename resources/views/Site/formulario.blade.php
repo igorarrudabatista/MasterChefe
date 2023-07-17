@@ -93,11 +93,23 @@
                                     placeholder="Insira o seu telefone com o DDD" required>
 
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <input type="number" class="input-field b-cat b-cat-img" id="cpf" name="cpf"
+                                    placeholder="Digite o seu CPF" required>
+                            </div>
+                            <div class="form-group col-md-4">
                                 <input type="email" class="input-field b-cat b-cat-img" id="Email" name="Email"
                                     placeholder="Email" required>
                             </div>
-
+                            <div class="form-group col-md-4">
+                                <select name="cidade_id" id="cidade_id" class="input-field b-cat b-cat-img" required>
+                                    <option value="" enable> Selecione a sua Cidade</option>
+                                    @foreach ($cidade as $cidades)
+                                        <option value="{{ $cidades->id }}">{{ $cidades->Nome }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                       
 
                         </div>
                         <hr>
@@ -111,11 +123,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group col-md-6">
-                                <select name="escola_id" id="escola_id" class="input-field b-cat b-cat-img" required>
-                                    <option value="" disabled selected>Selecione a sua Escola</option>
-                                </select> --}}
-
+                       
                             <div class="form-group col-md-6">
                                 <select name="escola_id" id="escola_id" class="input-field b-cat b-cat-img" required>
                                     <option value="" enable> Selecione a sua Escola</option>
@@ -181,7 +189,7 @@
 
                                                         <option value="Unidade">Unidade</option>
                                                         <option value="Litro">Litro</option>
-                                                        <option value="Mililitro">Miligrama</option>
+                                                        <option value="Mililitro">Mililitro</option>
                                                         <option value="Quilo Grama - Kg">Quilo Grama - Kg</option>
                                                         <option value="Grama">Grama</option>
                                                         <option value="Xícara de Chá">Xícara de Chá</option>
