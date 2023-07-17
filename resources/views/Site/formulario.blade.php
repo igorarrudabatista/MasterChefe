@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -27,18 +27,22 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+</head>
 </head>
 
 <style>
     .showcase-area {
-        height: 25vh;
-        background: linear-gradient(rgba(240, 240, 240, 0.144),
-                rgba(255, 255, 255, 0.336)),
-            url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
+        height: 45vh;
+        background: linear-gradient(rgba(240, 240, 240, 0),
+                rgba(255, 255, 255, 0.055)),
+            url("{{ asset('/images/logo_seduc_chef_grande.jpg') }}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        margin-top: 5px;
+        border-radius:20px
     }
 
     .showcase-container {
@@ -67,34 +71,34 @@
 
         <section class="showcase-area" id="showcase">
             <div class="showcase-container">
+
                 <h1 class="main-title" id="home"> <a href="/Site" class="app-link"> <img
-                            src="{{ asset('/images/logo_seduc_chef.jpg') }}" width="150px" class=""> </a>
-
-                </h1>
-                <h4>Competição da Educação de MT - Melhores Receitas</p>
-                    {{-- <a href="#food-menu" class="btn btn-primary">Menu</a> --}}
-            </div>
-        </section>
-        <div class="login-container">
-            <center>
-
-                {!! Form::open(['route' => 'Site.store_formulario', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-
+                            src="{{ asset('/images/logo_sseduc_chef_grande.jpg') }}" class=""> </a> </h1>
+                        
+                    </div>
+                </section>
+                <div class="login-container">
+                    <center>
+                        <div class=" alert-primary" >
+                            <h2 class="alert-heading"><br> Formulário Competição <b> SuperChef da Educação</b>  SEDUC - MT </h2> <br> <h3>
+                            </h3> 
+                
                 <div class="alert alert-primary" role="alert">
                     <h3 class="alert-heading"> DADOS PESSOAIS
-                        </h4> <BR>
+                        {!! Form::open(['route' => 'Site.store_formulario', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    </h4> <BR>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input type="text" class="input-field b-cat b-cat-img" id="Nome" name="Nome"
                                     placeholder="Digite o seu Nome Completo" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="tel" class="input-field b-cat b-cat-img" id="Telefone" name="Telefone"
+                                <input type="tel" class="input-field b-cat b-cat-img" id="telefone" name="Telefone"
                                     placeholder="Insira o seu telefone com o DDD" required>
 
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="number" class="input-field b-cat b-cat-img" id="cpf" name="cpf"
+                                <input type="text" class="input-field b-cat b-cat-img" id="cpf" name="cpf"
                                     placeholder="Digite o seu CPF" required>
                             </div>
                             <div class="form-group col-md-4">
@@ -134,6 +138,7 @@
 
                             </div> 
                 </div>
+            </div>
 
                 <div class="alert alert-warning" role="alert">
                     <h3 class="alert-heading">Qual o nome da sua receita?</h3>
@@ -264,9 +269,20 @@
 
                     <center>
                         <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a
-                                href="https://seduc.mt.gov.br" target="_blank">SEDUC - TI </a></p>
+                                href="https://www3.seduc.mt.gov.br" target="_blank"> <b> SEDUC - TI </b> </a></p>
 
 
+                                <script>
+                                    $("#telefone").mask("(99) 99999-9999");
+                            
+                                    $("#cep").mask("99999-999");
+                            
+                                    $("#cpf").mask("999.999.999-99");
+                            
+                                    $("#cnpj").mask("99.999.999/9999-99");
+                            
+                                    $("#data").mask("99/99/9999");
+                                </script>              
                         <script>
                             // Aguarde o carregamento do documento
                             document.addEventListener('DOMContentLoaded', function() {
