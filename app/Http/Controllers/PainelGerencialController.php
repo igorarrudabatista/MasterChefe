@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Like;
 
 
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 
@@ -40,37 +42,37 @@ class PainelGerencialController extends Controller
         ->orderByDesc('Qtde')
         ->limit(1);
         $result = $query->get();
-
-    //    dd($result);
-//         select top 1 * 
-// from (
-//     select a.CeeTipoAtoRegulatorioFlg , COUNT(*) Qtde
-//     from CEE.TBCEETIPOATOREGULATORIO a
-//     group by a.CeeTipoAtoRegulatorioFlg
-// ) a
-// order by a.Qtde desc
-
-        // Obtém o candidato com o maior número de votos
-        //$vencedor = $votosPorCandidato->max();
-        $vencedor = $votosPorCandidato->max(); // conta a quantidade de votos que o vencedor obteve
-        $recibos = Recibo::all();
-
-        $likedre1 = Recibo::with('likes', 'dre')->where('dre_id', '=', '1')->count(); // Alta floresta
-        $likedre2 = Recibo::with('likes', 'dre')->where('dre_id', '=', '2')->count(); //,'=', '2')->count();
-        $likedre3 = Recibo::with('likes', 'dre')->where('dre_id', '=', '3')->count(); // Caceres
-        $likedre4 = Recibo::with('likes', 'dre')->where('dre_id', '=', '4')->count();
-        $likedre5 = Recibo::with('likes', 'dre')->where('dre_id', '=', '5')->count();
-        $likedre6 = Recibo::with('likes', 'dre')->where('dre_id', '=', '6')->count();
-        $likedre7 = Recibo::with('likes', 'dre')->where('dre_id', '=', '7')->count();
-        $likedre8 = Recibo::with('likes', 'dre')->where('dre_id', '=', '8')->count();
+        
+        //    dd($result);
+        //         select top 1 * 
+        // from (
+            //     select a.CeeTipoAtoRegulatorioFlg , COUNT(*) Qtde
+            //     from CEE.TBCEETIPOATOREGULATORIO a
+            //     group by a.CeeTipoAtoRegulatorioFlg
+            // ) a
+            // order by a.Qtde desc
+            
+            // Obtém o candidato com o maior número de votos
+            //$vencedor = $votosPorCandidato->max();
+            $vencedor = $votosPorCandidato->max(); // conta a quantidade de votos que o vencedor obteve
+            $recibos = Recibo::all();
+            
+            $likedre1 = Recibo::with('likes', 'dre')->where('dre_id', '=', '1')->count(); // Alta floresta
+            $likedre2 = Recibo::with('likes', 'dre')->where('dre_id', '=', '2')->count(); //,'=', '2')->count();
+            $likedre3 = Recibo::with('likes', 'dre')->where('dre_id', '=', '3')->count(); // Caceres
+            $likedre4 = Recibo::with('likes', 'dre')->where('dre_id', '=', '4')->count();
+            $likedre5 = Recibo::with('likes', 'dre')->where('dre_id', '=', '5')->count();
+            $likedre6 = Recibo::with('likes', 'dre')->where('dre_id', '=', '6')->count();
+            $likedre7 = Recibo::with('likes', 'dre')->where('dre_id', '=', '7')->count();
+            $likedre8 = Recibo::with('likes', 'dre')->where('dre_id', '=', '8')->count();
         $likedre9 = Recibo::with('likes', 'dre')->where('dre_id', '=', '9')->count();
         $likedre10 = Recibo::with('likes', 'dre')->where('dre_id', '=', '10')->count();
         $likedre11 = Recibo::with('likes', 'dre')->where('dre_id', '=', '11')->count();
         $likedre12 = Recibo::with('likes', 'dre')->where('dre_id', '=', '12')->count();
         $likedre13 = Recibo::with('likes', 'dre')->where('dre_id', '=', '13')->count();
         $likedre14 = Recibo::with('likes', 'dre')->where('dre_id', '=', '14')->count();
-
-
+        
+        
         $produto = Produto::all();
         $search = request('search');
         if ($search) {
@@ -78,6 +80,9 @@ class PainelGerencialController extends Controller
         } else {
             $produto = Produto::all();
         }
+ //       $user = Auth::user();
+        $user = User::whereNotNull('last_login')->get();
+
         // $totalfichas = FICHA::count();
         // $fichasNAOtramitadas = FICHA::where('status_id', '=', NULL)->count();
         // $fichasTramitadas = FICHA::where('status_id', '!=', NULL)->count();
@@ -109,7 +114,8 @@ class PainelGerencialController extends Controller
             'votosPorCandidato',
             'totalVotos',
             'recibos',
-            'result'
+            'result',
+            'user'
         ));
     }
 

@@ -56,7 +56,7 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <form class="search-form d-flex align-items-center">
         <input type="text" name="query" placeholder="" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
@@ -66,7 +66,7 @@
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="{{asset('/')}}">
+          <a class="nav-link nav-icon search-bar-toggle " href="">
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
@@ -401,7 +401,19 @@
           <i class="bi bi-question-circle"></i>
           <span>Suporte</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" >
+          <i class="bi bi-question-circle"></i>
+          <span>Usuários online:</span>
+          {{-- @foreach ($user as $users_logado)
+        <small> <ul>
+          <li> {{$users_logado->name}} </li> </small>
+          @endforeach --}}
+        </a>
+      </li>
+      <!-- End F.A.Q Page Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">

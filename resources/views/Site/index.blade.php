@@ -7,8 +7,8 @@
 
 <section class="app-main">
 
+        <div class="app-main-left cards-area">
 
-  <div class="app-main-left cards-area">
 
     @foreach($recibo as $key => $recibos )
 

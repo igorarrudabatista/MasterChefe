@@ -24,7 +24,7 @@
               <img src="{{asset('/images/avatar/chef.jpg')}}" alt="Profile" class="rounded-circle">
               <h2>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h2>
               @foreach(auth()->user()->roles as $role)
-              <h3> {{ $role->name }}</h3>
+                 <h3> {{ $role->name }}</h3>
           @endforeach
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -48,7 +48,7 @@
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Resumo</button>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Perfil</button>
                 </li>
 
@@ -58,14 +58,14 @@
 
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Alterar Senha</button>
-                </li>
+                </li> --}}
 
               </ul>
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">Sobre mim</h5>
-                  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+                  {{-- <h5 class="card-title">Sobre mim</h5> --}}
+                  {{-- <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p> --}}
 
                   <h5 class="card-title">Informações</h5>
 
@@ -78,11 +78,11 @@
                     <div class="col-lg-3 col-md-4 label">Órgão</div>
                     <div class="col-lg-9 col-md-8">SEDUC - MT</div>
                   </div>
-
+{{-- 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Job</div>
                     <div class="col-lg-9 col-md-8">Web Designer</div>
-                  </div>
+                  </div> --}}
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">País</div>
@@ -96,7 +96,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Telefone</div>
-                    <div class="col-lg-9 col-md-8">() 99999999</div>
+                    <div class="col-lg-9 col-md-8">Não informado</div>
                   </div>
 
                   <div class="row">

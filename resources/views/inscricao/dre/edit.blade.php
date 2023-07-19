@@ -61,6 +61,15 @@
 
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <div class="alert alert-danger"
+                                                            role="alert">
+                                                       <center> <h4 class="alert-heading">Nome da Receita: </h4> </center>
+                                                            <p class="text-center"> <b> {{$recibo->Nome_Prato}} </b></p>
+                                                        </div>                                             
+                                                    </div>
+                                                    
                                                     <hr>
                                                     <div class="card-content">
                                                         <div class="card-body">

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'last_login'
     ];
 
     /**
@@ -41,7 +43,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login' => 'datetime', // Definir o campo 'last_login' como um atributo do tipo 'datetime'
+
     ];
+
+    public function authenticatedAt()
+    {
+        $this->update(['last_login' => now()]);
+    }
 
     // public function Product()
     // {

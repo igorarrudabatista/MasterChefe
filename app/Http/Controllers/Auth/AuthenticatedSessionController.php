@@ -30,10 +30,15 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Autenticação bem-sucedida, atualize o campo 'last_login'
+        $user = Auth::user();
+        $user->update(['last_login' => now()]);
+
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
 
     /**
      * Destroy an authenticated session.
@@ -43,6 +48,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        // Atualiza o campo 'last_login' com a data e hora atual do logout
+        $user = Auth::user();
+        if ($user) {
+            $user->update(['last_login' => now()]);
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -51,4 +62,5 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
 }
