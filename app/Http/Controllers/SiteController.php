@@ -81,6 +81,18 @@ class SiteController extends Controller
     return view('Site.formulario', compact('ingredientes', 'escola', 'dre', 'cidade'));
 
 }
+   public function formulario2(){
+
+    $ingredientes = Produto::all();
+    $escola = escola::all();
+    $dre = Dre::all();
+    $cidade = Cidade::all();
+   // $dre_cidade = Dre::with('escola')->get();
+
+
+    return view('Site.formulario2', compact('ingredientes', 'escola', 'dre', 'cidade'));
+
+}
 
     public function getEscolasByDre($dreId)
     {

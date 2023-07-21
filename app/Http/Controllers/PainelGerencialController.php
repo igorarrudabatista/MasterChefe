@@ -80,8 +80,8 @@ class PainelGerencialController extends Controller
         } else {
             $produto = Produto::all();
         }
- //       $user = Auth::user();
-        $user = User::whereNotNull('last_login')->get();
+        $user = Auth::user();
+//        $user = User::whereNotNull('last_login')->get();
 
         // $totalfichas = FICHA::count();
         // $fichasNAOtramitadas = FICHA::where('status_id', '=', NULL)->count();

@@ -31,6 +31,8 @@ Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
 Route::get('/inscricao/dre/edit/{id}',    [ReciboController::class, 'dreedit']);
 Route::get('/inscricao/semnotas',        [ReciboController::class, 'semnotas']);
 Route::get('/inscricao/semnotas_etapa2',        [ReciboController::class, 'semnotas_etapa2']);
+Route::get('/inscricao/desclassificados',        [ReciboController::class, 'desclassificados']);
+Route::get('/inscricao/classificados',        [ReciboController::class, 'classificados']);
 
 Route::get('/inscricao/dre/drealtafloresta',    [ReciboController::class, 'drealtafloresta']);
 Route::get('/inscricao/dre/drebarradogarcas',    [ReciboController::class, 'drebarradogarcas']);
@@ -131,6 +133,7 @@ Route::get('/site/voto/{id}',             [SiteController::class, 'voto']);
 Route::get('/site/retiravoto/{id}',       [SiteController::class, 'retiravoto']);
 //Route::get('/Site/formulario',            [SiteController::class, 'formulario']);
 Route::get('/Site/formulario', [SiteController::class, 'formulario'])->name('Site.formulario');
+Route::get('/Site/formulario2', [SiteController::class, 'formulario2'])->name('Site.formulario2');
 Route::post('/Site/formulario', [SiteController::class, 'store_formulario'])->name('Site.store_formulario');
 Route::get('site',                        [SiteController::class, 'index'])->name('recibos.index');
 Route::post('site/{recibo}/vote',         [SiteController::class, 'vote'])->name('site.vote');

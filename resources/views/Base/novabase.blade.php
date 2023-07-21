@@ -248,6 +248,16 @@
             </a>
           </li>
           <li>
+            <a class="text-success" href="{{asset('/inscricao/classificados')}}">
+              <i class="bi bi-circle"></i><span>  <b>  Inscrições Classificadas  </b> <small> <br>Disp. no Site </small> </span>
+            </a>
+          </li>
+          <li>
+            <a class="text-danger" href="{{asset('/inscricao/desclassificados')}}">
+              <i class="bi bi-circle"></i><span>  <b>  Inscrições Desclassificadas  </b>  </span>
+            </a>
+          </li>
+          <li>
             <a href="{{asset('/inscricao/semnotas')}}">
               <i class="bi bi-circle"></i><span><b> ETAPA 1 </b>-  Inscrições não avaliadas</span>
             </a>
@@ -258,6 +268,7 @@
             </a>
           </li>
     
+            
 
 
 
@@ -403,7 +414,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" >
           <i class="bi bi-question-circle"></i>
           <span>Usuários online:</span>
@@ -411,8 +422,8 @@
         <small> <ul>
           <li> {{$users_logado->name}} </li> </small>
           @endforeach --}}
-        </a>
-      </li>
+        {{-- </a>
+      </li>  --}}
       <!-- End F.A.Q Page Nav -->
 
       {{-- <li class="nav-item">

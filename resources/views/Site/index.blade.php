@@ -9,7 +9,7 @@
 
         <div class="app-main-left cards-area">
 
-
+<iframe src="{{asset('/edital/regulamento.pdf')}}" width="1800px"height="1200px">
     @foreach($recibo as $key => $recibos )
 
               <div class="card-wrapper main-card">

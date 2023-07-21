@@ -53,6 +53,129 @@
         height: 100%;
         font-size: 1.6rem;
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700&display=swap');
+
+body {
+  background-color: white
+}
+
+.select-container {
+  user-select: none;
+  font-family: 'Khula', sans-serif;
+  box-sizing: border-box;
+}
+
+.select-container .select-control {
+  background-color: white;
+  border: medium none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  padding: 0 16px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 2px 0px inset;
+}
+
+.select-container .select-control-is-open {
+  box-shadow: rgba(21, 19, 26, 0.07) 0 4px 10px 0
+}
+
+.select-container .select-option {
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  flex: 2;
+}
+
+.select-container .select-option-left {
+  display: flex;
+  align-items: center;
+}
+
+.select-container .select-option-right {
+  display: flex;
+  align-items: center;
+}
+
+.select-container .select-control .select-option {
+  display: none;
+}
+
+.select-container .select-option-is-selected {
+  display: flex !important
+}
+
+.select-container .select-option-image {
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+}
+
+.select-container .select-option-caret {
+  width: 16px;
+  height: 16px;
+  padding-left: 16px;
+}
+
+.select-container .select-menu {
+  background-color: white;
+  position: absolute;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.select-container .select-menu-hidden {
+  display: none
+}
+
+.select-container .select-menu .select-option {
+  padding: 8px 16px;
+  display: flex;
+}
+
+.select-container .select-menu .select-option:hover {
+  background-color: rgba(0,0,0,0.25)
+}
+
+.select-container .select-menu .select-option-label {
+  color: black;
+}
+
+.select-container .select-option-badge {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: rgb(107, 113, 126);
+}
+
+.select-container .select-option-label {
+  font-weight: 500;
+  color: rgb(107, 113, 126);
+  margin-right: 16px;
+}
+
+.test {
+  color: red
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-image {
+    width: 60px;
+    margin-right: 10px;
+  }
+
 </style>
 
 <body>
@@ -165,31 +288,43 @@
                                 <fieldset class="checkbox-group">
                                     <legend class="checkbox-group-legend">
                                     </legend>
-                                    @foreach ($ingredientes as $ingredientes2)
-                                        <div class="checkbox">
-                                            <label class="checkbox-wrapper">
-                                                <input type="checkbox" id="produtoss" name="products[]"
-                                                    value="{{ $ingredientes2->id }}" multiple class="checkbox-input" />
-                                                <span class="checkbox-tile">
-                                                    <span class="checkbox-icon">
-                                                        @if ($ingredientes2->image == NULL)
-                                                        <img src="{{asset('/images/logo_seduc_chef.jpg')}}" width="60px">
-                                                        @else
-                                                        <img src="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}"
-                                                            width="60px">
-                                                            @endif
-                                                    </span>
-                                                    <span class="checkbox-label">{{ $ingredientes2->Nome }}</span>
-                                                    <small>Quantidade:</small>
-                                                    {{-- <input type="number" name="quantities[]" placeholder="Quantidade" multiple class="checkbox-label input-field" value="1" /> --}}
-                                                    <input type="number" id="quantidade" name="quantities[{{ $ingredientes2->id }}]"
-                                                        placeholder="Quantidade" class="checkbox-label input-field2"
-                                                        value="1" />
-
-                                                    {{-- <select name="units[]" id="units" class="input-field text-primary"> --}}
-                                                    <small>Unid. de medida:</small>
-
-                                                    <select name="units[{{ $ingredientes2->id }}]" id="units"
+                                    
+                                    <table class="table" id="products_table">
+                                        <thead>
+                                          <tr>
+                                            <th><h3> <strong> Produto: </strong> </h3></th>
+                                            <th><h3> <strong> Quantidade:  </strong> </h3></th>
+                                            <th><h3> <strong> Unidade de medida:  </strong> </h3></th>
+                                            <!-- <th>Preço</th> -->
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+    <tr id="produtos">
+                                            <td>
+                                              <select name="products[]" id="produtoss"  class="form-control id_select2_example"  >
+                                                @foreach ($ingredientes as $ingredientes2)
+                                                <option value="{{$ingredientes2->id}}" data-image="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}">  
+                                                    <span>
+                                                        @if ($ingredientes2->image)
+                                                          <img src="{{ asset('/images/ingredientes/' . $ingredientes2->image) }}" class="product-image" width="60px">
+                                                        @endif
+                                                        <b>{{$ingredientes2->Nome}}</b>
+                                                      </span>
+        
+        
+                                                  @endforeach 
+                                                </option>
+                                                
+                                              </select>
+                                            </td>
+                                            <td>
+                            
+                            
+                                                <input type="number" id="quantidade" name="quantities[{{ $ingredientes2->id }}]"
+                                                placeholder="Quantidade" class="checkbox-label input-field2"
+                                                value="1" />                                            </td>
+                            <td>
+                                                        <select name="units[{{ $ingredientes2->id }}]" id="units"
                                                         class="input-field2 text-primary">
 
                                                         <option value="Unidade">Unidade</option>
@@ -202,17 +337,28 @@
                                                         <option value="Colher de café">Colher de café</option>
                                                         <option value="Colher de chá">Colher de chá</option>
                                                         <option value="Colher de sopa">Colher de sopa</option>
-                                                    </select>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                                    </select></td>
+                                          </tr>
+                                          <tr id="product1"></tr>
+                                        </tbody>
+                                      </table>
 
-
+                                 <div class="row">
+                                <div class="col-md-12">
+                                    <button id="add_row" class="btn btn-success pull-left"> + Adicionar Ingrediente</button> 
+                                    <button id='delete_row' class="pull-right btn btn-danger"> - Remover Ingrediente </button>
+                                  </div>
+                                </div>
+                    
 
                                 </fieldset>
 
                             </div>
+                            
+  
+
+                >
+                            
                             {{-- 
                            <hr>
 <p class="mb-0">Conte para nós o nome da sua receita.</p> --}}
@@ -252,7 +398,7 @@
                         <div class="shadow"></div>
                     </div>
                     <hr>
-                    <p class="mb-0"></p>
+                    <p class="mb-0">---</p>
                 </div>
 
 
@@ -270,7 +416,57 @@
                     <center>
                         <p>Desenvolvido pela <span class='text-danger'><i data-feather="heart"></i></span> <a
                                 href="https://www3.seduc.mt.gov.br" target="_blank"> <b> SEDUC - TI </b> </a></p>
+                              
+                              
+                              
                                 <script>
+                                    $(document).ready(function () {
+                                      $('#produtoss').on('change', function () {
+                                        const selectedProductId = $(this).val();
+                                        const selectedProductImage = $(this).find(`option[value="${selectedProductId}"]`).data('image');
+                                        const productImage = $(this).closest('.form-group').find('.product-image');
+                                  
+                                        if (selectedProductImage) {
+                                          productImage.attr('src', selectedProductImage).show();
+                                        } else {
+                                          productImage.hide();
+                                        }
+                                      });
+                                    });
+                                  </script>
+                                  
+                              
+                              
+
+
+
+ <script>
+        //Duplicar linha de Produto e Quantidade em Criar Orçamento
+
+        $(document).ready(function() {
+            let row_number = 1;
+            $("#add_row").click(function(e) {
+                e.preventDefault();
+                let new_row_number = row_number - 1;
+                $('#product' + row_number).html($('#product' + new_row_number).html()).find(
+                    'td:first-child');
+                $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+                row_number++;
+            });
+            $("#delete_row").click(function(e) {
+                e.preventDefault();
+                if (row_number > 1) {
+                    $("#product" + (row_number - 1)).html('');
+                    row_number--;
+                }
+            });
+        });
+    </script>
+
+
+
+
+
                                     $(document).ready(function () {
                                         $('.input-field2').on('input change', function () {
                                             const checkbox = $(this).closest('.checkbox').find('.checkbox-input');

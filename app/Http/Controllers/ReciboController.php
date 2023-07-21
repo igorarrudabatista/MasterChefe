@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
+
 use App\Exports\ReciboExport;
 
 
@@ -60,11 +65,13 @@ class ReciboController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('seduc')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('nota_seduc1')
-                ->orWhere('nota_seduc2')
-                ->orWhere('nota_seduc3')
-                ->orWhere('nota_seduc4')
-                ->orWhere('nota_seduc5')
+            $recibo = Recibo::where('disp_site','=', NULL)
+                ->where('nota_seduc1','=', NULL )
+                ->where('nota_seduc2','=', NULL )
+                ->where('nota_seduc3','=', NULL )
+                ->where('nota_seduc4','=', NULL )
+                ->where('nota_seduc5','=', NULL )
+                
                 ->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.semnotas', ['recibo' => $recibo, 'dre' => $dre,]);
@@ -79,11 +86,11 @@ class ReciboController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('seduc')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('nota_drenutricao1')
-                ->orWhere('nota_drenutricao2')
-                ->orWhere('nota_drenutricao3')
-                ->orWhere('nota_drenutricao4')
-                ->orWhere('nota_drenutricao5')
+            $recibo = Recibo::where('disp_site','=', NULL)
+                ->where('nota_drenutricao2','=', NULL )
+                ->where('nota_drenutricao3','=', NULL )
+                ->where('nota_drenutricao4','=', NULL )
+                ->where('nota_drenutricao5','=', NULL )
                 ->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.semnotas_etapa2', ['recibo' => $recibo, 'dre' => $dre,]);
@@ -92,6 +99,37 @@ class ReciboController extends Controller
             return view('errors.403');
         }
     }
+    public function desclassificados()
+    {
+        $dre = Dre::all();
+
+        if (Auth::check() && Auth::user()->hasRole('seduc')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('disp_site', '=', '1' )
+                ->orderBy('created_at', 'desc')->get();
+
+            return view('inscricao.desclassificados', ['recibo' => $recibo, 'dre' => $dre,]);
+        } else {
+
+            return view('errors.403');
+        }
+    }
+    public function classificados()
+    {
+        $dre = Dre::all();
+
+        if (Auth::check() && Auth::user()->hasRole('seduc')) {
+            // Se o usuário possui o perfil, realizar a consulta
+            $recibo = Recibo::where('disp_site', '=', '0' )
+                ->orderBy('created_at', 'desc')->get();
+
+            return view('inscricao.classificados', ['recibo' => $recibo, 'dre' => $dre,]);
+        } else {
+
+            return view('errors.403');
+        }
+    }
+
 
     //1 - Alta floresta
     public function drealtafloresta()
@@ -100,7 +138,7 @@ class ReciboController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('drealtafloresta')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 1)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 1)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drealtafloresta', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -114,7 +152,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drebarradogarcas')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 2)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 2)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drebarradogarcas', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -129,7 +167,7 @@ class ReciboController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('drecaceres')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 3)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 3)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drecaceres', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -143,7 +181,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('dreconfresa')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 4)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 4)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.dreconfresa', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -158,7 +196,7 @@ class ReciboController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('drecuiaba')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 5)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 5)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
             $dre = Dre::all();
 
             return view('inscricao.dre.drecuiaba', ['recibo' => $recibo, 'dre' => $dre,]);
@@ -174,7 +212,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drevarzeagrande')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 6)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 6)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drevarzeagrande', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -189,7 +227,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drediamantino')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 7)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 7)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drediamantino', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -203,7 +241,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drejuina')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 8)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 8)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drejuina', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -217,7 +255,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drematupa')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 9)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 9)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drematupa', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -231,7 +269,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('dreponteselacerda')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 10)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 10)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.dreponteselacerda', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -245,7 +283,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('dreprimaveradoleste')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 11)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 11)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.dreprimaveradoleste', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -259,7 +297,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('drerondonopolis')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 12)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 12)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.drerondonopolis', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -273,7 +311,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('dresinop')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 13)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 13)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.dresinop', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -287,7 +325,7 @@ class ReciboController extends Controller
         $dre = Dre::all();
         if (Auth::check() && Auth::user()->hasRole('dretangaradaserra')) {
             // Se o usuário possui o perfil, realizar a consulta
-            $recibo = Recibo::where('dre_id', '=', 14)->orderBy('created_at', 'desc')->get();
+            $recibo = Recibo::where('dre_id', '=', 14)->where('disp_site','=', NULL)->orderBy('created_at', 'desc')->get();
 
             return view('inscricao.dre.dretangaradaserra', ['recibo' => $recibo, 'dre' => $dre,]);
         } else {
@@ -309,26 +347,37 @@ class ReciboController extends Controller
     }
 
 
-
-
     public function store(Request $request)
     {
-        //dd($request->all());
+        // Defina as regras de validação para a imagem
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|mimetypes:image/jpeg,image/png,image/gif|max:2048',
+            // Adicione aqui outras regras de validação para os demais campos, se necessário.
+        ], [
+            'image.mimetypes' => 'Apenas imagens nos formatos JPG, PNG, GIF são aceitas.',
+        ]);
+    
+        // Verifique se a validação falhou
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+    
+        // Criar o registro do recibo
         $recibo = Recibo::create($request->all());
-
+    
         // Imagem do produto upload
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $requestImage = $request->image;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $imagePath = public_path('images/inscricao') . '/' . $imageName;
-
+    
             // Crie uma instância da classe Intervention ImageManager
             $imageManager = new ImageManager();
-
+    
             // Abra a imagem usando o ImageManager
             $image = $imageManager->make($requestImage->path());
-
+    
             // Redimensione a imagem para as dimensões desejadas
             $largura = 900;
             $altura = 500;
@@ -336,17 +385,17 @@ class ReciboController extends Controller
                 $constraint->aspectRatio(); // Mantém a proporção da imagem
                 $constraint->upsize(); // Evita que a imagem seja dimensionada para cima
             });
-
+    
             // Salve a imagem redimensionada
             $image->save($imagePath);
-
+    
             $recibo->image = $imageName;
         }
-
+    
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
         $units = $request->input('units', []);
-
+    
         foreach ($products as $product) {
             if ($product != '') {
                 $recibo->produto()->attach($product, [
@@ -355,14 +404,11 @@ class ReciboController extends Controller
                 ]);
             }
         }
-
-
+    
         $recibo->save();
-
-        return back()->with('success', ' A sua inscrição foi realizada com sucesso!!');
+    
+        return back()->with('success', 'A sua inscrição foi realizada com sucesso!!');
     }
-
-
 
     public function show(Recibo $recibo, $id)
     {
