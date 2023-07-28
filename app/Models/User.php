@@ -64,4 +64,9 @@ class User extends Authenticatable
     public function FICHA() {
         return $this->belongsTo(FICHA::class);
         }   
+
+        public function forms()
+        {
+            return $this->hasMany(Form::class);
+        }
 }

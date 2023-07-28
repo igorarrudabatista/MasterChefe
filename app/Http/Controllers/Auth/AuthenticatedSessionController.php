@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         // Autenticação bem-sucedida, atualize o campo 'last_login'
         $user = Auth::user();
-        $user->update(['last_login' => now()]);
+
 
         $request->session()->regenerate();
 
@@ -50,10 +50,7 @@ class AuthenticatedSessionController extends Controller
     {
         // Atualiza o campo 'last_login' com a data e hora atual do logout
         $user = Auth::user();
-        if ($user) {
-            $user->update(['last_login' => now()]);
-        }
-
+       
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

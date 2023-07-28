@@ -22,7 +22,11 @@ use App\Http\Controllers\{
   CatingredientesController,
   InsumoController,
   ReciboController,
-  PainelGerencialController
+  PainelGerencialController,
+
+  // TR GITIAL
+
+  TrdigitalController,   QuestoesController
 };
 
 //  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -70,13 +74,14 @@ Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
 Route::resource('pessoa',                    PessoaController::class);
 Route::resource('dre',                       DreController::class);
-Route::resource('escola',                    EscolaController::class);
+Route::resource('questoes',                  QuestoesController::class);
 Route::resource('estado',                    EstadoController::class);
 Route::resource('cidade',                    CidadeController::class);
 Route::resource('cat_ingrediente',           Categoria_ingredientesController::class);
 Route::resource('catingrediente',            CatingredientesController::class);
 Route::resource('insumo',                    InsumoController::class);
 Route::resource('inscricao',                 ReciboController::class);
+Route::resource('trdigital',                 TrdigitalController::class);
 
 ////// PAINEL GERENCIAL (DASHBOARD)
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);

@@ -18,6 +18,19 @@ class PermissionTableSeeder extends Seeder
     {
         //Permissions
         $permissions = [
+            
+                 // TR DIGITAL
+                 'trdigital-list',
+                 'trdigital-create',
+                 'trdigital-edit',
+                 'trdigital-delete',
+                 'trdigital-invoice',
+                 // Questões
+                 'questoes-list',
+                 'questoes-create',
+                 'questoes-edit',
+                 'questoes-delete',
+                 'questoes-invoice',
             //perfis
             'role-list',
             'role-create',
@@ -84,6 +97,9 @@ class PermissionTableSeeder extends Seeder
              'recibo-edit',
              'recibo-delete',
              'recibo-invoice',
+        
+
+
             
         ];
        

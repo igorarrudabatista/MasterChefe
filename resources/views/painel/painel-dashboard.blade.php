@@ -34,7 +34,7 @@
                                             <i class="bi bi-file-text"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{ $recibo }} </h6>
+                                            <h6> </h6>
                                             <span class="text-success small pt-1 fw-bold">Recebidas</span>
 
                                         </div>
@@ -59,7 +59,7 @@
                                             <i class="bi bi-basket"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{ $produtos }}</h6>
+                                            <h6></h6>
                                             <span class="text-success small pt-1 fw-bold">Cadastradas</span>
 
                                         </div>
@@ -84,7 +84,7 @@
                                             <i class="bx bxs-school"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{ $escolas }} </h6>
+                                            <h6> </h6>
                                             <span class="text-danger small pt-1 fw-bold">Cadastradas</span>
 
                                         </div>
@@ -108,7 +108,7 @@
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{ $dre }}</h6>
+                                            <h6></h6>
                                             <span class="text-danger small pt-1 fw-bold">Cadastradas</span>
 
                                         </div>
@@ -119,88 +119,7 @@
 
                         </div><!-- End Customers Card -->
 
-                        <div class="col-xxl-3 col-xl-3">
-
-                            <div class="card info-card customers-card">
-
-
-                                <div class="card-body">
-                                    <h5 class="card-title"> Inscrições por DRE <span></span></h5>
-
-                                    <div class="d-flex align-items-center">
-                          
-
-                                        <div class="ps-8">
-                                            <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drealtafloresta')}}">  DRE - Alta Floresta </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre1 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drebarradogarcas')}}"> DRE - Barra do Garça </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre2 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drecaceres')}}"> DRE - Cáceres </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre3 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/dreconfresa')}}"> DRE - Confresa </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre4 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drecuiaba')}}"> DRE - Cuiabá </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre5 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drevarzeagrande')}}"> DRE -Várzea Grande </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre6 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drediamantino')}}"> DRE - Diamantino </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre7 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drejuina')}}"> DRE - Juína </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre8 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drematupa')}}"> DRE - Matupá </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre9 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/dreponteselacerda')}}"> DRE - Pontes e Lacerda </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre10 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/dreprimaveradoleste')}}"> DRE - Primavera do Leste </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre11 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/drerondonopolis')}}"> DRE - Rondonópolis </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre12 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <a href="{{asset('/inscricao/dre/dresinop')}}"> DRE - Sinop </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre13 }}</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                      <a href="{{asset('/inscricao/dre/dretangaradaserra')}}"> DRE - Tangará da Serra </a>
-                                                    <span class="badge bg-primary rounded-pill">{{ $likedre14 }}</span>
-                                                </li>
-                                            </ul>
-                                              
-                         
-                                             
-                                                
-                                     
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                      
-                        </div><!-- End Customers Card -->
+                        
 
                         <div class="col-xxl-4 col-xl-4">
 
@@ -220,7 +139,7 @@
                          
 
                                       <div class="ps-3">
-                                        <h6>{{ $totalVotos }}</h6>
+                                        <h6></h6>
                                         <span class="text-success small pt-1 fw-bold">Contabilizados</span>
 
                                     </div>
@@ -231,7 +150,7 @@
 
                       </div><!-- End Customers Card -->
 
-                      @if (Auth::check() && Auth::user()->hasRole('seduc'))
+                      @if (Auth::check() && Auth::user()->hasRole('Admin'))
 
                         <div class="col-xxl-4 col-xl-4">
 
@@ -248,12 +167,12 @@
 
                                       </div>
                                       <div class="ps-3">
-                                        @foreach ($result as $item)
+                                        {{-- @foreach ($result as $item)
                                         <h6>Recibo ID: {{ $item->recibo_id }}</h6>
-                                    @endforeach
+                                    @endforeach --}}
                                     <hr>
                                     <span class="text-success small pt-1 fw-bold">
-                                        <h6>Votos: {{ $vencedor }}<span>
+                                        <h6>Votos:<span>
                                         </div>
                                         
                                     </div>

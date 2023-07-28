@@ -159,7 +159,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('/images/avatar/chef.jpg')}}" alt="Profile" class="rounded-circle">
+            <img src="{{asset('/images/brasao_mt.png')}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Olá, {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -239,38 +239,34 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-earmark-text"></i><span>SEDUC</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-text"></i><span>TR DIGITAL</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{asset('/inscricao')}}">
-              <i class="bi bi-circle"></i><span> <b> Todas as Inscrições </b> </span>
+            <a href="{{asset('/trdigital')}}">
+              <i class="bi bi-circle"></i><span> <b> Ver Todas </b> </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{asset('/trdigital')}}">
+              <i class="bi bi-circle"></i><span> <b> Minhas TR </b> </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{asset('/trdigital/create')}}">
+              <i class="bi bi-circle"></i><span> <b> Nova TR </b> </span>
             </a>
           </li>
           <li>
             <a class="text-success" href="{{asset('/inscricao/classificados')}}">
-              <i class="bi bi-circle"></i><span>  <b>  Inscrições Classificadas  </b> <small> <br>Disp. no Site </small> </span>
+              <i class="bi bi-circle"></i><span>  <b>  Aguardando Andamento </b> <small> <br> ... </small> </span>
             </a>
           </li>
           <li>
             <a class="text-danger" href="{{asset('/inscricao/desclassificados')}}">
-              <i class="bi bi-circle"></i><span>  <b>  Inscrições Desclassificadas  </b>  </span>
+              <i class="bi bi-circle"></i><span>  <b>  Devolvidas  </b>  </span>
             </a>
           </li>
-          <li>
-            <a href="{{asset('/inscricao/semnotas')}}">
-              <i class="bi bi-circle"></i><span><b> ETAPA 1 </b>-  Inscrições não avaliadas</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/semnotas_etapa2')}}">
-              <i class="bi bi-circle"></i><span><b> ETAPA 2 </b>-  Inscrições não avaliadas</span>
-            </a>
-          </li>
-    
-            
-
-
 
         </ul>
       </li>
@@ -498,6 +494,7 @@
   <script src="{{asset('/assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('/assets/vendor/php-email-form/validate.js')}}"></script>
   <script src="{{asset('/assets/js/main.js')}}"></script>
+
 
   {{-- <script src="assets/vendor/apexcharts/apexcharts.min.js"></script> --}}
   {{-- <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --}}

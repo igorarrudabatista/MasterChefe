@@ -21,8 +21,8 @@ class CreateAdminUserSeeder extends Seeder
         //Admin Seeder
         $user = User::create([
             'name' => 'Igor Batista', 
-            'email' => 'igor.batista@edu.mt.gov.br',
-            'password' => bcrypt('s3duc@@2323')
+            'email' => 'igorarrudabatista@gmail.com',
+            'password' => bcrypt('tronline123')
         ]);
       
 
@@ -36,29 +36,29 @@ class CreateAdminUserSeeder extends Seeder
         
         $user->assignRole([$role->id]);
 
-        $user = User::create([
-            'name' => 'Dayane Freitas Coelho', 
-            'email' => 'dayane.coelho@edu.mt.gov.br',
-            'password' => bcrypt('seduc@123')
-        ]);
-        $user = User::create([
-            'name' => 'Lizia Soares Penido', 
-            'email' => 'lizia.penido@edu.mt.gov.br',
-            'password' => bcrypt('seduc@123')
-        ]);
-        $user = User::create([
-            'name' => 'Thais Marques dos Reis', 
-            'email' => 'thais.marques@edu.mt.gov.br',
-            'password' => bcrypt('seduc@123')
-        ]);
+        // $user = User::create([
+        //     'name' => 'Dayane Freitas Coelho', 
+        //     'email' => 'dayane.coelho@edu.mt.gov.br',
+        //     'password' => bcrypt('seduc@123')
+        // ]);
+        // $user = User::create([
+        //     'name' => 'Lizia Soares Penido', 
+        //     'email' => 'lizia.penido@edu.mt.gov.br',
+        //     'password' => bcrypt('seduc@123')
+        // ]);
+        // $user = User::create([
+        //     'name' => 'Thais Marques dos Reis', 
+        //     'email' => 'thais.marques@edu.mt.gov.br',
+        //     'password' => bcrypt('seduc@123')
+        // ]);
 
-        $role = Role::create(['name' => 'seduc']);
+        // $role = Role::create(['name' => 'seduc']);
 
-        $permissions = Permission::pluck('id','id')->all();
+        // $permissions = Permission::pluck('id','id')->all();
      
-        $role->syncPermissions($permissions);
+        // $role->syncPermissions($permissions);
         
-        $user->assignRole([$role->id]);
+        // $user->assignRole([$role->id]);
 
 
     }

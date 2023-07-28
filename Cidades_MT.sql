@@ -1,3 +1,5 @@
+INSERT INTO `estado` (`id`, `Nome`, `Sigla`, `created_at`, `updated_at`) VALUES (1, 'Mato Grosso', 'MT', NULL, NULL);
+
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'ACORIZAL', '1', NULL, NULL);
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'ÁGUA BOA', '1', NULL, NULL);
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'ALTA FLORESTA', '1', NULL, NULL);
@@ -138,3 +140,5 @@ INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VAL
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'VERA', '1', NULL, NULL);
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'VILA BELA DA SANTÍSSIMA TRINDADE', '1', NULL, NULL);
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'VILA RICA', '1', NULL, NULL);
+
+INSERT INTO `orgaos` (`id`, `Nome`, `Sigla`, `image`, `cidade_id`, `created_at`, `updated_at`) VALUES (NULL, 'Sescretaria de Assistência Social', 'SETASC','', '37', NULL, NULL);
