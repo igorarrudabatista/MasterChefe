@@ -28,6 +28,7 @@ use App\Http\Controllers\{
 
   TrdigitalController,   QuestoesController
 };
+use App\Models\Trdigital;
 
 //  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
@@ -38,20 +39,7 @@ Route::get('/inscricao/semnotas_etapa2',        [ReciboController::class, 'semno
 Route::get('/inscricao/desclassificados',        [ReciboController::class, 'desclassificados']);
 Route::get('/inscricao/classificados',        [ReciboController::class, 'classificados']);
 
-Route::get('/inscricao/dre/drealtafloresta',    [ReciboController::class, 'drealtafloresta']);
-Route::get('/inscricao/dre/drebarradogarcas',    [ReciboController::class, 'drebarradogarcas']);
-Route::get('/inscricao/dre/drecaceres',           [ReciboController::class, 'drecaceres']);
-Route::get('/inscricao/dre/dreconfresa',    [ReciboController::class, 'dreconfresa']);
-Route::get('/inscricao/dre/drecuiaba',    [ReciboController::class, 'drecuiaba']);
-Route::get('/inscricao/dre/drevarzeagrande',    [ReciboController::class, 'drevarzeagrande']);
-Route::get('/inscricao/dre/drediamantino',    [ReciboController::class, 'drediamantino']);
-Route::get('/inscricao/dre/drejuina',    [ReciboController::class, 'drejuina']);
-Route::get('/inscricao/dre/drematupa',    [ReciboController::class, 'drematupa']);
-Route::get('/inscricao/dre/dreponteselacerda',    [ReciboController::class, 'dreponteselacerda']);
-Route::get('/inscricao/dre/dreprimaveradoleste',    [ReciboController::class, 'dreprimaveradoleste']);
-Route::get('/inscricao/dre/drerondonopolis',    [ReciboController::class, 'drerondonopolis']);
-Route::get('/inscricao/dre/dresinop',    [ReciboController::class, 'dresinop']);
-Route::get('/inscricao/dre/dretangaradaserra',    [ReciboController::class, 'dretangaradaserra']);
+
 
 
 Route::patch('/inscricao/invoice/{id}',                  [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
@@ -63,6 +51,23 @@ Route::get('/inscricao/invoice/desclassificar_nao/{id}', [ReciboController::clas
 
 Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);
 Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
+
+
+Route::get('/trdigital/validar/{id}',     [TrdigitalController::class, 'validar']);
+Route::post('/trdigital/validar/resp_instituicao/{id}',    [TrdigitalController::class, 'resp_instituicao'])->name('trdigital.validar.resp_instituicao');
+Route::post('/trdigital/validar/instituicao/{id}',    [TrdigitalController::class, 'instituicao'])->name('trdigital.validar.instituicao');
+Route::post('/trdigital/validar/resp_projeto/{id}',    [TrdigitalController::class, 'resp_projeto'])->name('trdigital.validar.resp_projeto');
+Route::post('/trdigital/validar/documentos/{id}',    [TrdigitalController::class, 'documentos'])->name('trdigital.validar.documentos');
+Route::post('/trdigital/validar/projeto/{id}',    [TrdigitalController::class, 'projeto'])->name('trdigital.validar.projeto');
+
+
+// Route::get('/trdigital/validar/ava/{id}',     [TrdigitalController::class, 'avaliar_update']);
+
+
+Route::post('/salvar_resp_instituicao/{id}', 'SuaController@salvarRespInstituicao')->name('salvar_resp_instituicao');
+
+
+//  Route::post('/trdigital/avaliar_update/{id}', 'TrdigitalController@avaliar_update')->name('avaliar_update');
 
 
 // Route::get('/painel', function () {

@@ -20,4 +20,9 @@ class Resp_instituicao extends Model
  
     protected $table = 'resp_instituicao';
 
+    public function n_processo()
+    {
+        return $this->belongsTo(N_Processo::class, 'n_processo_id');
+    }
+
 }

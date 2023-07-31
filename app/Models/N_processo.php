@@ -38,5 +38,9 @@ class N_processo extends Model
         return $this->hasOne(Resp_projeto::class,'n_processo_id');
 
       }
+    public function Resp_Instituicao() {
+        return $this->hasOne(Resp_instituicao::class,'n_processo_id');
+
+      }
 
 }

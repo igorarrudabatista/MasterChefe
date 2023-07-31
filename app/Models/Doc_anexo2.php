@@ -20,6 +20,7 @@ class Doc_anexo2 extends Model
         'Doc_Anexo2_Anexo9', 'Doc_Anexo2_Anexo9_sit', 'Doc_Anexo2_Anexo9_obs',
         'Doc_Anexo2_Anexo10', 'Doc_Anexo2_Anexo10_sit', 'Doc_Anexo2_Anexo10_obs',
         'Doc_Anexo2_Anexo11', 'Doc_Anexo2_Anexo11_sit', 'Doc_Anexo2_Anexo11_obs',
+        'Doc_Anexo2_Anexo12', 'Doc_Anexo2_Anexo12_sit', 'Doc_Anexo2_Anexo12_obs',
 
     ];
 

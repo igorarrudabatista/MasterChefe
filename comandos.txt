@@ -4,3 +4,5 @@ php artisan db:seed CreateAdminUserSeeder
 
 php artisan migrate:rollback
 php artisan optimize:clear
+
+php artisan storage:link

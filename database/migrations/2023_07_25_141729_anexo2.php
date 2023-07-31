@@ -61,6 +61,10 @@ return new class extends Migration
             $table->string('Doc_Anexo2_Anexo11_sit')->nullable();        
             $table->string('Doc_Anexo2_Anexo11_obs')->nullable();        
             
+            $table->string('Doc_Anexo2_Anexo12')->nullable();        
+            $table->string('Doc_Anexo2_Anexo12_sit')->nullable();        
+            $table->string('Doc_Anexo2_Anexo12_obs')->nullable();        
+            
             $table->foreign('n_processo_id')->references('id')->on('n_processo')->onDelete('cascade');
             $table->timestamps();
 

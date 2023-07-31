@@ -65,9 +65,7 @@
                   <th>Instituição</th>
                   <th>Titulo Projeto</th>
                   <th>Responsável pelo proj.</th>
-                  <th>Anexo1</th>
-                  <th>Anexo2</th>
-                  <th>AnexoSSS</th>
+   
 
                  
                 </tr>
@@ -78,20 +76,18 @@
            <td>{{ $n_processo->Projeto_conteudo->Titulo_Projeto_Conteudo ?? ''  }} </td>
            <td>{{ $n_processo->Resp_projeto->Nome_Resp_projeto ?? '' }} </td>
            
-           <td>Anexo: 1{{ $n_processo->Doc_anexo1->Comp_Oficio }} </td>
-           <td>Anexo: 2{{ $n_processo->Doc_anexo1->Comp_Assinado }} </td>
-           <td>{{ $n_processo->Doc_anexo2->Doc_Anexo2_Anexo1 ?? 'Sem anexo' }} </td>
              
-           
-           
-           
-           
-           
-           
-           
-              
-              
+           <td> <a class="btn btn-danger" href="{{ asset('trdigital/validar/'. $n_processo->id) }}">Validar</a> 
            <td> <a class="btn btn-warning" href="{{ route('trdigital.edit',$n_processo->id) }}">Editar</a>
+           
+           
+           
+           
+           
+           
+           
+              
+              
 
 
 
