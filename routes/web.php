@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Trdigital;
 use App\Http\Controllers\{
 
   APIController,
@@ -28,7 +29,6 @@ use App\Http\Controllers\{
 
   TrdigitalController,   QuestoesController
 };
-use App\Models\Trdigital;
 
 //  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 //  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
@@ -54,12 +54,16 @@ Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
 
 
 Route::get('/trdigital/validar/{id}',     [TrdigitalController::class, 'validar']);
+Route::post('/trdigital/validar/oficio/{id}',    [TrdigitalController::class, 'oficio'])->name('trdigital.validar.oficio');
 Route::post('/trdigital/validar/resp_instituicao/{id}',    [TrdigitalController::class, 'resp_instituicao'])->name('trdigital.validar.resp_instituicao');
 Route::post('/trdigital/validar/instituicao/{id}',    [TrdigitalController::class, 'instituicao'])->name('trdigital.validar.instituicao');
 Route::post('/trdigital/validar/resp_projeto/{id}',    [TrdigitalController::class, 'resp_projeto'])->name('trdigital.validar.resp_projeto');
 Route::post('/trdigital/validar/documentos/{id}',    [TrdigitalController::class, 'documentos'])->name('trdigital.validar.documentos');
 Route::post('/trdigital/validar/projeto/{id}',    [TrdigitalController::class, 'projeto'])->name('trdigital.validar.projeto');
 
+Route::get('/trdigital/devolvido/{id}',      [TrdigitalController::class, 'devolvido']);
+Route::get('/trdigital/Aguardando_andamento/{id}',      [TrdigitalController::class, 'Aguardando_andamento']);
+Route::get('/trdigital/finalizado/{id}',      [TrdigitalController::class, 'finalizado']);
 
 // Route::get('/trdigital/validar/ava/{id}',     [TrdigitalController::class, 'avaliar_update']);
 

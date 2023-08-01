@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('Orgao_Concedente');
+            $table->string('Status')->nullable();
 
             $table->timestamps();
         

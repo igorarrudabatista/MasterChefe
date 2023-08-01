@@ -229,41 +229,35 @@
           <span>Agenda</span>
         </a>
       </li><!-- End Dashboard Nav -->
-      <li class="nav-item">
-        <a class="nav-link " href="{{asset('/painel/index')}}">
-          <i class="bi  bi-layout-text-window-reverse"></i>
-          <span>Painel Gerencial</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+
       
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-earmark-text"></i><span>TR DIGITAL</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-text"></i><span>TR DIGITAL<br> <small class="text-success"> Concedentes </small> </span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+           <li>
+            <a href="{{asset('/trdigital')}}">
+              <i class="bi bi-circle"></i><span> <b> Ver Todas </b>  <small class="text-primary"> Apenas Admin </small>  </span>
+            </a>
+          </li>
           <li>
             <a href="{{asset('/trdigital')}}">
-              <i class="bi bi-circle"></i><span> <b> Ver Todas </b> </span>
+              <i class="bi bi-circle"></i><span> <b> Minha Caixa de Entrada </b> </span>
             </a>
           </li>
-          <li>
-            <a href="{{asset('/trdigital')}}">
-              <i class="bi bi-circle"></i><span> <b> Minhas TR </b> </span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/trdigital/create')}}">
-              <i class="bi bi-circle"></i><span> <b> Nova TR </b> </span>
-            </a>
-          </li>
+     
           <li>
             <a class="text-success" href="{{asset('/inscricao/classificados')}}">
-              <i class="bi bi-circle"></i><span>  <b>  Aguardando Andamento </b> <small> <br> ... </small> </span>
+              <i class="bi bi-circle"></i><span>  <b>  Finalizadas </b> </span>
             </a>
           </li>
+
           <li>
-            <a class="text-danger" href="{{asset('/inscricao/desclassificados')}}">
+            <a class="text-danger" href="{{asset('/trdigital/devolvidas')}}">
               <i class="bi bi-circle"></i><span>  <b>  Devolvidas  </b>  </span>
             </a>
           </li>
@@ -272,95 +266,34 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav-dre" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-earmark-text"></i><span>DRE</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-text"></i><span>TR DIGITAL <br> <small class="text-warning"> Proponente </small> </span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav-dre" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
         
           <li>
-            <a href="{{asset('/inscricao/dre/drealtafloresta')}}">
-              <i class="bi bi-circle"></i> 
-              <span>DRE - Alta Floresta</span>
+            <a href="{{asset('/trdigital/create')}}">
+              <i class="bi bi-circle"></i><span> <b> Criar Nova TR </b> </span>
+            </a>
+          </li>
+         
+          <li>
+            <a class="text-primary"  href="{{asset('/trdigital/construcao')}}">
+              <i class="bi bi-circle"></i><span> <b> Em Elaboração </b> </span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dre/drebarradogarcas')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Barra do Garças</span>
+          <li>
+            <a class="text-warning" href="{{asset('/trdigital/create')}}">
+              <i class="bi bi-circle"></i><span> <b> Pendendente de Regularização </b> </span>
             </a>
           </li>
           <li>
-            <a href="{{asset('/inscricao/dre/drecaceres')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Cáceres</span>
+            <a class="text-success" href="{{asset('/trdigital/finalizadas')}}">
+              <i class="bi bi-circle"></i><span> <b> Finalizadas </b> </span>
             </a>
           </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/dreconfresa')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Confresa</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drecuiaba')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Cuiabá</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drevarzeagrande')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Várzea Grande</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drediamantino')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Diamantino</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drejuina')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Juína</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drematupa')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Matupá</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/dreponteselacerda')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Pontes e Lacerda</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/dreprimaveradoleste')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Primavera do Leste</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/drerondonopolis')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Rondonópolis</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/dresinop')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Sinop</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{asset('/inscricao/dre/dretangaradaserra')}}">
-              <i class="bi bi-circle"></i>
-              <span>DRE - Tangará da Serra</span>
-            </a>
-          </li>
+        
 
 
 
@@ -375,6 +308,12 @@
 
       
       <li class="nav-heading">Conf. Sistema</li>
+      <li class="nav-item">
+        <a class="nav-link " href="{{asset('/painel/index')}}">
+          <i class="bi  bi-layout-text-window-reverse"></i>
+          <span>Painel Gerencial</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

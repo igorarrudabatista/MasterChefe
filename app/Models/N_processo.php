@@ -42,5 +42,8 @@ class N_processo extends Model
         return $this->hasOne(Resp_instituicao::class,'n_processo_id');
 
       }
+      public function Orgaos() {
+        return $this->hasOne(Orgaos::class, 'id', 'Orgao_Concedente');
+    }
 
 }

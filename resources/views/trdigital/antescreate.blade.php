@@ -33,10 +33,33 @@
                                    
                                                 <div class="row">
 
-                                                      <div class="col-lg-6">
+                                                      <div class="col-lg-8">
 
-{!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id], 'enctype' => 'multipart/form-data']) !!}
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">
+                                                                  <big><b>  Selecione o Orgão Concedente: <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#dica1">
+                                                                    Ver Dica ?
+                                                                  </button> </b> </big></h5> 
+ <!-- Vertically centered Modal -->
 
+<div class="modal fade" id="dica1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Dica: <b>Orgão Concedente: </b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+É o orgão destinado a receber a sua TR Online.      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Obrigado!</button>
+      </div>
+    </div>
+  </div>
+</div><!-- End Vertically centered Modal-->
+
+{!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                           
                                                     @if (auth()->check())
@@ -44,17 +67,17 @@
                                                             value="{{ auth()->user()->id }}">
                                                     @endif
 
-                                                                      
-                                                    <select name="Orgao_Concedente" id="Orgao_Concedente"
-                                                    class="form-control" required>
-                                                    <option value="" disabled> Selecione o Orgão Concedente
-                                                    </option>
-                                                    @foreach ($orgaos as $orgaos_)
-                                                        <option value="{{ $orgaos_->id }}">{{ $orgaos_->Nome }} -
-                                                            {{ $orgaos_->Sigla }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                                                        <select name="Orgao_Concedente" id="Orgao_Concedente"
+                                                                        class="form-control" required>
+                                                                        <option value="" disabled> Selecione o Orgão Concedente
+                                                                        </option>
+                                                                        @foreach ($orgaos as $orgaos_)
+                                                                            <option value="{{ $orgaos_->id }}">{{ $orgaos_->Nome }} -
+                                                                                {{ $orgaos_->Sigla }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
 
 
 
@@ -63,8 +86,23 @@
                                                         </div>
                                                     </div>
 
-                                                      
-                                          
+                                                      <div class="col-lg-4">
+
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><big> Vídeo Explicativo </big></b></h5>
+
+                                                                <div class="row mb-3">
+                                                                  <iframe width="560" height="315" src="https://www.youtube.com/embed/-_Km0ufn5a8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                                </div>
+
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                                                                                                                                                                          
                                                     </div>
                                  
                                                 </div>
@@ -81,21 +119,17 @@
                                                                 <div class="card-body">
                                                                     <h5 class="card-title"> <big><b> 1. </b> </big> Ofício de encaminhamento com o
                                                                         <b>número da nova proposta </b></h5>
-                                                                      
+
+                                                                    <div class="row mb-3">
+
+                                                                
+
                                                                         <div class="col-sm-10">
-                                                                            @if ($n_processo->Doc_anexo1 && $n_processo->Doc_anexo1->Comp_Oficio)
-                                                                            <div class="icon">
-                                                                            <h5 class="text-success"> Ofício enviado.
-                                                                                  <a class="text-success small" href="{{ asset('storage/' . $n_processo->Doc_anexo1->Comp_Oficio) }}" target="_blank">
-                                                                                <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h5>                                        
-                                                                                </a>
-                                                                            </div>
-                                                                            @else
-                                                                            <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-
-                                                                            @endif     
-                                                                            {!! Form::file('Comp_Oficio', ['class' => 'form-control']) !!}
-
+                                                                          {{-- {!! Form::text('N_proposta', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!} --}}
+                                                                          {{-- {!! Form::label('Comp_Oficio', 'Documento de Ofício', ['class' => 'form-label']) !!} --}}
+                                                                          {!! Form::file('Comp_Oficio', ['class' => 'form-control']) !!}
+                                                                      </div>      
+                                                                        
                                                                         </div>
                                                                         
                                                                         <button type="submit"
@@ -110,23 +144,12 @@
                                                             <div class="card">
                                                                 <div class="card-body">
                                                                     <h5 class="card-title"> <big> <b> 2. </b> </big> Ofício com a destinação da emenda
-                                                                        emitido e <b> assinado pelo Parlamentar.</b></h5>
+                                                                        emitido e <b> assinado pelo Parlamentar</b></h5>
 
                                                                     <div class="row mb-3">
 
                                                                         <div class="col-sm-10">
-                                                                            @if ($n_processo->Doc_anexo1 && $n_processo->Doc_anexo1->Comp_Assinado)
-                                                                            <div class="icon">
-                                                                            <h5 class="text-success"> Ofício enviado.
-                                                                                  <a class="text-success small" href="{{ asset('storage/' . $n_processo->Doc_anexo1->Comp_Oficio) }}" target="_blank">
-                                                                                <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h5>                                        
-                                                                                </a>
-                                                                            </div>
-                                                                            @else
-                                                                            <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-
-                                                                            @endif     
-                                                                            {!! Form::file('Comp_Assinado', ['class' => 'form-control']) !!}
+                                                                          {!! Form::file('Comp_Assinado', ['class' => 'form-control']) !!}
 
                                                                         </div>
                                                                     </div>
@@ -143,18 +166,18 @@
 
                                                         <div class="row">
                                                             <div class="col-lg-6">
-                                                                {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id], 'enctype' => 'multipart/form-data']) !!}
+                                                              {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         <h5 class="card-title"> <big><b> 3. </b> </big> Identificação do <b> Responsável
-                                                                            pela Instituição. </b></h5>
+                                                                            pela Instituição </b></h5>
 
                                                                         <!-- Floating Labels Form -->
                                                                         <div class="row g-3">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-floating">
-                                                                                  {!! Form::text('Nome_Resp_Instituicao', $n_processo->Resp_instituicao->Nome_Resp_Instituicao , ['placeholder'=> 'Nome Completo','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                                  {!! Form::text('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                     <label for="floatingName">Nome Completo</label>
                                                                                 </div>
                                                                             </div>
@@ -162,7 +185,7 @@
                                                                             <div class="row">
                                                                             <div class="col-md-4">
                                                                                 <div class="form-floating">
-                                                                                  {!! Form::number('Telefone_Resp_Instituicao', $n_processo->Resp_instituicao->Telefone_Resp_Instituicao , ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                                  {!! Form::number('Telefone_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                   <label for="floatingName"></label>
                                                                                     <label for="floatingEmail">Telefone</label>
                                                                                 </div>
@@ -170,13 +193,13 @@
                                                                             
                                                                             <div class="col-md-4">
                                                                                 <div class="form-floating">
-                                                                                  {!! Form::email('Email_Resp_Instituicao', $n_processo->Resp_instituicao->Email_Resp_Instituicao , ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                                  {!! Form::email('Email_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                     <label for="floatingEmail">E-mail</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-4">
                                                                               <div class="form-floating">
-                                                                                {!! Form::text('Cargo_Resp_Instituicao', $n_processo->Resp_instituicao->Cargo_Resp_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                                {!! Form::text('Cargo_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                   <label for="floatingEmail">Cargo / Função</label>
                                                                               </div>
                                                                           </div>
@@ -185,7 +208,7 @@
                                                                       
                                                                             <div class="col-12">
                                                                                 <div class="form-floating">
-                                                                                  {!! Form::textarea('End_Resp_Instituicao', $n_processo->Resp_instituicao->End_Resp_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
+                                                                                  {!! Form::textarea('End_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
 
                                                                                     <label
                                                                                         for="floatingTextarea">Endereço</label>
@@ -195,7 +218,7 @@
                                                                             <div class="col-md-4">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-floating">
-                                                                                      {!! Form::text('', $n_processo->Resp_instituicao->Cidade, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
+                                                                                      {!! Form::text('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
                                                                                       <label for="floatingCity">Cidade</label>
                                                                                     </div>
                                                                                 </div>
@@ -222,21 +245,10 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <div class="form-floating">                                                                            
-                                                                                    {!! Form::file('Anexo1_Resp_Instituicao', ['class' => 'form-control']) !!}                                                                                    
+                                                                                <div class="form-floating">
+                                                                                  {!! Form::file('Anexo1_Resp_Instituicao', ['class' => 'form-control']) !!}
+
                                                                                   <label for="floatingZip">Anexar RG ou CPF</label>
-                                                                                  
-                                                                                  @if ($n_processo->Resp_instituicao && $n_processo->Resp_instituicao->Anexo1_Resp_Instituicao)
-                                                                                  <div class="icon">
-                                                                                  <h6 class="text-success"> <b>Documento enviado.</b>
-                                                                                    <a class="text-success small" href="{{ asset('storage/' . $n_processo->Resp_instituicao->Anexo1_Resp_Instituicao) }}" target="_blank">
-                                                                                      <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h6>                                        
-                                                                                      </a>
-                                                                                  </div>
-                                                                                  @else
-                                                                                  <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-      
-                                                                                  @endif
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -244,20 +256,6 @@
                                                                                   {!! Form::file('Anexo2_Resp_Instituicao', ['class' => 'form-control']) !!}
 
                                                                                   <label for="floatingZip">Anexar Comprovante de Endereço</label>
-                                                                                  @if ($n_processo->Resp_instituicao && $n_processo->Resp_instituicao->Anexo2_Resp_Instituicao)
-                                                                                  <div class="icon">
-                                                                                  <h6 class="text-success"> <b>Documento enviado.</b>
-                                                                                    <a class="text-success small" href="{{ asset('storage/' . $n_processo->Resp_instituicao->Anexo2_Resp_Instituicao) }}" target="_blank">
-                                                                                      <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h6>                                        
-                                                                                      </a>
-                                                                                  </div>
-                                                                                  @else
-                                                                                  <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-      
-                                                                                  @endif
-
-
-
                                                                                 </div><br>
                                                                             </div> 
                                                                 
@@ -282,53 +280,35 @@
 
                                                         
                                                             <div class="col-lg-6">
-                                                                {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id], 'enctype' => 'multipart/form-data']) !!}
+                                                              {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                                 <div class="card">
                                                                     <div class="card-body">
-                                                                        <h5 class="card-title"> <big> <b> 4. </b> </big>Identificação da <b> Instituição Proponente </b></h5>
+                                                                        <h5 class="card-title"> <big> <b> 4. </b> </big>Identificação da <b> Instituição
+                                                                            Proponente </b></h5>
 
                                                                         <!-- Floating Labels Form -->
                                                                         <div class="row g-3">
                                                                           <div class="col-md-12">
                                                                               <div class="form-floating">
-                                                                                {!! Form::textarea('Nome_Instituicao', $n_processo->instituicao->Nome_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
-
+                                                                                {!! Form::text('Nome_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                   <label for="floatingName">Nome da Instituição</label>
-                                                                                  @if ($n_processo->instituicao && $n_processo->instituicao->Nome_Instituicao_sit == 1)
-                                                                                  <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                  @else
-                                                                                  <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Corrigir</span>
-                                                                                    @endif
-
                                                                               </div>
                                                                           <br></div>
                                                                           
                                                                           <div class="row">
                                                                           <div class="col-md-6">
                                                                               <div class="form-floating">
-                                                                                {!! Form::textarea('CNPJ_Instituicao', $n_processo->instituicao->CNPJ_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
-
+                                                                                {!! Form::number('CNPJ_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                 <label for="floatingName"></label>
                                                                                   <label for="floatingEmail">CNPJ</label>
-                                                                                  @if ($n_processo->instituicao && $n_processo->instituicao->CNPJ_Instituicao_sit == 1)
-                                                                                  <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                  @else
-                                                                                  <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Corrigir</span>
-                                                                                    @endif
                                                                               </div>
                                                                           </div>
                                                                           <div class="col-md-6">
                                                                               <div class="form-floating">
-                                                                                {!! Form::textarea('Telefone_Instituicao', $n_processo->instituicao->Telefone_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
-
+                                                                                {!! Form::number('Telefone_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                                 <label for="floatingName"></label>
                                                                                   <label for="floatingEmail">Telefone</label>
-                                                                                  @if ($n_processo->instituicao && $n_processo->instituicao->Telefone_Instituicao_sit == 1)
-                                                                                  <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                  @else
-                                                                                  <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Corrigir</span>
-                                                                                    @endif
                                                                               </div>
                                                                           </div>
                                                                     
@@ -337,28 +317,18 @@
 
                                                                           <div class="col-12">
                                                                               <div class="form-floating">
-                                                                                {!! Form::textarea('Endereco_Instituicao', $n_processo->instituicao->Endereco_Instituicao, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
-                                                                                  <label for="floatingTextarea">Endereço</label>
-                                                                                  @if ($n_processo->instituicao && $n_processo->instituicao->Endereco_Instituicao_sit == 1)
-                                                                                  <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                  @else
-                                                                                  <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Corrigir</span>
-                                                                                    @endif
+                                                                                {!! Form::textarea('Endereco_Instituicao', null, ['placeholder'=> 'a', 'class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
 
+                                                                                  <label
+                                                                                      for="floatingTextarea">Endereço</label>
                                                                               </div><br>
                                                                               <div class="row">
 
                                                                           <div class="col-md-4">
                                                                               <div class="col-md-12">
                                                                                   <div class="form-floating">
-                                                                                    {!! Form::text('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
+                                                                                    {!! Form::text('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
                                                                                     <label for="floatingCity">Cidade</label>
-                                                                                    @if ($n_processo->instituicao && $n_processo->instituicao->Endereco_Instituicao_sit == 1)
-                                                                                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                    @else
-                                                                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Corrigir</span>
-                                                                                      @endif
-  
                                                                                   </div>
                                                                               </div>
                                                                           </div>
@@ -379,7 +349,7 @@
                                                                           </div>
                                                                           <div class="col-md-4">
                                                                               <div class="form-floating">
-                                                                                {!! Form::text('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingZip']) !!}                                                                                                                                                                                                                                                         
+                                                                                {!! Form::text('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingZip']) !!}                                                                                                                                                                                                                                                         
                                                                                   <label for="floatingZip">CEP</label>
                                                                               </div>
                                                                           </div>
@@ -387,44 +357,12 @@
                                                                               <div class="form-floating">
                                                                                 {!! Form::file('Anexo1_Instituicao', ['placeholder'=> 'a','class' => 'form-control', 'id' => 'formFile']) !!}
                                                                                 <label for="floatingZip">Anexar Comprovante de Endereço</label>
-
-                                                                                @if ($n_processo->instituicao && $n_processo->instituicao->Anexo1_Instituicao_sit == 1)
-                                                                                <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Validado</span>
-                                                                                @else
-                                                                                <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i>Corrigir</span>
-                                                                                @endif
-                                                                                
-                                                                                @if ($n_processo->instituicao && $n_processo->instituicao->Anexo1_Instituicao &&  $n_processo->instituicao->Anexo1_Instituicao)
-                                                                                <div class="icon">
-                                                                                <h6 class="text-success"> <b>Documento enviado mas precisa de correção.</b>                                                                               
-
-
-                                                                                    <a class="text-success small" href="{{ asset('storage/' . $n_processo->instituicao->Anexo1_Instituicao) }}" target="_blank">
-                                                                                    <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h6>                                        
-                                                                                    </a>
-                                                                                </div>
-                                                                                @else
-                                                                                <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-    
-                                                                                @endif
                                                                               </div>
                                                                           </div>
                                                                           <div class="col-md-6">
                                                                               <div class="form-floating">
                                                                                 {!! Form::file('Anexo2_Instituicao', ['placeholder'=> 'a','class' => 'form-control', 'id' => 'formFile']) !!}
                                                                                 <label for="floatingZip">Anexar Cartão CNPJ </label>
-
-                                                                                @if ($n_processo->instituicao && $n_processo->instituicao->Anexo2_Instituicao)
-                                                                                <div class="icon">
-                                                                                <h6 class="text-success"> <b>Documento enviado.</b>
-                                                                                  <a class="text-success small" href="{{ asset('storage/' . '$n_processo->instituicao->Anexo2_Instituicao') }}" target="_blank">
-                                                                                    <i class="bi bi-file-earmark-pdf-fill"> Ver arquivo</i> </h6>                                        
-                                                                                    </a>
-                                                                                </div>
-                                                                                @else
-                                                                                <h6 class="text-danger"> Você ainda não enviou este arquivo. </h6>
-    
-                                                                                @endif
                                                                               </div><br>
                                                                           </div>
                                                               
@@ -442,18 +380,17 @@
                                                       </div> </div>
                                                       </div> </div>
                                                       <div class="col-lg-6">
-                                                        {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id], 'enctype' => 'multipart/form-data']) !!}
 
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <h5 class="card-title"> <big> <b> 5. </b> </big>Identificação do <b> Responsável pelo Projeto </b></h5>
+                                                                {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                                 <!-- Floating Labels Form -->
                                                                 <form class="row g-3">
                                                                   <div class="col-md-12">
                                                                       <div class="form-floating">
-                                                                        {!! Form::text('Nome_Resp_projeto', $n_processo->Resp_projeto->Nome_Resp_projeto, ['placeholder'=> 'Nome Completo','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
-
+                                                                        {!! Form::text('Nome_Resp_projeto', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                           <label for="floatingName">Nome Completo</label>
                                                                       </div>
                                                                   <br></div>
@@ -461,23 +398,21 @@
                                                                   <div class="row">
                                                                   <div class="col-md-4">
                                                                       <div class="form-floating">
-                                                                        {!! Form::text('Telefone_Resp_projeto', $n_processo->Resp_projeto->Telefone_Resp_projeto, ['placeholder'=> 'Nome Completo','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
-
+                                                                        {!! Form::number('Telefone_Resp_projeto', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                         <label for="floatingName"></label>
                                                                           <label for="floatingEmail">Telefone</label>
                                                                       </div>
                                                                   </div>
                                                                   <div class="col-md-4">
                                                                       <div class="form-floating">
-
-                                                                        {!! Form::number('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                        {!! Form::number('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                         <label for="floatingName"></label>
                                                                           <label for="floatingEmail">CPF</label>
                                                                       </div>
                                                                   </div>
                                                                   <div class="col-md-4">
                                                                       <div class="form-floating">
-                                                                        {!! Form::number('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
+                                                                        {!! Form::number('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingName']) !!}
                                                                         <label for="floatingName"></label>
                                                                           <label for="floatingEmail">RG</label>
                                                                       </div>
@@ -488,8 +423,7 @@
                                                             
                                                                   <div class="col-12">
                                                                       <div class="form-floating">
-                                                                        {!! Form::text('Endereco_Resp_projeto', $n_processo->Resp_projeto->Endereco_Resp_projeto, ['placeholder'=> 'Nome Completo','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
-
+                                                                        {!! Form::textarea('Endereco_Resp_projeto', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingTextarea']) !!}
 
                                                                           <label
                                                                               for="floatingTextarea">Endereço</label>
@@ -499,7 +433,7 @@
                                                                   <div class="col-md-4">
                                                                       <div class="col-md-12">
                                                                           <div class="form-floating">
-                                                                            {!! Form::text('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
+                                                                            {!! Form::text('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingCity']) !!}                                                                                      
                                                                             <label for="floatingCity">Cidade</label>
                                                                           </div>
                                                                       </div>
@@ -521,7 +455,7 @@
                                                                   </div>
                                                                   <div class="col-md-4">
                                                                       <div class="form-floating">
-                                                                        {!! Form::text('', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingZip']) !!}                                                                                                                                                                                                                                                         
+                                                                        {!! Form::text('Nome_Resp_Instituicao', null, ['placeholder'=> 'a','class' => 'form-control', 'id'=> 'floatingZip']) !!}                                                                                                                                                                                                                                                         
                                                                           <label for="floatingZip">CEP</label>
                                                                       </div>
                                                                   </div>
@@ -546,7 +480,7 @@
                                                   <div class="card">
                                                     <div class="card-body">
                                                       <h5 class="card-title"><b> <big> 6. </b> </big> Atas, Certidões, Comprovantes e Declarações (Anexar):</h5>
-                                                      {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id]]) !!}
+                                                      {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                       <!-- Default Accordion -->
                                                       <div class="accordion" id="accordionExample">

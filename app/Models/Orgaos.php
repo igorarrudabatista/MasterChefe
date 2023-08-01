@@ -16,7 +16,7 @@ class Orgaos extends Model
 
           public function recibo()
       {
-          return $this->belongsTo(Recibo::class);
+          return $this->belongsTo(N_processo::class);
       }
 
 

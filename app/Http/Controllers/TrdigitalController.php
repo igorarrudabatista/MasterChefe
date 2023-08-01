@@ -57,6 +57,7 @@ class TrdigitalController extends Controller
             'Doc_anexo2',
             'Projeto_conteudo',
             'Resp_projeto',
+            'Orgaos'
         ])->get();
 
         return view('trdigital.index', compact('nProcessos'));
@@ -65,6 +66,7 @@ class TrdigitalController extends Controller
     public function create()
     {
         $orgaos = Orgaos::all();
+
         return view('trdigital.create', compact('orgaos'));
     }
 
@@ -74,7 +76,7 @@ class TrdigitalController extends Controller
         $nProcesso = N_Processo::create([
             'user_id' => $request->user_id,
             'Orgao_Concedente' => $request->Orgao_Concedente,
-            'N_proposta' => $request->N_proposta,
+            // 'N_proposta' => $request->N_proposta,
         ]);
 
         // - 1
@@ -194,6 +196,10 @@ class TrdigitalController extends Controller
         }
         if ($request->hasFile('Doc_Anexo2_Anexo11')) {
             $doc_anexo2['Doc_Anexo2_Anexo11'] = $request->file('Doc_Anexo2_Anexo11')->store('pdfs/doc_anexo2', 'public');
+        }
+
+        if ($request->hasFile('Doc_Anexo2_Anexo12')) {
+            $doc_anexo2['Doc_Anexo2_Anexo12'] = $request->file('Doc_Anexo2_Anexo12')->store('pdfs/doc_anexo2', 'public');
         }
 
         Doc_anexo2::create($doc_anexo2);
@@ -402,79 +408,97 @@ class TrdigitalController extends Controller
         );
 
 
-
-
-        // Resp_projeto::create($resp_projeto);
         // // fim do 4
 
         // // inicio do 5
-        // $doc_anexo2 = [
-        //     'n_processo_id' => $nProcesso->id,
+        $doc_anexo2 = [
+            'n_processo_id' => $nProcesso->id,
 
-        // ];
+         ];
 
-        // if ($request->hasFile('Doc_Anexo2_Anexo1')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo1'] = $request->file('Doc_Anexo2_Anexo1')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo2')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo2'] = $request->file('Doc_Anexo2_Anexo2')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo3')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo3'] = $request->file('Doc_Anexo2_Anexo3')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo4')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo4'] = $request->file('Doc_Anexo2_Anexo4')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo5')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo5'] = $request->file('Doc_Anexo2_Anexo5')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo6')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo6'] = $request->file('Doc_Anexo2_Anexo6')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo7')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo7'] = $request->file('Doc_Anexo2_Anexo7')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo8')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo8'] = $request->file('Doc_Anexo2_Anexo8')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo9')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo9'] = $request->file('Doc_Anexo2_Anexo9')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo10')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo10'] = $request->file('Doc_Anexo2_Anexo10')->store('pdfs/doc_anexo2', 'public');
-        // }
-        // if ($request->hasFile('Doc_Anexo2_Anexo11')) {
-        //     $doc_anexo2['Doc_Anexo2_Anexo11'] = $request->file('Doc_Anexo2_Anexo11')->store('pdfs/doc_anexo2', 'public');
-        // }
+        if ($request->hasFile('Doc_Anexo2_Anexo1')) {
+            $doc_anexo2['Doc_Anexo2_Anexo1'] = $request->file('Doc_Anexo2_Anexo1')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo2')) {
+            $doc_anexo2['Doc_Anexo2_Anexo2'] = $request->file('Doc_Anexo2_Anexo2')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo3')) {
+            $doc_anexo2['Doc_Anexo2_Anexo3'] = $request->file('Doc_Anexo2_Anexo3')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo4')) {
+            $doc_anexo2['Doc_Anexo2_Anexo4'] = $request->file('Doc_Anexo2_Anexo4')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo5')) {
+            $doc_anexo2['Doc_Anexo2_Anexo5'] = $request->file('Doc_Anexo2_Anexo5')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo6')) {
+            $doc_anexo2['Doc_Anexo2_Anexo6'] = $request->file('Doc_Anexo2_Anexo6')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo7')) {
+            $doc_anexo2['Doc_Anexo2_Anexo7'] = $request->file('Doc_Anexo2_Anexo7')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo8')) {
+            $doc_anexo2['Doc_Anexo2_Anexo8'] = $request->file('Doc_Anexo2_Anexo8')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo9')) {
+            $doc_anexo2['Doc_Anexo2_Anexo9'] = $request->file('Doc_Anexo2_Anexo9')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo10')) {
+            $doc_anexo2['Doc_Anexo2_Anexo10'] = $request->file('Doc_Anexo2_Anexo10')->store('pdfs/doc_anexo2', 'public');
+        }
+        if ($request->hasFile('Doc_Anexo2_Anexo11')) {
+            $doc_anexo2['Doc_Anexo2_Anexo11'] = $request->file('Doc_Anexo2_Anexo11')->store('pdfs/doc_anexo2', 'public');
+        }
+        Doc_anexo2::updateOrCreate(
+            ['N_processo_id' => $nProcesso->id],
+            $doc_anexo2
+        );
 
-        // Doc_anexo2::create($doc_anexo2);
+         $projeto_conteudo = [
+             'n_processo_id' => $nProcesso->id,
+             'Titulo_Projeto_Conteudo' => $request->Titulo_Projeto_Conteudo,
+             'Objeto_Projeto_Conteudo' => $request->Objeto_Projeto_Conteudo,
+             'Obj_Geral_Projeto_Conteudo' => $request->Obj_Geral_Projeto_Conteudo,
+             'Obj_especifico_Projeto_Conteudo' => $request->Obj_especifico_Projeto_Conteudo,
+             'Justificativa_Projeto_Conteudo' => $request->Justificativa_Projeto_Conteudo,
+             'Contextualizacao_Projeto_Conteudo' => $request->Contextualizacao_Projeto_Conteudo,
+             'Diagnostico_Projeto_Conteudo' => $request->Diagnostico_Projeto_Conteudo,
+             'Importancia_Projeto_Conteudo' => $request->Importancia_Projeto_Conteudo,
+             'Caracterizacao_Projeto_Conteudo' => $request->Caracterizacao_Projeto_Conteudo,
+             'Publico_Alvo_Interno_Projeto_Conteudo' => $request->Publico_Alvo_Interno_Projeto_Conteudo,
+             'Publico_Alvo_Externo_Projeto_Conteudo' => $request->Publico_Alvo_Externo_Projeto_Conteudo,
+             'Problemas_Projeto_Conteudo' => $request->Problemas_Projeto_Conteudo,
+             'Resultados_Projeto_Conteudo' => $request->Resultados_Projeto_Conteudo,
+             'Inicio_Projeto_Conteudo' => $request->Inicio_Projeto_Conteudo,
+             'Fim_Projeto_Conteudo' => $request->Fim_Projeto_Conteudo,
+             'N_Emenda_Projeto_Conteudo' => $request->N_Emenda_Projeto_Conteudo,
+             'Nome_Autor_Emenda_Projeto_Conteudo' => $request->Nome_Autor_Emenda_Projeto_Conteudo,
+             'Valor_Repasse_Projeto_Conteudo' => $request->Valor_Repasse_Projeto_Conteudo,
+             'Valor_Contrapartida_Projeto_Conteudo' => $request->Valor_Contrapartida_Projeto_Conteudo,
 
-        // $projeto_conteudo = [
-        //     'n_processo_id' => $nProcesso->id,
-        //     'Titulo_Projeto_Conteudo' => $request->Titulo_Projeto_Conteudo,
-        //     'Objeto_Projeto_Conteudo' => $request->Objeto_Projeto_Conteudo,
-        //     'Obj_Geral_Projeto_Conteudo' => $request->Obj_Geral_Projeto_Conteudo,
-        //     'Obj_especifico_Projeto_Conteudo' => $request->Obj_especifico_Projeto_Conteudo,
-        //     'Justificativa_Projeto_Conteudo' => $request->Justificativa_Projeto_Conteudo,
-        //     'Contextualizacao_Projeto_Conteudo' => $request->Contextualizacao_Projeto_Conteudo,
-        //     'Diagnostico_Projeto_Conteudo' => $request->Diagnostico_Projeto_Conteudo,
-        //     'Importancia_Projeto_Conteudo' => $request->Importancia_Projeto_Conteudo,
-        //     'Caracterizacao_Projeto_Conteudo' => $request->Caracterizacao_Projeto_Conteudo,
-        //     'Publico_Alvo_Interno_Projeto_Conteudo' => $request->Publico_Alvo_Interno_Projeto_Conteudo,
-        //     'Publico_Alvo_Externo_Projeto_Conteudo' => $request->Publico_Alvo_Externo_Projeto_Conteudo,
-        //     'Problemas_Projeto_Conteudo' => $request->Problemas_Projeto_Conteudo,
-        //     'Resultados_Projeto_Conteudo' => $request->Resultados_Projeto_Conteudo,
-        //     'Inicio_Projeto_Conteudo' => $request->Inicio_Projeto_Conteudo,
-        //     'Fim_Projeto_Conteudo' => $request->Fim_Projeto_Conteudo,
-        //     'N_Emenda_Projeto_Conteudo' => $request->N_Emenda_Projeto_Conteudo,
-        //     'Nome_Autor_Emenda_Projeto_Conteudo' => $request->Nome_Autor_Emenda_Projeto_Conteudo,
-        //     'Valor_Repasse_Projeto_Conteudo' => $request->Valor_Repasse_Projeto_Conteudo,
-        //     'Valor_Contrapartida_Projeto_Conteudo' => $request->Valor_Contrapartida_Projeto_Conteudo,
-
-        // ];
-
-        // Projeto_conteudo::create($projeto_conteudo);
+         ];
+         Projeto_conteudo::updateOrCreate(
+            ['N_processo_id' => $nProcesso->id],
+            $projeto_conteudo
+        );
         return back();
+    }
+
+    public function oficio(Request $request, $id)
+    {
+        $oficio = Doc_anexo1::findOrFail($id);
+         
+        $Comp_Oficio = $request->input('Comp_Oficio_sit');
+          $oficio->Comp_Oficio_sit = $Comp_Oficio;
+          $oficio->save();
+
+        $Comp_Assinado = $request->input('Comp_Assinado_sit');
+          $oficio->Comp_Assinado_sit = $Comp_Assinado;
+          $oficio->save();
+          
+          
+          return back();
+
     }
 
     public function resp_instituicao(Request $request, $id)
@@ -656,6 +680,48 @@ class TrdigitalController extends Controller
           return back();
 
     }
+
+
+    public function devolvido($id)
+    {
+        $tramitar = N_processo::find($id);
+        $acao = 'DEVOLVIDO';
+        $tramitar->Status = $acao;
+        $tramitar->save();
+        //   dd($recibo);
+        toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ', 'success');
+
+        return redirect()->route('trdigital.index');
+    }
+
+
+    public function aguardando_andamento($id)
+    {
+
+        $aguardando_andamento = N_processo::find($id);
+        $acao = 'AGUARDANDO';
+        $aguardando_andamento->Status = $acao;
+        $aguardando_andamento->save();
+        //   dd($recibo);
+        toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ', 'success');
+
+        return back();
+    }
+    public function finalizado($id)
+    {
+
+        $finalizado = N_processo::find($id);
+        $acao = 'FINALIZADO';
+        $finalizado->Status = $acao;
+        $finalizado->save();
+        //   dd($recibo);
+        toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ', 'success');
+
+        return back();
+    }
+
+
+
     public function destroy($id)
     {
         $n_processo = N_processo::findOrFail($id);
