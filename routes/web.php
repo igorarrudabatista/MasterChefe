@@ -30,27 +30,8 @@ use App\Http\Controllers\{
   TrdigitalController,   QuestoesController
 };
 
-//  Route::get('/escola/teste',      [PessoaController::class, 'index']);
-//  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
-Route::get('/inscricao/invoice/{id}',    [ReciboController::class, 'invoice']);
-Route::get('/inscricao/dre/edit/{id}',    [ReciboController::class, 'dreedit']);
-Route::get('/inscricao/semnotas',        [ReciboController::class, 'semnotas']);
-Route::get('/inscricao/semnotas_etapa2',        [ReciboController::class, 'semnotas_etapa2']);
-Route::get('/inscricao/desclassificados',        [ReciboController::class, 'desclassificados']);
-Route::get('/inscricao/classificados',        [ReciboController::class, 'classificados']);
 
-
-
-
-Route::patch('/inscricao/invoice/{id}',                  [ReciboController::class, 'inscricao_update'])->name('inscricao_update');
-Route::get('/inscricao/invoice/disp_site_sim/{id}',      [ReciboController::class, 'disp_site_sim']);
-Route::get('/inscricao/invoice/disp_site_nao/{id}',      [ReciboController::class, 'disp_site_nao']);
-Route::get('/inscricao/invoice/desclassificar_sim/{id}', [ReciboController::class, 'desclassificar_sim']);
-Route::get('/inscricao/invoice/desclassificar_nao/{id}', [ReciboController::class, 'desclassificar_nao']);
-
-
-Route::get('/inscricao/contrato/{id}',   [ReciboController::class, 'contrato']);
-Route::get('/inscricao/avaliar/{id}',    [ReciboController::class, 'avaliar']);
+Route::get('/trdigital/proponente',   [TrdigitalController::class, 'proponente']);
 
 
 Route::get('/trdigital/validar/{id}',     [TrdigitalController::class, 'validar']);
@@ -61,8 +42,8 @@ Route::post('/trdigital/validar/resp_projeto/{id}',    [TrdigitalController::cla
 Route::post('/trdigital/validar/documentos/{id}',    [TrdigitalController::class, 'documentos'])->name('trdigital.validar.documentos');
 Route::post('/trdigital/validar/projeto/{id}',    [TrdigitalController::class, 'projeto'])->name('trdigital.validar.projeto');
 
-Route::get('/trdigital/devolvido/{id}',      [TrdigitalController::class, 'devolvido']);
-Route::get('/trdigital/Aguardando_andamento/{id}',      [TrdigitalController::class, 'Aguardando_andamento']);
+Route::get('/trdigital/corrigir/{id}',      [TrdigitalController::class, 'corrigir']);
+Route::get('/trdigital/aguardando_andamento/{id}',      [TrdigitalController::class, 'aguardando_andamento']);
 Route::get('/trdigital/finalizado/{id}',      [TrdigitalController::class, 'finalizado']);
 
 // Route::get('/trdigital/validar/ava/{id}',     [TrdigitalController::class, 'avaliar_update']);

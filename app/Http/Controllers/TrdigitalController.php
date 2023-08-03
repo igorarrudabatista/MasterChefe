@@ -63,6 +63,21 @@ class TrdigitalController extends Controller
         return view('trdigital.index', compact('nProcessos'));
     }
 
+    public function proponente()
+    {
+        $nProcessos = N_processo::with([
+            'Doc_anexo1',
+            'Doc_anexo2',
+            'instituicao',
+            'Doc_anexo2',
+            'Projeto_conteudo',
+            'Resp_projeto',
+            'Orgaos'
+        ])->get();
+
+        return view('trdigital.proponente.index', compact('nProcessos'));
+    }
+
     public function create()
     {
         $orgaos = Orgaos::all();
@@ -682,10 +697,10 @@ class TrdigitalController extends Controller
     }
 
 
-    public function devolvido($id)
+    public function corrigir($id)
     {
         $tramitar = N_processo::find($id);
-        $acao = 'DEVOLVIDO';
+        $acao = 'CORRIGIR';
         $tramitar->Status = $acao;
         $tramitar->save();
         //   dd($recibo);

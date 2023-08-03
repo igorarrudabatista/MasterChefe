@@ -76,7 +76,80 @@
           <a class="nav-link nav-icon" href="{{asset('/Site/formulario')}}">
             <i class="bi bi-layout-text-sidebar-reverse"></i>
           </a><!-- End Notification Icon -->
+          <li class="nav-item dropdown">
 
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-bell"></i>
+              <span class="badge bg-primary badge-number">4</span>
+            </a><!-- End Notification Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+              <li class="dropdown-header">
+                Você possui x Notifificações
+                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver</span></a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li class="notification-item">
+                <i class="bi bi-exclamation-circle text-warning"></i>
+                <div>
+                  <h4>Lorem Ipsum</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>30 min. ago</p>
+                </div>
+              </li>
+  
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li class="notification-item">
+                <i class="bi bi-x-circle text-danger"></i>
+                <div>
+                  <h4>Atque rerum nesciunt</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>1 hr. ago</p>
+                </div>
+              </li>
+  
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li class="notification-item">
+                <i class="bi bi-check-circle text-success"></i>
+                <div>
+                  <h4>Sit rerum fuga</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>2 hrs. ago</p>
+                </div>
+              </li>
+  
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li class="notification-item">
+                <i class="bi bi-info-circle text-primary"></i>
+                <div>
+                  <h4>Dicta reprehenderit</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </li>
+  
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li class="dropdown-footer">
+                <a href="#">Show all notifications</a>
+              </li>
+  
+            </ul><!-- End Notification Dropdown Items -->
+  
+          </li><!-- End Notification Nav -->
         
 
         </li><!-- End Notification Nav -->
@@ -241,24 +314,24 @@
           
            <li>
             <a href="{{asset('/trdigital')}}">
-              <i class="bi bi-circle"></i><span> <b> Ver Todas </b>  <small class="text-primary"> Apenas Admin </small>  </span>
+              <i class="bi bi-circle"></i><span>  Ver Todas  <small class="text-primary"> Apenas Admin </small>  </span>
             </a>
           </li>
           <li>
             <a href="{{asset('/trdigital')}}">
-              <i class="bi bi-circle"></i><span> <b> Minha Caixa de Entrada </b> </span>
+              <i class="bi bi-circle"></i><span>  Minha Caixa de Entrada  </span>
             </a>
           </li>
      
           <li>
             <a class="text-success" href="{{asset('/inscricao/classificados')}}">
-              <i class="bi bi-circle"></i><span>  <b>  Finalizadas </b> </span>
+              <i class="bi bi-circle"></i><span>    Finalizadas  </span>
             </a>
           </li>
 
           <li>
             <a class="text-danger" href="{{asset('/trdigital/devolvidas')}}">
-              <i class="bi bi-circle"></i><span>  <b>  Devolvidas  </b>  </span>
+              <i class="bi bi-circle"></i><span>    Corrigir    </span>
             </a>
           </li>
 
@@ -273,19 +346,19 @@
         
           <li>
             <a href="{{asset('/trdigital/create')}}">
-              <i class="bi bi-circle"></i><span> <b> Criar Nova TR </b> </span>
+              <i class="bi bi-circle"></i><span>  Criar Nova TR  </span>
             </a>
           </li>
-         
+
           <li>
-            <a class="text-primary"  href="{{asset('/trdigital/construcao')}}">
-              <i class="bi bi-circle"></i><span> <b> Em Elaboração </b> </span>
+            <a href="{{asset('/trdigital/proponente')}}">
+              <i class="bi bi-circle"></i><span>  Minhas TR  </span>
             </a>
           </li>
+    
           <li>
-          <li>
-            <a class="text-warning" href="{{asset('/trdigital/create')}}">
-              <i class="bi bi-circle"></i><span> <b> Pendendente de Regularização </b> </span>
+            <a class="text-warning" href="{{asset('/trdigital/corrigir')}}">
+              <i class="bi bi-circle"></i> Pendendente de Regularização 
             </a>
           </li>
           <li>
@@ -339,9 +412,15 @@
         </ul>
       </li><!-- End Forms Nav -->
 
-<hr>
     
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{asset('/suporte')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>Biblioteca / Links </span>
+        </a>
+      </li>
+<hr>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{asset('/suporte')}}">
           <i class="bi bi-question-circle"></i>
@@ -408,7 +487,7 @@
   <footer id="footer" class="footer">
     <div class="copyright">
      Desenvolvido pela  Equipe de TI  da<p>  <strong>
-      <span> <big> SEDUC - MT</span></strong>
+      <span> <big> ---- </span></strong>
     </div>
 
     <div class="credits">
@@ -416,7 +495,7 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      <a href="https://www3.seduc.mt.gov.br/">www3.seduc.mt.gov.br</a>
+      <a href="#"> Igor </a>
     </div>
   </footer><!-- End Footer -->
 

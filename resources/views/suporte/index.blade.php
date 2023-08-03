@@ -24,21 +24,22 @@
               <div class="info-box card">
                 <i class="bi bi-geo-alt"></i>
                 <h3>Endereço</h3>
-                <p>Rua Eng. Edgard Prado Arze<br>Cuiabá - MT</p>
+                <p> Cuiabá - MT</p>
+                <br>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-telephone"></i>
                 <h3>Central de Atendimento</h3>
-                <p>0800 065 1717</p><br>
+                <p>(65) 99800 7226</p><br>
                             </div>
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-envelope"></i>
                 <h3>E-mail</h3>
-                <p><br>igor.batista@edu.mt.gov.br</p>
+                <p><br>atendimento@webmonkey.com .br</p>
               </div>
             </div>
             <div class="col-lg-6">

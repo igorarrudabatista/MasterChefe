@@ -24,9 +24,10 @@
 
 
                                             <div class="text-center mb-5">
-                                                <img src="{{ asset('/images/i.webp') }}" height="88" class='mb-4'>
+                                                <img src="{{ asset('/images/validate.png') }}" height="100px" class='mb-4'>
                                                 <h3>TR DIGITAL - Validação</h3>
-                                                <p> Valide os itens dos formulários</p>
+                                                <h4 class="text-warning"> <b> {{$n_processo->Orgaos->Sigla }} -  {{$n_processo->Orgaos->Nome }} </b></h4>
+                                                
 
                                                 <div class="row">
 
@@ -46,16 +47,6 @@
                                                         @endif
 
 
-                                                        <select name="Orgao_Concedente" id="Orgao_Concedente"
-                                                            class="form-control" required>
-                                                            <option value="" disabled> Selecione o Orgão Concedente
-                                                            </option>
-                                                            @foreach ($orgaos as $orgaos_)
-                                                                <option value="{{ $orgaos_->id }}">{{ $orgaos_->Nome }} -
-                                                                    {{ $orgaos_->Sigla }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
 
                                                     </div>
                                                 </div>
