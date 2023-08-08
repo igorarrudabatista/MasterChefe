@@ -27,6 +27,7 @@ use App\Models\Projeto_conteudo;
 use App\Exports\ReciboExport;
 use App\Models\Doc_anexo1;
 use App\Models\Doc_anexo2;
+use App\Models\Metas;
 
 class TrdigitalController extends Controller
 {
@@ -65,7 +66,10 @@ class TrdigitalController extends Controller
 
     public function proponente()
     {
-        $nProcessos = N_processo::with([
+
+        $processoCount  =  N_processo::where('user_id', '=', auth()->id())
+        ->count(); 
+        $nProcessos  =  N_processo::with([
             'Doc_anexo1',
             'Doc_anexo2',
             'instituicao',
@@ -73,16 +77,33 @@ class TrdigitalController extends Controller
             'Projeto_conteudo',
             'Resp_projeto',
             'Orgaos'
-        ])->get();
+        ])->where('user_id', '=', auth()->id())->orderby('id', 'DESC')->get(); 
+
+
+        // $nProcessos = N_processo::with([
+        //     'Doc_anexo1',
+        //     'Doc_anexo2',
+        //     'instituicao',
+        //     'Doc_anexo2',
+        //     'Projeto_conteudo',
+        //     'Resp_projeto',
+        //     'Orgaos'
+        // ])->get();
+
+
 
         return view('trdigital.proponente.index', compact('nProcessos'));
     }
 
     public function create()
     {
+    
+        $nProcessos = N_processo::with([           
+            'Metas'
+        ])->get();
         $orgaos = Orgaos::all();
 
-        return view('trdigital.create', compact('orgaos'));
+        return view('trdigital.create', compact('orgaos','nProcessos'));
     }
 
 
@@ -245,15 +266,24 @@ class TrdigitalController extends Controller
 
         Projeto_conteudo::create($projeto_conteudo);
 
-        // Doc_anexo1::create($anexo1Data);
-        // //dd($anexo1Data);
-        // Resp_instituicao::create($resp_instituicao);
-        // Instituicao::create($instituicao);
-        // Resp_projeto::create($resp_projeto);
-        // Doc_anexo2::create($doc_anexo2);
-        // Projeto_conteudo::create($projeto_conteudo);
+        $metas = [
+            'n_processo_id' => $nProcesso->id,
+            'Especificacao_metas' => $request->Especificacao_metas,
+            'Quantidade_metas' => $request->Quantidade_metas,
+            'Unidade_medida_metas' => $request->Unidade_medida_metas,
+            'Inicio_metas' => $request->Inicio_metas,
+            'Termino_metas' => $request->Termino_metas,
+            // 'Correcao_metas_sit' => $request->Correcao_metas_sit,
+            // 'Obs_metas' => $request->Obs_metas,
+        ];
 
-        return redirect()->route('trdigital.index');
+     //   dd($metas);
+
+        Metas::create($metas);
+
+
+
+        return back();
     }
 
 

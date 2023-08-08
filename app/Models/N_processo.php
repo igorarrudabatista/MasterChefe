@@ -45,5 +45,17 @@ class N_processo extends Model
       public function Orgaos() {
         return $this->hasOne(Orgaos::class, 'id', 'Orgao_Concedente');
     }
+      public function Metas() {
+        return $this->hasMany(Metas::class, 'n_processo_id', 'id');
+      }
+      public function Etapas() {
+        return $this->hasOne(Etapas::class, 'n_processo_id', 'id');
+    }
+      public function Plano_consolidado() {
+        return $this->hasOne(Plano_consolidado::class, 'n_processo_id', 'id');
+    }
+      public function Plano_detalhado() {
+        return $this->hasOne(Plano_detalhado::class, 'n_processo_id', 'id');
+    }
 
 }

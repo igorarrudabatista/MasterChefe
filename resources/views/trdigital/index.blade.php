@@ -1,5 +1,13 @@
 @extends('base.novabase')
 @section('content')
+<?php 
+$processoCount = session()->get('processoCount'); 
+$processoCount_corrigir = session()->get('processoCount_corrigir'); 
+$processoCount_finalizado = session()->get('processoCount_finalizado'); 
+$processoCount_aguardando = session()->get('processoCount_aguardando'); 
+$processoCount_tramitada = session()->get('processoCount_tramitada'); 
+$processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada'); 
+?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
 
@@ -60,22 +68,21 @@
                                             <th>N° da TR</th>
                                             <th>Instituição</th>
                                             <th>Titulo do Projeto</th>
-                                            <th>Responsável pelo proj.</th>
                                             <th>Concedente</th>
                                             <th>Validar</th>
-                                            <th>Editar</th>
-                                            <th>Status - Concedente</th>
+                                            <th>Status</th>
 
                                         </tr>
                                     </thead>
                                     @foreach ($nProcessos as $n_processo)
                                         <td>{{ $n_processo->id }} </td>
-                                        <td> <b> {{ $n_processo->instituicao->Nome_Instituicao ?? 'Não informado' }}</b>
+                                        <td> <i class="bi bi-building me-1"></i>
+                                            <b> {{ $n_processo->instituicao->Nome_Instituicao ?? 'Não informado' }}</b>
                                             <small>
-                                               <p class="text-warning">
-                                                   {{ $n_processo->Resp_Instituicao->Nome_Resp_Instituicao ?? 'Não informado' }}
+                                               <p class="text-success">
+                                                <i class="bi bi-person-fill me-1"> </i>  {{ $n_processo->Resp_Instituicao->Nome_Resp_Instituicao ?? 'Não informado' }}
                                                     <br> <a class="text-muted">
-                                                        {{ $n_processo->created_at->format('m/d/Y') ?? 'Não informado' }}
+                                                        <i class="bi bi-calendar-event me-1"> </i>  {{ $n_processo->created_at->format('m/d/Y') ?? 'Não informado' }}
                                                         </strong>
                                             </small>
                                         </td>
@@ -84,10 +91,7 @@
                                                 <p class="text-primary ">
                                                     {{ $n_processo->Projeto_conteudo->Titulo_Projeto_Conteudo ?? 'Não informado' }}
                                         </td>
-                                        <td> <small>
-                                                <p class="text-muted"> <strong>
-                                                  <i class="bi bi-person-fill me-1">   {{ $n_processo->Resp_projeto->Nome_Resp_projeto ?? 'Não informado' }} </i>
-                                        </td>
+                              
                                         <td> <small> <b>   <img src="{{asset('images/brasao_mt.png')}}" width="20px"> {{ $n_processo->Orgaos->Sigla ?? 'Não informado' }} </b> - <i>
                                                     {{ $n_processo->Orgaos->Nome ?? ('Não informado' ?? 'Não informado') }}
                                                 </i> </small></td>
@@ -99,8 +103,8 @@
                                                 <i class="bi bi-ui-checks me-1"> Validar</i>
                                             </a> </td>
 
-                                        <td> <a class="btn btn-warning"
-                                                href="{{ route('trdigital.edit', $n_processo->id) }}">Editar</a> </td>
+                                        {{-- <td> <a class="btn btn-warning"
+                                                href="{{ route('trdigital.edit', $n_processo->id) }}">Editar</a> </td> --}}
 
                                         <td>
                                             @switch($n_processo)

@@ -73,21 +73,19 @@
 
         <li class="nav-item">
 
-          <a class="nav-link nav-icon" href="{{asset('/Site/formulario')}}">
+          <a class="nav-link nav-icon" href="{{asset('/trdigital/create/')}}">
             <i class="bi bi-layout-text-sidebar-reverse"></i>
           </a><!-- End Notification Icon -->
           <li class="nav-item dropdown">
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
+              <span class="badge bg-primary badge-number">{{$processoCount}}</span>
             </a><!-- End Notification Icon -->
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
               <li class="dropdown-header">
-                Você possui x Notifificações
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver</span></a>
-              </li>
+                <a class="text-primary"> <big><b> {{$processoCount}}</b></big> Documentos elaboradas por você! </a> </li> 
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -95,57 +93,43 @@
               <li class="notification-item">
                 <i class="bi bi-exclamation-circle text-warning"></i>
                 <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
+                  <h4>A corrigir <span class="badge rounded-pill bg-warning p-2 ms-2"> {{$processoCount_corrigir}} </span></h4>
                 </div>
               </li>
   
-              <li>
+              {{-- <li>
                 <hr class="dropdown-divider">
               </li>
   
               <li class="notification-item">
                 <i class="bi bi-x-circle text-danger"></i>
                 <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
+                  <h4>Não aprovados <span class="badge rounded-pill bg-danger p-2 ms-2"> {{$processoCount_corrigir}}</span></h4>
                 </div>
-              </li>
-  
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-  
-              <li>
+              </li>--}}
+              <li> 
                 <hr class="dropdown-divider">
               </li>
   
               <li class="notification-item">
                 <i class="bi bi-info-circle text-primary"></i>
                 <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
+                  <h4>Aguardando órgão <span class="badge rounded-pill bg-primary p-2 ms-2"> {{$processoCount_aguardando}}</span></h4>
                 </div>
               </li>
-  
+              
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
+              
+              <li class="notification-item">
+                <i class="bi bi-check-circle text-success"></i>
+                <div>
+                  <h4>Documentos finalizados <span class="badge rounded-pill bg-success p-2 ms-2"> {{$processoCount_finalizado}} </span></h4>
+                </div>
               </li>
+  
+  
   
             </ul><!-- End Notification Dropdown Items -->
   
@@ -153,7 +137,7 @@
         
 
         </li><!-- End Notification Nav -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
 
           <a class="nav-link nav-icon" href="{{asset('/Site')}}">
             <i class="bi bi-link-45deg"></i>
@@ -161,88 +145,35 @@
 
         
 
-        </li><!-- End Notification Nav -->
-
-        {{-- <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
-
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav --> --}}
+        </li> --}}
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{asset('/images/brasao_mt.png')}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Olá, {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</span>
-          </a><!-- End Profile Iamge Icon -->
+            @if (Auth::check())
+    <span class="d-none d-md-block dropdown-toggle ps-2">Olá, {{ Auth::user()->name }}</span>
+@else
+    <script>window.location = "{{asset('/')}}";</script>
+@endif
+</span> 
+          </a>
+          <!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
+              @if (Auth::check())
               <h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h6>
               <span> <b> Perfil: </b> </span>
               @foreach(auth()->user()->roles as $role)
               <span> {{ $role->name }}</span>
           @endforeach
+@else
+    <script>window.location = "{{asset('/')}}";</script>
+@endif
+
+              
+      
             </li>
             <li>
               <hr class="dropdown-divider">

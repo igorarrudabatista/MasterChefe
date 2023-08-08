@@ -27,7 +27,7 @@ use App\Http\Controllers\{
 
   // TR GITIAL
 
-  TrdigitalController,   QuestoesController
+  TrdigitalController,   QuestoesController, MetasController
 };
 
 

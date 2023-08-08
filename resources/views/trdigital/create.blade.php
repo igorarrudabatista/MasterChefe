@@ -1,5 +1,16 @@
 @extends('base.novabase')
-@section('content')<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section('content')
+<?php 
+$processoCount = session()->get('processoCount'); 
+$processoCount_corrigir = session()->get('processoCount_corrigir'); 
+$processoCount_finalizado = session()->get('processoCount_finalizado'); 
+$processoCount_aguardando = session()->get('processoCount_aguardando'); 
+$processoCount_tramitada = session()->get('processoCount_tramitada'); 
+$processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada'); 
+?>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 <!-- Adicione esses links no cabeçalho do seu HTML -->
@@ -117,9 +128,24 @@
                                                         Projeto </a>
 
                                                     <a class="list-group-item list-group-item-action"
+                                                        id="list-projeto-Cronograma" data-bs-toggle="list"
+                                                        href="#list-Cronograma" role="tab" aria-controls="list-Cronograma">
+                                                        <b> <big> 7. </big> </b> Cronograma de Execução</a>
+                                                    
+                                                        <a class="list-group-item list-group-item-action"
+                                                        id="list-projeto-consolidado" data-bs-toggle="list"
+                                                        href="#list-consolidado" role="tab" aria-controls="list-consolidado">
+                                                        <b> <big> 8. </big> </b> Plano Consolidado</a>
+                                                 
+                                                        <a class="list-group-item list-group-item-action"
+                                                        id="list-projeto-detalhado" data-bs-toggle="list"
+                                                        href="#list-detalhado" role="tab" aria-controls="list-detalhado">
+                                                        <b> <big> 9. </big> </b> Plano Detalhado</a>
+
+                                                    <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-tramitar" data-bs-toggle="list"
                                                         href="#list-tramitar" role="tab" aria-controls="list-tramitar">
-                                                        <b> <big> 7. </big> </b> Finalizar e Enviar</a>
+                                                        <b> <big> 12. </big> </b> Finalizar e Enviar</a>
 
                                                 </div>
                                             </div>
@@ -134,7 +160,10 @@
                                                     @include('trdigital.criar.questoes.4resp_projeto')
                                                     @include('trdigital.criar.questoes.5doc_anexos2')
                                                     @include('trdigital.criar.questoes.6projeto')
-                                                    @include('trdigital.criar.questoes.tramitar')
+                                                    @include('trdigital.criar.questoes.7cronograma')
+                                                    @include('trdigital.criar.questoes.8lano_consolidado')
+                                                    @include('trdigital.criar.questoes.9plano_detalhado')
+                                                    @include('trdigital.criar.questoes.10tramitar')
 
 
 

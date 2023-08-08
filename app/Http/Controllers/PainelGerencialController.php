@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cidade;
 use App\Models\Estado;
+use App\Models\N_processo;
 use App\Models\Produto;
 use App\Models\Instituicao;
 use App\Models\Dre;
@@ -23,15 +24,44 @@ class PainelGerencialController extends Controller
 
     public function dashboard()
     {
+
+        $processoCount  =  N_processo::where('user_id', '=', auth()->id())->count();
+        $processoCount_corrigir  =  N_processo::where('user_id', '=', auth()->id())->where('Status', '=', 'CORRIGIR')->count();
+        $processoCount_finalizado  =  N_processo::where('user_id', '=', auth()->id())->where('Status', '=', 'FINALIZADO')->count();
+        $processoCount_aguardando  =  N_processo::where('user_id', '=', auth()->id())->where('Status', '=', 'AGUARDANDO')->count();
+        $processoCount_tramitada  =  N_processo::where('user_id', '=', auth()->id())->where('Status', '=', 'TRAMITADA')->count();
+        $processoCount_nao_finalizada  =  N_processo::where('user_id', '=', auth()->id())->where('Status', '=', '')->count();
+
+        $nProcessos  =  N_processo::with([
+            'Doc_anexo1',
+            'Doc_anexo2',
+            'instituicao',
+            'Doc_anexo2',
+            'Projeto_conteudo',
+            'Resp_projeto',
+            'Orgaos'
+        ])->where('user_id', '=', auth()->id())->orderby('id', 'DESC')->get();
         $cidade = Cidade::count();
         $estado = Estado::count();
+        session()->put('processoCount', $processoCount);
+        session()->put('processoCount_corrigir', $processoCount_corrigir);
+        session()->put('processoCount_finalizado', $processoCount_finalizado);
+        session()->put('processoCount_aguardando', $processoCount_aguardando);
+        session()->put('processoCount_tramitada', $processoCount_tramitada);
+        session()->put('processoCount_nao_finalizada', $processoCount_nao_finalizada);
+
 
         return view('painel.painel-dashboard', compact(
-
-        
             'cidade',
             'estado',
-    
+            'processoCount',
+            'nProcessos',
+            'processoCount_corrigir',
+            'processoCount_finalizado',
+            'processoCount_aguardando',
+            'processoCount_tramitada',
+            'processoCount_nao_finalizada',
+
         ));
     }
 
@@ -40,6 +70,8 @@ class PainelGerencialController extends Controller
 
         return view('painel.index');
     }
+
+
 
     public function consulta_aluno()
     {
