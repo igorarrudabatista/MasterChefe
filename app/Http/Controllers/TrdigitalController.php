@@ -98,12 +98,12 @@ class TrdigitalController extends Controller
     public function create()
     {
     
-        $nProcessos = N_processo::with([           
-            'Metas'
-        ])->get();
+        // $nProcessos = N_processo::with([           
+        //     'Metas'
+        // ])->get();
         $orgaos = Orgaos::all();
 
-        return view('trdigital.create', compact('orgaos','nProcessos'));
+        return view('trdigital.create', compact('orgaos'));
     }
 
 
@@ -283,10 +283,24 @@ class TrdigitalController extends Controller
 
 
 
-        return back();
+        // return back();
+        return view('trdigital.show');
+
     }
 
+    public function metasstore(Request $request, $id)
+    {
 
+        $data = [
+            'n_processo_id' => $id,
+            'Especificacao_metas' => $request->input('Especificacao_metas'),
+        ];
+
+        // Criar uma nova instância de Meta com os dados e salvar no banco de dados
+        Metas::create($data);
+
+        return redirect()->back();
+    }
 
     public function show($id)
     {
@@ -304,14 +318,18 @@ class TrdigitalController extends Controller
             'Resp_instituicao',
             'Projeto_conteudo',
             'Resp_projeto',
+            'Orgaos',
+            'Metas'
         ])->find($id);
+
+        $metas = Metas::all();
         //   $n_processo = N_processo::find($id);
 
         if (!$n_processo) {
             // Caso não encontre o registro com o ID especificado, você pode redirecionar para uma página de erro ou retornar uma mensagem de erro.
             return redirect()->route('trdigital.index')->with('error', 'O registro não foi encontrado.');
         }
-        return view('trdigital.edit', compact('n_processo', 'orgaos'));
+        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas'));
     }
 
     public function validar(N_processo $n_processo, $id)

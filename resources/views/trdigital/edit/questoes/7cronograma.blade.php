@@ -1,11 +1,15 @@
       {{-- ITEM 7 --}}
-      <div class="tab-pane fade" id="list-detalhado" role="tabpanel" aria-labelledby="list-detalhado">
+       {!! Form::close() !!}
+      <div class="tab-pane fade" id="list-Cronograma" role="tabpanel" aria-labelledby="list-Cronograma-list">
+        {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.metasstore', $n_processo->id]]) !!}
 
-        {{-- {!! Form::open(['route' => 'metas.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
-
+        {{-- {!! Form::open(['route' => 'trdigital.metasstore', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}  --}}
+        {{-- <form method="POST" action="{{ route('trdigital/metasstore', ['n_processo' => $id]) }}">
+            @csrf --}}
+        
           <div class="card">
               <div class="card-body">
-                  <h5 class="card-title"> <big> <b> 9. </b> </big>Plano Detalhado</b></h5>
+                  <h5 class="card-title"> <big> <b> 7. </b> </big>Cronograma de Execução</b></h5>
 
                   <!-- Floating Labels Form -->
                   <div class="card">
@@ -34,15 +38,13 @@
 
                                   </tr>
                               </thead>
-                          {{-- @foreach ($nProcessos as $n_processo)
-                              @foreach ($n_processo->Metas as $meta)
+                              @foreach ($metas as $meta)
                                   <!-- Aqui você pode acessar os atributos da meta -->
                                   <td>  {{ $meta->Especificacao_metas }} </td>
                                     <td> {{ $meta->Quantidade_metas }} </td>
                                         <td> {{ $meta->Unidade_medida_metas }} </td>
                                   <!-- ... e assim por diante -->
                               @endforeach
-                      @endforeach --}}
                       
                           </table>
 
@@ -146,3 +148,4 @@
               </div>
           </div>
       </div>
+      {!! Form::close() !!}

@@ -1,11 +1,11 @@
       {{-- ITEM 7 --}}
-      <div class="tab-pane fade" id="list-detalhado" role="tabpanel" aria-labelledby="list-detalhado">
+      <div class="tab-pane fade" id="list-desembolso" role="tabpanel" aria-labelledby="list-desembolso">
 
         {{-- {!! Form::open(['route' => 'metas.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
 
           <div class="card">
               <div class="card-body">
-                  <h5 class="card-title"> <big> <b> 9. </b> </big>Plano Detalhado</b></h5>
+                  <h5 class="card-title"> <big> <b> 10. </b> </big>Cronograma de Desembolso</b></h5>
 
                   <!-- Floating Labels Form -->
                   <div class="card">

@@ -2,7 +2,6 @@
       <div class="tab-pane fade" id="list-Cronograma" role="tabpanel" aria-labelledby="list-Cronograma-list">
 
         {{-- {!! Form::open(['route' => 'metas.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
-        {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
           <div class="card">
               <div class="card-body">
@@ -35,7 +34,7 @@
 
                                   </tr>
                               </thead>
-                          @foreach ($nProcessos as $n_processo)
+                          {{-- @foreach ($nProcessos as $n_processo)
                               @foreach ($n_processo->Metas as $meta)
                                   <!-- Aqui você pode acessar os atributos da meta -->
                                   <td>  {{ $meta->Especificacao_metas }} </td>
@@ -43,7 +42,7 @@
                                         <td> {{ $meta->Unidade_medida_metas }} </td>
                                   <!-- ... e assim por diante -->
                               @endforeach
-                      @endforeach
+                      @endforeach --}}
                       
                           </table>
 
@@ -146,4 +145,4 @@
 
               </div>
           </div>
-          {!! Form::close() !!}
+      </div>

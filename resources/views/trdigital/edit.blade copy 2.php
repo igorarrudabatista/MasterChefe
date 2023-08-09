@@ -18,9 +18,6 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
 
     <main id="main" class="main">
 
-    
-    
-
         <div class="content">
             <div class="row">
                 <div class="col-md-12">
@@ -48,7 +45,7 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                 <div class="row">
 
                                                 <div class="col-lg-4">
-                                                    {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                                  {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.update', $n_processo->id], 'enctype' => 'multipart/form-data']) !!}
 
                                                     @if (auth()->check())
                                                         <input type="hidden" name="user_id"
@@ -165,18 +162,18 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                 <div class="tab-content" id="nav-tabContent">
                                                     {!! Form::open(['route' => 'trdigital.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
-                                                    @include('trdigital.criar.questoes.1oficios')
-                                                    @include('trdigital.criar.questoes.2resp_instituicao')
-                                                    @include('trdigital.criar.questoes.3instituicao')
-                                                    @include('trdigital.criar.questoes.4resp_projeto')
-                                                    @include('trdigital.criar.questoes.5doc_anexos2')
-                                                    @include('trdigital.criar.questoes.6projeto')
-                                                    @include('trdigital.criar.questoes.7cronograma')
-                                                    @include('trdigital.criar.questoes.8lano_consolidado')
-                                                    @include('trdigital.criar.questoes.9plano_detalhado')
-                                                    @include('trdigital.criar.questoes.10cronograma_desembolso')
-                                                    @include('trdigital.criar.questoes.11relacao')
-                                                    @include('trdigital.criar.questoes.12tramitar')
+                                                    @include('trdigital.edit.questoes.1oficios')
+                                                    @include('trdigital.edit.questoes.2resp_instituicao')
+                                                    @include('trdigital.edit.questoes.3instituicao')
+                                                    @include('trdigital.edit.questoes.4resp_projeto')
+                                                    @include('trdigital.edit.questoes.5doc_anexos2')
+                                                    @include('trdigital.edit.questoes.6projeto')
+                                                    @include('trdigital.edit.questoes.7cronograma')
+                                                    @include('trdigital.edit.questoes.8lano_consolidado')
+                                                    @include('trdigital.edit.questoes.9plano_detalhado')
+                                                    @include('trdigital.edit.questoes.10cronograma_desembolso')
+                                                    @include('trdigital.edit.questoes.11relacao')
+                                                    @include('trdigital.edit.questoes.12tramitar')
 
 
 

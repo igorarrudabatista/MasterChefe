@@ -15,7 +15,7 @@ class Projeto_conteudo extends Model
         'Obj_especifico_Projeto_Conteudo','Obj_especifico_Projeto_Conteudo_sit','Obj_especifico_Projeto_Conteudo_obs',
         'Justificativa_Projeto_Conteudo','Justificativa_Projeto_Conteudo_sit','Justificativa_Projeto_Conteudo_obs',
         'Contextualizacao_Projeto_Conteudo','Contextualizacao_Projeto_Conteudo_sit','Contextualizacao_Projeto_Conteudo_obs',
-        'DiagnDiagnostico_Projeto_Conteudoostico','Diagnostico_Projeto_Conteudo_sit','Diagnostico_Projeto_Conteudo_obs',
+        'Diagnostico_Projeto_Conteudo','Diagnostico_Projeto_Conteudo_sit','Diagnostico_Projeto_Conteudo_obs',
         'Importancia_Projeto_Conteudo','Importancia_Projeto_Conteudo_sit','Importancia_Projeto_Conteudo_obs',
         'Caracterizacao_Projeto_Conteudo','Caracterizacao_Projeto_Conteudo_sit','Caracterizacao_Projeto_Conteudo_obs',
         'Publico_Alvo_Interno_Projeto_Conteudo','Publico_Alvo_Interno_Projeto_Conteudo_sit','Publico_Alvo_Interno_Projeto_Conteudo_obs',

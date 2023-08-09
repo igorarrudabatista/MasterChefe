@@ -45,9 +45,14 @@ class N_processo extends Model
       public function Orgaos() {
         return $this->hasOne(Orgaos::class, 'id', 'Orgao_Concedente');
     }
-      public function Metas() {
-        return $this->hasMany(Metas::class, 'n_processo_id', 'id');
-      }
+  //   public function Metas() {
+  //     return $this->belongsToMany(Metas::class, 'n_processo_id')->withPivot('Quantidade','unidade');
+      
+  // }   
+
+       public function Metas() {
+         return $this->hasMany(Metas::class, 'n_processo_id', 'id');
+       }
       public function Etapas() {
         return $this->hasOne(Etapas::class, 'n_processo_id', 'id');
     }

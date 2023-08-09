@@ -29,7 +29,9 @@ use App\Http\Controllers\{
 
   TrdigitalController,   QuestoesController, MetasController
 };
+Route::patch('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasstore'])->name('trdigital.metasstore');
 
+// Route::post('trdigital/metasstore/{id}', [MetasController::class, 'metasstore'])->name('metasstore');
 
 Route::get('/trdigital/proponente',   [TrdigitalController::class, 'proponente']);
 
