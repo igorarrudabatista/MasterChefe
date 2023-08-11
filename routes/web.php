@@ -29,7 +29,13 @@ use App\Http\Controllers\{
 
   TrdigitalController,   QuestoesController, MetasController
 };
+
+
 Route::patch('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasstore'])->name('trdigital.metasstore');
+Route::delete('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasstoredestroy'])->name('trdigital.metasstoredestroy');
+
+Route::patch('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstore'])->name('trdigital.etapasstore');
+Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
 
 // Route::post('trdigital/metasstore/{id}', [MetasController::class, 'metasstore'])->name('metasstore');
 

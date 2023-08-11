@@ -15,6 +15,10 @@ class Etapas extends Model
      'Obs_etapas', 
         
     ];
+    public function metas()
+    {
+        return $this->belongsTo(Metas::class, 'metas_id');
+    }
     public function n_processo()
     {
         return $this->belongsTo(N_Processo::class, 'n_processo_id');

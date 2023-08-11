@@ -27,6 +27,7 @@ use App\Models\Projeto_conteudo;
 use App\Exports\ReciboExport;
 use App\Models\Doc_anexo1;
 use App\Models\Doc_anexo2;
+use App\Models\Etapas;
 use App\Models\Metas;
 
 class TrdigitalController extends Controller
@@ -294,10 +295,58 @@ class TrdigitalController extends Controller
         $data = [
             'n_processo_id' => $id,
             'Especificacao_metas' => $request->input('Especificacao_metas'),
+            'Quantidade_metas' => $request->input('Quantidade_metas'),
+            'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
+            'Inicio_metas' => $request->input('Inicio_metas'),
+            'Termino_metas' => $request->input('Termino_metas'),
         ];
 
         // Criar uma nova instância de Meta com os dados e salvar no banco de dados
         Metas::create($data);
+
+        return redirect()->back();
+    }
+
+    public function metasstoredestroy($id)
+    {
+        $metas = Metas::find($id);
+    
+        if (!$metas) {
+            // Lógica de tratamento se a meta não for encontrada
+        }
+    
+        $metas->delete();
+        return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
+    }
+    public function etapasstoredestroy($id)
+    {
+        $etapas = Etapas::find($id);
+    
+        if (!$etapas) {
+            // Lógica de tratamento se a meta não for encontrada
+        }
+    
+        $etapas->delete();
+        return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
+    }
+    
+    
+    
+    public function etapasstore(Request $request, Etapas $etapas)
+    {
+
+        $etapas = [
+            //'metas_id' => $id,
+            'metas_id' => $request->input('metas_id'),
+            'Especificacao_etapa' => $request->input('Especificacao_etapa'),
+            'Quantidade_etapa' => $request->input('Quantidade_etapa'),
+            'Unidade_medida_etapa' => $request->input('Unidade_medida_etapa'),
+            'Inicio_etapa' => $request->input('Inicio_etapa'),
+            'Termino_etapa' => $request->input('Termino_etapa'),
+        ];
+
+       
+        Etapas::create($etapas);
 
         return redirect()->back();
     }
@@ -322,14 +371,18 @@ class TrdigitalController extends Controller
             'Metas'
         ])->find($id);
 
-        $metas = Metas::all();
-        //   $n_processo = N_processo::find($id);
+
+
+        $n_processo = N_processo::findOrFail($id);
+        $metas = Metas::where('n_processo_id', $id)->get();
+        $etapas = Metas::with('etapas')->get();
+                //   $n_processo = N_processo::find($id);
 
         if (!$n_processo) {
             // Caso não encontre o registro com o ID especificado, você pode redirecionar para uma página de erro ou retornar uma mensagem de erro.
             return redirect()->route('trdigital.index')->with('error', 'O registro não foi encontrado.');
         }
-        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas'));
+        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas' ));
     }
 
     public function validar(N_processo $n_processo, $id)
@@ -791,4 +844,7 @@ class TrdigitalController extends Controller
         $n_processo->delete();
         return redirect()->route('trdigital.index');
     }
+    
 }
+
+

@@ -58,7 +58,7 @@ class MetasController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+     //   dd($request);
         Metas::create($request->all());
 
         toast('Meta criada com sucesso!','success');
@@ -102,6 +102,19 @@ class MetasController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
+     public function metasstoredestroy($id)
+{
+    $metas = Metas::find($id);
+
+    if (!$metas) {
+        // Lógica de tratamento se a meta não for encontrada
+    }
+
+    $metas->delete();
+    return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
+}
+
     public function destroy(Metas $metas)
     {
         $metas->delete();

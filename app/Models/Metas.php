@@ -16,6 +16,11 @@ class Metas extends Model
 
         
     ];
+    public function etapas()
+    {
+        return $this->hasMany(Etapas::class, 'metas_id','id');
+    }
+    
     public function n_processo()
     {
         return $this->belongsTo(N_Processo::class, 'n_processo_id');

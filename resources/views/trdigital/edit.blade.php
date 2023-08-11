@@ -176,13 +176,11 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
 
 
                                                 </div>
+                                              </div>
                                             </div>
+                                          </div>
                                         </div>
 
-
-
-                                    </div>
-                            </div>
                             </section>
     </main>
     <script>
