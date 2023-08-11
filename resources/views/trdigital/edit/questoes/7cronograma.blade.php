@@ -37,7 +37,7 @@
                                       <div class="card ">
                                           <div class="card-body text-primary">
 
-                                              <h6 class="card-title text-center">METAS  </a></h6>
+                                              <h6 class="card-title text-center text-primary"> <b> METAS  </b></a></h6>
                                            
                                                   <b>Especificacao:
                                                   </b>{{ $meta->Especificacao_metas ?? 'Não informado' }} <br>
@@ -49,12 +49,13 @@
                                                   <b> Término: </b> {{ $meta->Termino_metas ?? 'Não informado' }} <br>
 
                                                   <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                      data-bs-target="#editaretapa">
-                                                      Editar Meta
-                                                  </button>
+                                                  data-bs-target="#editarmeta" data-bs-meta-id="{{ $meta->id }}">
+                                                  Editar Meta
+                                              </button>
+                                              
 
                                                   <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                      data-bs-target="#excluirmeta" data-meta-id="{{ $meta->id }}">
+                                                      data-bs-target="#excluirmeta"data-bs-meta-id="{{ $meta->id }}">
                                                       Excluir meta
                                                   </button>
 
@@ -76,88 +77,290 @@
                                           </div>
                                       </div>
                                   </td>
+
+                                  
+          <!-- Criar METAS -->
+          <div class="modal fade" id="novameta" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nova Meta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="metaId" name="metaId">
+
+                        @foreach ($metas as $meta)
+                            {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.metasstore', $n_processo->id]]) !!}
+
+                            <input type="hidden" class="form-control" id="metas_id" name="metas_id"
+                                value="{{ $meta->id }}">
+                        @endforeach
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+
+                                    {!! Form::text('Especificacao_metas', null, [
+                                        'placeholder' => 'Especificacao_metas',
+                                        'class' => 'form-control',
+                                        'id' => 'floatingName',
+                                    ]) !!}
+                                    <label for="floatingName">Especificação</label>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {!! Form::number('Quantidade_metas', null, [
+                                            'placeholder' => 'Quantidade_metas',
+                                            'class' => 'form-control',
+                                            'id' => 'floatingName',
+                                        ]) !!}
+                                        <label for="floatingName"></label>
+                                        <label for="floatingEmail">Unidade de Medida</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {!! Form::text('Unidade_medida_metas', null, [
+                                            'placeholder' => '',
+                                            'class' => 'form-control',
+                                            'id' => 'floatingName',
+                                        ]) !!}
+                                        <label for="floatingName"></label>
+                                        <label for="floatingEmail">Quantidade</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {!! Form::date('Inicio_metas', null, [
+                                                'placeholder' => 'a',
+                                                'class' => 'form-control',
+                                                'id' => 'floatingCity',
+                                            ]) !!}
+                                            <label for="floatingCity">Início</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {!! Form::date('Termino_metas', null, [
+                                                'placeholder' => 'a',
+                                                'class' => 'form-control',
+                                                'id' => 'floatingZip',
+                                            ]) !!}
+                                            <label for="floatingZip">Término</label>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <!-- End floating Labels Form -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {!! Form::close() !!}
+        <!-- Editar METAS -->
+        <div class="modal fade" id="editarmeta" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Meta {{$meta->id}} </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="metaId" name="metaId">
+
+                        @foreach ($metas as $meta)
+                        
+                            {!! Form::model($meta, ['method' => 'PATCH', 'route' => ['trdigital.metasupdate', $meta->id]]) !!}
+                            <input type="hidden" class="form-control" id="metas_id" name="metas_id"
+
+                            value="{{ $meta->id }}">
+
+
+                        @endforeach
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+
+                                    {!! Form::text('Especificacao_metas', $meta->Especificacao_metas, [
+                                        'placeholder' => 'Especificacao_metas',
+                                        'class' => 'form-control',
+                                        'id' => 'floatingName',
+                                    ]) !!}
+                                    <label for="floatingName">Especificação</label>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {!! Form::number('Quantidade_metas', null, [
+                                            'placeholder' => 'Quantidade_metas',
+                                            'class' => 'form-control',
+                                            'id' => 'floatingName',
+                                        ]) !!}
+                                        <label for="floatingName"></label>
+                                        <label for="floatingEmail">Unidade de Medida</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {!! Form::text('Unidade_medida_metas', null, [
+                                            'placeholder' => '',
+                                            'class' => 'form-control',
+                                            'id' => 'floatingName',
+                                        ]) !!}
+                                        <label for="floatingName"></label>
+                                        <label for="floatingEmail">Quantidade</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {!! Form::date('Inicio_metas', null, [
+                                                'placeholder' => 'a',
+                                                'class' => 'form-control',
+                                                'id' => 'floatingCity',
+                                            ]) !!}
+                                            <label for="floatingCity">Início</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {!! Form::date('Termino_metas', null, [
+                                                'placeholder' => 'a',
+                                                'class' => 'form-control',
+                                                'id' => 'floatingZip',
+                                            ]) !!}
+                                            <label for="floatingZip">Término</label>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <!-- End floating Labels Form -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+
                                   <div class="modal fade" id="excluirmeta" tabindex="-1">
-                                      <div class="modal-dialog modal-dialog-centered">
-                                          <div class="modal-content">
-                                              <div class="modal-header">
-                                                  <h5 class="modal-title">Confirmar Exclusão</h5>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                      aria-label="Close"></button>
-                                              </div>
-                                              <div class="modal-body">
-                                                  Tem certeza de que deseja excluir esta Meta?
-                                              </div>
-                                              <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary"
-                                                      data-bs-dismiss="modal">Cancelar</button>
-                                                      {!! Form::open(['route' => ['trdigital.metasstoredestroy', $meta->id], 'method' => 'delete']) !!}
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Confirmar Exclusão </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Tem certeza de que deseja excluir esta Meta? -> <span id="meta-id"></span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                {!! Form::open(['route' => ['trdigital.metasstoredestroy', '__META_ID__'], 'method' => 'delete', 'id' => 'delete-form']) !!}
+                                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                
+
+                                
+
+                                  <td>
+                                    @foreach ($meta->etapas as $etapa)
+                                        <div class="card ">
+                                            <div class="card-body text-primary">
+
+                                                <h6 class="card-title text-center text-success"> <b> <u> ETAPAS </u> </b></h6>
+                                                <br> 
+                                                    {{ $etapa->Especificacao_etapa ?? ' nao informada' }} </b><br>
+                                                    {{ $etapa->Quantidade_etapa ?? ' nao informada' }} </b><br>
+                                                    {{ $etapa->Unidade_medida_etapa ?? ' nao informada' }} </b><br>
+                                                    {{ $etapa->Inicio_etapa ?? ' nao informada' }} </b><br>
+                                                    {{ $etapa->Termino_etapa ?? ' nao informada' }} </b><br>
+                                                    <br>
+                                                </small>
+                                                <hr>
+
+                                                <a class="btn btn-warning"
+                                                    href="{{ route('trdigital.edit', $n_processo->id) }}">Editar Etapa</a>
+
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#excluiretapa" data-meta-id="{{ $etapa->id }}">
+                                                    Excluir etapa
+                                                   </button>                                                   
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="excluiretapa" tabindex="-1">
+                                          <div class="modal-dialog modal-dialog-centered">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h5 class="modal-title">Confirmar Exclusão</h5>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                          aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      Tem certeza de que deseja excluir esta Etapa?
+                                                      {{ $etapa->Especificacao_etapa ?? 'etapa nao informada' }}
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary"
+                                                          data-bs-dismiss="modal">Cancelar</button>
+                                                      {!! Form::open(['route' => ['trdigital.etapasstoredestroy', $etapa->id], 'method' => 'delete']) !!}
                                                       <button type="submit" class="btn btn-danger">Excluir</button>
                                                       {!! Form::close() !!}
-                                                      
-                                                      
+                                                  </div>
                                               </div>
                                           </div>
                                       </div>
-                                  </div>
-                
-
-                                  <td>
-                                      @foreach ($meta->etapas as $etapa)
-                                          <div class="card ">
-                                              <div class="card-body text-primary">
-
-                                                  <h6 class="card-title text-center">ETAPAS</h6>
-                                                  <br> 
-                                                      {{ $etapa->Especificacao_etapa ?? 'etapa nao informada' }} </b>
-                                                      <br>
-                                                  </small>
-                                                  <hr>
-
-                                                  <a class="btn btn-warning"
-                                                      href="{{ route('trdigital.edit', $n_processo->id) }}">Editar</a>
-
-                                                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                      data-bs-target="#excluiretapa">
-                                                      Excluir etapa
-                                                     </button>
+                                    @endforeach
+                                </td>
 
 
-                                                  <a class="btn btn-danger"
-                                                      href="{{ route('trdigital.edit', $n_processo->id) }}">Remover</a>
-
-                                              </div>
-                                          </div>
-
-                                          <div class="modal fade" id="excluiretapa" tabindex="-1">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Confirmar Exclusão</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Tem certeza de que deseja excluir esta Etapa?
-                                                        {{ $etapa->Especificacao_etapa ?? 'etapa nao informada' }}
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                        {!! Form::open(['route' => ['trdigital.metasstoredestroy', $etapa->id], 'method' => 'delete']) !!}
-                                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                                        {!! Form::close() !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                      @endforeach
-                                  </td>
-
-                
-
-
-                                  <!-- ... e assim por diante -->
                                   </tr>
+                                  
                               @endforeach
 
                               </tbody>
@@ -167,109 +370,8 @@
               </div>
           </div>
           </form>
-          {!! Form::close() !!}
 
 
-
-          <!-- Criar METAS -->
-          <div class="modal fade" id="novameta" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title">Nova Meta</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          <input type="hidden" id="metaId" name="metaId">
-
-                          @foreach ($metas as $meta)
-                              {!! Form::model($n_processo, ['method' => 'PATCH', 'route' => ['trdigital.metasstore', $n_processo->id]]) !!}
-
-                              <input type="hidden" class="form-control" id="metas_id" name="metas_id"
-                                  value="{{ $meta->id }}">
-                          @endforeach
-                          <div class="row g-3">
-                              <div class="col-md-12">
-                                  <div class="form-floating">
-
-                                      {!! Form::text('Especificacao_metas', null, [
-                                          'placeholder' => 'Especificacao_metas',
-                                          'class' => 'form-control',
-                                          'id' => 'floatingName',
-                                      ]) !!}
-                                      <label for="floatingName">Especificação</label>
-                                  </div>
-                                  <br>
-                              </div>
-
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <div class="form-floating">
-                                          {!! Form::number('Quantidade_metas', null, [
-                                              'placeholder' => 'Quantidade_metas',
-                                              'class' => 'form-control',
-                                              'id' => 'floatingName',
-                                          ]) !!}
-                                          <label for="floatingName"></label>
-                                          <label for="floatingEmail">Unidade de Medida</label>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                      <div class="form-floating">
-                                          {!! Form::text('Unidade_medida_metas', null, [
-                                              'placeholder' => '',
-                                              'class' => 'form-control',
-                                              'id' => 'floatingName',
-                                          ]) !!}
-                                          <label for="floatingName"></label>
-                                          <label for="floatingEmail">Quantidade</label>
-                                      </div>
-                                  </div>
-
-                              </div>
-                              <br>
-
-                              <div class="col-12">
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="form-floating">
-                                              {!! Form::date('Inicio_metas', null, [
-                                                  'placeholder' => 'a',
-                                                  'class' => 'form-control',
-                                                  'id' => 'floatingCity',
-                                              ]) !!}
-                                              <label for="floatingCity">Início</label>
-                                          </div>
-                                      </div>
-
-                                      <div class="col-md-6">
-                                          <div class="form-floating">
-                                              {!! Form::date('Termino_metas', null, [
-                                                  'placeholder' => 'a',
-                                                  'class' => 'form-control',
-                                                  'id' => 'floatingZip',
-                                              ]) !!}
-                                              <label for="floatingZip">Término</label>
-                                          </div>
-                                      </div>
-
-
-
-
-                                      <!-- End floating Labels Form -->
-
-                                  </div>
-                              </div>
-                          </div>
-
-                      </div>
-                      <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
-                      </div>
-                      {!! Form::close() !!}
-                  </div>
-              </div>
-          </div>
 
 
 
@@ -466,15 +568,11 @@
 
 
       </div>
-      </div>
 
-      </div>
-      </div>
-      </div>
       {!! Form::close() !!}
 
 
-      <script>
+      {{-- <script>
         $(document).ready(function () {
             $('#novaetapa').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
@@ -485,4 +583,30 @@
             });
         });
     </script>
+     --}}
+
+         
+     <script>
+        $(document).ready(function () {
+            $('#excluirmeta').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var metaId = button.data('bs-meta-id');
+                $('#meta-id').text(metaId);
+                var deleteForm = document.getElementById('delete-form');
+                var actionUrl = deleteForm.getAttribute('action');
+                actionUrl = actionUrl.replace('__META_ID__', metaId);
+                deleteForm.setAttribute('action', actionUrl);
+            });
+        });
+    </script>
+     <script>
+        $(document).ready(function () {
+            $('#editarmeta').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var metaId = button.data('bs-meta-id');
+                $('#metaId').val(metaId);
+            });
+        });
+    </script>
+
     

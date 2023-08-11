@@ -307,6 +307,31 @@ class TrdigitalController extends Controller
         return redirect()->back();
     }
 
+    public function metasupdate(Request $request, $id)
+    {
+
+        $meta = Metas::find($id);
+
+    if ($meta) {
+        // Atualizar os campos da meta com os dados do formulário
+        $meta->n_processo_id = $id;
+        $meta->Especificacao_metas = $request->input('Especificacao_metas');
+        $meta->Quantidade_metas = $request->input('Quantidade_metas');
+        $meta->Unidade_medida_metas = $request->input('Unidade_medida_metas');
+        $meta->Inicio_metas = $request->input('Inicio_metas');
+        $meta->Termino_metas = $request->input('Termino_metas');
+
+        // Salvar as alterações no banco de dados
+      //  $meta->save();
+
+        $meta->update();
+
+        return redirect()->back()->with('success', 'Meta atualizada com sucesso.');
+    } else {
+        return redirect()->back()->with('error', 'Meta não encontrada.');
+    }
+    }
+
     public function metasstoredestroy($id)
     {
         $metas = Metas::find($id);
@@ -318,6 +343,8 @@ class TrdigitalController extends Controller
         $metas->delete();
         return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
     }
+
+    
     public function etapasstoredestroy($id)
     {
         $etapas = Etapas::find($id);
