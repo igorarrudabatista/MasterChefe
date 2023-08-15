@@ -55,15 +55,22 @@ class MetasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $data = [
+            'n_processo_id' => $id,
+            'Especificacao_metas' => $request->input('Especificacao_metas'),
+            'Quantidade_metas' => $request->input('Quantidade_metas'),
+            'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
+            'Inicio_metas' => $request->input('Inicio_metas'),
+            'Termino_metas' => $request->input('Termino_metas'),
+        ];
+        dd($data);
 
-     //   dd($request);
-        Metas::create($request->all());
+        // Criar uma nova instância de Meta com os dados e salvar no banco de dados
+        Metas::create($data);
 
-        toast('Meta criada com sucesso!','success');
-
-        return view('trdigital.index');
+        return redirect()->back();
         
     }
 
@@ -87,40 +94,32 @@ class MetasController extends Controller
     
     }
     
-    public function update(Request $request, Metas $metas) {
+    public function update (Request $request, Metas $meta) {
 
-        $metas->update($request->all());
+        $data = [
+            'Especificacao_metas' => $request->input('Especificacao_metas'),
+            'Quantidade_metas' => $request->input('Quantidade_metas'),
+            'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
+            'Inicio_metas' => $request->input('Inicio_metas'),
+            'Termino_metas' => $request->input('Termino_metas'),
+        ];
 
+        $meta->update($data);
+        return redirect()->back();
 
-     
-        return redirect('/trdigital')->with('edit','Cidade editada com sucesso!');
     }
     
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
 
-     public function metasstoredestroy($id)
-{
-    $metas = Metas::find($id);
-
-    if (!$metas) {
-        // Lógica de tratamento se a meta não for encontrada
-    }
-
-    $metas->delete();
-    return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
-}
-
-    public function destroy(Metas $metas)
+    public function destroy(Metas $metas, $id)
     {
-        $metas->delete();
+        $metas = Metas::find($id);
     
-        return redirect()->route('trdigital.index')
-                        ->with('delete','Cidade deletado com sucesso!');
+        if (!$metas) {
+            // Lógica de tratamento se a meta não for encontrada
+        }
+    
+        $metas->delete();
+        return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
     }
 
 }

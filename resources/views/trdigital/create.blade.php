@@ -135,7 +135,7 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                         <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-consolidado" data-bs-toggle="list"
                                                         href="#list-consolidado" role="tab" aria-controls="list-consolidado">
-                                                        <b> <big> 8. </big> </b> Plano Consolidado</a>
+                                                        <b> <big> 8. </big> </b> Plano de Aplicação Consolidado </a>
                                                  
                                                         <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-detalhado" data-bs-toggle="list"

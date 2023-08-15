@@ -9,7 +9,7 @@ class Plano_consolidado extends Model
 {
     protected $table = 'plano_consolidado';
     
-    protected $fillable = ['n_processo_id', 'metas_id',
+    protected $fillable = ['n_processo_id',
      'Natureza', 'Discriminacao','Discriminacao_outros',
      'Complemento', 'Valor_concedente', 'Valor_proponente_financeira',
      'Valor_proponente_nao_financeira', 'plano_consolidado_sit','plano_consolidado_obs'

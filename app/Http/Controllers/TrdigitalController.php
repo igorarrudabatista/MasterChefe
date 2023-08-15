@@ -29,6 +29,7 @@ use App\Models\Doc_anexo1;
 use App\Models\Doc_anexo2;
 use App\Models\Etapas;
 use App\Models\Metas;
+use App\Models\Plano_consolidado;
 
 class TrdigitalController extends Controller
 {
@@ -45,11 +46,7 @@ class TrdigitalController extends Controller
         $this->middleware('permission:trdigital-delete', ['only' => ['destroy']]);
         $this->middleware('permission:trdigital-invoice', ['only' => ['invoice']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
         $nProcessos = N_processo::with([
@@ -289,60 +286,72 @@ class TrdigitalController extends Controller
 
     }
 
-    public function metasstore(Request $request, $id)
-    {
+     public function metasstore(Request $request, $id)
+     {
 
-        $data = [
-            'n_processo_id' => $id,
-            'Especificacao_metas' => $request->input('Especificacao_metas'),
-            'Quantidade_metas' => $request->input('Quantidade_metas'),
-            'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
-            'Inicio_metas' => $request->input('Inicio_metas'),
-            'Termino_metas' => $request->input('Termino_metas'),
-        ];
+         $data = [
+             'n_processo_id' => $id,
+             'Especificacao_metas' => $request->input('Especificacao_metas'),
+             'Quantidade_metas' => $request->input('Quantidade_metas'),
+             'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
+             'Inicio_metas' => $request->input('Inicio_metas'),
+             'Termino_metas' => $request->input('Termino_metas'),
+         ];
 
-        // Criar uma nova instância de Meta com os dados e salvar no banco de dados
-        Metas::create($data);
+         Metas::create($data);
 
-        return redirect()->back();
-    }
+         return redirect()->back();
+     }
 
-    public function metasupdate(Request $request, $id)
-    {
+     public function metasupdate(Request $request, Metas $meta)
+     {
 
-        $meta = Metas::find($id);
+         $data = [
+             'Especificacao_metas' => $request->input('Especificacao_metas'),
+             'Quantidade_metas' => $request->input('Quantidade_metas'),
+             'Unidade_medida_metas' => $request->input('Unidade_medida_metas'),
+             'Inicio_metas' => $request->input('Inicio_metas'),
+             'Termino_metas' => $request->input('Termino_metas'),
+         ];
 
-    if ($meta) {
-        // Atualizar os campos da meta com os dados do formulário
-        $meta->n_processo_id = $id;
-        $meta->Especificacao_metas = $request->input('Especificacao_metas');
-        $meta->Quantidade_metas = $request->input('Quantidade_metas');
-        $meta->Unidade_medida_metas = $request->input('Unidade_medida_metas');
-        $meta->Inicio_metas = $request->input('Inicio_metas');
-        $meta->Termino_metas = $request->input('Termino_metas');
+       //  $meta->update($data);
+         Metas::findOrFail($request->id)->update($data);
 
-        // Salvar as alterações no banco de dados
-      //  $meta->save();
+       //  dd($data); 
+         return redirect()->back();
 
-        $meta->update();
+     }
+     public function etapaupdate  (Request $request)
+     {
 
-        return redirect()->back()->with('success', 'Meta atualizada com sucesso.');
-    } else {
-        return redirect()->back()->with('error', 'Meta não encontrada.');
-    }
-    }
+         $data = [
+           // 'metas_id' => $id,
+            //'metas_id' => $request->input('metas_id'),
+            'Especificacao_etapa' => $request->input('Especificacao_etapa'),
+            'Quantidade_etapa' => $request->input('Quantidade_etapa'),
+            'Unidade_medida_etapa' => $request->input('Unidade_medida_etapa'),
+            'Inicio_etapa' => $request->input('Inicio_etapa'),
+            'Termino_etapa' => $request->input('Termino_etapa')
+         ];
+       //  $meta->update($data);
+         Etapas::findOrFail($request->id)->update($data);
 
-    public function metasstoredestroy($id)
-    {
-        $metas = Metas::find($id);
+       //  dd($data); 
+         return redirect()->back();
+
+     }
+
+     public function metasstoredestroy($id)
+     {
+         $metas = Metas::find($id);
     
-        if (!$metas) {
-            // Lógica de tratamento se a meta não for encontrada
-        }
+         if (!$metas) {
+         }
     
-        $metas->delete();
-        return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
-    }
+         $metas->delete();
+
+         return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
+     }
 
     
     public function etapasstoredestroy($id)
@@ -357,14 +366,49 @@ class TrdigitalController extends Controller
         return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
     }
     
+    public function planoconsolidado (Request $request, $id)
+    {
+
+     $data = [
+             'n_processo_id' => $id,
+             'Discriminacao' => $request->input('Discriminacao'),
+             'Complemento' => $request->input('Complemento'),
+             'Discriminacao_outros' => $request->input('Discriminacao_outros'),
+             'Complemento' => $request->input('Complemento'),
+             'Valor_concedente' => $request->input('Valor_concedente'),
+             'Valor_proponente_financeira' => $request->input('Valor_proponente_financeira'),
+             'Valor_proponente_nao_financeira' => $request->input('Valor_proponente_nao_financeira'),
+         ];
+
+         Plano_consolidado::create($data);
+
+         return redirect()->back();
+     }
+    public function planoconsolidadoupdate (Request $request, $id)
+    {
+
+     $data = [
+             'n_processo_id' => $id,
+             'Discriminacao' => $request->input('Discriminacao'),
+             'Complemento' => $request->input('Complemento'),
+             'Discriminacao_outros' => $request->input('Discriminacao_outros'),
+             'Complemento' => $request->input('Complemento'),
+             'Valor_concedente' => $request->input('Valor_concedente'),
+             'Valor_proponente_financeira' => $request->input('Valor_proponente_financeira'),
+             'Valor_proponente_nao_financeira' => $request->input('Valor_proponente_nao_financeira'),
+         ];
+
+         Plano_consolidado::findOrFail($request->id)->update($data);
+
+         return redirect()->back();
+     }
     
-    
-    public function etapasstore(Request $request, Etapas $etapas)
+    public function etapasstore(Request $request, $id)
     {
 
         $etapas = [
-            //'metas_id' => $id,
-            'metas_id' => $request->input('metas_id'),
+            'metas_id' => $id,
+            //'metas_id' => $request->input('metas_id'),
             'Especificacao_etapa' => $request->input('Especificacao_etapa'),
             'Quantidade_etapa' => $request->input('Quantidade_etapa'),
             'Unidade_medida_etapa' => $request->input('Unidade_medida_etapa'),
@@ -374,7 +418,9 @@ class TrdigitalController extends Controller
 
        
         Etapas::create($etapas);
-
+        
+     //   dd($etapas);
+        
         return redirect()->back();
     }
 
@@ -395,21 +441,21 @@ class TrdigitalController extends Controller
             'Projeto_conteudo',
             'Resp_projeto',
             'Orgaos',
-            'Metas'
+            'Metas',
+            'Plano_consolidado',
+            'Plano_detalhado'
         ])->find($id);
-
-
 
         $n_processo = N_processo::findOrFail($id);
         $metas = Metas::where('n_processo_id', $id)->get();
+        $planoconsolidado = Plano_consolidado::where('n_processo_id', $id)->get();
         $etapas = Metas::with('etapas')->get();
-                //   $n_processo = N_processo::find($id);
-
+        
         if (!$n_processo) {
             // Caso não encontre o registro com o ID especificado, você pode redirecionar para uma página de erro ou retornar uma mensagem de erro.
             return redirect()->route('trdigital.index')->with('error', 'O registro não foi encontrado.');
         }
-        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas' ));
+        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas','planoconsolidado' ));
     }
 
     public function validar(N_processo $n_processo, $id)

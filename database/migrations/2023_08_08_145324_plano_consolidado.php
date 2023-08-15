@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('plano_consolidado', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('n_processo_id');
-            $table->unsignedBigInteger('metas_id');
+            // $table->unsignedBigInteger('metas_id');
             
             $table->string('Natureza')->nullable();
             $table->string('Discriminacao')->nullable();
@@ -33,7 +33,7 @@ return new class extends Migration
             $table->timestamps();
         
             $table->foreign('n_processo_id')->references('id')->on('n_processo')->onDelete('cascade');
-            $table->foreign('metas_id')->references('id')->on('metas')->onDelete('cascade');
+            // $table->foreign('metas_id')->references('id')->on('metas')->onDelete('cascade');
         });  
     
     }

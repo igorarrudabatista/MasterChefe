@@ -5,16 +5,17 @@
 
           <div class="card">
               <div class="card-body">
-                  <h5 class="card-title"> <big> <b> 8. </b> </big>Plano Consolidado</b></h5>
+                  <h5 class="card-title"> <big> <b> 8. </b> </big>Plano de Aplicação Consolidado </b></h5>
 
                   <!-- Floating Labels Form -->
                   <div class="card">
                       <div class="card-body">
 
-                          <h5 class="card-title text-center">CADASTROS DE METAS E ETAPAS</h5>
+                          <h5 class="card-title text-center">Plano de Aplicação Consolidado 
+                        </h5>
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                               data-bs-target="#verticalycentered">
-                              + Nova Meta
+                              + Novo Registro
                           </button>
 
 

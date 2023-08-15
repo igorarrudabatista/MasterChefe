@@ -31,11 +31,17 @@ use App\Http\Controllers\{
 };
 
 
-Route::patch('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasstore'])->name('trdigital.metasstore');
+Route::patch('/trdigital/metasstore/{id}',  [TrdigitalController::class, 'metasstore'])->name('trdigital.metasstore');
 Route::delete('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasstoredestroy'])->name('trdigital.metasstoredestroy');
-Route::put('/trdigital/metasstore/{id}', [TrdigitalController::class, 'metasupdate'])->name('trdigital.metasupdate');
+Route::put('/trdigital/metasstore/{id}',    [TrdigitalController::class, 'metasupdate'])->name('trdigital.metasupdate');
 
+
+Route::put('/trdigital/etapasstore/{id}',    [TrdigitalController::class, 'etapaupdate'])->name('trdigital.etapaupdate');
 Route::patch('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstore'])->name('trdigital.etapasstore');
+
+Route::patch('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidado'])->name('trdigital.planoconsolidado');
+Route::put('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
+
 Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
 
 // Route::post('trdigital/metasstore/{id}', [MetasController::class, 'metasstore'])->name('metasstore');
