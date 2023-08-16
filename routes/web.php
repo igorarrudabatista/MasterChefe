@@ -41,6 +41,7 @@ Route::patch('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapas
 
 Route::patch('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidado'])->name('trdigital.planoconsolidado');
 Route::put('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
+Route::delete('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadodestroy'])->name('trdigital.planoconsolidadodestroy');
 
 Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
 

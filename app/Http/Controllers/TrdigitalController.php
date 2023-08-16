@@ -371,6 +371,7 @@ class TrdigitalController extends Controller
 
      $data = [
              'n_processo_id' => $id,
+             'Natureza' => $request->input('Natureza'),
              'Discriminacao' => $request->input('Discriminacao'),
              'Complemento' => $request->input('Complemento'),
              'Discriminacao_outros' => $request->input('Discriminacao_outros'),
@@ -390,6 +391,7 @@ class TrdigitalController extends Controller
      $data = [
              'n_processo_id' => $id,
              'Discriminacao' => $request->input('Discriminacao'),
+             'Natureza' => $request->input('Natureza'),
              'Complemento' => $request->input('Complemento'),
              'Discriminacao_outros' => $request->input('Discriminacao_outros'),
              'Complemento' => $request->input('Complemento'),
@@ -401,6 +403,18 @@ class TrdigitalController extends Controller
          Plano_consolidado::findOrFail($request->id)->update($data);
 
          return redirect()->back();
+     }
+
+     public function planoconsolidadodestroy($id)
+     {
+         $planoconsolidado = Plano_consolidado::find($id);
+     
+         if (!$planoconsolidado) {
+             // Lógica de tratamento se a meta não for encontrada
+         }
+     
+         $planoconsolidado->delete();
+         return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
      }
     
     public function etapasstore(Request $request, $id)

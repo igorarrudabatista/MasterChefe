@@ -50,7 +50,7 @@
 
                                           <td>
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                  data-bs-target="#editarplano{{ $planos->id }}"
+                                                  data-bs-target="#excluirplano{{ $planos->id }}"
                                                   data-bs-meta-id="{{ $planos->id }}">
                                                   Excluir
                                               </button>
@@ -85,14 +85,30 @@
                                 <div class="row g-3">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-
-                                            {!! Form::text('Discriminacao', null, [
-                                                'placeholder' => 'Discriminação',
-                                                'class' => 'form-control',
-                                                'id' => 'floatingName',
+                                            {!! Form::select('Natureza', [
+                                                '' => 'Selecione a Natureza',
+                                                '3191.11 - Pessoal' => '3191.11 - Pessoal',
+                                                '3390.14 - Diárias' => '3390.14 - Diárias',
+                                                '3390.15 - Diárias Militares' => '3390.15 - Diárias Militares',
+                                                '3390.30 - Material de Consumo' => '3390.30 - Material de Consumo',
+                                                '3390.33 - Passagens' => '3390.33 - Passagens',
+                                                '3390.35 - Consultorias' => '3390.35 - Consultorias',
+                                                '3390.36 - Serviços de Terceiros - Pessoa Física' => '3390.36 - Serviços de Terceiros - Pessoa Física',
+                                                '3390.39 - Serviços de Terceiros - Pessoa Jurídica' => '3390.39 - Serviços de Terceiros - Pessoa Jurídica',
+                                                '4490.51 - Obras Civis' => '4490.51 - Obras Civis',
+                                                '4490.52 - Equipamentos e Material Permanente' => '4490.52 - Equipamentos e Material Permanente',
+                                                '4590.61 - Aquisição de Imóveis' => '4590.61 - Aquisição de Imóveis',
+                                                'Outros' => 'Outros',
+                                            ], null, [
+                                                'class' => 'form-control custom-select',
+                                                'required' => true,
+                                                'id' => 'Natureza'
                                             ]) !!}
+                                            
 
-                                            <label for="floatingName">Discriminacao</label>
+                                        </select>
+
+                                            <label for="floatingName">Natureza</label>
                                         </div>
                                         <br>
                                     </div>
@@ -101,47 +117,51 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
 
-                                                <select name="Complemento" id="Complemento"
-                                                    class="form-control custom-select" required>
-                                                    <option value="" disabled selected>
-                                                        Selecione o Orgão Concedente</option>
-                                                    @foreach ($metas as $meta)
-                                                        <option value="{{ $meta->id }}">
-                                                            {{ $meta->Especificacao_metas }}
-                                                        </option>
-                                                    @endforeach
+                                                <select name="Discriminacao" id="Discriminacao"
+                                                class="form-control custom-select" required>
+                                                <option value="" disabled selected>
+                                                    Selecione a Meta</option>
+                                                @foreach ($metas as $meta)
+                                                    <option value="{{ $meta->id }}">
+                                                        {{ $meta->Especificacao_metas }}
+                                                    </option>
+                                                @endforeach
+    
+                                            </select>
 
-                                                </select>
 
                                                 <label for="floatingName"></label>
-                                                <label for="floatingEmail">Complemento da
-                                                    Discriminação</label>
+                                                <label for="floatingEmail">Comp. Discriminação</label>
                                             </div>
                                         </div>
 
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                {!! Form::text('Complemento', null, [
+                                                {!! Form::number('Valor_concedente', null, [
                                                     'placeholder' => 'Complemento',
                                                     'class' => 'form-control',
                                                     'id' => 'floatingName',
                                                 ]) !!}
+                                                
                                                 <label for="floatingName"></label>
-                                                <label for="floatingEmail">Unidade de Medida</label>
+                                                <label for="floatingEmail">Valor - Concedente</label>
+                                                <small class="text-primary">  (Recurso Financeiro) </small>
+
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                {!! Form::number('Valor_concedente', null, [
+                                                {!! Form::number('Valor_proponente_financeira', null, [
                                                     'placeholder' => '',
                                                     'class' => 'form-control',
                                                     'id' => 'floatingName',
                                                 ]) !!}
                                                 <label for="floatingName"></label>
-                                                <label for="floatingEmail">Valor - Concedente</label>
+                                                <label for="floatingCity">Valor Proponente</label>
+                                                <small class="text-primary">   (Contrapartida Financeira) </small>
                                             </div>
                                         </div>
 
@@ -152,29 +172,24 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    {!! Form::number('Valor_proponente_financeira', null, [
+                                                    {!! Form::number('Valor_proponente_nao_financeira', null, [
                                                         'placeholder' => 'a',
                                                         'class' => 'form-control',
                                                         'id' => 'floatingCity',
                                                     ]) !!}
                                                     <label for="floatingCity">Valor Proponente</label>
+                                                    <small class="text-primary">   (Contrapartida Não Financeira) </small>
+
                                                     {{-- <label for="floatingCity">Valor Proponente - (Contrapartida Financeira)</label> --}}
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-floating">
-                                                    {!! Form::number('Valor_proponente_nao_financeira', null, [
-                                                        'placeholder' => 'a',
-                                                        'class' => 'form-control',
-                                                        'id' => 'floatingZip',
-                                                    ]) !!}
-                                                    <label for="floatingZip">Valor Proponente </label>
-                                                    {{-- <label for="floatingZip">Valor Proponente - (Contrapartida Não Financeira)</label> --}}
-                                                </div>
+                         
+
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
                                             </div>
-
-
 
 
                                             <!-- End floating Labels Form -->
@@ -184,21 +199,42 @@
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
-                            </div>
                         </div>
                     </div>
                 </div><!-- End Vertically centered Modal-->
 
+
                      {{-- Modais de Edição e Exclusão --}}
             @foreach ($planoconsolidado as $planos)
                           {{-- Editar Plano --}} @include('trdigital.edit.questoes.planoconsolidado.editarplano')
+
+                               <!-- Modal excluir plano consolidado -->
+                          <div class="modal fade" id="excluirplano{{ $planos->id }}" tabindex="-1">
+                           <div class="modal-dialog modal-dialog-centered">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h5 class="modal-title">Confirmar Exclusão</h5>
+                                       <button type="button" class="btn-close"
+                                           data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                       Tem certeza de que deseja excluir este Plano Consolidado? - {{ $planos->id }}
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary"
+                                           data-bs-dismiss="modal">Cancelar</button>
+                                       {!! Form::open(['route' => ['trdigital.planoconsolidadodestroy', $planos->id], 'method' => 'delete']) !!}
+                                       <button type="submit"
+                                           class="btn btn-danger">Excluir</button>
+                                       {!! Form::close() !!}
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                           {{-- @include('trdigital.edit.questoes.planoconsolidado.excluirplano', ['planos' => $planos]) --}}
         @endforeach
     </div>
 
               </div>
           </div>
-      </div>
-      </div>
+    
