@@ -9,10 +9,10 @@ $processoCount_tramitada = session()->get('processoCount_tramitada');
 $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada'); 
 ?>
 
+<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 <!-- Adicione esses links no cabeçalho do seu HTML -->
 <!-- Adicione esses links no cabeçalho do seu HTML -->
 
@@ -125,7 +125,7 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                     <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-Cronograma" data-bs-toggle="list"
                                                         href="#list-Cronograma" role="tab" aria-controls="list-Cronograma">
-                                                        <b> <big> 7. </big> </b> Cronograma de Execução</a>
+                                                        <b> <big> 7. </big> </b> Cronograma de Execução - <b> (Metas e Etapas) </b></a>
                                                     
                                                         <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-consolidado" data-bs-toggle="list"
@@ -135,7 +135,8 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                         <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-detalhado" data-bs-toggle="list"
                                                         href="#list-detalhado" role="tab" aria-controls="list-detalhado">
-                                                        <b> <big> 9. </big> </b> Plano Detalhado</a>
+                                                        <b> <big> 9. </big> </b> Plano de Aplicação Detalhado - <b> (Memória de Cálculo) </b>
+                                                    </a>
                                                  
                                                         <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-detalhado" data-bs-toggle="list"

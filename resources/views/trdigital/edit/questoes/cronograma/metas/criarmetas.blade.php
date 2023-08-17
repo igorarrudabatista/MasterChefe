@@ -1,7 +1,6 @@
    <!-- Criar METAS -->
    {!! Form::close() !!}
-
-   <div class="modal fade" id="novameta" tabindex="-1">
+   <div class="modal fade" id="criarmeta" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,9 +11,7 @@
             <div class="modal-body">
                 <input type="hidden" id="metaId" name="metaId">
 
-                @foreach ($metas as $meta)
                     {!! Form::model($n_processo, ['method' => 'patch', 'route' => ['trdigital.metasstore', $n_processo->id]]) !!}
-                    @endforeach
 
                     <input type="hidden" class="form-control" id="metas_id"
                         name="metas_id" value="{{ $meta->id }}">
@@ -95,8 +92,8 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
 </div>
-{!! Form::close() !!}

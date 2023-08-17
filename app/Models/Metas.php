@@ -25,4 +25,8 @@ class Metas extends Model
     {
         return $this->belongsTo(N_Processo::class, 'n_processo_id');
     }
+    public function Plano_consolidado()
+    {
+        return $this->hasMany(PlanoConsolidado::class);
+    }
 }

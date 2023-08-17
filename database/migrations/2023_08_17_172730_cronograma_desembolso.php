@@ -13,22 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plano_consolidado', function (Blueprint $table) {
+        Schema::create('cronograma_desembolso', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('n_processo_id');
              $table->unsignedBigInteger('metas_id');
             
-            $table->string('Natureza')->nullable();
-            $table->string('Discriminacao')->nullable();
-            $table->string('Discriminacao_outros')->nullable();
-            $table->string('Complemento')->nullable();
-            $table->string('Valor_concedente')->nullable();
-            $table->string('Valor_proponente_financeira')->nullable();
-            $table->string('Valor_proponente_nao_financeira')->nullable();
-
-            $table->string('plano_consolidado_sit')->nullable();
-            $table->string('plano_consolidado_obs')->nullable();
-
+            $table->string('ano')->nullable();
+            $table->string('mes')->nullable();
+            $table->string('fonte')->nullable();
+            $table->string('valor_desembolso')->nullable();
+           
 
             $table->timestamps();
         
@@ -45,7 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plano_consolidado');
-
+        Schema::dropIfExists('cronograma_desembolso');
     }
 };

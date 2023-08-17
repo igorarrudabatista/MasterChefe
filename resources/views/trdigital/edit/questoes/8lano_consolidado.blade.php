@@ -23,19 +23,20 @@
                           <table class="table datatable">
                               <thead>
                                   <tr>
-                                      <th>Discriminação</th>
-                                      <th><small> Complemento </small></th>
-                                      <th><small> Valor Concedente</small></th>
-                                      <th>Valor Proponente <small class="text-primary"> Financeira </small></th>
-                                      <th>Valor Proponente <small class="text-primary"> <br>Não Financeira </small></th>
-                                      <th>Editar</th>
-                                      <th>Excluir</th>
+                                      <th><small>Natureza  </small></th>
+                                      <th><small>Discriminação  </small></th>
+                                      <th><small> Valor Conc.</small></th>
+                                      <th><small>Valor Prop. <br><small class="text-primary">(Financeira) </small></th>
+                                      <th><small>Valor Prop. <br><small class="text-primary"> (Não Financeira) </small></th>
+                                      <th><small>Editar</small></th>
+                                      <th><small>Excluir</small></th>
                                   </tr>
                               </thead>
                               <tbody>
                                   @foreach ($planoconsolidado as $planos)
                                       <tr>
-                                          <td>{{ $planos->Discriminacao }} </td>
+                                          <td>{{ $planos->Natureza }} </td>
+                                          <td>{{ $planos->Metas->Especificacao_metas }} </td>
                                           <td>{{ $planos->Complemento }} </td>
                                           <td>{{ $planos->Valor_concedente }} </td>
                                           <td>{{ $planos->Valor_proponente_financeira }} </td>
@@ -117,7 +118,7 @@
                                         <div class="col-md-12">
                                             <div class="form-floating">
 
-                                                <select name="Discriminacao" id="Discriminacao"
+                                                <select name="metas_id" id="metas_id"
                                                 class="form-control custom-select" required>
                                                 <option value="" disabled selected>
                                                     Selecione a Meta</option>
@@ -131,7 +132,7 @@
 
 
                                                 <label for="floatingName"></label>
-                                                <label for="floatingEmail">Comp. Discriminação</label>
+                                                <label for="floatingEmail">Discriminação</label>
                                             </div>
                                         </div>
 
@@ -183,13 +184,12 @@
                                                     {{-- <label for="floatingCity">Valor Proponente - (Contrapartida Financeira)</label> --}}
                                                 </div>
                                             </div>
-
+                                            
+                                            
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                                                                        </div>
                          
-
-
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
-                                            </div>
 
 
                                             <!-- End floating Labels Form -->
@@ -199,6 +199,9 @@
                                 </div>
 
                             </div>
+                            
+
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div><!-- End Vertically centered Modal-->

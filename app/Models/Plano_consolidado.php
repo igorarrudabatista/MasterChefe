@@ -9,7 +9,7 @@ class Plano_consolidado extends Model
 {
     protected $table = 'plano_consolidado';
     
-    protected $fillable = ['n_processo_id',
+    protected $fillable = ['n_processo_id','metas_id',
      'Natureza', 'Discriminacao','Discriminacao_outros',
      'Complemento', 'Valor_concedente', 'Valor_proponente_financeira',
      'Valor_proponente_nao_financeira', 'plano_consolidado_sit','plano_consolidado_obs'
@@ -20,5 +20,13 @@ class Plano_consolidado extends Model
     {
         return $this->belongsTo(N_Processo::class, 'n_processo_id');
     }
+
+    public function Metas() {
+        return $this->belongsTo(Metas::class);
+      }
+    public function Plano_detalhado() {
+        return $this->hasOne(Plano_detalhado::class, 'Natureza_id');
+      }
+    
 }
 

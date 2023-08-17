@@ -25,11 +25,13 @@ use App\Models\Instituicao;
 use App\Models\Resp_projeto;
 use App\Models\Projeto_conteudo;
 use App\Exports\ReciboExport;
+use App\Models\Cronograma_desembolso;
 use App\Models\Doc_anexo1;
 use App\Models\Doc_anexo2;
 use App\Models\Etapas;
 use App\Models\Metas;
 use App\Models\Plano_consolidado;
+use App\Models\Plano_detalhado;
 
 class TrdigitalController extends Controller
 {
@@ -371,6 +373,7 @@ class TrdigitalController extends Controller
 
      $data = [
              'n_processo_id' => $id,
+             'metas_id' => $request->input('metas_id'),
              'Natureza' => $request->input('Natureza'),
              'Discriminacao' => $request->input('Discriminacao'),
              'Complemento' => $request->input('Complemento'),
@@ -385,13 +388,55 @@ class TrdigitalController extends Controller
 
          return redirect()->back();
      }
+
+     
+    public function memoria_calculo (Request $request, $id)
+    {
+
+     $data = [
+             'n_processo_id' => $id,
+             'metas_id' => $request->input('metas_id'),
+             'Natureza_id' => $request->input('Natureza_id'),
+             'Natureza_detalhado' => $request->input('Natureza_detalhado'),
+             'Produto_Servico_detalhado' => $request->input('Produto_Servico_detalhado'),
+             'Unidade_medida_detalhado' => $request->input('Unidade_medida_detalhado'),
+             'Quantidade_detalhado' => $request->input('Quantidade_detalhado'),
+             'Valor_unit_detalhado' => $request->input('Valor_unit_detalhado'),
+       
+            ];
+
+         Plano_detalhado::create($data);
+
+         return redirect()->back();
+     }
+
+     public function memoria_calculo_update  (Request $request, $id)
+     {
+
+         $data = [
+            'n_processo_id' => $id,
+            'metas_id' => $request->input('metas_id'),
+            'Natureza_detalhado' => $request->input('Natureza_detalhado'),
+            'Produto_Servico_detalhado' => $request->input('Produto_Servico_detalhado'),
+            'Unidade_medida_detalhado' => $request->input('Unidade_medida_detalhado'),
+            'Quantidade_detalhado' => $request->input('Quantidade_detalhado'),
+            'Valor_unit_detalhado' => $request->input('Valor_unit_detalhado'),
+         ];
+       //  $meta->update($data);
+       Plano_detalhado::findOrFail($request->id)->update($data);
+
+       //  dd($data); 
+         return redirect()->back();
+
+     }
     public function planoconsolidadoupdate (Request $request, $id)
     {
 
      $data = [
              'n_processo_id' => $id,
-             'Discriminacao' => $request->input('Discriminacao'),
+             'metas_id' => $request->input('metas_id'),
              'Natureza' => $request->input('Natureza'),
+             'Discriminacao' => $request->input('Discriminacao'),
              'Complemento' => $request->input('Complemento'),
              'Discriminacao_outros' => $request->input('Discriminacao_outros'),
              'Complemento' => $request->input('Complemento'),
@@ -462,14 +507,20 @@ class TrdigitalController extends Controller
 
         $n_processo = N_processo::findOrFail($id);
         $metas = Metas::where('n_processo_id', $id)->get();
-        $planoconsolidado = Plano_consolidado::where('n_processo_id', $id)->get();
+        $planoconsolidado = Plano_consolidado::with(['Metas'])->where('n_processo_id', $id, )->get();
+     //   $memoria_calculo = Plano_detalhado::where('n_processo_id', $id, )->get();
+        $memoria_calculo = Plano_detalhado::with('Plano_consolidado')->get();
+
+     //   $memoria_calculo = Plano_detalhado::where('n_processo_id', $id, )->get();
+        $cronograma_desembolso = Cronograma_desembolso::where('n_processo_id', $id, )->get();
+        
         $etapas = Metas::with('etapas')->get();
         
         if (!$n_processo) {
             // Caso não encontre o registro com o ID especificado, você pode redirecionar para uma página de erro ou retornar uma mensagem de erro.
             return redirect()->route('trdigital.index')->with('error', 'O registro não foi encontrado.');
         }
-        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas','planoconsolidado' ));
+        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas','planoconsolidado','memoria_calculo', 'cronograma_desembolso' ));
     }
 
     public function validar(N_processo $n_processo, $id)

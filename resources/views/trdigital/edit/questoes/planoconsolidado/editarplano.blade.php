@@ -32,11 +32,12 @@
                                     '4490.52 - Equipamentos e Material Permanente' => '4490.52 - Equipamentos e Material Permanente',
                                     '4590.61 - Aquisição de Imóveis' => '4590.61 - Aquisição de Imóveis',
                                     'Outros' => 'Outros',
-                                ], null, [
+                                ], $planos->Natureza ?? null, [  // Substitua $seuModel pelo nome correto da variável que contém os dados do seu modelo
                                     'class' => 'form-control custom-select',
                                     'required' => true,
                                     'id' => 'Natureza'
                                 ]) !!}
+                                
 
                                 <label for="floatingName"> Natureza </label>
                             </div>
@@ -47,20 +48,17 @@
                             <div class="col-md-12">
                                 <div class="form-floating">
 
-                                    <select name="Discriminacao" id="Discriminacao"
-                                    class="form-control custom-select" required>
-                                    <option value="" disabled selected>
-                                        Selecione a Meta</option>
-                                    @foreach ($metas as $meta)
-                                        <option value="{{ $meta->id }}">
-                                            {{ $meta->Especificacao_metas }}
-                                        </option>
-                                    @endforeach
-
-                                </select>
+                                    <select name="metas_id" id="metas_id" class="form-control custom-select" required>
+                                        <option value="{{$planos->metas_id}}" disabled selected>{{$planos->Metas->Especificacao_metas}}</option>
+                                        @foreach ($metas as $meta)
+                                            <option value="{{ $meta->id }}" {{ $planos->metas_id == $meta->id ? 'selected' : '' }}>
+                                                {{ $meta->Especificacao_metas }}
+                                            </option>
+                                        @endforeach
+                                    </select>
 
                                     <label for="floatingName"></label>
-                                    <label for="floatingEmail">Comp. da Discriminação</label>
+                                    <label for="floatingEmail">Discriminação</label>
                                 </div>
                             </div>
 
@@ -68,60 +66,71 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    {!! Form::number('Valor_concedente', $planos->Valor_concedente, [
-                                        'placeholder' => 'Complemento',
-                                        'class' => 'form-control',
-                                        'id' => 'floatingName',
-                                    ]) !!}
-                                    <label for="floatingName"></label>
-                                    <label for="floatingEmail">Valor - Concedente</label>
-                                    <small class="text-primary">  (Recurso Financeiro) </small>
+                               <div class="form-floating">
+                                   {!! Form::number('Valor_concedente', $planos->Valor_concedente, [
+                                       'placeholder' => 'Complemento',
+                                       'class' => 'form-control',
+                                       'id' => 'floatingName',
+                                   ]) !!}
+                                   
+                                   <label for="floatingName"></label>
+                                   <label for="floatingEmail">Valor - Concedente</label>
+                                   <small class="text-primary">  (Recurso Financeiro) </small>
 
-                                </div>
+                               </div>
+                           </div> 
+                           <div class="col-md-6">
+                               <div class="form-floating">
+                                   {!! Form::number('Valor_proponente_financeira', $planos->Valor_proponente_financeira, [
+                                       'placeholder' => '',
+                                       'class' => 'form-control',
+                                       'id' => 'floatingName',
+                                   ]) !!}
+                                   <label for="floatingName"></label>
+                                   <label for="floatingCity">Valor Proponente</label>
+                                   <small class="text-primary">   (Contrapartida Financeira) </small>
+                               </div>
+                           </div>
+
+                       </div>
+                       <br>
+
+                       <div class="col-12">
+                           <div class="row">
+                               <div class="col-md-6">
+                                   <div class="form-floating">
+                                       {!! Form::number('Valor_proponente_nao_financeira', $planos->Valor_proponente_nao_financeira, [
+                                           'placeholder' => 'a',
+                                           'class' => 'form-control',
+                                           'id' => 'floatingCity',
+                                       ]) !!}
+                                       <label for="floatingCity">Valor Proponente</label>
+                                       <small class="text-primary">   (Contrapartida Não Financeira) </small>
+
+                                       {{-- <label for="floatingCity">Valor Proponente - (Contrapartida Financeira)</label> --}}
+                                   </div>
+                               </div>
+                               
+                               
+                                                           <div class="modal-footer">
+                                                               <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                                                           </div>
+            
+
+
+                               <!-- End floating Labels Form -->
+
+                           </div>
+                       </div>
+                   </div>
+
+               </div>
+               
+
+               {!! Form::close() !!}
+           </div>
+       </div>
+   </div><!-- End Vertically centered Modal-->
+
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    {!! Form::number('Valor_proponente_financeira', $planos->Valor_proponente_financeira, [
-                                        'placeholder' => '',
-                                        'class' => 'form-control',
-                                        'id' => 'floatingName',
-                                    ]) !!}
-                                    <label for="floatingName"></label>
-                                    <label for="floatingCity">Valor Proponente</label>
-                                    <small class="text-primary">   (Contrapartida Financeira) </small>                                </div>
-                            </div>
-
-                        </div>
-                        <br>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        {!! Form::number('Valor_proponente_nao_financeira', $planos->Valor_proponente_nao_financeira, [
-                                            'placeholder' => 'a',
-                                            'class' => 'form-control',
-                                            'id' => 'floatingCity',
-                                        ]) !!}
- <label for="floatingCity">Valor Proponente</label>
- <small class="text-primary">   (Contrapartida Não Financeira) </small>
-                                    </div>
-                                </div>
-
-                   
-
-
-
-                                <!-- End floating Labels Form -->
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        </div>
-        </div>
+                        

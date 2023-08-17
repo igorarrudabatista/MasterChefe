@@ -1,5 +1,8 @@
       {{-- ITEM 7 --}}
+      {!! Form::close() !!}
+
       <div class="tab-pane fade" id="list-detalhado" role="tabpanel" aria-labelledby="list-detalhado">
+        {!! Form::open(['route' => ['trdigital.memoria_calculo', $n_processo->id], 'method' => 'patch']) !!}
 
         {{-- {!! Form::open(['route' => 'metas.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
 
@@ -34,7 +37,34 @@
 
                                   </tr>
                               </thead>
-     
+                              <tbody>
+                                @foreach ($memoria_calculo as $memoria_de_calculo)
+                                    <tr>
+                                        <td>{{ $memoria_de_calculo->Natureza_detalhado }} </td>
+                                        <td>{{ $memoria_de_calculo->Produto_Servico_detalhado }} </td>
+                                        <td>{{ $memoria_de_calculo->Unidade_medida_detalhado }} </td>
+                                        <td>{{ $memoria_de_calculo->Quantidade_detalhado }} </td>
+                                        <td class="text-success">R$ {{ $memoria_de_calculo->Valor_unit_detalhado }} </td>
+                                        {{-- <?php $total1 = $memoria_de_calculo->Quantidade_detalhado * memoria_de_calculo  ?> --}}
+                                            <td> <b class="text-danger"> R$ {{ $memoria_de_calculo->Quantidade_detalhado * $memoria_de_calculo->Valor_unit_detalhado}} </b> </td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#editarplano{{ $memoria_de_calculo->id }}Editar"
+                                                data-bs-meta-id="{{ $memoria_de_calculo->id }}">
+                                                Editar
+                                            </button>
+                                        </td>
+
+                                        <td>
+                                          <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#excluirplano{{ $memoria_de_calculo->id }}"
+                                                data-bs-meta-id="{{ $memoria_de_calculo->id }}">
+                                                Excluir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                       
                           </table>
 
@@ -54,20 +84,16 @@
                                         <div class="row g-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating">
-        
-                                                    <select name="Complemento" id="Complemento"
-                                                    class="form-control custom-select" required>
-                                                    <option value="" disabled selected>
-                                                        Selecione a Natureza</option>
-                                                    @foreach ($metas as $meta)
-                                                        <option value="{{ $meta->id }}">
-                                                            {{ $meta->Especificacao_metas }}
-                                                        </option>
-                                                    @endforeach
+                                                    <select name="Natureza_id" id="Natureza_id" class="form-control custom-select" required>
+                                                        <option value="" disabled selected>Selecione a Natureza</option>
+                                                        @foreach ($memoria_calculo as $planoDetalhado)
+                                                            <option value="{{ $planoDetalhado->id }}">
+                                                                {{ $planoDetalhado->Plano_consolidado->Natureza }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
 
-                                                </select>
-
-                                                    <label for="floatingName">Discriminacao</label>
+                                                    <label for="floatingName">Naturezaaa</label>
                                                 </div>
                                                 <br>
                                             </div>
@@ -76,8 +102,8 @@
                                                 <div class="col-md-12">
                                                     <div class="form-floating">
         
-                                                         {!! Form::text('Complemento', null, [
-                                                            'placeholder' => 'Complemento',
+                                                         {!! Form::text('Produto_Servico_detalhado', null, [
+                                                            'placeholder' => 'Produto ou Serviço',
                                                             'class' => 'form-control',
                                                             'id' => 'floatingName',
                                                         ]) !!}
@@ -94,7 +120,7 @@
                                                     <div class="form-floating">
                                                       
                                                         {!! Form::select(
-                                                            'Unidade_medida_etapa',
+                                                            'Unidade_medida_detalhado',
                                                             [
                                                                   'Unidade.' => 'Unidade',
                                                                   'Quilograma' => 'Quilograma',
@@ -118,13 +144,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        {!! Form::number('Valor_concedente', null, [
+                                                        {!! Form::number('Quantidade_detalhado', null, [
                                                             'placeholder' => '',
                                                             'class' => 'form-control',
                                                             'id' => 'floatingName',
                                                         ]) !!}
                                                         <label for="floatingName"></label>
-                                                        <label for="floatingEmail">Valor - Concedente</label>
+                                                        <label for="floatingEmail">Quantidade</label>
                                                     </div>
                                                 </div>
         
@@ -135,29 +161,21 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-floating">
-                                                            {!! Form::number('Valor_proponente_financeira', null, [
+                                                            {!! Form::number('Valor_unit_detalhado', null, [
                                                                 'placeholder' => 'a',
                                                                 'class' => 'form-control',
                                                                 'id' => 'floatingCity',
                                                             ]) !!}
-                                                            <label for="floatingCity">Valor Proponente</label>
+                                                            <label for="floatingCity">Valor Unit.</label>
                                                             {{-- <label for="floatingCity">Valor Proponente - (Contrapartida Financeira)</label> --}}
                                                         </div>
                                                     </div>
         
-                                                    <div class="col-md-6">
-                                                        <div class="form-floating">
-                                                            {!! Form::number('Valor_proponente_nao_financeira', null, [
-                                                                'placeholder' => 'a',
-                                                                'class' => 'form-control',
-                                                                'id' => 'floatingZip',
-                                                            ]) !!}
-                                                            <label for="floatingZip">Valor Proponente </label>
-                                                            {{-- <label for="floatingZip">Valor Proponente - (Contrapartida Não Financeira)</label> --}}
-                                                        </div>
+              
+        
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
                                                     </div>
-        
-        
         
         
                                                     <!-- End floating Labels Form -->
@@ -167,9 +185,7 @@
                                         </div>
         
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div><!-- End Vertically centered Modal-->

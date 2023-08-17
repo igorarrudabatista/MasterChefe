@@ -1,7 +1,9 @@
       {{-- ITEM 7 --}}
-      <div class="tab-pane fade" id="list-desembolso" role="tabpanel" aria-labelledby="list-desembolso">
+      {!! Form::close() !!}
 
-        {{-- {!! Form::open(['route' => 'metas.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
+      <div class="tab-pane fade" id="list-desembolso" role="tabpanel" aria-labelledby="list-desembolso">
+        {!! Form::open(['route' => ['trdigital.cronograma_desembolso', $n_processo->id], 'method' => 'patch']) !!}
+
 
           <div class="card">
               <div class="card-body">
@@ -11,9 +13,9 @@
                   <div class="card">
                       <div class="card-body">
 
-                          <h5 class="card-title text-center">CADASTROS DE METAS E ETAPAS</h5>
+                          <h5 class="card-title text-center">CADASTRO DO CRONOGRAMA DE DESEMBOLSO</h5>
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                              data-bs-target="#verticalycentered">
+                              data-bs-target="#cronograma_desembolso">
                               + Nova Meta
                           </button>
 
@@ -23,36 +25,52 @@
                           <table class="table datatable">
                               <thead>
                                   <tr>
-                                      <th>N° da Meta</th>
-                                      <th>Etapa/Fase</th>
-                                      <th>Especificação</th>
-                                      <th>Unid. de Medida</th>
-                                      <th>Qtd.</th>
-                                      <th>Início</th>
-                                      <th>Término</th>
-                                      <th></th>
+                                      <th>Meta</th>
+                                      <th>Ano</th>
+                                      <th>Mês</th>
+                                      <th>Fonte</th>
+                                      <th>Valor</th>
+                                      <th>Editar</th>
+                                      <th>Excluir</th>
+                                
 
                                   </tr>
                               </thead>
-                          {{-- @foreach ($nProcessos as $n_processo)
-                              @foreach ($n_processo->Metas as $meta)
-                                  <!-- Aqui você pode acessar os atributos da meta -->
-                                  <td>  {{ $meta->Especificacao_metas }} </td>
-                                    <td> {{ $meta->Quantidade_metas }} </td>
-                                        <td> {{ $meta->Unidade_medida_metas }} </td>
-                                  <!-- ... e assim por diante -->
-                              @endforeach
-                      @endforeach --}}
+                              @foreach ($cronograma_desembolso as $cronograma_desembolsos)
+                              <tr>
+                                  <td>{{ $cronograma_desembolsos->metas_id }} </td>
+                                  <td>{{ $cronograma_desembolsos->ano }} </td>
+                                  <td>{{ $cronograma_desembolsos->fonte }} </td>
+                                  <td>{{ $cronograma_desembolsos->valor_desembolso }} </td>
+                            
+                                  
+                                      <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                          data-bs-target="#editarplano{{ $cronograma_desembolsos->id }}Editar"
+                                          data-bs-meta-id="{{ $cronograma_desembolsos->id }}">
+                                          Editar
+                                      </button>
+                                  </td>
+
+                                  <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                          data-bs-target="#excluirplano{{ $cronograma_desembolsos->id }}"
+                                          data-bs-meta-id="{{ $cronograma_desembolsos->id }}">
+                                          Excluir
+                                      </button>
+                                  </td>
+                              </tr>
+                          @endforeach
+                      </tbody>
                       
                           </table>
 
                           <!-- Vertically centered Modal -->
 
-                          <div class="modal fade" id="verticalycentered" tabindex="-1">
+                          <div class="modal fade" id="cronograma_desembolso" tabindex="-1">
                               <div class="modal-dialog modal-dialog-centered">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h5 class="modal-title">Nova Meta</h5>
+                                          <h5 class="modal-title">Cronograma de Desembolso</h5>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal"
                                               aria-label="Close"></button>
                                       </div>
@@ -67,7 +85,7 @@
                                                           'class' => 'form-control',
                                                           'id' => 'floatingName',
                                                       ]) !!}
-                                                      <label for="floatingName">Especificação</label>
+                                                      <label for="floatingName">Meta</label>
                                                   </div>
                                                   <br>
                                               </div>
@@ -75,24 +93,24 @@
                                               <div class="row">
                                                   <div class="col-md-6">
                                                       <div class="form-floating">
-                                                          {!! Form::number('Quantidade_metas', null, [
+                                                          {!! Form::number('Ano', null, [
                                                               'placeholder' => 'Quantidade_metas',
                                                               'class' => 'form-control',
                                                               'id' => 'floatingName',
                                                           ]) !!}
                                                           <label for="floatingName"></label>
-                                                          <label for="floatingEmail">Unidade de Medida</label>
+                                                          <label for="floatingEmail">Ano</label>
                                                       </div>
                                                   </div>
                                                   <div class="col-md-6">
                                                       <div class="form-floating">
-                                                          {!! Form::text('Unidade_medida_metas', null, [
+                                                          {!! Form::text('mes', null, [
                                                               'placeholder' => '',
                                                               'class' => 'form-control',
                                                               'id' => 'floatingName',
                                                           ]) !!}
                                                           <label for="floatingName"></label>
-                                                          <label for="floatingEmail">Quantidade</label>
+                                                          <label for="floatingEmail">Mês</label>
                                                       </div>
                                                   </div>
 
@@ -103,23 +121,23 @@
                                                   <div class="row">
                                                       <div class="col-md-6">
                                                           <div class="form-floating">
-                                                              {!! Form::date('Inicio_metas', null, [
+                                                              {!! Form::text('fonte', null, [
                                                                   'placeholder' => 'a',
                                                                   'class' => 'form-control',
                                                                   'id' => 'floatingCity',
                                                               ]) !!}
-                                                              <label for="floatingCity">Início</label>
+                                                              <label for="floatingCity">Fonte</label>
                                                           </div>
                                                       </div>
 
                                                       <div class="col-md-6">
                                                           <div class="form-floating">
-                                                              {!! Form::date('Termino_metas', null, [
+                                                              {!! Form::number('Termino_metas', null, [
                                                                   'placeholder' => 'a',
                                                                   'class' => 'form-control',
                                                                   'id' => 'floatingZip',
                                                               ]) !!}
-                                                              <label for="floatingZip">Término</label>
+                                                              <label for="floatingZip">Valor</label>
                                                           </div>
                                                       </div>
 

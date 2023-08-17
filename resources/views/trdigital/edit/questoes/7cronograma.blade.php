@@ -17,10 +17,11 @@
 
                           <h5 class="card-title text-center">CADASTROS DE METAS E ETAPAS</h5>
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                              data-bs-target="#novameta">
-                              + Nova Meta
-                          </button>
-
+                          data-bs-target="#criarmeta">
+                          + Criar Nova Meta
+                      </button>
+                      
+                          
 
                           {{-- <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
                               the modal.</p> --}}
@@ -71,8 +72,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                  {{-- Criar Etapas --}} @include('trdigital.edit.questoes.cronograma.etapas.criaretapas')
-                                  {{-- Criar Metas --}} @include('trdigital.edit.questoes.cronograma.metas.criarmetas')
+                                    {{-- Criar Metas --}} @include('trdigital.edit.questoes.cronograma.metas.criarmetas')
+                                    {{-- Criar Etapas --}} @include('trdigital.edit.questoes.cronograma.etapas.criaretapas')
                                   {{-- Editar Metas --}} @include('trdigital.edit.questoes.cronograma.metas.editarmetas')
                                   {{-- Excluir Metas --}} @include('trdigital.edit.questoes.cronograma.metas.excluirmetas')
 
@@ -124,15 +125,6 @@
               </div>
           </div>
           </form>
-
-
-
-
-
-
-
-
-
 
 
       </div>

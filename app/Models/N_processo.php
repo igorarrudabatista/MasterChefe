@@ -51,7 +51,7 @@ class N_processo extends Model
   // }   
 
        public function Metas() {
-         return $this->hasMany(Metas::class, 'n_processo_id', 'id');
+         return $this->hasMany(Metas::class, 'n_processo_id', 'id', 'Especificacao_metas');
        }
       public function Etapas() {
         return $this->hasOne(Etapas::class, 'n_processo_id', 'id');
@@ -61,6 +61,9 @@ class N_processo extends Model
     }
       public function Plano_detalhado() {
         return $this->hasOne(Plano_detalhado::class, 'n_processo_id', 'id');
+    }
+      public function Cronograma_desembolso() {
+        return $this->hasOne(Cronograma_desembolso::class, 'n_processo_id', 'id');
     }
 
 }

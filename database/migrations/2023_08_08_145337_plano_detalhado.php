@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('plano_detalhado', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('n_processo_id');
-            $table->unsignedBigInteger('metas_id');
-            
+            $table->unsignedBigInteger('Natureza_id');
+
             $table->string('Natureza_detalhado')->nullable();
             $table->string('Produto_Servico_detalhado')->nullable();
             $table->string('Unidade_medida_detalhado')->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
         
             $table->foreign('n_processo_id')->references('id')->on('n_processo')->onDelete('cascade');
-            $table->foreign('metas_id')->references('id')->on('metas')->onDelete('cascade');
+            $table->foreign('Natureza_id')->references('id')->on('plano_consolidado')->onDelete('cascade');
         });  
     
     }

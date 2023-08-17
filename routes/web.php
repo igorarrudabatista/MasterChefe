@@ -43,8 +43,17 @@ Route::patch('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, '
 Route::put('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
 Route::delete('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadodestroy'])->name('trdigital.planoconsolidadodestroy');
 
-Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
+Route::patch('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo'])->name('trdigital.memoria_calculo');
+Route::put('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo_update'])->name('trdigital.memoria_calculo_update');
+Route::delete('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo_update'])->name('trdigital.memoria_calculo_update');
 
+Route::patch('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'cronograma_desembolso'])->name('trdigital.cronograma_desembolso');
+Route::put('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
+Route::delete('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'planoconsolidadodestroy'])->name('trdigital.planoconsolidadodestroy');
+
+
+
+Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
 // Route::post('trdigital/metasstore/{id}', [MetasController::class, 'metasstore'])->name('metasstore');
 
 Route::get('/trdigital/proponente',   [TrdigitalController::class, 'proponente']);
