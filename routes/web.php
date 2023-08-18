@@ -43,13 +43,13 @@ Route::patch('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, '
 Route::put('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
 Route::delete('/trdigital/planoconsolidado/{id}',  [TrdigitalController::class, 'planoconsolidadodestroy'])->name('trdigital.planoconsolidadodestroy');
 
-Route::patch('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo'])->name('trdigital.memoria_calculo');
-Route::put('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo_update'])->name('trdigital.memoria_calculo_update');
-Route::delete('/trdigital/memoria_calculo/{id}',  [TrdigitalController::class, 'memoria_calculo_update'])->name('trdigital.memoria_calculo_update');
+Route::patch('/trdigital/planodetalhado/{id}',   [TrdigitalController::class, 'planodetalhado'])->name('trdigital.planodetalhado');
+Route::put('/trdigital/planodetalhado/{id}',     [TrdigitalController::class, 'planodetalhado_update'])->name('trdigital.planodetalhado_update');
+Route::delete('/trdigital/planodetalhado/{id}',  [TrdigitalController::class, 'planodetalhado_destroy'])->name('trdigital.planodetalhado_destroy');
 
-Route::patch('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'cronograma_desembolso'])->name('trdigital.cronograma_desembolso');
-Route::put('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'planoconsolidadoupdate'])->name('trdigital.planoconsolidadoupdate');
-Route::delete('/trdigital/cronograma_desembolso/{id}',  [TrdigitalController::class, 'planoconsolidadodestroy'])->name('trdigital.planoconsolidadodestroy');
+Route::patch('/trdigital/cronograma/{id}',  [TrdigitalController::class, 'cronograma_store'])->name('trdigital.cronograma_store');
+Route::put('/trdigital/cronograma/{id}',  [TrdigitalController::class, 'cronograma_update'])->name('trdigital.cronograma_update');
+Route::delete('/trdigital/cronograma/{id}',  [TrdigitalController::class, 'cronograma_destroy'])->name('trdigital.cronograma_destroy');
 
 
 

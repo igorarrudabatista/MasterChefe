@@ -37,10 +37,9 @@
                                       <tr>
                                           <td>{{ $planos->Natureza }} </td>
                                           <td>{{ $planos->Metas->Especificacao_metas }} </td>
-                                          <td>{{ $planos->Complemento }} </td>
-                                          <td>{{ $planos->Valor_concedente }} </td>
-                                          <td>{{ $planos->Valor_proponente_financeira }} </td>
-                                          <td>{{ $planos->Valor_proponente_nao_financeira }} </td>
+                                          <td>R$ {{ $planos->Valor_concedente }} </td>
+                                          <td>R$ {{ $planos->Valor_proponente_financeira }} </td>
+                                          <td>R${{ $planos->Valor_proponente_nao_financeira }} </td>
                                           <td>
                                               <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                   data-bs-target="#editarplano{{ $planos->id }}Editar"

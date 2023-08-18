@@ -2,7 +2,7 @@
       {!! Form::close() !!}
 
       <div class="tab-pane fade" id="list-desembolso" role="tabpanel" aria-labelledby="list-desembolso">
-        {!! Form::open(['route' => ['trdigital.cronograma_desembolso', $n_processo->id], 'method' => 'patch']) !!}
+        {!! Form::open(['route' => ['trdigital.cronograma_store', $n_processo->id], 'method' => 'patch']) !!}
 
 
           <div class="card">
@@ -40,10 +40,11 @@
                               <tr>
                                   <td>{{ $cronograma_desembolsos->metas_id }} </td>
                                   <td>{{ $cronograma_desembolsos->ano }} </td>
+                                  <td>{{ $cronograma_desembolsos->mes }} </td>
                                   <td>{{ $cronograma_desembolsos->fonte }} </td>
                                   <td>{{ $cronograma_desembolsos->valor_desembolso }} </td>
                             
-                                  
+                                  <td>
                                       <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                           data-bs-target="#editarplano{{ $cronograma_desembolsos->id }}Editar"
                                           data-bs-meta-id="{{ $cronograma_desembolsos->id }}">
@@ -80,11 +81,17 @@
                                               <div class="col-md-12">
                                                   <div class="form-floating">
 
-                                                      {!! Form::text('Especificacao_metas', null, [
-                                                          'placeholder' => 'Especificacao_metas',
-                                                          'class' => 'form-control',
-                                                          'id' => 'floatingName',
-                                                      ]) !!}
+                                                    <select name="metas_id" id="metas_id"
+                                                    class="form-control custom-select" required>
+                                                    <option value="" disabled selected>
+                                                        Selecione a Meta</option>
+                                                    @foreach ($metas as $meta)
+                                                        <option value="{{ $meta->id }}">
+                                                            {{ $meta->Especificacao_metas }}
+                                                        </option>
+                                                    @endforeach
+        
+                                                </select>
                                                       <label for="floatingName">Meta</label>
                                                   </div>
                                                   <br>
@@ -93,22 +100,53 @@
                                               <div class="row">
                                                   <div class="col-md-6">
                                                       <div class="form-floating">
-                                                          {!! Form::number('Ano', null, [
-                                                              'placeholder' => 'Quantidade_metas',
-                                                              'class' => 'form-control',
-                                                              'id' => 'floatingName',
-                                                          ]) !!}
+
+                                                        {!! Form::select('ano', [
+                                                            '' => 'Selecione o Ano',
+                                                            '2023' => '2023',
+                                                            '2024' => '2024',
+                                                            '2025' => '2025',
+                                                            '2026' => '2026',
+                                                            '2027' => '2027',
+                                                            '2028' => '2028',
+                                                            '2029' => '2029',
+                                                            '2030' => '2030',
+                                             
+                                                        ], null, [
+                                                            'class' => 'form-control custom-select',
+                                                            'required' => true,
+                                                            'id' => 'ano'
+                                                        ]) !!}
+
+
+                                        
                                                           <label for="floatingName"></label>
                                                           <label for="floatingEmail">Ano</label>
                                                       </div>
                                                   </div>
                                                   <div class="col-md-6">
                                                       <div class="form-floating">
-                                                          {!! Form::text('mes', null, [
-                                                              'placeholder' => '',
-                                                              'class' => 'form-control',
-                                                              'id' => 'floatingName',
-                                                          ]) !!}
+                                                        {!! Form::select('mes', [
+                                                            '' => 'Selecione o mês',
+                                                            'Janeiro' => 'Janeiro',
+                                                            'Fevereiro' => 'Fevereiro',
+                                                            'Março' => 'Março',
+                                                            'Abril' => 'Abril',
+                                                            'Maio' => 'Maio',
+                                                            'Junho' => 'Junho',
+                                                            'Julho' => 'Julho',
+                                                            'Agosto' => 'Agosto',
+                                                            'Setembro' => 'Setembro',
+                                                            'Outubro' => 'Outubro',
+                                                            'Novembro' => 'Novembro',
+                                                            'Dezembro' => 'Dezembro',
+                                                        ], null, [
+                                                            'class' => 'form-control custom-select',
+                                                            'required' => true,
+                                                            'id' => 'mes'
+                                                        ]) !!}
+
+                                               
                                                           <label for="floatingName"></label>
                                                           <label for="floatingEmail">Mês</label>
                                                       </div>
@@ -121,18 +159,22 @@
                                                   <div class="row">
                                                       <div class="col-md-6">
                                                           <div class="form-floating">
-                                                              {!! Form::text('fonte', null, [
-                                                                  'placeholder' => 'a',
-                                                                  'class' => 'form-control',
-                                                                  'id' => 'floatingCity',
-                                                              ]) !!}
-                                                              <label for="floatingCity">Fonte</label>
+                                                            <div class="form-check">
+                                                                {!! Form::radio('fonte', 'Concedente', false, ['class' => 'form-check-input', 'id' => 'radioOpcao1']) !!}
+                                                                <label class="form-check-label" for="radioOpcao1">Concedente</label>
+                                                            </div>
+                                                            
+                                                            <div class="form-check">
+                                                                {!! Form::radio('fonte', 'Contrapartida', false, ['class' => 'form-check-input', 'id' => 'radioOpcao2']) !!}
+                                                                <label class="form-check-label" for="radioOpcao2">Contrapartida</label>
+                                                            </div>
+
                                                           </div>
                                                       </div>
 
                                                       <div class="col-md-6">
                                                           <div class="form-floating">
-                                                              {!! Form::number('Termino_metas', null, [
+                                                              {!! Form::number('valor_desembolso', null, [
                                                                   'placeholder' => 'a',
                                                                   'class' => 'form-control',
                                                                   'id' => 'floatingZip',

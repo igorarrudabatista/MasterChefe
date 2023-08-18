@@ -390,7 +390,7 @@ class TrdigitalController extends Controller
      }
 
      
-    public function memoria_calculo (Request $request, $id)
+    public function planodetalhado (Request $request, $id)
     {
 
      $data = [
@@ -410,12 +410,12 @@ class TrdigitalController extends Controller
          return redirect()->back();
      }
 
-     public function memoria_calculo_update  (Request $request, $id)
+     public function planodetalhado_update  (Request $request, $id)
      {
 
          $data = [
             'n_processo_id' => $id,
-            'metas_id' => $request->input('metas_id'),
+            'Natureza_id' => $request->input('Natureza_id'),
             'Natureza_detalhado' => $request->input('Natureza_detalhado'),
             'Produto_Servico_detalhado' => $request->input('Produto_Servico_detalhado'),
             'Unidade_medida_detalhado' => $request->input('Unidade_medida_detalhado'),
@@ -423,8 +423,8 @@ class TrdigitalController extends Controller
             'Valor_unit_detalhado' => $request->input('Valor_unit_detalhado'),
          ];
        //  $meta->update($data);
+      // dd($data);
        Plano_detalhado::findOrFail($request->id)->update($data);
-
        //  dd($data); 
          return redirect()->back();
 
@@ -462,6 +462,18 @@ class TrdigitalController extends Controller
          return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
      }
     
+     public function planodetalhado_destroy($id)
+     {
+         $planodetalhado = Plano_detalhado::find($id);
+     
+         if (!$planodetalhado) {
+             // Lógica de tratamento se a meta não for encontrada
+         }
+     
+         $planodetalhado->delete();
+         return redirect()->back()->with('delete', 'Meta excluída com sucesso!');
+     }
+    
     public function etapasstore(Request $request, $id)
     {
 
@@ -480,6 +492,20 @@ class TrdigitalController extends Controller
         
      //   dd($etapas);
         
+        return redirect()->back();
+    }
+    public function cronograma_store(Request $request, $id)
+    {
+
+        $etapas = [
+            'n_processo_id' => $id,
+            'metas_id' => $request->input('metas_id'),
+            'ano' => $request->input('ano'),
+            'mes' => $request->input('mes'),
+            'fonte' => $request->input('fonte'),
+            'valor_desembolso' => $request->input('valor_desembolso'),
+        ];
+        Cronograma_desembolso::create($etapas);       
         return redirect()->back();
     }
 
@@ -502,25 +528,23 @@ class TrdigitalController extends Controller
             'Orgaos',
             'Metas',
             'Plano_consolidado',
-            'Plano_detalhado'
+            'Plano_detalhado', 
+            'Cronograma_desembolso'
         ])->find($id);
 
         $n_processo = N_processo::findOrFail($id);
         $metas = Metas::where('n_processo_id', $id)->get();
+        $etapas = Metas::with('etapas')->get();
         $planoconsolidado = Plano_consolidado::with(['Metas'])->where('n_processo_id', $id, )->get();
-     //   $memoria_calculo = Plano_detalhado::where('n_processo_id', $id, )->get();
-        $memoria_calculo = Plano_detalhado::with('Plano_consolidado')->get();
-
-     //   $memoria_calculo = Plano_detalhado::where('n_processo_id', $id, )->get();
+        $planodetalhado = Plano_detalhado::with('Plano_consolidado')->get();
         $cronograma_desembolso = Cronograma_desembolso::where('n_processo_id', $id, )->get();
         
-        $etapas = Metas::with('etapas')->get();
         
         if (!$n_processo) {
             // Caso não encontre o registro com o ID especificado, você pode redirecionar para uma página de erro ou retornar uma mensagem de erro.
             return redirect()->route('trdigital.index')->with('error', 'O registro não foi encontrado.');
         }
-        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas','planoconsolidado','memoria_calculo', 'cronograma_desembolso' ));
+        return view('trdigital.edit', compact('n_processo', 'orgaos', 'metas','etapas','planoconsolidado','planodetalhado', 'cronograma_desembolso' ));
     }
 
     public function validar(N_processo $n_processo, $id)
