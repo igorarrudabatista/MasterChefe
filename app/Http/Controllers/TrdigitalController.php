@@ -508,6 +508,22 @@ class TrdigitalController extends Controller
         Cronograma_desembolso::create($etapas);       
         return redirect()->back();
     }
+    public function cronograma_update (Request $request, $id)
+    {
+
+        $data = [
+            'n_processo_id' => $id,
+            'metas_id' => $request->input('metas_id'),
+            'ano' => $request->input('ano'),
+            'mes' => $request->input('mes'),
+            'fonte' => $request->input('fonte'),
+            'valor_desembolso' => $request->input('valor_desembolso'),
+        ];
+
+        Cronograma_desembolso::findOrFail($request->id)->update($data);
+
+         return redirect()->back();
+     }
 
     public function show($id)
     {

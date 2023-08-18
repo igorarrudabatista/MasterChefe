@@ -16,7 +16,7 @@
                           <h5 class="card-title text-center">CADASTRO DO CRONOGRAMA DE DESEMBOLSO</h5>
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                               data-bs-target="#cronograma_desembolso">
-                              + Nova Meta
+                              + Novo Registro
                           </button>
 
 
@@ -42,11 +42,11 @@
                                   <td>{{ $cronograma_desembolsos->ano }} </td>
                                   <td>{{ $cronograma_desembolsos->mes }} </td>
                                   <td>{{ $cronograma_desembolsos->fonte }} </td>
-                                  <td>{{ $cronograma_desembolsos->valor_desembolso }} </td>
+                                  <td class="text-danger"> <b> R${{ $cronograma_desembolsos->valor_desembolso }} </b></td>
                             
                                   <td>
                                       <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                          data-bs-target="#editarplano{{ $cronograma_desembolsos->id }}Editar"
+                                          data-bs-target="#editar_cronograma{{ $cronograma_desembolsos->id }}Editar"
                                           data-bs-meta-id="{{ $cronograma_desembolsos->id }}">
                                           Editar
                                       </button>
@@ -54,7 +54,7 @@
 
                                   <td>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                          data-bs-target="#excluirplano{{ $cronograma_desembolsos->id }}"
+                                          data-bs-target="#excluir_cronograma{{ $cronograma_desembolsos->id }}"
                                           data-bs-meta-id="{{ $cronograma_desembolsos->id }}">
                                           Excluir
                                       </button>
@@ -199,6 +199,12 @@
                                   </div>
                               </div>
                           </div><!-- End Vertically centered Modal-->
+
+
+                              {{-- Editar memoria de calculo  --}} @include('trdigital.edit.questoes.cronograma_desembolso.editarcronograma')
+
+
+
 
                       </div>
                   </div>
