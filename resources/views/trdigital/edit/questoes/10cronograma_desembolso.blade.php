@@ -200,10 +200,32 @@
                               </div>
                           </div><!-- End Vertically centered Modal-->
 
+                          {!! Form::close() !!}
 
                               {{-- Editar memoria de calculo  --}} @include('trdigital.edit.questoes.cronograma_desembolso.editarcronograma')
 
-
+                              <div class="modal fade" id="excluir_cronograma" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Confirmar Exclusão</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Tem certeza de que deseja excluir este Plano Detalhado? -
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            {!! Form::open(['route' => ['trdigital.cronograma_destroy', $n_processo->id], 'method' => 'delete']) !!}
+                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                       </div>

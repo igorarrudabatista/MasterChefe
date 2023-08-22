@@ -148,11 +148,17 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                         href="#list-relacao" role="tab" aria-controls="list-relacao">
                                                         <b> <big> 11. </big> </b>Relação de Obras e Equipamentos / Material Permanente
                                                       </a>
+                                                     
+                                                        <a class="list-group-item list-group-item-action"
+                                                        id="list-projeto-pesquisa" data-bs-toggle="list"
+                                                        href="#list-pesquisa" role="tab" aria-controls="list-pesquisa">
+                                                        <b> <big> 12. </big> </b> Pesquisa Mercadológica
+                                                      </a>
 
                                                     <a class="list-group-item list-group-item-action"
                                                         id="list-projeto-tramitar" data-bs-toggle="list"
                                                         href="#list-tramitar" role="tab" aria-controls="list-tramitar">
-                                                        <b> <big> 12. </big> </b> Finalizar e Enviar</a>
+                                                        <b> <big> 13. </big> </b> Finalizar e Enviar</a>
 
                                                 </div>
                                             </div>
@@ -172,7 +178,8 @@ $processoCount_nao_finalizada = session()->get('processoCount_nao_finalizada');
                                                     @include('trdigital.edit.questoes.9plano_detalhado')
                                                     @include('trdigital.edit.questoes.10cronograma_desembolso')
                                                     @include('trdigital.edit.questoes.11relacao')
-                                                    @include('trdigital.edit.questoes.12tramitar')
+                                                    @include('trdigital.edit.questoes.12pesquisa_mercadologica')
+                                                    @include('trdigital.edit.questoes.13tramitar')
 
 
 

@@ -52,6 +52,15 @@ Route::put('/trdigital/cronograma/{id}',  [TrdigitalController::class, 'cronogra
 Route::delete('/trdigital/cronograma/{id}',  [TrdigitalController::class, 'cronograma_destroy'])->name('trdigital.cronograma_destroy');
 
 
+Route::patch('/trdigital/obras_equipamento/{id}',  [TrdigitalController::class, 'obras_equipamento'])->name('trdigital.obras_equipamento');
+Route::put('/trdigital/obras_equipamento/{id}',  [TrdigitalController::class, 'obras_equipamento_update'])->name('trdigital.obras_equipamento_update');
+Route::delete('/trdigital/obras_equipamento/{id}',  [TrdigitalController::class, 'obras_equipamento_destroy'])->name('trdigital.obras_equipamento_destroy');
+
+Route::patch('/trdigital/pesquisa_mercadologica/{id}',  [TrdigitalController::class, 'pesquisa_mercadologica'])->name('trdigital.pesquisa_mercadologica');
+Route::put('/trdigital/pesquisa_mercadologica/{id}',  [TrdigitalController::class, 'pesquisa_mercadologica_update'])->name('trdigital.pesquisa_mercadologica_update');
+Route::delete('/trdigital/pesquisa_mercadologica/{id}',  [TrdigitalController::class, 'pesquisa_mercadologica_destroy'])->name('trdigital.pesquisa_mercadologica_destroy');
+
+
 
 Route::delete('/trdigital/etapasstore/{id}', [TrdigitalController::class, 'etapasstoredestroy'])->name('trdigital.etapasstoredestroy');
 // Route::post('trdigital/metasstore/{id}', [MetasController::class, 'metasstore'])->name('metasstore');

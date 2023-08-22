@@ -1,7 +1,8 @@
 <!-- Editar Plano COnsolidado -->
 {!! Form::close() !!}
 
-<div class="modal fade" id="editar_cronograma{{ $cronograma_desembolsos->id }}Editar" tabindex="-1">
+<div class="modal fade" id="editar_cronogramaEditar" tabindex="-1">
+    {!! Form::open(['method' => 'PUT', 'route' => ['trdigital.cronograma_update', $n_processo->id]]) !!}
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -10,7 +11,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method' => 'PUT', 'route' => ['trdigital.cronograma_update', $cronograma_desembolsos->id]]) !!}
 
                 <div class="modal-body">
 
@@ -49,7 +49,7 @@
                                       '2029' => '2029',
                                       '2030' => '2030',
                        
-                                  ], $cronograma_desembolsos->ano, [
+                                ], [
                                       'class' => 'form-control custom-select',
                                       'required' => true,
                                       'id' => 'ano'
@@ -77,7 +77,7 @@
                                       'Outubro' => 'Outubro',
                                       'Novembro' => 'Novembro',
                                       'Dezembro' => 'Dezembro',
-                                  ], $cronograma_desembolsos->mes, [
+                                  ],  [
                                       'class' => 'form-control custom-select',
                                       'required' => true,
                                       'id' => 'mes'
@@ -100,18 +100,16 @@
                                           {!! Form::radio('fonte', 'Concedente', false, ['class' => 'form-check-input', 'id' => 'radioOpcao1']) !!}
                                           <label class="form-check-label" for="radioOpcao1">Concedente</label>
                                       </div>
-                                      
                                       <div class="form-check">
                                           {!! Form::radio('fonte', 'Contrapartida', false, ['class' => 'form-check-input', 'id' => 'radioOpcao2']) !!}
                                           <label class="form-check-label" for="radioOpcao2">Contrapartida</label>
                                       </div>
-
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        {!! Form::number('valor_desembolso', $cronograma_desembolsos->valor_desembolso, [
+                                        {!! Form::number('valor_desembolso', null, [
                                             'placeholder' => 'a',
                                             'class' => 'form-control',
                                             'id' => 'floatingZip',
