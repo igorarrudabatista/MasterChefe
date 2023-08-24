@@ -35,39 +35,41 @@
                                   </tr>
                               </thead>
                               @foreach ($pesquisa_mercadologica as $pesquisa)
-                              <tr>
-                                  <td> <small> {{ $pesquisa->Descricao_bem ?? ''}} </small> </td>
-                                  @foreach ($pesquisa->pesquisa_mercadologica_pivots as $pivot)
-                                  <td> {{ $pivot->Qtd ?? '' }}       </td>
-                                  
-                                  <td>{{ $pivot->Empresa ?? '' }} </td>
-                                  <td class="text-danger"> R$ {{ $pivot->Valor ?? '' }} </td>
-                                  @if ($pivot->Anexo  == '')
-                                  <td class="text-danger"> <i class="bi bi-file-earmark-pdf-fill"></i> Documento não enviado</td>
-                                  @else
-                                  <td class="text-success">  <i class="bi bi-file-earmark-pdf-fill"></i> Documento enviado   </td>
-                                  @endif
-                                  
-                                  <td>
-                                      <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                      data-bs-target="#editar_cronograma{{ $pesquisa->id ?? ''}}Editar"
-                                      data-bs-meta-id="{{ $pesquisa->id ?? ''}}">
-                                      Editar
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#excluir_cronograma{{ $pesquisa->id ?? '' }}"
-                                    data-bs-meta-id="{{ $pesquisa->id ?? ''}}">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                                @endforeach
-                            </tbody>
-                        </table>
-                          
+                                  <tr>
+                                      <td> <small> {{ $pesquisa->Descricao_bem ?? '' }} </small> </td>
+                                      @foreach ($pesquisa->pesquisa_mercadologica_pivots as $pivot)
+                                          <td> {{ $pivot->Qtd ?? '' }} </td>
+
+                                          <td>{{ $pivot->Empresa ?? '' }} </td>
+                                          <td class="text-danger"> R$ {{ $pivot->Valor ?? '' }} </td>
+                                          @if ($pivot->Anexo == '')
+                                              <td class="text-danger"> <i class="bi bi-file-earmark-pdf-fill"></i>
+                                                  Documento não enviado</td>
+                                          @else
+                                              <td class="text-success"> <i class="bi bi-file-earmark-pdf-fill"></i>
+                                                  Documento enviado </td>
+                                          @endif
+
+                                          <td>
+                                              <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                  data-bs-target="#editar_cronograma{{ $pesquisa->id ?? '' }}Editar"
+                                                  data-bs-meta-id="{{ $pesquisa->id ?? '' }}">
+                                                  Editar
+                                              </button>
+                                          </td>
+                                          <td>
+                                              <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                  data-bs-target="#excluir_cronograma{{ $pesquisa->id ?? '' }}"
+                                                  data-bs-meta-id="{{ $pesquisa->id ?? '' }}">
+                                                  Excluir
+                                              </button>
+                                          </td>
+                                  </tr>
+                              @endforeach
+                              @endforeach
+                              </tbody>
+                          </table>
+
 
                           <!-- Vertically centered Modal -->
 
@@ -80,91 +82,116 @@
                                               aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
-                                        {!! Form::open(['route' => ['trdigital.pesquisa_mercadologica', $n_processo->id], 'method' => 'patch']) !!}
+                                          {!! Form::open(['route' => ['trdigital.pesquisa_mercadologica', $n_processo->id], 'method' => 'patch']) !!}
 
                                           <div class="row g-3">
 
                                               <div class="col-md-9">
                                                   <div class="form-floating">
-                                                    {!! Form::text('Descricao_bem', null, [
-                                                        'placeholder' => 'Descrição do bem',
-                                                        'class' => 'form-control',
-                                                        'id' => 'floatingName',
-                                                    ]) !!}
+                                                      {!! Form::text('Descricao_bem', null, [
+                                                          'placeholder' => 'Descrição do bem',
+                                                          'class' => 'form-control',
+                                                          'id' => 'floatingName',
+                                                      ]) !!}
                                                       <label for="floatingName">Descrição do bem</label>
                                                   </div>
 
                                                   <br>
                                               </div>
-                                              <div class="col-md-3">
-                                                  <div class="form-floating">
-                                                    {!! Form::number('Qtd[]', null, [
-                                                        'placeholder' => 'Quantidade',
-                                                        'class' => 'form-control',
-                                                        'id' => 'floatingCity',
-                                                    ]) !!}
-                                                      <label for="floatingName">Quantidade</label>
-                                                  </div>
+                                              <div class="item-group">
+                                                  <div class="item">
 
-                                                  <br>
-                                              </div>
+                                                      <div class="col-md-3">
+                                                          <div class="form-floating">
+                                                              {!! Form::number('Qtd[]', null, [
+                                                                  'placeholder' => 'Quantidade',
+                                                                  'class' => 'form-control',
+                                                                  'id' => 'floatingCity',
+                                                              ]) !!}
+                                                              <label for="floatingName">Quantidade</label>
+                                                          </div>
 
-                                              <div class="row">
-                                                  <div class="col-md-9">
-                                                      <div class="form-floating">
-                                                        {!! Form::text('Empresa[]', null, [
-                                                            'placeholder' => 'Empresa',
-                                                            'class' => 'form-control',
-                                                            'id' => 'floatingName',
-                                                        ]) !!}
-                                                          <label for="floatingName"></label>
-                                                          <label for="floatingEmail">Nome da Empresa</label>
+                                                          <br>
                                                       </div>
-                                                  </div>
-                                                  <div class="col-md-3">
-                                                    <div class="form-floating">
-                                                        {!! Form::number('Valor[]', null, [
-                                                            'placeholder' => 'Valor',
-                                                            'class' => 'form-control',
-                                                            'id' => 'floatingZip',
-                                                        ]) !!}
-                                                        <label for="floatingZip">Valor</label>
+
+                                                      <div class="row">
+                                                          <div class="col-md-9">
+                                                              <div class="form-floating">
+                                                                  {!! Form::text('Empresa[]', null, [
+                                                                      'placeholder' => 'Empresa',
+                                                                      'class' => 'form-control',
+                                                                      'id' => 'floatingName',
+                                                                  ]) !!}
+                                                                  <label for="floatingName"></label>
+                                                                  <label for="floatingEmail">Nome da Empresa</label>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-md-3">
+                                                              <div class="form-floating">
+                                                                  {!! Form::number('Valor[]', null, [
+                                                                      'placeholder' => 'Valor',
+                                                                      'class' => 'form-control',
+                                                                      'id' => 'floatingZip',
+                                                                  ]) !!}
+                                                                  <label for="floatingZip">Valor</label>
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+
+
+                                                      <div class="col-12">
+                                                          <div class="row">
+
+
+
+                                                              <div class="col-md-10">
+                                                                  <div class="form-floating">
+
+                                                                      {!! Form::file('Anexo[]', ['placeholder' => 'Anexo', 'class' => 'form-control', 'id' => 'formFile']) !!}
+
+
+                                                                      <label for="floatingZip">Anexar do
+                                                                          Comprovante</label>
+                                                                  </div>
+                                                              </div>
+                                                              <button type="button" class="add-item btn btn-warning">Adicionar Nova Empresa</button>
+
+
+                                                          </div>
+
+                                                      </div>
+                                                      <div class="modal-footer">
+
+                                                          
+                                                          
+                                                          <button type="submit"
+                                                          class="btn btn-primary btn-lg">Salvar</button>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </div><!-- End Vertically centered Modal-->
+                                        </div> </div>
 
-                                              </div>
-                                              
-
-                                              <div class="col-12">
-                                                  <div class="row">
-                                               
-
-                                                   
-                                                      <div class="col-md-10">
-                                                          <div class="form-floating">
-                                                            
-                                                            {!! Form::file('Anexo[]', ['placeholder'=> 'Anexo','class' => 'form-control', 'id' => 'formFile']) !!}
-
-                                                            
-                                                              <label for="floatingZip">Anexar do Comprovante</label>
-                                                          </div>
-                                                      </div>
-                                            
-                                          </div>
-
-                                      </div>
-                                      <div class="modal-footer">
-                                          <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
-                                      </div>
-                                  </div>
                               </div>
-                          </div><!-- End Vertically centered Modal-->
+                          </div>
 
                       </div>
                   </div>
-
               </div>
           </div>
       </div>
-    </div>
-</div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.add-item').addEventListener('click', function() {
+                const itemGroup = document.querySelector('.item-group');
+                const newItem = document.querySelector('.item').cloneNode(true);
+                
+                // Limpa os valores dos campos clonados
+                newItem.querySelectorAll('input').forEach(input => input.value = '');
+                
+                itemGroup.appendChild(newItem);
+            });
+        });
+    </script>
+      

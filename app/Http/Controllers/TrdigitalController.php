@@ -578,7 +578,7 @@ class TrdigitalController extends Controller
             ];
 
           //  $pesquisa_mercadologica->Pesquisa_mercadologica_pivot()->attach('pesquisa_mercadologica_id', $pivotData);
-                $pesquisa_mercadologica->Pesquisa_mercadologica_pivot()->create($pivotData);
+                $pesquisa_mercadologica->pesquisa_mercadologica_pivots()->create($pivotData);
                 
             }
 

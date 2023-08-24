@@ -26,10 +26,10 @@
 
                             
                         {{-- <img src="{{images/favicon.svg')}}" height="48" class='mb-4'> --}}
-                        <h3>Acesso ao Sistema</h3>
-                        <p>Por favor, faça o login para acessar o sistema.</p>
+                        <h2> <center> <b> TR - ONLINE </b> </center> </h2>
+                        <p>Por favor, faça o login para acessar o sistema.</p> </center>
                     </div>
-                    <form action="index.html">
+
                         <div class="form-group position-relative has-icon-left">
                             {{-- <label for="username">Usuário</label> --}}
                             <div class="position-relative">
@@ -94,9 +94,9 @@
                <hr>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button class="btn btn-block mb-2 btn-primary"><i data-feather="link"></i> Seduc - MT</button>
+                            <button class="btn btn-block mb-2 btn-primary"><i data-feather="link"></i> </button>
                         </div>
-                        <center><h6> Desenvolvido pela Seduc - TI
+                        <center><h6> Desenvolvido por:
                         {{-- <div class="col-sm-6">
                             <button class="btn btn-block mb-2 btn-secondary"><i data-feather="github"></i> Github</button>
                         </div> --}}
