@@ -9,7 +9,7 @@ class Pesquisa_mercadologica extends Model
 {
     protected $table = 'pesquisa_mercadologica';
 
-    protected $fillable = ['n_processo_id', 'Descricao_bem'];
+    protected $fillable = ['n_processo_id', 'Descricao_bem', 'Qtd'];
 
     public function n_processo()
     {

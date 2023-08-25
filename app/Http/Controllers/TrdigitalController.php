@@ -287,7 +287,7 @@ class TrdigitalController extends Controller
 
 
         // return back();
-        return view('trdigital.show');
+        return view('trdigital.tr');
     }
 
     public function metasstore(Request $request, $id)
@@ -567,12 +567,13 @@ class TrdigitalController extends Controller
         $pesquisa_mercadologica = Pesquisa_mercadologica::create([
             'n_processo_id' => $id,
             'Descricao_bem' => $request->Descricao_bem,
+            'Qtd' => $request->Qtd,
+
         ]);
 
-        foreach ($request->Qtd as $key => $qtd) {
+        foreach ($request->Empresa as $key => $empresa) {
             $pivotData = [
-                'Qtd' => $qtd,
-                'Empresa' => $request->Empresa[$key],
+                'Empresa' => $empresa,
                 'Valor' => $request->Valor[$key],
                 // 'Anexo' => $request->file('Anexo')[$key]->store('uploads'),
             ];
@@ -582,15 +583,23 @@ class TrdigitalController extends Controller
                 
             }
 
-        return redirect()->back();
-    }
+            return redirect('/trdigital/1/edit#list-pesquisa');
+        }
 
 
 
 
     public function show($id)
     {
-        $n_processo = N_processo::findOrFail($id);
+        $n_processo = N_processo::with([
+            'Doc_anexo1',
+            'Doc_anexo2',
+            'instituicao',
+            'Doc_anexo2',
+            'Projeto_conteudo',
+            'Resp_projeto',
+            'Orgaos'
+        ])->find($id);
         return view('trdigital.show', compact('n_processo'));
     }
 

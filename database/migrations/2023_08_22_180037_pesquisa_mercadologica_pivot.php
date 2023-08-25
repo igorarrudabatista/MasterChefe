@@ -18,7 +18,6 @@ return new class extends Migration
                 $table->increments('id');
                 $table->unsignedBigInteger('pesquisa_mercadologica_id');
 
-                $table->integer('Qtd')->nullable();
                 $table->string('Empresa')->nullable();
                 $table->decimal('Valor')->nullable();
                 $table->string('Anexo')->nullable();           

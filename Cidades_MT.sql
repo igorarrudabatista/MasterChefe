@@ -142,3 +142,17 @@ INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VAL
 INSERT INTO `cidade` (`id`, `Nome`, `estado_id`, `created_at`, `updated_at`) VALUES (NULL, 'VILA RICA', '1', NULL, NULL);
 
 INSERT INTO `orgaos` (`id`, `Nome`, `Sigla`, `image`, `cidade_id`, `created_at`, `updated_at`) VALUES (NULL, 'Sescretaria de Assistência Social', 'SETASC','', '37', NULL, NULL);
+INSERT INTO `orgaos` (`id`, `Nome`, `Sigla`, `image`, `cidade_id`, `created_at`, `updated_at`) VALUES (NULL, 'Sescretaria de Educação', 'SEDUC','', '37', NULL, NULL);
+
+-- SEAF - Secretaria de Estado de Agricultura Familiar e Assuntos Fundiários
+-- SECEL - Secretaria de Estado de Cultura
+-- SECITEC – Secretaria de Estado de Ciência Tecnologia e Inovação
+-- SECOM – Secretaria de Estado de Comunicação
+-- SEDEC – Secretaria de Estado de Desenvolvimento Econômico
+-- SEDUC – Secretaria de Estado de Educação
+-- SEFAZ – Secretaria de Estado de Fazenda
+-- SEMA – Secretaria de Estado de Meio Ambiente
+-- SEPLAG- Secretaria de Estado de Planejamento e Gestão
+-- SES- Secretaria de Estado de Saúde
+-- SESP - Secretaria de Estado de Segurança Pública
+-- SINFRA -  Secretaria de Estado de Infraestrutura e Logística
